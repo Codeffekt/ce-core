@@ -1,0 +1,21 @@
+<mat-card>
+    <ce-list [paginator]="true">
+        <ce-list-header label="Liste de composants chimiques"></ce-list-header>
+        <ce-list-item *ngFor="let compound of items$ |async" (click)="onSelectItem(compound)"
+            [active]="compound === selectedElement">
+            <ce-list-item-content class="d-flex align-items-start">
+                <div class="d-flex flex-column">
+                    <span><b>{{compound.props.name}} ({{compound.props.symbol}})</b></span>
+                    <span>Position: {{compound.props.position}}</span>
+                    <span>Date de création: {{compound.core.ctime | calendarDate}}</span>
+                </div>
+                <ce-list-item-chips>{{compound.props.weight}}</ce-list-item-chips>
+            </ce-list-item-content>
+            <ce-list-item-actions>
+                <button mat-menu-item>
+                    <span>Supprimer</span>
+                </button>
+            </ce-list-item-actions>
+        </ce-list-item>
+    </ce-list>
+</mat-card>

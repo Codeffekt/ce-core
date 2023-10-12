@@ -1,0 +1,15 @@
+<mat-form-field class="w-100">
+    <mat-label>{{formBlock.label}}</mat-label>
+    <textarea *ngIf="formBlock.params?.multiline" matInput [(ngModel)]="value" rows="5"></textarea>
+    <input *ngIf="!formBlock.params?.multiline" matInput type="text" [errorStateMatcher]="stateMatcher"
+        [(ngModel)]="value"  [required]="formBlock.required"
+        (ngModelChange)="valueChanged($event)" [matAutocomplete]="autocomplete" [readonly]="formBlock.readonly">
+    <mat-autocomplete #autocomplete="matAutocomplete">
+        <mat-option *ngFor="let suggestion of suggestions$ | async " [value]="suggestion">{{suggestion}}</mat-option>
+    </mat-autocomplete>
+    <mat-hint *ngIf="formBlock.hint">{{formBlock.hint}}</mat-hint>
+    <mat-error *ngIf="formControl.errors?.required">Champ requis</mat-error>
+    <mat-error *ngIf="formControl.errors?.pattern">Valeur ne respecte pas le pattern
+        {{formControl.errors.pattern.requiredPattern}}
+    </mat-error>
+</mat-form-field>

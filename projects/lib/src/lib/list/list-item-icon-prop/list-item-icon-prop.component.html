@@ -1,0 +1,5 @@
+<div class="d-flex flex-row align-items-center text-muted" matTooltip="{{tooltip}}" matTooltipPosition="above">
+    <mat-icon class="me-1" *ngIf="icon">{{icon}}</mat-icon>
+    <mat-icon class="me-1" *ngIf="!icon && fontIcon" [appIcon]="fontIcon"></mat-icon>
+    <small><ng-content></ng-content></small>
+</div>

@@ -1,0 +1,3 @@
+<ce-form [formWrapper]="formWrapper$ | async" [formMask]="formMaskWrapper" (formChanges)="onFormChanges($event)"></ce-form>
+
+<input matInput placeholder="Ex. Pizza" [ngModel]="name" (ngModelChange)="inputChange($event)">

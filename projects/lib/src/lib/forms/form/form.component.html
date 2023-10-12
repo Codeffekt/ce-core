@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" *ngIf="formGroup">
+
+    <ce-grid gap="12px">
+
+        <ng-container *ngFor="let card of cards; let index = index;">
+            <ce-form-card [ngClass]="['ce-card', card.id ?? 'ce-card-' + index ]" [hasError]="isInvalid">
+                <!-- Form card title -->
+                <ce-form-card-header *ngIf="card.title">
+                    <ce-form-card-title>{{card.title}}</ce-form-card-title>
+                </ce-form-card-header>
+
+                <!-- Form card blocks -->
+                <ce-form-card-content>
+                    <ce-grid>
+                        <ng-container *ngFor="let formBlock of (card.elts | formInstanceBlocks:formMask)">
+                            <ce-form-block-factory [formControlName]="formBlock.field" [formBlock]="formBlock"
+                                [formInstance]="formInstance" [ngClass]="'ce-form-block-' + formBlock.field">
+                            </ce-form-block-factory>
+                        </ng-container>
+                    </ce-grid>
+                </ce-form-card-content>
+            </ce-form-card>
+        </ng-container>
+
+    </ce-grid>
+</form>

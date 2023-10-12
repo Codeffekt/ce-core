@@ -1,0 +1,12 @@
+<div class="nav-item-before">
+    <button mat-icon-button>
+        <mat-icon class="text-navbar-contrast-color">navigate_before</mat-icon>
+    </button>
+</div>
+
+<div class="nav-item text-navbar-contrast-color">
+    <button mat-button [ngClass]="{'text-secondary': active, 'text-navbar-contrast-color': !active }">
+        <ng-content></ng-content>
+    </button>
+    <i class="material-icons">keyboard_arrow_right</i>
+</div>

@@ -1,0 +1,12 @@
+<div class="d-flex flex-column bg-side-menu-color h-100 text-side-menu-contrast-color">
+
+    <img *ngIf="logo" class="ce-side-menu-logo mx-auto my-2" src="{{logo}}">
+    <!-- <div *ngIf="title" class="p-3 d-flex flex-row justify-content-center" fxLayoutGap="14px">
+        <span class="mat-h2 text-light m-0">{{title}}</span>
+    </div> -->
+    <ng-content select="ce-side-menu-header"></ng-content>
+    <div class="overflow-auto d-flex flex-column flex-grow-1">
+        <ng-content select="ce-side-menu-content"></ng-content>
+    </div>
+    <ng-content select="ce-side-menu-footer"></ng-content>
+</div>

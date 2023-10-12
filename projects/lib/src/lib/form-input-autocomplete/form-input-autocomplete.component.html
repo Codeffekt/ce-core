@@ -1,0 +1,15 @@
+<mat-form-field appearance="outline">
+    <input matInput
+           type="text"
+           placeholder="{{label}}"
+           [formControl]="formControl"
+           [matAutocomplete]="auto">
+    <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+        <mat-option *ngFor="let suggestion of suggestions$ | async" [value]="suggestion" (click)="select(suggestion)" class="h-auto">
+            <ce-form-input-autocomplete-item-factory
+                                                     [item]="suggestion"
+                                                     [type]="suggestion.core.root">
+            </ce-form-input-autocomplete-item-factory>
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>

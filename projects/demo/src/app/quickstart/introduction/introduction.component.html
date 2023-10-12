@@ -1,0 +1,13 @@
+<h2>Qu'est ce que CeForms ?</h2>
+<p>CeForms est un ensemble d'outils logiciels OpenSource permettant de construire
+    des solutions logicelles pour gérer l'acquisition et la restitution de données
+    numériques à partir de formulaires. 
+    Les formulaires et les interactions avec ces formulaires utilisent un formalisme
+    autour d'un ensemble de schémas au format <a href="https://fr.wikipedia.org/wiki/JavaScript_Object_Notation">JSON</a>.
+</p>
+<p>Par exemple, le formulaire suivant au format JSON : </p>
+<pre>
+    <code [highlight]="exampleFormStr" [languages]="['json']"></code>
+</pre>
+<p>Peut générer l'interface suivante (depuis <a [routerLink]="['../ce-core']">ce-core</a>) : </p>
+<ce-form [formWrapper]="exampleForm"></ce-form>

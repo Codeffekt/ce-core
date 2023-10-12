@@ -1,0 +1,11 @@
+<ng-container *ngIf="formWrapper">
+    <div class="d-flex">
+        <ce-code-editor [code]="formWrapper.core | json" title="Éditeur de formulaire" [expanded]="false"
+            (save)="save($event)">
+        </ce-code-editor>
+        <!-- <ce-code-editor [code]="mask | json" title="Éditeur de masque" [expanded]="false" (save)="updateMask($event)">
+        </ce-code-editor> -->
+        <ce-form [formWrapper]="formWrapper" [formMask]="mask" (formChanges)="formChanges($event)">
+        </ce-form>
+    </div>   
+</ng-container>

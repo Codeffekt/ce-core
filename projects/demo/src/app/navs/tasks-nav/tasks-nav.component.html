@@ -1,0 +1,10 @@
+<ce-navbar-content>
+    <ce-navbar-item *ngFor="let navItem of navItems">
+        {{navItem.label}} {{navItem.id}}
+    </ce-navbar-item>
+    <ce-navbar-actions>                    
+            <button mat-stroked-button color="accent" matTooltip="Créer votre première campagne">
+                <mat-icon>add</mat-icon>Créer votre première campagne
+            </button>        
+    </ce-navbar-actions>
+</ce-navbar-content>

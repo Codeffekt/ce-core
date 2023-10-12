@@ -1,0 +1,4 @@
+<ce-column gap="6px" cePadding="18px 12px" ceAlignItems="center">
+    <span>{{account$ | async | nameOrAccount}}</span>
+    <button mat-button (click)="logout()" color="warn">Se déconnecter</button>
+</ce-column>

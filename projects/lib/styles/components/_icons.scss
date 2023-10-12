@@ -1,0 +1,31 @@
+mat-icon {
+  @mixin size($size) {
+    width: $size;
+    height: $size;
+    font-size: $size;
+  }
+  &.display-4 {
+    @include size(112px);
+  }
+  &.display-3 {
+    @include size(56px);
+  }
+  &.display-2 {
+    @include size(45px);
+  }
+  &.display-1 {
+    @include size(34px);
+  }
+  &.h1 {
+    @include size(24px);
+  }
+  &.h2 {
+    @include size(20px);
+  }
+  &.h3 {
+    @include size(16px);
+  }
+  &.h4 {
+    @include size(15px);
+  }
+}

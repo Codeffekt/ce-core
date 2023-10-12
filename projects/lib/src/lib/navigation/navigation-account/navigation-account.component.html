@@ -1,0 +1,14 @@
+<button mat-icon-button (click)="toggle()" cdkOverlayOrigin #trigger="cdkOverlayOrigin">
+    <mat-icon>account_circle</mat-icon>
+</button>
+
+<ng-template 
+    cdkConnectedOverlay 
+    (backdropClick)="toggle()"
+    [cdkConnectedOverlayOpen]="isOpen"
+    [cdkConnectedOverlayOrigin]="trigger"
+    [cdkConnectedOverlayHasBackdrop]="true"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    >
+    <ce-account-dialog></ce-account-dialog>
+</ng-template>

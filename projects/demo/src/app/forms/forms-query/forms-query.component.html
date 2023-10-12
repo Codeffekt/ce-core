@@ -1,0 +1,8 @@
+<div class="p-5">    
+    <ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="true" [bookmarksEnabled]="false">
+        <ce-bookmarks displayMode="tabs"></ce-bookmarks>
+        <ul class="list-group">
+            <li class="list-group-item" *ngFor="let item of items$ | async">{{item | json}}</li>
+        </ul>
+    </ce-formquery-wrapper>
+</div>

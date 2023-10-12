@@ -1,0 +1,10 @@
+<div class="d-flex flex-column">
+    <div class="d-flex flex-row">
+        <input class="project-input" mat-input type="text" placeholder="Project Id" [(ngModel)]="pid">
+        <button mat-button [disabled]="!pid || isGraphInProgress" (click)="createGraph()">Create Graph</button>
+    </div>
+    <mat-progress-bar *ngIf="isGraphInProgress" mode="indeterminate"></mat-progress-bar>
+    <p *ngIf="errorMsg" class="alert alert-danger">{{errorMsg}}</p>
+    <div class="cytoscape-container" #container></div>
+
+</div>

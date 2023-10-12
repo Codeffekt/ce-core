@@ -1,0 +1,13 @@
+<ce-grid class="wrapper" alignItems="center">
+  <ce-row  overflow-x-auto cdkScrollable>
+    <ng-container *ngFor="let token of tokens$ | async">
+      <ce-search-token *ngIf="token.field" [searchToken]="token" ceMarginEnd="8px"></ce-search-token>
+    </ng-container>
+    <ce-search-input-token rowFill></ce-search-input-token>
+    <ng-container *ngIf="clearSearchEnabled$ | async as clearSearchEnabled">
+      <button *ngIf="clearSearchEnabled" mat-icon-button ceMarginEnd="8px" (click)="clearSearch()">
+        <mat-icon iconSize="16px">close</mat-icon>
+      </button>
+    </ng-container>
+  </ce-row>
+</ce-grid>

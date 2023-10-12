@@ -1,0 +1,8 @@
+<ce-nav-layout>
+    <button (click)="addBreadcrumb()">+</button>
+    <button (click)="removeBreadcrumb()">-</button>
+    <ce-nav-breadcrumb-items></ce-nav-breadcrumb-items>
+    <div *ngIf="(activeItem$ | async) as activeItem">
+        {{activeItem|json}}
+    </div>
+</ce-nav-layout>

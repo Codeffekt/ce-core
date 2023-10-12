@@ -1,0 +1,5 @@
+<ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="false">
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of assets$ | async">{{item | json}}</li>
+    </ul>
+</ce-formquery-wrapper>

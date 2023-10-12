@@ -1,0 +1,29 @@
+:host {
+    .mat-table {
+        .mat-row:not(.mat-no-data-row):hover {
+            cursor: pointer;
+            // TODO: Use color palette theme functions
+            background: rgb(250, 250, 250);
+        }
+        .mat-no-data-row {
+            text-align: center;
+        }
+    }
+
+    ce-formquery-wrapper {
+        margin-top: 12px;
+        display: block;
+    }
+
+    .form-array-block-title {
+        border-bottom: 1px solid lightgray;
+        width: 100%;
+        padding-bottom: 4px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        margin-bottom: 12px;
+    }
+    .form-array-block-title-add {
+        font-size: 9px;
+    }
+}

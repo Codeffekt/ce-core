@@ -1,0 +1,21 @@
+$breakpoints: (
+  xs: 384px,
+  sm: 600px,
+  md: 960px,
+  lg: 1280px,
+  xl: 1920px,
+  xxl: 5000px
+);
+
+// mobile-first breakpoint mixin
+@mixin breakpoint($breakpoint: md, $key: min, $orientation: false) {
+  @if ($orientation) {
+    @media (#{$key}-width: map-get($breakpoints, $breakpoint)) and (orientation : $orientation) {
+      @content;
+    }
+  } @else {
+    @media (#{$key}-width: map-get($breakpoints, $breakpoint)) {
+      @content;
+    }
+  }
+} 

@@ -1,0 +1,26 @@
+<div class="d-flex flex-row mb-2">
+    <span class="h4" *ngIf="formBlock.label">{{formBlock.label}}</span>
+    <div class="ms-auto">
+        <button mat-stroked-button color="primary" (click)="openMediaPicker()">
+            <mat-icon class="me-2">edit</mat-icon>Modifier
+        </button>
+        <button mat-button color="warn" ngReallyTitle="Confirmation require"
+            ngReallyMessage="Voulez-vous vraiement supprimer l'association avec ce media ?" (ngReallyClick)="onClear()"
+            [disabled]="!formBlock.value">
+            supprimer
+        </button>
+    </div>
+</div>
+<div class="image-wrapper">
+    <ng-container *ngIf="formBlock.value?.id; then imageTpl else noImageTpl"></ng-container>
+</div>
+
+<ng-template #noImageTpl>
+    <div class="no-image">
+        <h4 class="text-muted">Aucune image</h4>
+    </div>
+</ng-template>
+
+<ng-template #imageTpl>
+    <img [src]="formBlock.value?.id | thumbPathWithAssetId:300">
+</ng-template>

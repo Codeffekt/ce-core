@@ -1,0 +1,43 @@
+{
+  "name": "@codeffekt/ce-core",
+  "version": "13.9.0",
+  "description": "Angular library for CeForms rendering",
+  "author": {
+    "name": "Codeffekt",
+    "email": "contact@codeffekt.com",
+    "url": "https://codeffekt.com"
+  },
+  "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "Apache-2.0",
+  "peerDependencies": {
+    "@angular/common": "^13.3.1",
+    "@angular/cdk": "^13.3.2",
+    "@angular/core": "^13.3.1",
+    "@angular/material": "^13.3.2",
+    "@angular/material-moment-adapter": "^13.3.2",
+    "bootstrap": "^5.1.1",
+    "@codeffekt/ce-core-data": "^1.1.0",
+    "@ngneat/until-destroy": "^8.0.3",            
+    "ngx-uploader": "^11.0.0",
+    "ngx-file-drop": "^13.0.0",
+    "rxjs": "^7.5.7"
+  },
+  "dependencies": {
+    "@angular/material-moment-adapter": "^13.3.1",
+    "angular-svg-icon": "^13.0.0",
+    "dayjs": "^1.11.0",
+    "moment": "^2.29.4"
+  },
+  "exports": {
+    "./theming": {
+      "sass": "./styles/_theme.scss"
+    },
+    "./core": {
+      "sass": "./assets/theme/ce-core.scss"
+    }
+  },
+  "main": "./dist/lib/codeffekt-ce-core.d.ts"
+}

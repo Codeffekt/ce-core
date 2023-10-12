@@ -1,0 +1,32 @@
+<ce-nav-layout>
+    <ce-navbar ceNavBar>
+        <ce-navbar-item>Applications</ce-navbar-item>
+        <ce-navbar-content alignment="end">
+        </ce-navbar-content>
+    </ce-navbar>
+
+    <ce-list [searchBox]="true" [paginator]="true">
+        <ce-list-header label="Mes applications"></ce-list-header>
+        <ce-list-item *ngFor="let item of apps$ | async" (click)="onSelected(item)">
+            <ce-list-item-content>
+                <div class="d-flex flex-column">
+                    <div class="d-flex">
+                        <ce-list-item-label>{{item.props.name ? item.props.name : '-'}}</ce-list-item-label>
+                        <ce-list-item-chips>{{item | formAuthor}}</ce-list-item-chips>
+                    </div>
+                    <ce-list-item-label size="small">{{item.props.description}}</ce-list-item-label>
+                </div>
+                <ce-list-item-label size="small">créée le {{item.core.ctime|calendarDate}}</ce-list-item-label>
+            </ce-list-item-content>
+        </ce-list-item>
+    </ce-list>
+</ce-nav-layout>
+
+<ce-side-menu ceSideMenu title="Applications">
+    <ce-side-menu-content>
+        <ce-side-menu-list>
+            <ce-side-menu-item routerLinkActive="active" routerLink="/logout" icon="logout" label="Déconnexion">
+            </ce-side-menu-item>
+        </ce-side-menu-list>
+    </ce-side-menu-content>
+</ce-side-menu>

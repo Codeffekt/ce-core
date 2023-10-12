@@ -1,0 +1,26 @@
+@use '@angular/material' as mat;
+@import "../theme_functions";
+
+mat-card.diag-table {
+    .diag-table--content {
+        margin-top: 12px;
+        padding: 0px 24px;
+    }
+    mat-card-title {
+        padding: 24px;
+        margin-bottom: 0px;
+        border-bottom: 1px solid lightgray;
+    }
+    padding: 0px;
+    .mat-row.active {
+        background: mat.get-color-from-palette(primaryColorPalette(), 100, 0.1);
+    }
+
+    .mat-row:hover {
+        background: mat.get-color-from-palette(primaryColorPalette(), 50, 0.1);
+        cursor: pointer;
+    }
+    .diag-table-checkbox {
+        // pointer-events: none;
+    }
+}

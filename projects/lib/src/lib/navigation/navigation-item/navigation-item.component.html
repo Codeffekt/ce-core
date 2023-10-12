@@ -1,0 +1,12 @@
+<div class="nav-item-before">
+    <a class="d-flex align-items-center" [routerLink]="routerLink">
+        <i class="material-icons me-3 text-navbar-contrast-color">navigate_before</i>
+    </a>
+</div>
+
+<div class="nav-item text-navbar-contrast-color">
+    <a class="me-3 text-navbar-contrast-color" [routerLink]="routerLink">
+        <ng-content></ng-content>
+    </a>
+    <i class="material-icons me-3">keyboard_arrow_right</i>
+</div>

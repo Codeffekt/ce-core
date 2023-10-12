@@ -1,0 +1,118 @@
+<ce-column gap="24px">
+
+    <app-section title="Examples with ce-navbar-content">
+
+        <!-- With navbar-item  -->
+        <app-section-example title="navbar-content and navbar-item">
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-navbar-item *ngFor="let navItem of navItems">
+                        {{navItem.label}} {{navItem.id}}
+                    </ce-navbar-item>
+                </ce-navbar-content>
+            </ce-navbar>
+        </app-section-example>
+
+        <!-- With actions -->
+        <app-section-example title="navbar-content and navbar-item + navbar-actions">
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-navbar-item *ngFor="let navItem of navItems">
+                        {{navItem.label}} {{navItem.id}}
+                    </ce-navbar-item>
+                    <ce-navbar-actions>
+                        <button mat-stroked-button color="primary" matTooltip="Créer votre première campagne">
+                            <mat-icon>add</mat-icon>Créer votre première campagne
+                        </button>
+                    </ce-navbar-actions>
+                </ce-navbar-content>
+            </ce-navbar>
+        </app-section-example>
+
+        <!-- With actions only -->
+        <app-section-example title="navbar-content + navbar-actions">
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-navbar-actions>
+                        <button mat-stroked-button color="primary" matTooltip="Créer votre première campagne">
+                            <mat-icon>add</mat-icon>Créer votre première campagne
+                        </button>
+                    </ce-navbar-actions>
+                </ce-navbar-content>
+            </ce-navbar>
+        </app-section-example>
+
+        <!-- With breadcrumb -->
+        <app-section-example title="navbar-content and nav-breadcrumb-items">
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-nav-breadcrumb-items></ce-nav-breadcrumb-items>
+                </ce-navbar-content>
+            </ce-navbar>
+        </app-section-example>
+
+        <!-- With breadcrumb + actions -->
+        <app-section-example title="navbar-content and nav-breadcrumb-items + navbar-actions">
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-nav-breadcrumb-items></ce-nav-breadcrumb-items>
+                    <ce-navbar-actions>
+                        <button mat-stroked-button color="primary" matTooltip="Créer votre première campagne">
+                            <mat-icon>add</mat-icon>Créer votre première campagne
+                        </button>
+                    </ce-navbar-actions>
+                </ce-navbar-content>
+            </ce-navbar>
+        </app-section-example>
+    </app-section>
+
+    <app-section title="Examples with ce-navbar-content (interactive)">
+
+        <!-- Interactive -->
+        <app-section-example>
+            <ce-navbar>
+                <ce-navbar-content>
+                    <ce-nav-breadcrumb-items *ngIf="form.value.content === 'breadcrumb'"></ce-nav-breadcrumb-items>
+                    <ng-container *ngIf="form.value.content === 'navbar-item'" class="ce-navbar-item">
+                        <ce-navbar-item *ngFor="let navItem of navItems">
+                            {{navItem.label}} {{navItem.id}}
+                        </ce-navbar-item>
+                    </ng-container>
+                    <ce-navbar-actions *ngIf="form.value.showActions">
+                        <button mat-stroked-button color="primary" matTooltip="Créer votre première campagne">
+                            <mat-icon>add</mat-icon>Créer votre première campagne
+                        </button>
+                    </ce-navbar-actions>
+                </ce-navbar-content>
+            </ce-navbar>
+            <form [formGroup]="form">
+                <ce-row wrap="wrap" gap="24px" ceMarginTop="12px">
+                    <mat-form-field>
+                        <mat-label>Content</mat-label>
+                        <mat-select formControlName="content">
+                            <mat-option value="navbar-item">Navbar-item</mat-option>
+                            <mat-option value="breadcrumb">Breadrumb</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                    <mat-form-field>
+                        <mat-label>Actions</mat-label>
+                        <mat-select formControlName="showActions">
+                            <mat-option [value]="true">Oui</mat-option>
+                            <mat-option [value]="false">Non</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </ce-row>
+            </form>
+        </app-section-example>
+    </app-section>
+
+    <app-section title="Examples without ce-navbar-content">
+
+        <!-- With item factory -->
+        <app-section-example title="navbar-item-factory">
+            <ce-navbar>
+                <ce-navbar-item-factory type="tasks"></ce-navbar-item-factory>
+            </ce-navbar>
+        </app-section-example>
+    </app-section>
+</ce-column>

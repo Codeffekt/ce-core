@@ -1,0 +1,23 @@
+:host {
+    ce-formquery-wrapper {
+        margin-top: 12px;
+        display: block;
+    }
+
+    .form-assoc-block-title {
+        border-bottom: 1px solid lightgray;
+        width: 100%;
+        padding-bottom: 4px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        margin-bottom: 12px;
+    }
+
+    .mat-table {
+        .mat-row:hover {
+            cursor: pointer;
+            // TODO: Use color palette theme functions
+            background: rgb(250, 250, 250);
+        }
+    }
+}

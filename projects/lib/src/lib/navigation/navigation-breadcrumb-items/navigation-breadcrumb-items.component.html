@@ -1,0 +1,12 @@
+<ng-container *ngIf="(activeItem$ | async) as activeItem">
+
+    <ng-container *ngFor="let navItem of items$ | async">
+
+        <ce-nav-breadcrumb-item [active]="activeItem === navItem"
+            (click)="activeItem != navItem && onItemClicked(navItem)">
+            {{navItem.label}} {{!navItem.label ? navItem.id: ""}}
+        </ce-nav-breadcrumb-item>
+
+    </ng-container>
+
+</ng-container>

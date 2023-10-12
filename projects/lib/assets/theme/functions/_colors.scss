@@ -1,0 +1,27 @@
+@use "sass:math";
+
+@function color($colorKey) {
+    @return map-get($theme-colors, $colorKey);
+}
+
+@function colorPrimary($tint: 500) {
+    @return map-get($theme-colors, "primary-#{$tint}");
+}
+
+@function colorSecondary($tint: 500) {
+    @return map-get($theme-colors, "secondary-#{$tint}");
+}
+
+@function color-yiq($color) {
+    $r: red($color);
+    $g: green($color);
+    $b: blue($color);
+
+    $yiq: math.div($r * 299 + $g * 587 + $b * 114, 1000);
+
+    @if ($yiq >= 150) {
+        @return rgb(62, 62, 62);
+    } @else {
+        @return white;
+    }
+}

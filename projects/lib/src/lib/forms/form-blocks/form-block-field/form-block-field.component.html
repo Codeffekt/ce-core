@@ -1,0 +1,9 @@
+<ce-form-block-field-header [appearance]="headerAppearance">
+    <ce-grid templateColumns="1fr auto" alignItems="center">
+        <ce-form-block-field-title>{{label}}</ce-form-block-field-title>
+        <ng-content select="ce-form-block-field-actions"></ng-content>
+    </ce-grid>
+</ce-form-block-field-header>
+
+<ng-content select="ce-form-block-field-content"></ng-content>
+<ng-content select="ce-form-block-field-floating-action"></ng-content>

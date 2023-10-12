@@ -1,0 +1,21 @@
+@use "sass:map";
+@import "./variables";
+@import "./functions/palette-generator";
+
+$default-theme-colors: (
+    "primary": $color-primary,
+    "secondary": $color-secondary,
+    "success": $color-success,
+    "info": $color-info,
+    "warning": $color-warning,
+    "danger": $color-danger,
+    "light": $color-light,
+    "dark": $color-dark,
+);
+
+$theme-colors: () !default;
+$theme-colors: map-merge($default-theme-colors, $theme-colors);
+
+$theme-colors: map.merge($theme-colors, createPrefixedPalette($color-primary, "primary"));
+$theme-colors: map.merge($theme-colors, createPrefixedPalette($color-secondary, "secondary"));
+$theme-colors: map.merge($theme-colors, $custom-colors);

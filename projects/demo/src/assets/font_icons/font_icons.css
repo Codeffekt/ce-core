@@ -1,0 +1,39 @@
+@font-face {
+    font-family: "font_icons";
+    src: url("./font_icons.eot#iefix") format("embedded-opentype"),
+url("./font_icons.woff2") format("woff2"),
+url("./font_icons.woff") format("woff");
+}
+
+i[class^="icon-"]:before, i[class*=" icon-"]:before {
+    font-family: font_icons !important;
+    font-style: normal;
+    font-weight: normal !important;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-amenagements:before {
+    content: "\f101";
+}
+.icon-calcul:before {
+    content: "\f102";
+}
+.icon-depenses:before {
+    content: "\f103";
+}
+.icon-info:before {
+    content: "\f104";
+}
+.icon-recettes:before {
+    content: "\f105";
+}
+.icon-site:before {
+    content: "\f106";
+}
+.icon-trash:before {
+    content: "\f107";
+}

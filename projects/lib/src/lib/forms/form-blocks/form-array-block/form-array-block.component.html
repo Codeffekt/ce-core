@@ -1,0 +1,60 @@
+<ce-form-block-field [label]="formBlock.label" headerAppearance="bordered">
+
+    <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
+        <button mat-stroked-button color="primary" (click)="add()"><mat-icon>add</mat-icon>{{isFormAssoc ? "Associer" : "Ajouter"}}</button>
+    </ce-form-block-field-actions>
+
+    <ce-form-block-field-content>
+
+        <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
+        <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
+
+        <ce-formquery-wrapper [searchEnabled]="true" [paginationEnabled]="true" *ngIf="displayedColumns.length"
+            ceMarginTop="18px">
+            <ce-table-wrapper>
+                <table mat-table class="border">
+                    <ng-container *ngFor="let field of colomnFields">
+                        <ng-container [matColumnDef]="field">
+                            <th mat-header-cell *matHeaderCellDef>{{field}}</th>
+                            <td mat-cell *matCellDef="let formInstance">
+                                <ce-table-cell-factory [block]="formInstance | formInstanceBlock:field">
+                                </ce-table-cell-factory>
+                            </td>
+                        </ng-container>
+                    </ng-container>
+                    <ng-container matColumnDef="delete">
+                        <th mat-header-cell *matHeaderCellDef [style.width]="'70px'"></th>
+                        <td mat-cell *matCellDef="let formInstance" (click)="$event.stopPropagation()">
+                            <ce-list-item-actions>
+                                <button mat-menu-item mat-menu-item (ngReallyClick)="delete(formInstance.id)"
+                                    ngReallyTitle="Confirmation requise"
+                                    ngReallyMessage="Voulez-vous vraiment {{isFormAssoc ? 'dissocier' : 'supprimer'}} ce formulaire ?">
+                                    <span>{{ isFormAssoc ? 'Dissocier' : 'Supprimer' }}</span>
+                                </button>
+                            </ce-list-item-actions>
+                        </td>
+                    </ng-container>
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">
+                            Aucune donnée
+                        </td>
+                    </tr>
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let formInstance; columns: displayedColumns"
+                        (click)="open(formInstance.id)">
+                    </tr>
+                </table>
+            </ce-table-wrapper>
+        </ce-formquery-wrapper>
+
+        <div class="border border-top-0 p-3 text-center" *ngIf="dataSource?.length && !displayedColumns.length">
+            <span class="d-flex flex-row align-items-center">
+                <mat-icon color="warn" class="me-2">warning</mat-icon>
+                Des données existent mais aucun champ d'affichage spécifié
+            </span>
+            <span *ngIf="!dataSource?.length"> Aucune donnée</span>
+        </div>
+
+    </ce-form-block-field-content>
+
+</ce-form-block-field>

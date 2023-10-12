@@ -1,0 +1,14 @@
+<mat-drawer-container class="h-100">
+    <mat-drawer [mode]="mobileQuery.matches ? 'over' : 'side'" [opened]="mobileQuery.matches ? false : true"
+        style="width:256px">
+        <ng-container [cdkPortalOutlet]="sideMenuportal$ | async"></ng-container>
+    </mat-drawer>
+    <mat-drawer-content>
+        <ce-grid class="h-100" templateRows="auto 1fr">
+            <div overflow-x-auto [cdkPortalOutlet]="navBarPortal$ | async"></div>
+            <div overflow-auto>
+                <router-outlet></router-outlet>
+            </div>
+        </ce-grid>
+    </mat-drawer-content>
+</mat-drawer-container>

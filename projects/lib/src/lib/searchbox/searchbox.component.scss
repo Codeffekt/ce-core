@@ -1,0 +1,34 @@
+:host {
+    display:flex;
+    flex-direction: row;
+    $border-color: #eff1f8;
+    border: 1px solid $border-color;
+    border-radius: 5px;
+    background: white;
+
+    & > button {
+        &:hover:not(:disabled) mat-icon {
+            filter: brightness(90%);
+        }
+
+        &:disabled {
+            background:white !important;
+            mat-icon {
+                color:rgb(204, 204, 204) !important
+            }
+        }
+        min-width:auto;
+        border-left: 1px solid $border-color;
+        border-top-left-radius: 0px;
+        border-bottom-left-radius: 0px;
+    }
+
+    .ce-searchbox{
+        .ce-searchbox__icon {
+            color: #d7d7d7;
+        }
+        ce-search-input-token {
+            width: 100%;
+        }
+    }
+}

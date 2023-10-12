@@ -1,0 +1,6 @@
+:host {
+    mat-error:not(:first-of-type) {
+        // only display first form error
+        display: none;
+    }
+}

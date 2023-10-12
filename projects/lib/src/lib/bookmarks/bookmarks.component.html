@@ -1,0 +1,15 @@
+<ng-container *ngIf="displayMode === 'menu'; else defaultMode">
+    <button mat-button [matMenuTriggerFor]="menu">{{menuTitle}}</button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item *ngFor="let bookmark of (bookmarks$ | async)" (click)="setBookmark(bookmark)">{{bookmark.title}}</button>        
+    </mat-menu>
+</ng-container>
+
+<ng-template #defaultMode>
+    <nav mat-tab-nav-bar>
+        <a mat-tab-link *ngFor="let bookmark of (bookmarks$ | async)" (click)="setBookmark(bookmark)"
+            [active]="bookmark.id === activeBookmark">
+            {{bookmark.title}}
+        </a>
+    </nav>
+</ng-template>

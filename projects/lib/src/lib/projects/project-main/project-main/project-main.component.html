@@ -1,0 +1,14 @@
+<ce-side-menu ceSideMenu>
+    <ce-side-menu-content>
+        <ce-project-selector [project]="project"></ce-project-selector>
+        <ce-side-menu-list>
+            <ce-side-menu-item *ngFor="let item of menuEntries" (click)="onMenuItemClicked(item)" routerLinkActive="active" [routerLink]="item.routerLink"
+                icon="{{item.icon}}" label="{{item.label}}"></ce-side-menu-item>
+        </ce-side-menu-list>
+    </ce-side-menu-content>
+    <ce-side-menu-footer>
+        <div class="mat-caption text-light text-center">{{appConfig.version}}</div>
+    </ce-side-menu-footer>
+</ce-side-menu>
+
+<router-outlet></router-outlet>

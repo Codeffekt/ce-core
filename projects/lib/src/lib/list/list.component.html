@@ -1,0 +1,6 @@
+<ng-content select="ce-list-header"></ng-content>
+<div class="overflow-auto">
+    <ng-content select="ce-list-item"></ng-content>
+</div>
+<ce-paginator *ngIf="paginator" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+</ce-paginator>

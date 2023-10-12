@@ -1,0 +1,11 @@
+
+.no-padding .mat-dialog-container {
+  padding:0;
+ }
+
+.diag-dialog {
+  &.diag-dialog-fill-transparent .mat-dialog-container {
+    box-shadow: none;
+    background: #000000a8;
+  }
+}

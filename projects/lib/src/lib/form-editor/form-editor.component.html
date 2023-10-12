@@ -1,0 +1,19 @@
+<ce-nav-layout>
+    <div class="d-none">
+        <ce-navbar ceNavBar *ngIf="parentFormInfo?.form">
+            <ce-navbar-item-factory [formWrapper]="parentFormInfo.form">
+            </ce-navbar-item-factory>
+        </ce-navbar>
+    </div>
+
+    <ce-row ceNavLayoutSticky justifyContent="end" cePadding="12px 42px">
+        <ce-edit-time
+            [mTime]="parentFormInfo.form.core.mtime ? parentFormInfo.form.core.mtime : parentFormInfo.form.core.ctime">
+        </ce-edit-time>
+    </ce-row>
+
+    <ce-grid gap="12px">
+        <ce-form-factory *ngFor="let item of formInfos" [formWrapper]="item.form" [formMask]="item.formMask"
+            (formChanges)="onFormChanges(item, $event)"></ce-form-factory>
+    </ce-grid>
+</ce-nav-layout>

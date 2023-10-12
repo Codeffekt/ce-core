@@ -1,0 +1,15 @@
+:host {
+    display: grid;
+    position: relative;
+    padding: 6px 0px;
+    .wrapper {
+        overflow: auto;
+    }
+
+    .mat-icon-button {
+        $size: 20px;
+        width:$size !important;
+        height:$size !important;
+        line-height:$size !important;
+    }
+}

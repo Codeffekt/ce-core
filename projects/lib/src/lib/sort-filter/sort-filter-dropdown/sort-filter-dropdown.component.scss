@@ -1,0 +1,14 @@
+:host {
+    background: white;
+    border: 1px solid #dbdbdb;
+    border-radius: 0.25rem;
+    box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+    padding: 4px 0px;
+    .ce-sort-filter-item {
+        padding: 12px;
+        &:hover {
+            cursor: pointer;
+            background: rgb(237, 237, 237);
+        }
+    }
+}

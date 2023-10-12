@@ -1,0 +1,19 @@
+<div class="ce-nav-bar bg-navbar-color text-navbar-contrast-color  d-flex flex-row align-items-center px-3 "
+     [style.height]="'64px'">
+    <button *ngIf="useToggleSideMenu" mat-icon-button (click)="toggleSideMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <ng-container>
+        <span class="text-highlight mx-2" *ngIf="canShowProjectName">
+            {{project?.props.name}}
+        </span>
+    </ng-container>
+    <ng-content select="ce-navbar-item"></ng-content>
+    <div overflow-x-auto class="h-100 w-100">
+        <ng-content select="ce-navbar-item-factory"></ng-content>
+        <ng-content select="ce-navbar-content"></ng-content>
+    </div>
+    <div class="ms-auto"></div>
+    <ng-content select="ce-navbar-actions"></ng-content>
+    <ce-navigation-account *ngIf="navBarConfig.useAccount"></ce-navigation-account>
+</div>

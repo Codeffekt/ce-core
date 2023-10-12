@@ -1,0 +1,39 @@
+<mat-table [dataSource]="formsDataSource" matSort (matSortChange)="applySort($event)">
+    <ng-container matColumnDef="id">
+        <mat-header-cell *matHeaderCellDef>Id</mat-header-cell>
+        <mat-cell *matCellDef="let form">
+            <span>{{form.id}}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="ctime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Création</mat-header-cell>
+        <mat-cell *matCellDef="let form">
+            <span>{{form | formInstanceCreation}}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="mtime">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Modification</mat-header-cell>
+        <mat-cell *matCellDef="let form">
+            <span>{{form | formInstanceModif}}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="title">
+        <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+        <mat-cell *matCellDef="let form">
+            <span>{{form | formInstanceTitle}}</span>
+        </mat-cell>
+    </ng-container>
+    <ng-container matColumnDef="delete">
+        <mat-header-cell *matHeaderCellDef fxFlex="70px"></mat-header-cell>
+        <mat-cell *matCellDef="let form" fxFlex="70px" (click)="$event.stopPropagation()" (ngReallyClick)="delete(form)"
+            ngReallyTitle="Confirmation requise" ngReallyMessage="Voulez-vous vraiment supprimer cet formulaire ?">
+            <button mat-icon-button color="warn">
+                <mat-icon>clear</mat-icon>
+            </button>
+        </mat-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row (click)="onSelected(row)" *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSize]="10" [length]="formsDataSource.length" [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons>
+</mat-paginator>

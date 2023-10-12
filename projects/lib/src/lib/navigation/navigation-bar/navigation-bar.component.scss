@@ -1,0 +1,45 @@
+:host {
+    z-index: 1;
+
+    .ce-nav-bar {
+        border-bottom: 1px solid #eff1f8;
+    }
+
+    &.over {
+        position: absolute;
+        width: 100%;
+    }
+    &.transparent {
+        background: transparent;
+        mat-toolbar {
+            background: inherit;
+        }
+    }
+
+    mat-toolbar {
+        &.dark-theme {
+            color: white;
+        }
+    }
+
+    ::ng-deep .text-highlight {
+        // background: rgba(primaryColor(400), 0.5);
+        padding: 4px 12px;
+        border-radius: 8px;
+        font-weight: 100;
+    }
+
+    ::ng-deep ce-navbar-content {
+        align-items: center;
+        display: flex;
+        &.align-center {
+            margin: 0 auto;
+            justify-content: center;
+        }
+
+        &.align-end {
+            margin-left: auto;
+            justify-content: flex-end;
+        }
+    }
+}

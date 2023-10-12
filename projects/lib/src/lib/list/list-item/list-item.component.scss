@@ -1,0 +1,19 @@
+:host {
+    padding: 12px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+
+    &:hover{
+        cursor: pointer;
+        background: #f6f6f6;
+    }
+
+    &.active {
+        background: #f6f6f6;
+    }
+
+    &:not(:last-of-type) {
+        border-bottom: 1px solid #eee;
+    }
+}

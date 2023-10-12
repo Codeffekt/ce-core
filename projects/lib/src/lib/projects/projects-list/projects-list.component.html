@@ -1,0 +1,28 @@
+<ce-side-menu ceSideMenu title="{{appConfig.title}}">
+    <ce-side-menu-content>
+        <ce-side-menu-list>
+            <ce-side-menu-item routerLinkActive="active" routerLink="/logout" icon="logout" label="Déconnexion">
+            </ce-side-menu-item>
+        </ce-side-menu-list>
+    </ce-side-menu-content>
+    <ce-side-menu-footer>
+        <div class="mat-caption text-light text-center">{{appConfig.version}}</div>
+    </ce-side-menu-footer>
+</ce-side-menu>
+
+<ce-nav-layout>
+    <ce-navbar ceNavBar>
+        <ce-navbar-item>Projets</ce-navbar-item>
+    </ce-navbar>
+
+    <ce-formquery-wrapper [searchEnabled]="true" [paginationEnabled]="true">
+        <ce-list>
+            <ce-list-item *ngFor="let project of projects$ | async" (click)="goProject(project)">
+                <ce-list-item-content>
+                    <ce-list-item-label>{{project.props.name ? project.props.name : '-'}}</ce-list-item-label>
+                    <ce-list-item-label size="small">créé le {{project.core.ctime|calendarDate}}</ce-list-item-label>
+                </ce-list-item-content>
+            </ce-list-item>
+        </ce-list>
+    </ce-formquery-wrapper>
+</ce-nav-layout>

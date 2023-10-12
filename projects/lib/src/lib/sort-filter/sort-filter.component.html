@@ -1,0 +1,25 @@
+<ce-row class="ce-sort-filter">
+    <button 
+        rowFill
+        mat-button 
+        cdkOverlayOrigin 
+        (click)="toggleFilter()" 
+        #trigger="cdkOverlayOrigin"
+        class="ce-sort-filter-dropdown ">
+        {{sortFilter.label}}</button>
+    <button mat-icon-button (click)="toggleSortDirection()">
+        <mat-icon>{{sortFilter.order === 'asc' ? 'expand_less': 'expand_more'}}</mat-icon>
+    </button>
+</ce-row>
+
+<ng-template 
+    cdkConnectedOverlay
+    [cdkConnectedOverlayHasBackdrop]="true" 
+    [cdkConnectedOverlayOrigin]="trigger" 
+    [cdkConnectedOverlayOpen]="shouldOpenFilter"
+    [cdkConnectedOverlayPositions]="overlayPositions"
+    cdkConnectedOverlayBackdropClass="cdk-overlay-transparent-backdrop"
+    (backdropClick)="closeFilter()">
+    <ce-sort-filter-dropdown [activeFilter]="sortFilter" (sortFilter)="closeFilter();applySortFilter($event)">
+    </ce-sort-filter-dropdown>
+</ng-template>

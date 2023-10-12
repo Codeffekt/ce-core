@@ -1,0 +1,20 @@
+<ng-container [ngSwitch]="size">
+    <ng-container *ngSwitchCase="'small'">
+        <span class="text-muted">
+            <small>
+                <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+            </small>
+        </span>
+    </ng-container>
+
+    <ng-container *ngSwitchCase="'medium'">
+        <span>
+            <ng-container *ngTemplateOutlet="contentTpl"></ng-container>
+        </span>
+    </ng-container>
+
+</ng-container>
+
+<ng-template #contentTpl>
+    <ng-content></ng-content>
+</ng-template>

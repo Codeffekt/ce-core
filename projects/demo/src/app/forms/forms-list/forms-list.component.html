@@ -1,0 +1,9 @@
+<ce-list>
+    <ce-list-header label="Formulaires mock"></ce-list-header>
+    <ce-list-item *ngFor="let form of forms">
+        <ce-list-item-content class="d-flex align-items-start" routerLink="/home/examples/form/instance/{{form.id}}">
+            <span>{{form.id}}</span>
+            <ce-list-item-chips>{{form.root}}</ce-list-item-chips>
+        </ce-list-item-content>
+    </ce-list-item>
+</ce-list>

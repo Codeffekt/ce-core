@@ -1,0 +1,29 @@
+:host .login {
+    display: grid;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    background: #fafafa;
+
+    .login-form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        mat-card {
+            width: 340px;
+            padding: 32px;
+            box-shadow: none !important;
+            border: 1px solid #eaeaea;
+        }
+
+        mat-card-content {
+            display: grid;
+        }
+
+        mat-form-field mat-icon {
+            margin-right: 12px;
+            color:lightgray
+        }
+    }
+}

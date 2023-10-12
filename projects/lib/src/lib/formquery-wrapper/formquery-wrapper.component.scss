@@ -1,0 +1,13 @@
+:host {
+    display: block;
+    ::ng-deep table {
+        width: 100%;
+        thead {
+            background: #fafafa;
+            text-transform: capitalize;
+        }
+        thead tr {
+            height: 44px;
+        }
+    }
+}

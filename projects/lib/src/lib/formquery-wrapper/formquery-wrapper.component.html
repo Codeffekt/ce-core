@@ -1,0 +1,12 @@
+<ce-grid>
+    <ce-grid templateColumns="1fr auto" ceMarginBottom="12px" *ngIf="searchEnabled" gap="12px">
+        <ce-searchbox placeholder="Recherche" rowFill>
+        </ce-searchbox>
+        <ce-sort-filter></ce-sort-filter>
+    </ce-grid>
+    <ce-bookmarks *ngIf="bookmarksEnabled" displayMode="tabs" menuTitle="Filtres">
+    </ce-bookmarks>
+    <ng-content></ng-content>
+    <ce-paginator *ngIf="paginationEnabled" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions">
+    </ce-paginator>
+</ce-grid>

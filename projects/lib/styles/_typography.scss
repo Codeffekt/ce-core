@@ -1,0 +1,62 @@
+@import "theme_functions";
+
+.error {
+  color: red;
+}
+
+.primary {
+  // color:  mat-color(map-get($app-theme, primary));
+  color: primaryColor();
+}
+
+.accent {
+  // color:  mat-color(map-get($app-theme, accent), 800);
+  color: secondaryColor(800);
+}
+
+.quiet {
+  // color:  mat-color(map-get($app-theme, primary),200);
+  color: primaryColor(300);
+}
+
+.quiet-contrast {
+  // color:  mat-color(map-get($app-theme, primary),A100);
+  color: primaryColor(A100);
+}
+
+.light {
+  color: white;
+}
+
+.icon-medium {
+  font-size: 100px;
+}
+
+.icon-big {
+  font-size: 250px !important;
+}
+
+.hoverable:hover {
+  cursor: pointer;
+}
+
+@mixin litho-elt($size, $font-size) {
+  width: $size;
+  height: $size;
+  line-height: $size;
+  border-radius: 50%;
+  font-size: $font-size;
+
+  color: white;
+  text-align: center;
+  // background-color: mat-color(map-get($app-theme, primary));
+  background-color: primaryColor();
+}
+
+.litho-elt {
+  @include litho-elt(30px, 14px);
+}
+
+.litho-elt-medium {
+  @include litho-elt(50px, 20px);
+}

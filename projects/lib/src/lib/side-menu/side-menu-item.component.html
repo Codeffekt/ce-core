@@ -1,0 +1,7 @@
+<mat-list-item routerLinkActive="active">
+    <mat-icon class="me-3 text-side-menu-icon-color" *ngIf="icon">{{icon}}</mat-icon>
+    <mat-icon class="me-3 d-flex justify-content-center flex-column text-side-menu-icon-color" *ngIf="!icon && fontIcon"
+        [appIcon]="fontIcon"></mat-icon>
+    <span class="text-side-menu-contrast-color">{{label}}</span>
+    <span class="side-menu-item-active-border bg-secondary"></span>
+</mat-list-item>

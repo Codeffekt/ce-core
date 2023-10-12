@@ -1,0 +1,55 @@
+<div flexLayout="row wrap">
+  <span class="mat-title">{{title}}</span>
+</div>
+
+<mat-dialog-content class="file-picker">
+  <mat-horizontal-stepper [linear]="true" #stepper>
+    <mat-step [stepControl]="eltForm">
+      <ng-template matStepLabel>Sélectionner un fichier</ng-template>
+      <form class="form-import border-primary mt-4" [formGroup]="eltForm" (click)="uploader.click()">
+        <div class="d-flex flex-column align-items-center">
+          <mat-icon iconSize="80px" class="text-muted">cloud_upload</mat-icon>
+          <h5 class="text-muted" *ngIf="!file">Sélectionner un fichier à importer</h5>
+          <ng-container *ngIf="file">
+            <span class="mat-subheading-2">{{file.name}} ({{file.size | filesize}})</span>
+          </ng-container>
+          <input #uploader type="file" ngFileSelect [options]="uploadOptions" (uploadOutput)="onChange($event)"
+            [uploadInput]="uploadInput">
+        </div>
+      </form>
+    </mat-step>
+    <mat-step [stepControl]="eltForm">
+      <form [formGroup]="eltForm">
+        <ng-template matStepLabel>Importation du fichier</ng-template>
+        <div class="d-flex flex-column justify-content-center align-items-center" *ngIf="file">
+          <span *ngIf="!responsiveMode" class='mb-3'>{{file.name}}</span>
+          <ng-container *ngIf="config.hasError;then error else uploading"></ng-container>
+        </div>
+      </form>
+    </mat-step>
+  </mat-horizontal-stepper>
+</mat-dialog-content>
+
+<mat-dialog-actions class="d-flex flex-row">
+  <button *ngIf="stepper.selectedIndex === 0" mat-button (click)="onDismiss()">Fermer</button>
+
+  <button mat-flat-button *ngIf="stepper.selectedIndex === 1 && config.isDone" (click)="onDismiss()" class="ms-auto"
+    color="primary">Terminer</button>
+
+  <button class="ms-auto" *ngIf="stepper.selectedIndex === 0" [disabled]="eltForm.invalid" mat-flat-button
+    color="primary" (click)="stepper.next(); onImport()">Importer</button>
+</mat-dialog-actions>
+
+<ng-template #error>
+  <span class="text-danger">Erreur lors de l'importation</span>
+</ng-template>
+
+<ng-template #uploading>
+  <ng-container *ngIf="file.progress?.data?.percentage < 100">
+    <mat-progress-bar class="mb-2" [mode]="responsiveMode ? 'indeterminate': 'determinate'"
+      value="{{file.progress?.data?.percentage}}">
+    </mat-progress-bar>
+    <span>Envoi en cours... <ng-container *hideResponsive>{{file.progress?.data?.percentage}}%></ng-container></span>
+  </ng-container>
+  <span *ngIf="config.isDone">Fichier importé avec succès</span>
+</ng-template>

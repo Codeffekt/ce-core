@@ -1,0 +1,7 @@
+:host {
+    .media-grid {
+        display:grid;
+        grid-template-columns: repeat(auto-fill, 400px);
+        grid-gap: 48px
+    }
+}

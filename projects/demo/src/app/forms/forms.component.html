@@ -1,0 +1,10 @@
+<ng-container *ngIf="formWrapper">
+    <!-- <ce-code-editor [code]="formWrapper.core | json" title="Éditeur de formulaire" [expanded]="false"
+        (save)="save($event)">
+    </ce-code-editor>
+    <ce-code-editor [code]="formMask.core | json" title="Masque" [expanded]="false" (save)="saveMask($event)">
+    </ce-code-editor>     -->
+    <ce-form [formWrapper]="formWrapper" [formMask]="formMask"
+        (formChanges)="formChanges($event)" [rebuildOnChanges]="true">
+    </ce-form>
+</ng-container>

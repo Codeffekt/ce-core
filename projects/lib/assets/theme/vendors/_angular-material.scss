@@ -1,0 +1,19 @@
+@use '@angular/material' as mat;
+@use 'sass:map';
+@import "../variables";
+@import "../functions/palette-generator";
+
+@include mat.core();
+
+$primary-palette: mat.define-palette(createPaletteWithContrast($color-primary));
+$accent-palette: mat.define-palette(createPaletteWithContrast($color-secondary));
+
+$theme: mat.define-light-theme(
+    (
+        color: (
+            primary: $primary-palette,
+            accent: $accent-palette,
+        ),
+    )
+);
+@include mat.all-component-themes($theme);

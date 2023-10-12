@@ -1,0 +1,9 @@
+// Overriding theme colors
+$color-primary: #f09a61;
+$color-secondary: #f09a61;
+$side-menu-color: white;
+$navbar-color: white;
+
+// Include ce-core's style entry point for override default variables
+@import "theme/ce-core";
+@import "@codeffekt/ce-code-editor/core";

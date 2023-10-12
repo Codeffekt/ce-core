@@ -1,0 +1,30 @@
+@import "../../../assets/theme/variables";
+
+:host {
+    mat-list-item {
+        height: 80px;
+        opacity: 0.7;
+    }
+
+    .side-menu-item-active-border {
+        visibility: none;
+    }
+
+    &.active mat-list-item {
+        opacity: 1;
+        .side-menu-item-active-border {
+            width: 4px;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            visibility: visible;
+        }
+    }
+
+    mat-list-item:hover {
+        background: transparent !important;
+    }
+    mat-icon {
+        font-size: 24px;
+    }
+}

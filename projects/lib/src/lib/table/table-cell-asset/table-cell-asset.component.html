@@ -1,0 +1,14 @@
+
+<div class="image-wrapper">
+    <ng-container *ngIf="block.value?.id; then imageTpl else noImageTpl"></ng-container>
+</div>
+
+<ng-template #noImageTpl>
+    <div class="no-image">
+        <h4 class="text-muted">Aucune image</h4>
+    </div>
+</ng-template>
+
+<ng-template #imageTpl>
+    <img [src]="block.value?.id | thumbPathWithAssetId:options.thumbSize">
+</ng-template>

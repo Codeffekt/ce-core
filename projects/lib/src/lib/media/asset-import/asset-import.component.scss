@@ -1,0 +1,27 @@
+:host {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+
+  form {
+    height: 200px;
+    display: grid;
+    align-items: center;
+  }
+
+  .form-import {
+    border-style: dashed;
+    border-width: 2px;
+    justify-content: center;
+    border-radius: 4px;
+
+    &:hover {
+      cursor: pointer;
+      background: #f4f4f4;
+    }
+
+    input {
+      display: none;
+    }
+  }
+}

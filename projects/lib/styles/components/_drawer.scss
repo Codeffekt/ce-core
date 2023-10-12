@@ -1,0 +1,95 @@
+@use '@angular/material' as mat;
+@import "../theme_functions";
+@import "../layout";
+@import "../variables";
+@import "./scrollbar";
+
+.main-component {
+  // $dark-bg-color: mat-color(map-get($app-dark-theme, primary));
+  $dark-bg-color: primaryColor();
+  .mat-drawer-container.mini {
+    .mat-drawer {
+      width: $drawer-mini-width;
+      overflow: hidden;
+      .drawer-item-label {
+        display: none !important;
+      }
+    }
+    .mat-drawer-content {
+      margin-left: $drawer-mini-width !important;
+      width: calc(100% - #{$drawer-mini-width});
+    }
+    .mat-drawer-content .drawer-collapse {
+      left: calc(10px + #{$drawer-mini-width});
+    }
+  }
+  .mat-drawer {
+    width: $drawer-width;
+    height: 100%;
+    position: fixed;
+    background-image: linear-gradient(0deg, darken($dark-bg-color, 10), $dark-bg-color);
+    @include theme_scrollbar();
+  }
+  .mat-drawer .mat-toolbar {
+    span {
+      margin-left: 12px;
+    }
+  }
+  .mat-list-item.diag-sidenav-item.active-link {
+    background: mat.get-color-from-palette(primaryColorPalette(), 400);
+  }
+  .mat-drawer .mat-list-item {
+    height: 80px;
+    // border-bottom: 1px solid rgb(67, 72, 84);
+    .mat-icon {
+      margin-right: 10px;
+    }
+  }
+  @media not print {
+    .mat-drawer-content {
+      height: 100vh;
+    }
+  }
+
+  .mat-drawer .version {
+    margin-bottom: 20px;
+    color: white;
+    background: transparent;
+  }
+  .mat-drawer-content .drawer-collapse {
+    position: fixed;
+    bottom: 10px;
+    left: calc(10px + #{$drawer-width});
+    z-index: 10;
+  }
+  .mat-drawer-content .drawer-none {
+    left: 10px;
+  }
+  .mat-drawer-content .main-toolbar {
+    padding-right: 0px;
+    z-index: $z-index-navigation-bar;
+    .mat-select {
+      width: 200px !important;
+    }
+  }
+
+  @media not print {
+    .content-wrapper {
+      overflow-y: auto;
+    }
+  }
+  .content-wrapper > *:not(router-outlet) {
+    flex-grow: 1;
+  }
+
+  @media print {
+    .mat-drawer,
+    .mat-mini-fab,
+    button {
+      display: none !important;
+    }
+    .mat-select-arrow {
+      border: none;
+    }
+  }
+}

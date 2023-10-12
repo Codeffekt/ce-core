@@ -1,0 +1,38 @@
+<h2>Rendu ce-core</h2>
+<p>ce-core est une librairie Angular utilisée pour le rendu des formulaires CeForms au format JSON.</p>
+
+<h3>Installation de la librarie</h3>
+
+<p>La librairie est disponible sur npm : </p>
+<pre>
+    <code [highlight]="'npm i @codeffekt/ce-core-data @codeffekt/ce-events-data @codeffekt/ce-core'" [languages]="['bash']"></code>
+</pre>
+
+<p>Il faut ensuite importer le module <strong>CeCoreModule</strong> dans le app.module </p>
+<pre>
+    <code [highlight]="appModuleStr" [languages]="['typescript']"></code>
+</pre>
+
+<h3>Le composant ce-form</h3>
+
+<p>Dans les modules qui vont utiliser le rendu, il faut importer le modules
+<strong>CeFormModule</strong>
+</p>
+<pre>
+    <code [highlight]="subModuleStr" [languages]="['typescript']"></code>
+</pre>
+
+<p>Enfin dans notre composant on utilise <strong>ce-form</strong> pour générer le rendu</p>
+<pre>
+    <code [highlight]="componentSrcStr" [languages]="['typescript']"></code>
+</pre>
+<pre>
+    <code [highlight]="componentTemplateStr" [languages]="['html']"></code>
+</pre>
+
+<p>Ce qui donne : </p>
+<ce-form [formWrapper]="testForm"></ce-form>
+
+<p>Le format utilisé pour interagir avec les formulaires est le format JSON.
+    On peut manipuler ce format en utilisant les outils de la librairie <a [routerLink]="['../ce-core-data']">ce-core-data</a>
+</p>

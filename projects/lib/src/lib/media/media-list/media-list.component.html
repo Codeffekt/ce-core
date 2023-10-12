@@ -1,0 +1,21 @@
+<ce-nav-layout>
+    <ce-navbar ceNavBar>
+        <ce-navbar-content>
+            <ce-nav-breadcrumb-items></ce-nav-breadcrumb-items>
+            <ce-navbar-actions>
+                <button mat-stroked-button color="accent" matTooltip="Importer une photo" (click)="openPhotoImport()">
+                    <mat-icon>file_upload</mat-icon>Importer
+                </button>
+            </ce-navbar-actions>
+        </ce-navbar-content>
+    </ce-navbar>
+
+    <div class="flowable-y">
+        <ce-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></ce-paginator>
+        <div class="media-grid">
+            <ce-media-photo class="m-2" *ngFor="let photo of photos$ | async" [photo]="photo" (delete)="delete(photo)">
+            </ce-media-photo>
+        </div>
+
+    </div>
+</ce-nav-layout>

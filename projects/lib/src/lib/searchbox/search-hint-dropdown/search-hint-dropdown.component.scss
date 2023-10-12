@@ -1,0 +1,23 @@
+:host {
+    z-index: 1;
+    display: block;
+    .search-hint-dropdown {
+        background: white;
+        border: 1px solid #dbdbdb;
+        border-radius: 0.25rem;
+        margin-top: 12px;
+        box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+
+        min-width: 240px;
+        max-height: 450px;
+        overflow: auto;
+
+        .search-hint {
+            &.active,
+            &:hover {
+                cursor: pointer;
+                background: rgb(237, 237, 237);
+            }
+        }
+    }
+}

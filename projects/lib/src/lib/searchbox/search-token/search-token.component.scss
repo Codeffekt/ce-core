@@ -1,0 +1,12 @@
+:host {
+    display: grid;
+    align-items: center;
+
+    &:hover {
+        cursor: pointer;
+    }
+
+    &:hover ::ng-deep ce-search-token-part {
+        background: #e0e0e0;
+    }
+}

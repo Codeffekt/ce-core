@@ -1,0 +1,7 @@
+<ce-grid>
+    <ce-grid class="ce-sort-filter-item active" *ngFor="let sortFilter of sortFilters" (click)="select(sortFilter)"
+        templateColumns="1fr auto" gap="12px">
+        <span class="mat-typography">{{sortFilter.label ?? sortFilter.field}}</span>
+        <mat-icon class="text-muted">{{sortFilter.field === activeFilter?.field ? 'done' : null}}</mat-icon>
+    </ce-grid>
+</ce-grid>

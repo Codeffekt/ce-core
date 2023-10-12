@@ -1,0 +1,27 @@
+<span class="mat-title">Choisissez une photo</span>
+
+<mat-dialog-content>
+  <ce-paginator [pageSize]="10" [pageSizeOptions]="[10,20,40]"></ce-paginator>
+
+  <div class="photos-container" *ngIf="photos$ | async as photos; else noPhoto">
+    <div class="photo-wrapper" *ngFor="let photo of photos" [class.active]="selectedPhoto?.id === photo.id">
+      <ce-media-photo class="m-2" [photo]="photo" mode="view" [enableLink]="false"
+        (click)="$event.stopPropagation();onSelectPhoto(photo)">
+      </ce-media-photo>
+      <mat-icon>check</mat-icon>
+    </div>
+  </div>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+  <button mat-button mat-stroked-button (click)="onDismiss()">Fermer</button>
+  <button mat-button mat-stroked-button color="primary" class="ms-auto" [disabled]="!selectedPhoto"
+    (click)="onSubmit()">
+    <mat-icon>file_upload</mat-icon>Importer
+  </button>
+</mat-dialog-actions>
+
+<ng-template #noPhoto>
+  <h2>Aucune photo</h2>
+</ng-template>

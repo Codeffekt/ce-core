@@ -1,0 +1,8 @@
+<ce-grid gap="4px" autoFlow="column">
+    <ce-search-token-part type="field" *ngIf="searchToken.field">{{searchToken.field.label ??
+        searchToken.field.value}}</ce-search-token-part>
+    <ce-search-token-part type="operator" *ngIf="searchToken.op">{{searchToken.op.label ??
+        searchToken.op.value}}</ce-search-token-part>
+    <ce-search-token-part type="value" *ngIf="searchToken.value" (click)="remove()">{{searchToken.value.label ??
+        searchToken.value.value}}</ce-search-token-part>
+</ce-grid>

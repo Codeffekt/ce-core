@@ -1,0 +1,27 @@
+@use "sass:math";
+@import "functions/colors";
+
+$color-primary: #1d334b !default;
+$color-secondary: #f0a93e !default;
+$color-info: #0dcaf0 !default;
+$color-warning: #ffc107 !default;
+$color-danger: #dc3545 !default;
+$color-light: #f8f9fa !default;
+$color-dark: #212529 !default;
+$color-success: #198754 !default;
+$contrast-dark-color: black !default;
+$contrast-light-color: white !default;
+$side-menu-color: $color-primary !default;
+$side-menu-contrast-color: color-yiq($side-menu-color) !default;
+$side-menu-icon-color: $color-primary !default;
+
+$navbar-color: $color-primary !default;
+$navbar-contrast-color: color-yiq($navbar-color) !default;
+
+$custom-colors: (
+    "side-menu-color": $side-menu-color,
+    "side-menu-contrast-color": $side-menu-contrast-color,
+    "navbar-color": $navbar-color,
+    "navbar-contrast-color": $navbar-contrast-color,
+    "side-menu-icon-color": $side-menu-icon-color,
+);

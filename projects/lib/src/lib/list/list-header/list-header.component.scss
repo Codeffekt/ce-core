@@ -1,0 +1,32 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~bootstrap/scss/mixins/breakpoints";
+
+:host {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 12px;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+
+    .list-header-label {
+        padding: 12px 0px;
+        border-width: 21px;
+        border-bottom-width: 2px;
+        border-bottom-style: solid;
+    }
+
+    ce-searchbox {
+        min-width: 300px;
+        ::ng-deep .ce-searchbox {
+            margin-bottom: 0px !important;
+            box-shadow: none;
+        }
+    }
+
+    @include media-breakpoint-down(md) {
+        display: flex;
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+}

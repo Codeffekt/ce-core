@@ -1,0 +1,38 @@
+@import 'theme_config';
+
+$default-color-intensity: 500;
+
+@function primaryColor($color-intensity: $default-color-intensity) {
+  @return map-get($palette-primary, $color-intensity);
+}
+
+@function primaryContrastColor($contrast-intensity: $default-color-intensity) {
+  $contrastColors: map-get($palette-primary, contrast);
+  @return map-get($contrastColors, $contrast-intensity);
+}
+
+@function secondaryColor($color-intensity: $default-color-intensity) {
+  @return map-get($palette-accent, $color-intensity);
+}
+
+@function secondaryContrastColor($contrast-intensity: $default-color-intensity) {
+  $contrastColors: map-get($palette-accent, contrast);
+  @return map-get($contrastColors, $contrast-intensity);
+}
+
+@function warnColor($color-intensity: $default-color-intensity) {
+  @return map-get($palette-warn, $color-intensity);
+}
+
+@function warnContrastColor($contrast-intensity: $default-color-intensity) {
+  $contrastColors: map-get($palette-warn, contrast);
+  @return map-get($contrastColors, $contrast-intensity);
+}
+
+@function primaryColorPalette() {
+  @return $palette-primary;
+}
+
+@function secondaryColorPalette() {
+  @return $palette-accent;
+}

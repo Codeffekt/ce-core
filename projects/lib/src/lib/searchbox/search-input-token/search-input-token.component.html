@@ -1,0 +1,15 @@
+<input matInput
+       (keydown.backspace)="onBackspacePressed($event)"
+       (keydown.enter)="onEnterPressed($event)"
+       [formControl]="formControl"
+       autocomplete="off"
+       (blur)="onBlur()"
+       (click)="openOverlay()"
+       (keydown)="onKeyDown($event.keyCode)"
+       cdkOverlayOrigin
+       placeholder="{{ shouldShowPlaceholder ? 'Rechercher' :null}}">
+
+<ng-template cdkConnectedOverlay>
+    <ce-search-hint-dropdown (hint)="onSelectedHint($event)">
+    </ce-search-hint-dropdown>
+</ng-template>

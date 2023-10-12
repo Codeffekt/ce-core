@@ -1,0 +1,21 @@
+<ce-list-item-content>
+    <div class="d-flex flex-column">
+      <div class="d-flex">
+        <ce-list-item-label>{{item | formTitle}}</ce-list-item-label>
+        <ce-list-item-chips>{{item | formAuthor}}</ce-list-item-chips>
+      </div>
+      <!-- <ce-list-item-label size="small">{{item|getInstance:'site'|valueForKey:'name'}}</ce-list-item-label>
+      <ce-list-item-label size="small">{{item.props.status}}</ce-list-item-label> -->
+    </div>        
+    <ce-list-item-label size="small">créé le {{item.core.ctime|calendarDate}}</ce-list-item-label>
+  </ce-list-item-content>
+  <!-- <ce-list-item-actions *ngIf="isAdmin">
+    <button mat-menu-item (ngReallyClick)="onTaskDelete(item)" ngReallyTitle="Confirmation requise"
+      ngReallyMessage="Voulez-vous vraiment supprimer cette campagne ?">
+      <span>Supprimer</span>
+    </button>
+    <button mat-menu-item (ngReallyClick)="onTaskCopy(item)" ngReallyTitle="Confirmation requise"
+      ngReallyMessage="Voulez-vous vraiment copier cette campagne ?">
+      <span>Copier</span>
+    </button>
+  </ce-list-item-actions> -->

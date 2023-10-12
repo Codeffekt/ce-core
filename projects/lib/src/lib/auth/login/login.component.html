@@ -1,0 +1,41 @@
+<div class="login"
+  [style.background-image]=" assets?.loginImagePath ? 'url('+ assets.loginImagePath+ ')' : ''">
+
+  <div class="login-form">
+    <div class="d-flex flex-column align-items-center mb-3">
+      <img class="ce-login-logo" *ngIf="assets?.logoPath" src="{{assets.logoPath}}" />
+      <h4 *ngIf="title" class="text-primary mt-2">{{title}}</h4>
+    </div>
+
+    <mat-card>
+      <form [formGroup]="form">
+        <mat-card-content>
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Login" formControlName="email">
+            <!-- <mat-icon matPrefix>email</mat-icon> -->
+          </mat-form-field>
+
+          <mat-form-field floatLabel="never">
+            <input matInput placeholder="Mot de passe" type="password" formControlName="password">
+            <!-- <mat-icon matPrefix>lock</mat-icon> -->
+          </mat-form-field>
+
+          <span *ngIf="error$ | async as error" class="error">{{error}}</span>
+
+          <button *ngIf="!(authenticating$ | async)" [disabled]="!form.valid" class="mt-4 py-1" mat-flat-button
+            color="primary" (click)="submit()">
+            Connexion
+          </button>
+
+          <div *ngIf="authenticating$ | async">
+            <mat-spinner diameter="25" color="primary"></mat-spinner>
+            <span class="primary">Veuillez patienter...</span>
+          </div>
+
+        </mat-card-content>
+      </form>
+    </mat-card>
+
+    <span class="ce-login-version text-muted text-end text-right">{{appVersion}}</span>
+  </div>
+</div>

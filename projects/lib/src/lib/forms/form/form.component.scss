@@ -1,0 +1,13 @@
+:host {
+    &.invalid mat-card {
+        border: 2px solid rgb(249, 133, 133);
+    }
+
+    ::ng-deep .mat-form-field-wrapper {
+        margin-bottom: -1.25em !important;
+    }
+
+    ::ng-deep ce-form-block-factory:not(:only-child):not(:last-child) ce-form-index-block {
+        border-bottom: 1px solid rgb(240, 240, 240);
+    }
+}

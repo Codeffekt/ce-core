@@ -1,0 +1,8 @@
+<div class="mat-body-2 quiet">
+    <ng-container *ngIf="saving">Enregistrement en cours...</ng-container>
+    <ce-row *ngIf="!saving && mTime" alignItems="center" gap="4px">
+        <mat-icon iconSize="18px"> schedule</mat-icon>
+        <div class="text-muted">{{mTime | date: 'dd/MM/yyyy à HH:mm:ss'}}</div>
+        <!-- <div class="text-muted">{{mTime |ellapsedTime}}</div> -->
+    </ce-row>
+</div>

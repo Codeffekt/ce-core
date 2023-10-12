@@ -1,0 +1,40 @@
+:host {
+    display: flex;
+    align-items: center;
+
+    a {
+        text-decoration: none;
+        white-space: nowrap;
+        // color: white;            
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .nav-item-before {
+        display: none;
+    }
+
+    &:last-of-type {
+        i {
+            display: none;
+        }
+    }
+
+    &.responsive {
+        &:not(:nth-last-of-type(1)):not(:nth-last-of-type(2)) {
+            display: none;
+        }
+
+        &:nth-last-of-type(2) {
+            .nav-item-before {
+                display: flex;
+            }
+            .nav-item {
+                display: none;
+            }
+        }
+    }
+}

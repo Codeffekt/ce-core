@@ -1,0 +1,13 @@
+:host {
+    mat-toolbar {
+        min-height: 44px;
+    }
+
+    &.align-center mat-toolbar {
+        justify-content: center;
+    }
+
+    &.align-end mat-toolbar {
+        justify-content: flex-end;
+    }
+}
