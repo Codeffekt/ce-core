@@ -3,6 +3,8 @@ import { RouterModule, Routes } from "@angular/router";
 import { IntroductionComponent } from "./introduction/introduction.component";
 import { CeCoreComponent } from "./ce-core/ce-core.component";
 import { CeCoreDataComponent } from "./ce-core-data/ce-core-data.component";
+import { CeAdminComponent } from "./ce-admin/ce-admin.component";
+import { ApplicationComponent } from "./application/application.component";
 
 const routes: Routes = [
     {
@@ -21,6 +23,14 @@ const routes: Routes = [
     {
         path: 'ce-core-data',
         component: CeCoreDataComponent,
+    },
+    {
+        path: 'ce-admin',
+        component: CeAdminComponent,
+    },
+    {
+        path: 'application',
+        component: ApplicationComponent,
     }
 ];
 

@@ -7,6 +7,8 @@ import { CeBarcodeModule } from "@codeffekt/ce-barcode";
 import { HighlightModule } from "ngx-highlightjs";
 import { CeCoreComponent } from './ce-core/ce-core.component';
 import { CeCoreDataComponent } from './ce-core-data/ce-core-data.component';
+import { CeAdminComponent } from './ce-admin/ce-admin.component';
+import { ApplicationComponent } from './application/application.component';
 
 @NgModule({
     imports: [
@@ -19,7 +21,9 @@ import { CeCoreDataComponent } from './ce-core-data/ce-core-data.component';
     declarations: [
         IntroductionComponent,
         CeCoreComponent,
-        CeCoreDataComponent
+        CeCoreDataComponent,
+        CeAdminComponent,
+        ApplicationComponent
     ],
     providers: [
         
