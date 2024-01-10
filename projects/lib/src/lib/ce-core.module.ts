@@ -25,8 +25,8 @@ const DEFAULT_CE_APP_CONFIG: CeAppConfig = {
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule,    
-  ],  
+    HttpClientModule,
+  ],
   providers: [
     {
       provide: CE_CORE_CONFIG, useValue: DEFAULT_CE_CORE_CONFIG
@@ -38,13 +38,20 @@ const DEFAULT_CE_APP_CONFIG: CeAppConfig = {
 })
 export class CeCoreModule {
 
-  static forRoot(config: CeCoreModuleConfig = DEFAULT_CE_CORE_CONFIG): ModuleWithProviders<CeCoreModule> {
+  static forRoot(
+    config: CeCoreModuleConfig = DEFAULT_CE_CORE_CONFIG,
+    appConfig: CeAppConfig = DEFAULT_CE_APP_CONFIG,
+  ): ModuleWithProviders<CeCoreModule> {
     return {
       ngModule: CeCoreModule,
       providers: [
         {
           provide: CE_CORE_CONFIG,
           useValue: config
+        },
+        {
+          provide: CE_APP_CONFIG,
+          useValue: appConfig
         }
       ]
     };
