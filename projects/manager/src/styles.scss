@@ -1,0 +1,14 @@
+/* You can add global styles to this file, and also import other style files */
+$color-primary: #52857e;
+$color-secondary: #f6b26b;
+$navbar-color: $color-primary;
+$side-menu-icon-color: white;
+$side-menu-color: $color-primary !default; 
+
+
+html,
+body {
+  height: 100vh;
+}
+
+@import "@codeffekt/ce-core/core";

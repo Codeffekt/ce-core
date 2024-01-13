@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start_manager": "ng serve manager --port 4200",
     "start_doc": "ng serve demo --port 4201",
     "start_admin": "ng serve admin --port 4202",
     "build": "ng build",
