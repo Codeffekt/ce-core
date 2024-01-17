@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBlock, FormWrapper } from '@codeffekt/ce-core-data';
 import { firstValueFrom, Observable } from 'rxjs';
-import { CeAccountService, CeAppService, CeCoreService, CeFormQueryService, CeFormsService, CeProjectsService } from '../../../services';
+import {
+  CeAccountService, CeAppService,
+  CeCoreService, CeFormQueryService,
+  CeFormsService, CeProjectsService
+} from '../../../services';
 import { CeProjectAssocDatasource } from '../project-assoc-datasource';
 import { CeProjectAssocFormQueryBuilder } from '../project-assoc-formquery-builder';
 import { IProjectAssocContent } from '../project-assoc-models';
@@ -20,29 +24,28 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
   forms$: Observable<readonly FormWrapper[]>;
   block: FormBlock;
 
-  private datasource: CeProjectAssocDatasource;  
-  private formQueryBuilder = new CeProjectAssocFormQueryBuilder();
+  private datasource: CeProjectAssocDatasource;
+  private formQueryBuilder: CeProjectAssocFormQueryBuilder;
 
   constructor(
     private route: ActivatedRoute,
     private queryService: CeFormQueryService<FormWrapper>,
     projectsService: CeProjectsService,
-    protected appService: CeAppService,    
+    protected appService: CeAppService,
     coreService: CeCoreService,
     accountsService: CeAccountService,
-    private formsService: CeFormsService, 
+    private formsService: CeFormsService,
     private router: Router,
-  ) { 
+  ) {
     this.datasource = new CeProjectAssocDatasource(coreService);
     this.datasource.pid = projectsService.getCurrentProjectId();
-    this.datasource.members = accountsService.getCurrentMembers();     
-    this.formQueryBuilder.setExtMode(true);        
+    this.datasource.members = accountsService.getCurrentMembers();
   }
 
   ngOnInit(): void {
     this.datasource.assoc = this.block;
-    this.datasource.mask = this.appService.getMask(this.block.root);   
-    this.prepareQueryService();  
+    this.datasource.mask = this.appService.getMask(this.block.root);
+    this.prepareQueryService();
   }
 
   goForm(form: FormWrapper) {
@@ -54,10 +57,14 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
   }
 
   private async prepareQueryService() {
+    this.formQueryBuilder = CeProjectAssocFormQueryBuilder.fromBlock(this.block);
     this.queryService.setQueryBuilder(this.formQueryBuilder);
     this.queryService.setDatasource(this.datasource);
     const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.block.root));
+    if (!formRoot?.id) {
+      throw new Error(`Form root ${this.block.root} not found.`);
+    }
     this.queryService.setModel(formRoot);
-    this.forms$ = this.queryService.connect(); 
+    this.forms$ = this.queryService.connect();
   }
 }

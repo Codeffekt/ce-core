@@ -15,14 +15,10 @@
         <ce-navbar-item>Projets</ce-navbar-item>
     </ce-navbar>
 
-    <ce-formquery-wrapper [searchEnabled]="true" [paginationEnabled]="true">
-        <ce-list>
-            <ce-list-item *ngFor="let project of projects$ | async" (click)="goProject(project)">
-                <ce-list-item-content>
-                    <ce-list-item-label>{{project.props.name ? project.props.name : '-'}}</ce-list-item-label>
-                    <ce-list-item-label size="small">créé le {{project.core.ctime|calendarDate}}</ce-list-item-label>
-                </ce-list-item-content>
-            </ce-list-item>
-        </ce-list>
-    </ce-formquery-wrapper>
+    <ce-column gap="24px">
+        <ce-grid gap="24px" templateColumns="repeat(auto-fit, minmax(500px,1fr))">
+            <ce-projects-user-owned [account]="account" [type]="projectType" (projectSelected)="goProject($event)"></ce-projects-user-owned>
+            <ce-projects-user-shared [account]="account" [type]="projectType" (projectSelected)="goProject($event)"></ce-projects-user-shared>
+        </ce-grid>       
+    </ce-column>
 </ce-nav-layout>

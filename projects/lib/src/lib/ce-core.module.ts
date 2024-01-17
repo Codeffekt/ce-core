@@ -34,6 +34,8 @@ const DEFAULT_CE_APP_CONFIG: CeAppConfig = {
     {
       provide: CE_APP_CONFIG, useValue: DEFAULT_CE_APP_CONFIG
     }
+  ],
+  declarations: [   
   ]
 })
 export class CeCoreModule {

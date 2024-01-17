@@ -1,0 +1,15 @@
+<ce-section>
+    <ce-section-actions></ce-section-actions>
+    <ce-section-title>Projets créés</ce-section-title>
+    <ce-section-content>
+        <ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="true">
+            <ce-list>
+                <ce-list-item *ngFor="let project of formsProject$ | async" (click)="onProjectSelected(project)">
+                    <ce-list-item-content>
+                        <ce-list-item-content>{{project.props.name}}</ce-list-item-content>
+                    </ce-list-item-content>
+                </ce-list-item>
+            </ce-list>
+        </ce-formquery-wrapper>
+    </ce-section-content>
+</ce-section>

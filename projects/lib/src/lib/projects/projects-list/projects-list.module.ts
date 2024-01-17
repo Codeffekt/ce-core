@@ -9,6 +9,9 @@ import { CeNavigationModule } from "../../navigation";
 import { CePipesModule } from "../../pipes";
 import { CeSideMenuModule } from "../../side-menu";
 import { CeProjectsListComponent } from "./projects-list.component";
+import { CeLayoutModule } from "../../layout/layout.module";
+import { CeProjectsUserSharedModule } from "../projects-user-shared";
+import { CeProjectsUserOwnedModule } from "../projects-user-owned";
 
 @NgModule({
     declarations: [
@@ -19,11 +22,14 @@ import { CeProjectsListComponent } from "./projects-list.component";
         CeSideMenuModule,
         CePipesModule,
         CeListModule,
+        CeLayoutModule,
         CeNavigationModule,
         RouterModule,
         MatSidenavModule,
         CeFormCardModule,
-        CeFormQueryWrapperModule
+        CeFormQueryWrapperModule,
+        CeProjectsUserOwnedModule,
+        CeProjectsUserSharedModule,
     ],
     exports: [
         CeProjectsListComponent

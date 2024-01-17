@@ -12,7 +12,11 @@ import { CeFormCoordinatesModule } from '@codeffekt/ce-form-coordinates';
 import { CeBarcodeModule } from '@codeffekt/ce-barcode';
 import { FormsQueryComponent } from './forms-query/forms-query.component';
 import { FormsListComponent } from './forms-list/forms-list.component';
-import { CeBookmarksModule, CeFormQueryWrapperModule, CeFormsModule, CeListModule, CeTableModule } from '@codeffekt/ce-core';
+import {
+  CeBookmarksModule, CeFormQueryWrapperModule,
+  CeFormsModule,
+  CeListModule, CeTableModule
+} from '@codeffekt/ce-core';
 
 @NgModule({
   declarations: [
@@ -29,17 +33,17 @@ import { CeBookmarksModule, CeFormQueryWrapperModule, CeFormsModule, CeListModul
     AngularFormsModule,
     MatButtonModule,
     MatFormFieldModule,
-    CeCodeEditorModule,    
+    CeCodeEditorModule,
     CeFormsModule,
     CeFormCoordinatesModule,
-    CeBarcodeModule,    
+    CeBarcodeModule,
     CeListModule,
-    CeFormQueryWrapperModule,
+    CeFormQueryWrapperModule,   
     CeBookmarksModule,
     CeTableModule,
   ],
   providers: [
-    
+
   ]
 })
 export class FormsModule {
