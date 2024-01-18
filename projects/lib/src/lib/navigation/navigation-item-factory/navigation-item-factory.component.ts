@@ -80,6 +80,7 @@ export class NavigationItemFactoryComponent<T = any> implements OnInit, AfterVie
 
   private connectInputItems(component: INavItemComponent) {
     component.items = this.items;
+    component.formWrapper = this.formWrapper;
   }
 
   private connectOutputItemChangedEvent(component: INavItemComponent) {

@@ -5,6 +5,7 @@ import { FormWrapper } from "@codeffekt/ce-core-data";
 export interface INavItemComponent<T = any> {
     itemChangedEvent?: EventEmitter<boolean>;
     items?: readonly T[];
+    formWrapper?: FormWrapper;
 }
 
 
@@ -35,11 +36,11 @@ export class NavigationItemStoreService {
         components: {}
     };
 
-    getComponentType<T>(form: FormWrapper): Type<any> {
+    getComponentType<T>(form: FormWrapper, elseUseDefault = true): Type<any> {
         const existingComponent = this.store.components[form.core.root]; 
         
         if(!existingComponent) {
-            return NavigationItemDefaultComponent;
+            return elseUseDefault ? NavigationItemDefaultComponent : undefined;
         }
 
         return isFactoryFunction(existingComponent) ? existingComponent.useFunction(form) : existingComponent.useClass;

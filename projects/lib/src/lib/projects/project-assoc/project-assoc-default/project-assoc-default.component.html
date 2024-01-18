@@ -1,7 +1,7 @@
 <ce-formquery-wrapper [searchEnabled]="true" [paginationEnabled]="true">
     <ce-list [searchBox]="true">
         <ce-list-item *ngFor="let form of forms$ | async" (click)="goForm(form)">
-            <ce-list-item-factory [type]="form.core.root" [item]="form" (itemChangedEvent)="onItemChanged()">
+            <ce-list-item-factory [type]="form.core.root" [item]="form" [block]="block" (itemChangedEvent)="onItemChanged()">
             </ce-list-item-factory>
         </ce-list-item>
     </ce-list>

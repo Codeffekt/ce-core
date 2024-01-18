@@ -19,12 +19,17 @@ import { CeFormCardModule } from '../../forms/form-card/form-card.module';
 import { FormAssoc } from '../../models/FormAssoc';
 import { NavigationItemStoreService } from '../../navigation/navigation-item-factory/navigation-item-store.service';
 import { FormBlock, FormWrapper } from '@codeffekt/ce-core-data';
+import { ProjectAssocNavComponent } from './project-assoc-nav/project-assoc-nav.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [
     CeProjectAssocComponent,
     ProjectAssocFactoryComponent,
     ProjectAssocDefaultComponent,
+    ProjectAssocNavComponent,
   ],
   imports: [
     CommonModule,
@@ -34,7 +39,10 @@ import { FormBlock, FormWrapper } from '@codeffekt/ce-core-data';
     RouterModule,
     CeFormQueryWrapperModule,
     CeFormCardModule,
-    CeLayoutModule
+    CeLayoutModule,
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule,
   ],
   providers: [
     {
@@ -61,14 +69,16 @@ export class CeProjectAssocModule {
       [FormAssoc.ROOT]: {
         useFunction: (wrapper: FormWrapper) => {
           const block: FormBlock = FormWrapper.getFormValue("assoc", wrapper.core);
-          return navItemStore.getComponentType(FormWrapper.fromForm({
+          const assocForm = FormWrapper.fromForm({
             id: block.field,
             ctime: wrapper.core.ctime,
-            root: block.field,
+            root: `${block.field}`,
             title: block.label,
             valid: true,
             content: {}
-          }));
+          });
+          const existingComponentType = navItemStore.getComponentType(assocForm, false);
+          return existingComponentType ?? ProjectAssocNavComponent;
         }
       }
     })

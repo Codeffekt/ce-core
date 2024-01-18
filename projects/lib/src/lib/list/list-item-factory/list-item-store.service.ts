@@ -1,6 +1,12 @@
 import { Injectable, Type } from "@angular/core";
-import { ListItemFactoryComponents, ListItemFactoryOptions } from "./list-item-models";
+import {
+    ListItemFactoryComponentClass, ListItemFactoryComponentFunction,
+    ListItemFactoryComponents, ListItemFactoryOptions
+} from "./list-item-models";
 
+function isFactoryFunction(elt: ListItemFactoryComponentClass | ListItemFactoryComponentFunction): elt is ListItemFactoryComponentFunction {
+    return (<ListItemFactoryComponentFunction>elt)?.useFunction !== undefined;
+}
 @Injectable({ providedIn: 'root' })
 export class ListItemStoreService {
 
@@ -8,11 +14,16 @@ export class ListItemStoreService {
 
     private store: ListItemFactoryOptions = {
         components: {}
-    };    
+    };
 
-    getComponentType(type: string): Type<any> {
+    getComponentType<T>(type: string, elseUseDefault = true): Type<any> {
         const existingComponent = this.store.components[type];
-        return existingComponent ?? this.defaultComponent;        
+
+        if (!existingComponent) {
+            return elseUseDefault ? this.defaultComponent : undefined;
+        }
+
+        return isFactoryFunction(existingComponent) ? existingComponent.useFunction(type) : existingComponent.useClass;
     }
 
     setComponents(components: ListItemFactoryComponents) {

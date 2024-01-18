@@ -109,7 +109,8 @@ export class FormsAuthorPipe implements PipeTransform {
       return "-";
     }
 
-    return `${wrapper.author.firstName} ${wrapper.author.lastName}`;
+    return (!wrapper.author.firstName && !wrapper.author.lastName) ? 
+      wrapper.author.login : `${wrapper.author.firstName} ${wrapper.author.lastName}`;
   }
 
 }

@@ -15,3 +15,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fix: Call setFilter when no token is present in the searchbox
 
 ## [13.9.1] - it's now possible to specify the app config parameters in the CeCoreModule forRoot
+
+## [13.9.2] - Add project assoc nav default component in app main, update the manager project
