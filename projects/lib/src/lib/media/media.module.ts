@@ -16,13 +16,21 @@ import { AssetImportComponent } from "./asset-import/asset-import.component";
 import { MediaAccountComponent } from "./media-account/media-account.component";
 import { MediaListComponent } from "./media-list/media-list.component";
 import { MediaProjectComponent } from "./media-project/media-project.component";
+import { MediaFactoryComponent } from './media-factory/media-factory.component';
+import { MediaDefaultComponent } from './media-default/media-default.component';
+import { MediaStoreService } from "./media-factory/media-store.service";
+import { MediaPhotoComponent } from "../media-photo/media-photo.component";
+import { MatMenuModule } from "@angular/material/menu";
+import { CeNgReallyModule } from "../widgets/ng-really/ng-really.module";
 
 @NgModule({
     declarations: [
         MediaProjectComponent,
         MediaAccountComponent,
         MediaListComponent,
-        AssetImportComponent
+        AssetImportComponent,
+        MediaFactoryComponent,
+        MediaDefaultComponent
     ],    
     imports: [
         CommonModule,
@@ -31,6 +39,7 @@ import { MediaProjectComponent } from "./media-project/media-project.component";
         MatDialogModule,
         MatStepperModule,
         MatProgressBarModule,
+        MatMenuModule,
         FormsModule,
         ReactiveFormsModule,
         NgxUploaderModule,        
@@ -39,6 +48,7 @@ import { MediaProjectComponent } from "./media-project/media-project.component";
         CeIllustrationModule,
         CeNavigationModule,
         CePaginatorModule,
+        CeNgReallyModule,
     ],
     exports: [
         MediaListComponent,
@@ -47,4 +57,17 @@ import { MediaProjectComponent } from "./media-project/media-project.component";
         AssetImportComponent,        
     ],
 })
-export class CeMediaModule { }
+export class CeMediaModule { 
+    constructor(storeService: MediaStoreService) {
+        storeService.setDefaultComponent(MediaDefaultComponent);
+        
+        storeService.setComponents({
+            "image/jpeg": {
+                useClass: MediaPhotoComponent
+            },
+            "image/png": {
+                useClass: MediaPhotoComponent
+            }
+        });
+    }
+}

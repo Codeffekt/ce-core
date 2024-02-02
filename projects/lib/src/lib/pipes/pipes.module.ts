@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import {
     AssetEltThumbnailPipe, AssetOriginalSizeImage,
-    AssetThumbnailPipe, AssetThumbnailWithIdPipe
+    AssetThumbnailPipe, AssetThumbnailWithIdPipe, AssetUrl
 } from "./asset.pipe";
 import { CalendarDatePipe } from "./date.pipe";
 import { FileSizePipe } from "./filesize.pipe";
@@ -15,6 +15,7 @@ import { CeCoreAccountPipesModule } from "../account";
         AssetEltThumbnailPipe,
         AssetThumbnailWithIdPipe,
         AssetOriginalSizeImage,
+        AssetUrl,
         FileSizePipe,
     ],
     imports: [
@@ -26,6 +27,7 @@ import { CeCoreAccountPipesModule } from "../account";
         AssetEltThumbnailPipe,
         AssetThumbnailWithIdPipe,
         AssetOriginalSizeImage,
+        AssetUrl,
         FileSizePipe,
         CeCoreAccountPipesModule
     ]

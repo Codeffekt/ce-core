@@ -2,8 +2,8 @@
     <ng-content *ngIf="hasImgError then imageErrorTpl; else imageTpl"></ng-content>
 </div>
 <div class="media-image-infos text-muted">
-    <span><small>{{(photo.metadata?.timestamp ?? photo.mtime ?? photo.ctime) | date:'short'}}</small></span>
-    <span class="ms-auto me-2"><small>{{photo.size | filesize}} </small></span>
+    <span><small>{{(elt.metadata?.timestamp ?? elt.mtime ?? elt.ctime) | date:'short'}}</small></span>
+    <span class="ms-auto me-2"><small>{{elt.size | filesize}} </small></span>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="mode ==='edit'">
         <mat-icon>more_vert</mat-icon>
     </button>
@@ -18,10 +18,10 @@
 
 <!-- Image Template -->
 <ng-template #imageTpl>
-    <a target="_blank" href="{{ photo | originalSizeImage}}" *ngIf="enableLink">
-        <img [src]="photo | thumbPathAssetElt: 300" (error)="onImageError()">
+    <a target="_blank" href="{{ elt | originalSizeImage}}" *ngIf="enableLink">
+        <img [src]="elt | thumbPathAssetElt: 300" (error)="onImageError()">
     </a>
-    <img [src]="photo | thumbPathAssetElt: 300" (error)="onImageError()" *ngIf="!enableLink">
+    <img [src]="elt | thumbPathAssetElt: 300" (error)="onImageError()" *ngIf="!enableLink">
 </ng-template>
 
 <!-- Error Image Template -->

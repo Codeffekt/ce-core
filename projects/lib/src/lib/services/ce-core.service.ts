@@ -90,8 +90,13 @@ export class CeCoreService {
     return `${this.api_url}/assets/images/${assetId}?token=${token}${dimensionParam}`;
   }
 
-  originalPathFromAssetId(assetId: IndexType): string {
+  imagePathFromAssetId(assetId: IndexType): string {
     return this.thumbPathFromAssetId(assetId);
+  }
+
+  urlFromAssetId(assetId: IndexType): string {
+    const token = this.getToken();
+    return `${this.api_url}/assets/download/${assetId}?token=${token}`;
   }
 
   getApi(): string {

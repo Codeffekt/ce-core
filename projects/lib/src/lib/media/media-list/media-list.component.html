@@ -3,7 +3,7 @@
         <ce-navbar-content>
             <ce-nav-breadcrumb-items></ce-nav-breadcrumb-items>
             <ce-navbar-actions>
-                <button mat-stroked-button color="accent" matTooltip="Importer une photo" (click)="openPhotoImport()">
+                <button mat-stroked-button color="accent" matTooltip="Importer un media" (click)="openPhotoImport()">
                     <mat-icon>file_upload</mat-icon>Importer
                 </button>
             </ce-navbar-actions>
@@ -13,8 +13,8 @@
     <div class="flowable-y">
         <ce-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></ce-paginator>
         <div class="media-grid">
-            <ce-media-photo class="m-2" *ngFor="let photo of photos$ | async" [photo]="photo" (delete)="delete(photo)">
-            </ce-media-photo>
+            <ce-media-factory class="m-2" *ngFor="let photo of photos$ | async" [elt]="photo" (delete)="delete(photo)">
+            </ce-media-factory>
         </div>
 
     </div>

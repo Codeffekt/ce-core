@@ -43,7 +43,7 @@ export class PhotoPickerComponent implements OnInit {
     this.datasource = this.data?.datasource ?? this.createAssetsDatasource();
     this.queryService.setQueryBuilder(
       this.data?.queryBuilder ??
-      new AssetsFormQueryBuilder().withPhotoMode()
+      AssetsFormQueryBuilder.withPhotoMode()
     );
     this.queryService.setDatasource(this.datasource);
     this.photos$ = this.queryService.connect();

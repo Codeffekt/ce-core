@@ -41,6 +41,15 @@ export class AssetOriginalSizeImage implements PipeTransform {
   constructor(private apiService: CeCoreService) { }
 
   transform(asset: AssetElt, args?: any): string | undefined {    
-    return (asset && asset.id) ? this.apiService.originalPathFromAssetId(asset.id) : undefined;
+    return (asset && asset.id) ? this.apiService.imagePathFromAssetId(asset.id) : undefined;
+  }
+}
+
+@Pipe({ name: 'assetUrl'})
+export class AssetUrl implements PipeTransform {
+  constructor(private apiService: CeCoreService) { }
+
+  transform(asset: AssetElt, args?: any): string | undefined {    
+    return (asset && asset.id) ? this.apiService.urlFromAssetId(asset.id) : undefined;
   }
 }

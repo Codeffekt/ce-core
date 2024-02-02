@@ -44,10 +44,10 @@ export class MediaListComponent implements OnInit {
   async delete(photo: AssetElt) {
     try {
       await firstValueFrom(this.assetsService.deleteAssets(this.datasource.pid, [photo.id]));
-      this.layout.showSingleMessage('Photo supprimée avec succès');
+      this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
-      this.layout.showErrorMessage(`Erreur <${err.message}> lors de la suppression de la photo`);
+      this.layout.showErrorMessage(`Erreur <${err.message}> lors de la suppression du media`);
     }
   }
 
@@ -55,7 +55,7 @@ export class MediaListComponent implements OnInit {
 
     const config: AssetImportConfig = {
       pid: this.datasource.pid,
-      title: "Importer une photo"
+      title: "Importer un media"
     };
 
     const dialogRef = this.dialog.open(
@@ -73,7 +73,7 @@ export class MediaListComponent implements OnInit {
   }
 
   private async prepareQueryService() {
-    this.queryService.setQueryBuilder(new AssetsFormQueryBuilder().withPhotoMode());
+    this.queryService.setQueryBuilder(AssetsFormQueryBuilder.create());
     this.photos$ = this.queryService.connect();
     this.queryService.load();
   }
