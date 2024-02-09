@@ -1,7 +1,8 @@
 import {
   AfterViewInit, Component,
-  ComponentRef, HostBinding,
+  ComponentRef, EventEmitter, HostBinding,
   Input, OnInit,
+  Output,
   ViewChild, ViewContainerRef
 } from '@angular/core';
 import { AssetElt } from '@codeffekt/ce-core-data';
@@ -17,6 +18,7 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
 
   @Input()
   @HostBinding('class.active') active: boolean = false;
+  @Output() delete: EventEmitter<AssetElt> = new EventEmitter();
 
   _elt: AssetElt;
   get elt(): AssetElt {
@@ -70,7 +72,7 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
     if (componentType) {
       this.mediaComponent = this.vcr.createComponent(componentType);
       this.connectInputItem(this.mediaComponent.instance);
-      /* this.connectOutputItemChangedEvent(this.mediaComponent.instance); */
+      this.connectOutputDeleteEvent(this.mediaComponent.instance);
       this.mediaComponent.changeDetectorRef.detectChanges();
     }
   }
@@ -79,13 +81,13 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
     component.elt = this.elt;
   }
 
-  /* private connectOutputItemChangedEvent(component: IListItemContent) {
-      if (component.itemChangedEvent) {
-          component.itemChangedEvent.subscribe(
-              (value) => this.itemChangedEvent.next(value),
-              (error) => this.itemChangedEvent.error(error),
-              () => this.itemChangedEvent.complete()
-          );
-      }
-  } */
+  private connectOutputDeleteEvent(component: IMediaContent) {
+    if (component.delete) {
+      component.delete.subscribe(
+        (value) => this.delete.next(value),
+        (error) => this.delete.error(error),
+        () => this.delete.complete()
+      );
+    }
+  }
 }

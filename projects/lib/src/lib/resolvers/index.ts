@@ -6,3 +6,4 @@ export * from "./breadcrumb-label-resolver.service";
 export * from "./form-editor-assoc-resolver.service";
 export * from './parent-form-resolver.service';
 export * from './form-project-resolver.service';
+export * from './account-resolver.service';

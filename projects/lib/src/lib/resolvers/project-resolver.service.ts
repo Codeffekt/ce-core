@@ -14,7 +14,7 @@ export class ProjectResolverService implements Resolve<FormProjectWrapper> {
   }
 
   async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormProjectWrapper> {
-    const id = route.paramMap.get('project');
+    const id = route.paramMap.get('form');
     const project = await this.projectService.getProject(id);
     if (project && project.core.id) {
       return project;

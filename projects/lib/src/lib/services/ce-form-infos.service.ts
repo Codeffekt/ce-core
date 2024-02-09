@@ -10,6 +10,7 @@ import { FormInfo } from "../models/form-info";
 import { CeAppService } from "./ce-app.service";
 import { CeCoreService } from "./ce-core.service";
 import { CeProjectsService } from "./ce-projects.service";
+import { CeFormsService } from "./ce-forms.service";
 
 @Injectable({ providedIn: 'root' })
 export class CeFormInfosService {
@@ -20,23 +21,26 @@ export class CeFormInfosService {
         private projectService: CeProjectsService,
         private apiService: CeCoreService,
         private appService: CeAppService,
+        private formsService: CeFormsService,
     ) { }
 
 
-    async getFormInfo(formId: IndexType, options: { forceReload: boolean } = { forceReload: false }) {
+    async getFormInfo(formId: IndexType,
+        options: { forceReload: boolean } = { forceReload: false }
+    ) {
 
-        const pid = this.projectService.getCurrentProjectId();
+        const currentProject = this.projectService.getCurrentProject();
 
-        if (formId === pid && !options.forceReload) {
+        if (currentProject && formId === currentProject.core.id && !options.forceReload) {
             return this.getFormInfoFromCurrentProject();
         }
 
-        const form = FormWrapper.fromForm(await firstValueFrom(this.apiService.callFormQuery(
-            pid,
+        const form = FormWrapper.fromForm(await firstValueFrom(this.formsService.getRawFormQuery(            
             formId, {
             extMode: true,
             limit: 1
         })));
+
 
         const formMask = this.appService.getMask(form.core.root);
         const formMasked = formMask ? this.getFormMasked(form, formMask) : form;
@@ -50,7 +54,7 @@ export class CeFormInfosService {
         // this.storeFormInfo(formInfo);
 
         return formInfo;
-    }
+    }    
 
     updateFormsFromChanges(changes: FormWrapperChangeNotifier[]) {
         /* for (const change of changes) {

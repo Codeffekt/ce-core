@@ -22,7 +22,7 @@ export function isBlockAssoc(block: FormBlock) {
 export class FormQueryArrayBuilder extends FormQueryBuilder {
 
     private extra: Partial<FormQuery> = {};
-    private ref: IndexType;
+    private ref: IndexType;    
 
     constructor() {
         super();
@@ -73,7 +73,7 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
         return {
             ...super.create(),
             ...this.extra,
-            ref: this.ref
+            ref: this.ref,            
         };
     }
 
