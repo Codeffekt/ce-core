@@ -1,5 +1,6 @@
 import { Injectable, Type } from "@angular/core";
 import { FormFactoryComponents, FormFactoryOptions } from "./form-models";
+import { FormInstance } from "@codeffekt/ce-core-data";
 
 @Injectable({ providedIn: 'root'})
 export class CeFormStoreService {
@@ -13,6 +14,11 @@ export class CeFormStoreService {
     getComponentType(type: string): Type<any> {
         const existingComponent = this.store.components[type];
         return existingComponent ?? this.defaultComponent;        
+    }
+
+    getComponenTypeFromForm(form: FormInstance): Type<any> {
+        const existingComponent = this.store.components[form.root] ?? this.store.components[form.type];
+        return existingComponent ?? this.defaultComponent;
     }
 
     setComponents(components: FormFactoryComponents) {

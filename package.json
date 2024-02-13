@@ -31,7 +31,7 @@
     "@angular/router": "^13.3.1",
     "@codeffekt/ce-barcode": "^13.9.0",
     "@codeffekt/ce-code-editor": "^13.9.0",
-    "@codeffekt/ce-core-data": "^1.1.1",
+    "@codeffekt/ce-core-data": "^1.1.2",
     "@codeffekt/ce-form-coordinates": "^13.9.0",
     "@ngneat/until-destroy": "^8.0.3",
     "@popperjs/core": "^2.10.2",

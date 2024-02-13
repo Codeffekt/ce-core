@@ -2,10 +2,10 @@ import {
   AfterViewInit, Component,
   ComponentRef, EventEmitter,
   Input, OnInit,
-  Output, ViewChild,
+  Output, Type, ViewChild,
   ViewContainerRef
 } from '@angular/core';
-import { FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
+import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { Subscription } from 'rxjs';
 import { IFormContent } from '../form-models';
 import { CeFormStoreService } from '../form-store.service';
@@ -53,7 +53,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
 
   private formComponent: ComponentRef<IFormContent>;
   private formComponentSubscriptions: Subscription;
-  private lastComponentRoot: string;
+  private lastComponentType: Type<any>;
 
   constructor(
     private formStoreService: CeFormStoreService
@@ -72,11 +72,11 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
       return;
     }
 
-    const componentRoot = this.formWrapper.core.root;
+    const componentRoot = this.formWrapper.core;
 
     if (!this.formComponent) {
       this.createComponent(componentRoot);
-    } else if(this.lastComponentRoot !== componentRoot) {
+    } else if(this.lastComponentType !== this.formComponent.componentType) {
       this.recreateComponent(componentRoot);
     } else {
       this.connectInputs(this.formComponent.instance);
@@ -84,7 +84,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
     }
   }
 
-  private recreateComponent(root: string) {
+  private recreateComponent(form: FormInstance) {
 
     if (!this.vcr) {
       return;
@@ -92,20 +92,20 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
 
     this.formComponentSubscriptions.unsubscribe();
     this.vcr.remove();
-    this.createComponent(root);
+    this.createComponent(form);
   }
 
-  private createComponent(root: string) {
+  private createComponent(form: FormInstance) {
 
     if (!this.vcr) {
       return;
     }
 
-    const componentType = this.formStoreService.getComponentType(root);
+    const componentType = this.formStoreService.getComponenTypeFromForm(form);
     if (componentType) {
       this.formComponent = this.vcr.createComponent(componentType);
     }
-    this.lastComponentRoot = root;
+    this.lastComponentType = componentType;
     this.connectInputs(this.formComponent.instance);
     this.connectOutputChangedEvent(this.formComponent.instance);
     this.formComponent.changeDetectorRef.detectChanges();

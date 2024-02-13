@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-core",
-  "version": "13.9.3",
+  "version": "13.9.4",
   "description": "Angular library for CeForms rendering",
   "author": {
     "name": "Codeffekt",
@@ -19,7 +19,7 @@
     "@angular/material": "^13.3.2",
     "@angular/material-moment-adapter": "^13.3.2",
     "bootstrap": "^5.1.1",
-    "@codeffekt/ce-core-data": "^1.1.0",
+    "@codeffekt/ce-core-data": "^1.1.2",
     "@ngneat/until-destroy": "^8.0.3",            
     "ngx-uploader": "^11.0.0",
     "ngx-file-drop": "^13.0.0",
