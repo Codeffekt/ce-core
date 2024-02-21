@@ -7,7 +7,6 @@ import { RouterModule } from '@angular/router';
 import { CeNavigationModule } from '../../navigation/navigation.module';
 import { CeListModule } from '../../list/list.module';
 import { CeFormQueryWrapperModule } from '../../formquery-wrapper';
-import { CeFormStoreService } from '../../forms/form/form-store.service';
 import { CeFormDataService } from '../../forms/form-data.service';
 import { CeFormRouteResolver } from '../../forms/form-route.resolver';
 import { CeProjectFormRouteResolver } from '../project-form/project-form-route.resolver';
@@ -23,6 +22,8 @@ import { ProjectAssocNavComponent } from './project-assoc-nav/project-assoc-nav.
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { FormActionService } from '../../forms/form/actions/form-action.service';
+import { FormActionBuilder } from '../../forms/form/actions/form-action-builder';
 
 @NgModule({
   declarations: [
@@ -58,13 +59,14 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 export class CeProjectAssocModule {
   constructor(
     storeService: ProjectAssocStoreService,
-    formStore: CeFormStoreService,
+    formActionService: FormActionService,
     navItemStore: NavigationItemStoreService,
   ) {
-    storeService.setDefaultComponent(ProjectAssocDefaultComponent);
-    formStore.setComponents({
-      [FormAssoc.ROOT]: CeProjectAssocComponent
+    storeService.setDefaultComponent(ProjectAssocDefaultComponent);    
+    formActionService.setActions({
+      [FormAssoc.ROOT]: FormActionBuilder.withRender(CeProjectAssocComponent)
     });
+
     navItemStore.setComponents({
       [FormAssoc.ROOT]: {
         useFunction: (wrapper: FormWrapper) => {

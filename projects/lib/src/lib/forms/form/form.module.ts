@@ -18,7 +18,10 @@ import { FormSubformTitleComponent } from './form-subform-title/form-subform-tit
 import { CeFormComponent } from './form.component';
 import { PhotoPickerComponent } from './photo-picker/photo-picker.component';
 import { CeFormFactoryComponent } from './form-factory/form-factory.component';
-import { CeFormStoreService } from "./form-store.service";
+import { FormNewComponent } from "./form-new/form-new.component";
+import { FormNewFactoryComponent } from "./form-new-factory/form-new-factory.component";
+import { FormActionService } from "./actions/form-action.service";
+import { FormActionDefault } from "./actions/form-action-default";
 
 @NgModule({
     declarations: [
@@ -26,6 +29,8 @@ import { CeFormStoreService } from "./form-store.service";
         FormChooserDialogComponent,
         PhotoPickerComponent,
         FormSubformTitleComponent,
+        FormNewComponent,
+        FormNewFactoryComponent,
         CeFormFactoryComponent
     ],
     imports: [
@@ -48,11 +53,19 @@ import { CeFormStoreService } from "./form-store.service";
     exports: [
         CeFormComponent,
         CeFormFactoryComponent,
+        FormNewComponent,
+        FormNewFactoryComponent,
         PhotoPickerComponent,
     ]
 })
 export class CeFormModule {
-    constructor(private formStore: CeFormStoreService) {
-        this.formStore.setDefaultComponent(CeFormComponent);
+    constructor(
+        /* formStore: CeFormStoreService, */
+        formActions: FormActionService,
+        formActionDefault: FormActionDefault,
+    ) {
+        formActions.setDefaultAction(formActionDefault);
+        /* formStore.setDefaultRenderer(CeFormComponent);
+        formStore.setDefaultBuilder(FormNewComponent); */
     }
 }

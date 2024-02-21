@@ -7,5 +7,7 @@ export * from './form-style.builder';
 export * from './form-mask.builder';
 export * from './form-controls.builder';
 export * from './form-models';
-export * from './form-store.service';
+export * from './form-new/form-new.component';
+export * from './form-new-factory/form-new-factory.component';
+export * from './actions';
 export * from './form.module';

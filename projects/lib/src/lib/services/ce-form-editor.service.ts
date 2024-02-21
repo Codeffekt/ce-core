@@ -8,9 +8,9 @@ import { BehaviorSubject } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeAppService } from "./ce-app.service";
 import { CeFormInfosService } from "./ce-form-infos.service";
-import { CeFormsService } from "./ce-forms.service";
 import { CeProjectsService } from "./ce-projects.service";
 import { FormAssocBuilder } from "../models/FormAssoc";
+import { FormActionService } from "../forms/form/actions/form-action.service";
 
 export abstract class FormEditorServiceBase {
 
@@ -44,7 +44,7 @@ export class CeFormEditorService extends FormEditorServiceBase {
 
     constructor(
         private formInfos: CeFormInfosService,
-        private formsService: CeFormsService,
+        private formActionService: FormActionService,
         private projectService: CeProjectsService,        
         appService: CeAppService,
     ) {
@@ -71,7 +71,7 @@ export class CeFormEditorService extends FormEditorServiceBase {
     }
 
     async updateForm(form: FormInstance) {
-        await this.formsService.updateForm(form);        
+        await this.formActionService.getActionFromForm(form).update(form);
         return this.getForm(form.id, { forceReload: true });
     }
 }

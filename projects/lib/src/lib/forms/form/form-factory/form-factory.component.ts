@@ -8,7 +8,7 @@ import {
 import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { Subscription } from 'rxjs';
 import { IFormContent } from '../form-models';
-import { CeFormStoreService } from '../form-store.service';
+import { FormActionService } from '../actions/form-action.service';
 
 @Component({
   selector: 'ce-form-factory',
@@ -56,7 +56,8 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   private lastComponentType: Type<any>;
 
   constructor(
-    private formStoreService: CeFormStoreService
+    /* private formStoreService: CeFormStoreService, */
+    private formActionService: FormActionService,
   ) { }
 
   ngOnInit(): void {
@@ -101,7 +102,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
       return;
     }
 
-    const componentType = this.formStoreService.getComponenTypeFromForm(form);
+    const componentType = this.formActionService.getRenderFromForm(form);
     if (componentType) {
       this.formComponent = this.vcr.createComponent(componentType);
     }
@@ -123,5 +124,5 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
       (error) => this.formChanges.error(error),
       () => this.formChanges.complete()
     );
-  }
+  }  
 }

@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AccountSettings, IndexType } from '@codeffekt/ce-core-data';
+import { AccountSettings, FormInstance, IndexType } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 import { CeCoreService, LocalUserSettings } from './ce-core.service';
+import { CeFormsService } from './ce-forms.service';
 
 /**
  * Service that wraps ce-core api to manage
@@ -15,7 +16,10 @@ export class CeAccountService {
 
   private members: AccountSettings[] = [];
 
-  constructor(private ceCore: CeCoreService) { }
+  constructor(
+    private ceCore: CeCoreService,
+    private formsService: CeFormsService,
+    ) { }
 
   self(): Observable<LocalUserSettings> {
     return this.ceCore.self();
@@ -86,6 +90,14 @@ export class CeAccountService {
 
   update(account: AccountSettings) {    
     return this.ceCore.callAccount("update", account);
+  }
+
+  updateFromForm(account: FormInstance): Observable<FormInstance> {
+    return this.ceCore.callAccount("updateFromForm", account);
+  }
+
+  getAccountFromForm(id: IndexType): Promise<FormInstance> {
+    return this.formsService.getForm(id);
   }
 
   create(account: Partial<AccountSettings>, passwd: string): Observable<AccountSettings> {
