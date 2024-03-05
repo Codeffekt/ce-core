@@ -34,13 +34,13 @@
                 "output": "assets/ce-core"
               }
             ],
-            "styles": [
+            "styles": [              
               "projects/demo/src/assets/font_icons/font_icons.css",
               "projects/demo/src/styles.scss",
               "node_modules/highlight.js/styles/github.css"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": [
+              "includePaths": [               
                 "./projects/lib/assets"
               ]
             },
@@ -141,7 +141,7 @@
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
             "tsConfig": "projects/lib/tsconfig.lib.json",
-            "project": "projects/lib/ng-package.json"
+            "project": "projects/lib/ng-package.json"            
           },
           "configurations": {
             "production": {
