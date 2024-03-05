@@ -28,7 +28,9 @@ export class ListsModule {
   ) {
 
     listItemStore.setComponents({
-      'compound': ListItemCompoundComponent
+      'compound': {
+        useClass: ListItemCompoundComponent
+      }
     });    
   }
  }
