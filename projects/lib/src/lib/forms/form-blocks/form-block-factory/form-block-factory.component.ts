@@ -10,7 +10,7 @@ import { FormBlockComponentAccessor } from '../form-block/form-block.component';
   templateUrl: './form-block-factory.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useExisting: FormBlockFactoryComponent,
+    useValue: FormBlockFactoryComponent,
     multi: true
   }],
   styleUrls: ['./form-block-factory.component.scss']

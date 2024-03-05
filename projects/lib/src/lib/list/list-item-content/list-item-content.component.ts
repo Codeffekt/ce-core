@@ -6,7 +6,7 @@ import { IListItemContent } from '../list-item-factory/list-item-models';
   templateUrl: './list-item-content.component.html',
   styleUrls: ['./list-item-content.component.scss']
 })
-export class ListItemContentComponent<T> implements OnInit, IListItemContent {
+export class ListItemContentComponent<T = any> implements OnInit, IListItemContent {
 
   itemChangedEvent: EventEmitter<boolean>;
   item: T;

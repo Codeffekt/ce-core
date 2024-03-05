@@ -6,7 +6,9 @@ describe('CeAppService', () => {
   let service: CeAppService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({ teardown: { destroyAfterEach: false } });
+    TestBed.configureTestingModule({
+      teardown: { destroyAfterEach: false }
+    });
     service = TestBed.inject(CeAppService);
   });
 

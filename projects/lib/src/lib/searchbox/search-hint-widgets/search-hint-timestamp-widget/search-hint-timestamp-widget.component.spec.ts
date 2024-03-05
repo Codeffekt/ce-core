@@ -1,6 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SearchHintTimestampWidgetComponent } from './search-hint-timestamp-widget.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
 
 describe('SearchHintTimestampWidgetComponent', () => {
   let component: SearchHintTimestampWidgetComponent;
@@ -8,7 +10,11 @@ describe('SearchHintTimestampWidgetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SearchHintTimestampWidgetComponent ]
+      declarations: [ SearchHintTimestampWidgetComponent ],
+      imports: [
+        MatDatepickerModule,
+        MatMomentDateModule,
+      ]
     })
     .compileComponents();
   });

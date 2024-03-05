@@ -12,7 +12,7 @@ export interface FormBlockComponentAccessor<T = any> {
   patchValue(value: T);  
 }
 
-export class FormBlockComponent<T> implements FormBlockComponentAccessor<T> {
+export class FormBlockComponent<T = any> implements FormBlockComponentAccessor<T> {
 
   errors: ValidationErrors;
   formControl: AbstractControl;

@@ -16,6 +16,9 @@ describe('ProjectAssocFactoryComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(ProjectAssocFactoryComponent);
     component = fixture.componentInstance;
+    component.block = {
+      field: 'test',      
+    };
     fixture.detectChanges();
   });
 
