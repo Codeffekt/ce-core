@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CeAppAssetsConfig } from '../../ce-core.config';
@@ -14,7 +14,7 @@ import { CeCoreService } from '../../services/ce-core.service';
 export class LoginComponent implements OnInit {
 
   appVersion: string;
-  form: FormGroup;
+  form: UntypedFormGroup;
   error$ = new Subject<string>();
   authenticating$ = new Subject<boolean>();
   assets: CeAppAssetsConfig;
@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private coreService: CeCoreService, 
     appService: CeAppService   
   ) {

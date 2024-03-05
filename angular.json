@@ -268,6 +268,5 @@
     "@schematics/angular:component": {
       "style": "scss"
     }
-  },
-  "defaultProject": "demo"
+  }
 }

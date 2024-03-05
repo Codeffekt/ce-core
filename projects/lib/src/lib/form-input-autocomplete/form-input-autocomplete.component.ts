@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Observable } from 'rxjs';
@@ -22,7 +22,7 @@ export class FormInputAutocompleteComponent implements OnInit {
   @Input() label?: string;
   @Output() form = new EventEmitter<FormWrapper>();
 
-  formControl!: FormControl;
+  formControl!: UntypedFormControl;
   suggestions$!: Observable<readonly FormWrapper[]>;
 
   constructor(private queryService: CeFormQueryService<FormWrapper>) { }
@@ -44,7 +44,7 @@ export class FormInputAutocompleteComponent implements OnInit {
   }
 
   private initFormControl() {
-    this.formControl = new FormControl('');
+    this.formControl = new UntypedFormControl('');
     this.formControl.valueChanges
       .pipe(untilDestroyed(this))
       .subscribe(value => {

@@ -1,7 +1,7 @@
 import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef } from '@angular/cdk/overlay';
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { UntypedFormControl } from '@angular/forms';
 import { MatInput } from '@angular/material/input';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SearchHint } from '../model/search-hint';
@@ -23,7 +23,7 @@ export class SearchInputTokenComponent implements OnChanges, OnDestroy, AfterVie
   @ViewChild(CdkConnectedOverlay, { read: TemplateRef }) overlayTemplate: TemplateRef<any>;
   @Output() search = new EventEmitter<string>();
 
-  formControl = new FormControl();
+  formControl = new UntypedFormControl();
   shouldShowPlaceholder = true;
   shouldPreserveFocus = false;
   overlayRef: OverlayRef;

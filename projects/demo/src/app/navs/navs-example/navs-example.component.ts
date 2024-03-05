@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { BreadcrumbItem, CeBreadcrumbsService } from '@codeffekt/ce-core';
 
 @Component({
@@ -26,10 +26,10 @@ export class NavsExampleComponent implements OnInit {
   }
   ];
 
-  form!: FormGroup;
+  form!: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private breadcrumbService: CeBreadcrumbsService) { }
 
   ngOnInit(): void {

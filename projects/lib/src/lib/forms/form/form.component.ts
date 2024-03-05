@@ -4,7 +4,7 @@ import {
   OnDestroy,
   Output
 } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {
   FormInstance, FormInstanceMaskWrapper,
   FormWrapper
@@ -72,7 +72,7 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
   @HostBinding('class.invalid')
   get isInvalid() { return this.formGroup && !this.formGroup?.valid; }
 
-  formGroup: FormGroup;
+  formGroup: UntypedFormGroup;
 
   formInstance: FormInstance;
 
@@ -88,7 +88,7 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
   private formStyleBuilder = new FormStyleBuilder();
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private formControlsBuilder: FormControlsBuilder,
   ) {
   }

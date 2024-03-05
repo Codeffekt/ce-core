@@ -1,9 +1,9 @@
 import { Injectable } from "@angular/core";
-import { FormControl, ValidatorFn, Validators } from "@angular/forms";
+import { UntypedFormControl, ValidatorFn, Validators } from "@angular/forms";
 import { FormBlock, FormInstanceBase, FormUtils } from "@codeffekt/ce-core-data";
 import { FormValidators } from "./form.validators";
 
-export type FormControls = { [key: string]: FormControl };
+export type FormControls = { [key: string]: UntypedFormControl };
 
 @Injectable()
 export class FormControlsBuilder {
@@ -13,7 +13,7 @@ export class FormControlsBuilder {
         const controls =
             formBlocks.reduce((controls: FormControls, formBlock: FormBlock) => {
                 const validators = this.buildFormBlockValidators(formBlock);
-                const formControl = new FormControl(formBlock.value, validators);
+                const formControl = new UntypedFormControl(formBlock.value, validators);
                 return { ...controls, ...{ [formBlock.field]: formControl } }
             }, {});
 

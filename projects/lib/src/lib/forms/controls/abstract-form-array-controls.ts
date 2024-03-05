@@ -1,8 +1,8 @@
-import { AbstractControl, FormArray, FormBuilder } from "@angular/forms";
+import { AbstractControl, UntypedFormArray, UntypedFormBuilder } from "@angular/forms";
 
-export abstract class AbstractFormArray<T> extends FormArray {
+export abstract class AbstractFormArray<T> extends UntypedFormArray {
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: UntypedFormBuilder) {
         super([]);
     }
 

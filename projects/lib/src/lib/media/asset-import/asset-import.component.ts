@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy, ViewChild, Inject, EventEmitter } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormGroup, UntypedFormBuilder, Validators } from '@angular/forms';
 import { UploadOutput, UploadInput, UploadFile, UploaderOptions } from 'ngx-uploader';
 import { firstValueFrom, Subscription } from 'rxjs';
 import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
@@ -36,12 +36,12 @@ export class AssetImportComponent implements OnInit, OnDestroy {
 
   file: UploadFile;
 
-  eltForm: FormGroup;
+  eltForm: UntypedFormGroup;
   title: string;
 
   constructor(
     public dialogRef: MatDialogRef<AssetImportComponent>,
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private coreService: CeCoreService,
     private layout: LayoutService,
     @Inject(MAT_DIALOG_DATA) public config: AssetImportConfig) {
