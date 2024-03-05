@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve, RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { FormAccountWrapper } from '@codeffekt/ce-core-data';
 import { CeAccountService } from '../services/ce-account.service';
 
 @Injectable({ providedIn: 'root' })
-export class AccountResolverService implements Resolve<FormAccountWrapper> {
+export class AccountResolverService  {
   constructor(
     private accountsService: CeAccountService,
     private router: Router) {

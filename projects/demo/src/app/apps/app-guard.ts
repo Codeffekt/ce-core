@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate } from "@angular/router";
+import { ActivatedRouteSnapshot } from "@angular/router";
 import { CeAppRunnerService } from '@codeffekt/ce-core';
 
 @Injectable({
     providedIn: 'root'
 })
-export class CeAppGuard implements CanActivate {
+export class CeAppGuard  {
     constructor(private readonly appRunnerService: CeAppRunnerService) { }
 
     async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {

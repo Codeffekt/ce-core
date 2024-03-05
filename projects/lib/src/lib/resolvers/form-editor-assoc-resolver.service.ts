@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { FormInfo } from "../models";
 import { CeFormEditorService, CeProjectsService } from "../services";
 
 @Injectable({ providedIn: 'root' })
-export class FormEditorAssocResolverService implements Resolve<FormInfo> {
+export class FormEditorAssocResolverService  {
     constructor(
         private formEditorService: CeFormEditorService,
         private projectService: CeProjectsService

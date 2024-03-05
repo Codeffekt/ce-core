@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/router";
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from "@angular/router";
 import { FormInfo } from "@codeffekt/ce-core";
 import { FormEditorService } from "./form-editor.service";
 
 @Injectable({ providedIn: 'root' })
-export class FormEditorResolverService implements Resolve<FormInfo> {
+export class FormEditorResolverService  {
     constructor(private formEditorService: FormEditorService) { }
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormInfo> {

@@ -1,11 +1,11 @@
 import { Injectable } from "@angular/core";
-import { ActivatedRouteSnapshot, CanActivate } from "@angular/router";
+import { ActivatedRouteSnapshot } from "@angular/router";
 import { CeAppRunnerService } from "../services/ce-app-runner.service";
 
 @Injectable({
     providedIn: 'root'
 })
-export class CeProjectFormsGuard implements CanActivate {
+export class CeProjectFormsGuard  {
     constructor(private readonly appRunnerService: CeAppRunnerService) { }
 
     async canActivate(route: ActivatedRouteSnapshot): Promise<boolean> {

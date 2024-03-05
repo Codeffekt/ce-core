@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from '@angular/router';
+import { ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 import { MockFormEditorService } from './mock-form-editor.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class FormResolverService implements Resolve<FormWrapper<any>> {
+export class FormResolverService  {
 
     constructor(private mockFormService: MockFormEditorService) { }
 

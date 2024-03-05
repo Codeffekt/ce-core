@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-  Resolve
-} from '@angular/router';
+
 import { AccountSettings } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 import { CeAccountService } from '../services/ce-account.service';
@@ -11,7 +9,7 @@ import { CeAccountService } from '../services/ce-account.service';
  * @see `CeAccountService`
  */
 @Injectable({ providedIn: 'root' })
-export class MembersResolverService implements Resolve<AccountSettings[]> {
+export class MembersResolverService  {
   constructor(
     private accountsService: CeAccountService) {
   }

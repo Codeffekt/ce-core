@@ -1,8 +1,5 @@
 import { Injectable } from '@angular/core';
-import {
-    Router, Resolve, RouterStateSnapshot,
-    ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { CeAppRunnerService } from '../services/ce-app-runner.service';
 import { FormInfo } from '../models';
 import { CeFormInfoBreadcrumbsService } from '../services';
@@ -11,7 +8,7 @@ import { CeFormInfoBreadcrumbsService } from '../services';
  * Similar to project resolver but load masks, styles and queries
  */
 @Injectable({ providedIn: 'root' })
-export class ProjectConfigResolverService implements Resolve<FormInfo> {
+export class ProjectConfigResolverService  {
     constructor(
         private appRunnerService: CeAppRunnerService, 
         private formInfoBreadcrumbs: CeFormInfoBreadcrumbsService,             

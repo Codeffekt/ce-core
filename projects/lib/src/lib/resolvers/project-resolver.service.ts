@@ -1,13 +1,10 @@
 import { Injectable } from '@angular/core';
-import {
-  Router, Resolve, RouterStateSnapshot,
-  ActivatedRouteSnapshot
-} from '@angular/router';
+import { Router, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
 import { FormProjectWrapper } from '@codeffekt/ce-core-data';
 import { CeProjectsService } from '../services/ce-projects.service';
 
 @Injectable({ providedIn: 'root' })
-export class ProjectResolverService implements Resolve<FormProjectWrapper> {
+export class ProjectResolverService  {
   constructor(
     private projectService: CeProjectsService,
     private router: Router) {
