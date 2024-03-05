@@ -5,12 +5,12 @@ import { CeLayoutModule, CeNavigationModule, NavigationItemStoreService } from '
 import { TasksNavComponent } from './tasks-nav/tasks-nav.component';
 import { MatIconModule } from '@angular/material/icon';
 import { NavsRoutingModule } from './navs-routing.module';
-import { MatButtonModule } from '@angular/material/button';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
 import { AppSectionModule } from '../@shared/components/section/section.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
+import { MatLegacyCheckboxModule as MatCheckboxModule } from '@angular/material/legacy-checkbox';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
+import { MatLegacySelectModule as MatSelectModule } from '@angular/material/legacy-select';
 
 @NgModule({
   declarations: [

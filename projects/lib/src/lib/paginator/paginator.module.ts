@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatLegacyPaginatorModule as MatPaginatorModule } from "@angular/material/legacy-paginator";
 import { PaginatorComponent } from "./paginator.component";
 
 @NgModule({

@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-@include mat.all-component-themes($app-theme);
+@include mat.all-legacy-component-themes($app-theme);
 .dark-theme {
-  @include mat.all-component-themes($app-dark-theme);
+  @include mat.all-legacy-component-themes($app-dark-theme);
 }

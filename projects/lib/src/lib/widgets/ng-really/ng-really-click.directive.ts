@@ -1,5 +1,5 @@
 import { Directive, ElementRef, HostListener, Output, Input, EventEmitter } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 @Directive({

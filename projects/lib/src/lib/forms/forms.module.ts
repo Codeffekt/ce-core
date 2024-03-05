@@ -5,7 +5,7 @@ import { NgModule } from '@angular/core';
 import { CePipesModule } from '../pipes/pipes.module';
 import { CE_FORMS_ROUTE_RESOLVER } from './forms-route.resolver';
 import { CeDefaultFormsRouteResolver } from './resolvers/ce-default-forms-route.resolver';
-import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { MAT_LEGACY_FORM_FIELD_DEFAULT_OPTIONS as MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/legacy-form-field';
 
 import { CeLayoutModule } from '../layout';
 import { CeSideMenuModule } from '../side-menu/side-menu.module';

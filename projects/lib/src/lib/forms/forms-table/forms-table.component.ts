@@ -1,5 +1,5 @@
 import { Component, Inject, Input, OnInit, ViewChild } from '@angular/core';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 import { MatSort, Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormInstance, FormRoot } from '@codeffekt/ce-core-data';

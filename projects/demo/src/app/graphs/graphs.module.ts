@@ -4,10 +4,10 @@ import { CommonModule } from '@angular/common';
 import { GraphsRoutingModule } from './graphs-routing.module';
 import { GraphsExampleComponent } from './graphs-example/graphs-example.component';
 import { CeGridModule } from '@codeffekt/ce-core';
-import { MatInputModule } from '@angular/material/input';
+import { MatLegacyInputModule as MatInputModule } from '@angular/material/legacy-input';
 import { FormsModule } from '@angular/forms';
-import { MatButtonModule } from '@angular/material/button';
-import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatLegacyProgressBarModule as MatProgressBarModule } from '@angular/material/legacy-progress-bar';
 
 
 @NgModule({

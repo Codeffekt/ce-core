@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectorRef, Component, ContentChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
-import { MatTable } from '@angular/material/table';
+import { MatLegacyTable as MatTable } from '@angular/material/legacy-table';
 import { FormQuerySortField } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CeFormQueryService } from '../services/ce-form-query.service';

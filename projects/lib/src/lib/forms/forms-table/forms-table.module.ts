@@ -1,9 +1,9 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { MatIconModule } from "@angular/material/icon";
-import { MatPaginatorModule } from "@angular/material/paginator";
+import { MatLegacyPaginatorModule as MatPaginatorModule } from "@angular/material/legacy-paginator";
 import { MatSortModule } from "@angular/material/sort";
-import { MatTableModule } from "@angular/material/table";
+import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
 import { CeFormsPipesModule } from "../../forms-pipes";
 import { FormsTableComponent } from "./forms-table.component";
 

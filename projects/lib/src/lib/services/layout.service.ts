@@ -1,7 +1,7 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Inject, Injectable } from '@angular/core';
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatLegacySnackBar as MatSnackBar, MatLegacySnackBarConfig as MatSnackBarConfig } from '@angular/material/legacy-snack-bar';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CeCoreModuleConfig, CE_CORE_CONFIG } from '../ce-core.config';

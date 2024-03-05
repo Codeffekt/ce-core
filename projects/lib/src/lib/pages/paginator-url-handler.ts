@@ -2,7 +2,7 @@ import { delay, filter, map } from 'rxjs/operators';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { PaginationHandler, PaginationState } from './pagination-handler';
-import { MatPaginator } from '@angular/material/paginator';
+import { MatLegacyPaginator as MatPaginator } from '@angular/material/legacy-paginator';
 
 const MAX_PAGE_SIZE = 50;
 
