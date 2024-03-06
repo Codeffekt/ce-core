@@ -1,4 +1,4 @@
-import { MatLegacySnackBar as MatSnackBar } from "@angular/material/legacy-snack-bar";
+import { MatSnackBar } from "@angular/material/snack-bar";
 import dayjs from 'dayjs';
 import calendar from 'dayjs/plugin/calendar';
 import curstomParseFormat from 'dayjs/plugin/customParseFormat';

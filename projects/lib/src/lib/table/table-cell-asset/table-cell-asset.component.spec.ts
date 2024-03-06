@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TableCellAssetComponent } from './table-cell-asset.component';
 
 describe('TableCellAssetComponent', () => {
@@ -8,7 +7,7 @@ describe('TableCellAssetComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableCellAssetComponent ]
+      declarations: [ TableCellAssetComponent ],      
     })
     .compileComponents();
   });
@@ -16,6 +15,9 @@ describe('TableCellAssetComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TableCellAssetComponent);
     component = fixture.componentInstance;
+    component.block = {
+      field: 'image'
+    };
     fixture.detectChanges();
   });
 

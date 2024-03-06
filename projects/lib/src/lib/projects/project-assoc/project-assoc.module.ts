@@ -20,10 +20,10 @@ import { NavigationItemStoreService } from '../../navigation/navigation-item-fac
 import { FormBlock, FormWrapper } from '@codeffekt/ce-core-data';
 import { ProjectAssocNavComponent } from './project-assoc-nav/project-assoc-nav.component';
 import { MatIconModule } from '@angular/material/icon';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
-import { MatLegacyTooltipModule as MatTooltipModule } from '@angular/material/legacy-tooltip';
 import { FormActionService } from '../../forms/form/actions/form-action.service';
 import { FormActionBuilder } from '../../forms/form/actions/form-action-builder';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @NgModule({
   declarations: [

@@ -3,9 +3,9 @@ import { NgModule } from "@angular/core";
 
 import { NgReallyClickDirective } from './ng-really-click.directive';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDialogModule } from "@angular/material/dialog";
 import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyDialogModule as MatDialogModule } from "@angular/material/legacy-dialog";
 
 @NgModule({
     declarations: [

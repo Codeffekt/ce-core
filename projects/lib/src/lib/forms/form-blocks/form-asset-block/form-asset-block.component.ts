@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AssetElt } from '@codeffekt/ce-core-data';
 import { PhotoPickerComponent } from '../../form/photo-picker/photo-picker.component';
 import { FormBlockComponent } from '../form-block/form-block.component';

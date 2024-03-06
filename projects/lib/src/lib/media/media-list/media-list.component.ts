@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { firstValueFrom, Observable } from 'rxjs';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
 import { AssetImportComponent, AssetImportConfig } from '../asset-import/asset-import.component';
 import { CeFormQueryService } from '../../services/ce-form-query.service';

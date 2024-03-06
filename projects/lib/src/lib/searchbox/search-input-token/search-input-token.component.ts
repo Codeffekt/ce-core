@@ -2,7 +2,7 @@ import { CdkConnectedOverlay, CdkOverlayOrigin, Overlay, OverlayRef } from '@ang
 import { TemplatePortal } from '@angular/cdk/portal';
 import { AfterViewInit, Component, ElementRef, EventEmitter, Input, OnChanges, OnDestroy, Output, SimpleChanges, TemplateRef, ViewChild, ViewContainerRef } from '@angular/core';
 import { UntypedFormControl } from '@angular/forms';
-import { MatLegacyInput as MatInput } from '@angular/material/legacy-input';
+import { MatInput } from '@angular/material/input';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { SearchHint } from '../model/search-hint';
 import { SearchHintService } from '../services/search-hint.service';

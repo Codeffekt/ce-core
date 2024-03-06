@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
+import { AfterViewInit, Component, ComponentRef, Input, OnInit, ViewChild, ViewContainerRef, forwardRef } from '@angular/core';
 import { ControlContainer, ControlValueAccessor, FormControlDirective, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { FormBlock, FormInstance } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
@@ -10,7 +10,7 @@ import { FormBlockComponentAccessor } from '../form-block/form-block.component';
   templateUrl: './form-block-factory.component.html',
   providers: [{
     provide: NG_VALUE_ACCESSOR,
-    useValue: FormBlockFactoryComponent,
+    useExisting: forwardRef(() => FormBlockFactoryComponent),
     multi: true
   }],
   styleUrls: ['./form-block-factory.component.scss']

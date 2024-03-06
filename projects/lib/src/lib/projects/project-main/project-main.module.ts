@@ -8,7 +8,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { CeSideMenuModule } from '../../side-menu';
 import { MatIconModule } from '@angular/material/icon';
 import { PortalModule } from '@angular/cdk/portal';
-import { MatLegacyButtonModule as MatButtonModule } from '@angular/material/legacy-button';
+import { MatButtonModule } from '@angular/material/button';
 import { CeProjectMainComponentModule } from './project-main/project-main-component.module';
 import { CeLayoutModule } from '../../layout';
 

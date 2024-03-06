@@ -21,15 +21,15 @@ import { FormBlockFieldHeaderComponent } from './form-block-field/form-block-fie
 import { FormBlockFieldTitleComponent } from './form-block-field/form-block-field-title/form-block-field-title.component';
 
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
-import { MatLegacyAutocompleteModule as MatAutocompleteModule } from "@angular/material/legacy-autocomplete";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
-import { MatLegacyCheckboxModule as MatCheckboxModule } from "@angular/material/legacy-checkbox";
-import { MatLegacyFormFieldModule as MatFormFieldModule } from "@angular/material/legacy-form-field";
+import { MatAutocompleteModule } from "@angular/material/autocomplete";
+import { MatButtonModule } from "@angular/material/button";
+import { MatCheckboxModule } from "@angular/material/checkbox";
+import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
-import { MatLegacyMenuModule as MatMenuModule } from "@angular/material/legacy-menu";
-import { MatLegacySelectModule as MatSelectModule } from "@angular/material/legacy-select";
-import { MatLegacyTableModule as MatTableModule } from "@angular/material/legacy-table";
+import { MatInputModule } from "@angular/material/input";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatSelectModule } from "@angular/material/select";
+import { MatTableModule } from "@angular/material/table";
 import { CeFormQueryWrapperModule } from "../../formquery-wrapper";
 import { CeFormsPipesModule } from "../../forms-pipes";
 import { CeLayoutModule } from "../../layout";

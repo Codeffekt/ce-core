@@ -40,7 +40,7 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
       this.rebuildOnChanges ||
       oldId !== this._formWrapper?.core.id
     ) {
-      this.formInstance = this.formMaskBuilder.build(<FormInstance>(this._formWrapper?.core), this.formMask);
+      this.formInstance = this.formMaskBuilder.build(<FormInstance>(this._formWrapper?.core), this.formMask);      
       this.buildCards();
       this.buildForm();
       this.updateCSSClassNames();

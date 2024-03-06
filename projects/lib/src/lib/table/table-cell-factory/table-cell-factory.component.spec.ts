@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { TableCellFactoryComponent } from './table-cell-factory.component';
 
 describe('TableCellFactoryComponent', () => {
@@ -8,7 +7,7 @@ describe('TableCellFactoryComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TableCellFactoryComponent ]
+      declarations: [ TableCellFactoryComponent ],      
     })
     .compileComponents();
   });
@@ -16,6 +15,10 @@ describe('TableCellFactoryComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TableCellFactoryComponent);
     component = fixture.componentInstance;
+    component.block = {
+      field: 'image',
+      type: 'asset'
+    };
     fixture.detectChanges();
   });
 

@@ -6,7 +6,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
 import { FormAssocDatasource } from '../../form-datasource/form-assoc.datasource';
 import { FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormQueryAssocBuilder } from '../../forms-query/formquery-assoc.builder';
-import { MatLegacyDialog as MatDialog } from '@angular/material/legacy-dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
 import { CeFormsService } from '../../../services';

@@ -3,10 +3,6 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { ReactiveFormsModule } from "@angular/forms";
 import { MatMomentDateModule } from "@angular/material-moment-adapter";
-import { MatLegacyButtonModule as MatButtonModule } from "@angular/material/legacy-button";
-import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatIconModule } from "@angular/material/icon";
-import { MatLegacyInputModule as MatInputModule } from "@angular/material/legacy-input";
 import { CeLayoutModule } from "../layout/layout.module";
 import { CeIconModule } from "../widgets";
 import { SearchAuthorHintBuilder } from "./search-hint-builder/builders/search-author-hint.builder";
@@ -23,6 +19,10 @@ import { SearchTokenComponent } from "./search-token/search-token.component";
 import { SearchboxComponent } from "./searchbox.component";
 import { SearchHintTimestampWidgetComponent } from './search-hint-widgets/search-hint-timestamp-widget/search-hint-timestamp-widget.component';
 import { SearchHintWidgetFactoryService } from "./services/search-hint-widget-factory.service";
+import { MatButtonModule } from "@angular/material/button";
+import { MatDatepickerModule } from "@angular/material/datepicker";
+import { MatIconModule } from "@angular/material/icon";
+import { MatInputModule } from "@angular/material/input";
 
 @NgModule({
     declarations: [
