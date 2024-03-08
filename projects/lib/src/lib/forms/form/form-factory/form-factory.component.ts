@@ -8,7 +8,7 @@ import {
 import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { Subscription } from 'rxjs';
 import { IFormContent } from '../form-models';
-import { FormActionService } from '../actions/form-action.service';
+import { FormActionRenderService } from '../actions/form-action-render.service';
 
 @Component({
   selector: 'ce-form-factory',
@@ -55,9 +55,8 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   private formComponentSubscriptions: Subscription;
   private lastComponentType: Type<any>;
 
-  constructor(
-    /* private formStoreService: CeFormStoreService, */
-    private formActionService: FormActionService,
+  constructor(    
+    private formActionService: FormActionRenderService,
   ) { }
 
   ngOnInit(): void {

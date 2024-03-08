@@ -9,5 +9,7 @@ export * from './form-controls.builder';
 export * from './form-models';
 export * from './form-new/form-new.component';
 export * from './form-new-factory/form-new-factory.component';
+export * from './form-menu/form-menu.component';
+export * from './form-topbar/form-topbar.component';
 export * from './actions';
 export * from './form.module';

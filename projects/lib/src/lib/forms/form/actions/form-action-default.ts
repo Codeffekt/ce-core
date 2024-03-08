@@ -4,7 +4,8 @@ import { CeFormComponent } from "../form.component";
 import { CeFormsService } from "../../../services/ce-forms.service";
 import { FormInstance, IndexType } from "@codeffekt/ce-core-data";
 import { FormNewComponent } from "../form-new/form-new.component";
-
+import { FormMenuComponent } from "../form-menu/form-menu.component";
+import { FormTopbarComponent } from "../form-topbar/form-topbar.component";
 @Injectable({ providedIn: 'root' })
 export class FormActionDefault implements FormAction {
 
@@ -39,5 +40,13 @@ export class FormActionDefault implements FormAction {
 
     builder(): Type<any> {
         return FormNewComponent;
+    }
+
+    menu(): Type<any> {
+        return FormMenuComponent;
+    }
+
+    topbar(): Type<any> {
+        return FormTopbarComponent;
     }
 }

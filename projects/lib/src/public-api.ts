@@ -34,3 +34,4 @@ export * from './lib/form-input-autocomplete';
 export * from './lib/account';
 export * from './lib/section';
 export * from './lib/searchbox';
+export * from './lib/local';

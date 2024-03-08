@@ -22,6 +22,9 @@ import { FormNewComponent } from "./form-new/form-new.component";
 import { FormNewFactoryComponent } from "./form-new-factory/form-new-factory.component";
 import { FormActionService } from "./actions/form-action.service";
 import { FormActionDefault } from "./actions/form-action-default";
+import { FormMenuComponent } from './form-menu/form-menu.component';
+import { FormTopbarComponent } from './form-topbar/form-topbar.component';
+import { CeNavigationModule } from "../../navigation/navigation.module";
 
 @NgModule({
     declarations: [
@@ -31,7 +34,9 @@ import { FormActionDefault } from "./actions/form-action-default";
         FormSubformTitleComponent,
         FormNewComponent,
         FormNewFactoryComponent,
-        CeFormFactoryComponent
+        CeFormFactoryComponent,
+        FormMenuComponent,
+        FormTopbarComponent
     ],
     imports: [
         CommonModule,
@@ -44,6 +49,7 @@ import { FormActionDefault } from "./actions/form-action-default";
         CeFormQueryWrapperModule,
         CeTableModule,
         CeLayoutModule,
+        CeNavigationModule,
         CeFormsPipesModule,
         CePaginatorModule,
         CeMediaPhotoModule,

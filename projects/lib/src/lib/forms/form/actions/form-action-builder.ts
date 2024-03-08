@@ -16,8 +16,16 @@ export class FormActionBuilder implements FormAction {
         return builder;
     }
 
+    static withMenu(component: Type<any>) {
+        const builder = new FormActionBuilder();
+        builder.setMenu(component);
+        return builder;
+    }
+
     private renderComponent: Type<any>;
     private builderComponent: Type<any>;
+    private menuComponent: Type<any>;
+    private topbarComponent: Type<any>;
 
     constructor() {
     }
@@ -50,6 +58,14 @@ export class FormActionBuilder implements FormAction {
         return this.builderComponent;
     }
 
+    menu(): Type<any> {
+        return this.menuComponent;
+    }
+
+    topbar(): Type<any> {
+        return this.topbarComponent;
+    }
+
     setRender(component: Type<any>) {
         this.renderComponent = component;
         return this;
@@ -57,6 +73,16 @@ export class FormActionBuilder implements FormAction {
 
     setBuilder(component: Type<any>) {
         this.builderComponent = component;
+        return this;
+    }
+
+    setMenu(component: Type<any>) {
+        this.menuComponent = component;
+        return this;
+    }
+
+    setTopbar(component: Type<any>) {
+        this.topbarComponent = component;
         return this;
     }
 }

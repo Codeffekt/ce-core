@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormInstance, FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
@@ -7,6 +7,9 @@ import { FormInstance, FormWrapper } from '@codeffekt/ce-core-data';
   styleUrls: ['./introduction.component.scss']
 })
 export class IntroductionComponent implements OnInit {
+
+  @Input() formWrapper: FormWrapper;
+  @Output() formChanges = new EventEmitter<FormWrapper>();
 
   exampleFormInstance: FormInstance = {
     id: "example",

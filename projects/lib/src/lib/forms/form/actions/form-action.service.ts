@@ -42,4 +42,14 @@ export class FormActionService {
         const action = this.getActionFromRoot(root);
         return action?.builder() ?? this.defaultAction?.builder();
     }
+
+    getMenuFromForm(form: FormInstance) {
+        const action = this.getActionFromForm(form);
+        return action?.menu() ?? this.defaultAction?.menu();
+    }
+
+    getTopbarFromForm(form: FormInstance) {
+        const action = this.getActionFromForm(form);
+        return action?.topbar() ?? this.defaultAction?.topbar();
+    }
 }

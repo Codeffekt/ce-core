@@ -1,9 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home.component';
-import { AuthGuard } from '@codeffekt/ce-core';
-import { ExamplesMainComponent } from './examples-main/examples-main.component';
-import { CeFormsPresentationComponent } from './ce-forms-presentation/ce-forms-presentation.component';
+import { AuthGuard, CeFormEditorComponent, FormEditorResolverService } from '@codeffekt/ce-core';
+// import { ExamplesMainComponent } from './examples-main/examples-main.component';
 
 const routes: Routes = [
   {
@@ -14,10 +13,9 @@ const routes: Routes = [
         path: '',
         redirectTo: 'docs',
         pathMatch: 'full'
-      },      
+      },
       {
         path: 'docs',
-        component: ExamplesMainComponent,
         children: [
           {
             path: '',
@@ -26,7 +24,20 @@ const routes: Routes = [
           },
           {
             path: 'quickstart',
-            loadChildren: () => import('../quickstart/quickstart.module').then(m => m.QuickstartModule),
+            children: [
+              {
+                path: '',
+                redirectTo: 'quickstart-introduction',
+                pathMatch: 'full'
+              },
+              {
+                path: ':form',
+                resolve: {
+                  form: FormEditorResolverService,
+                },
+                component: CeFormEditorComponent,
+              },
+            ]
           },
           {
             path: 'form',
@@ -58,26 +69,26 @@ const routes: Routes = [
           },
         ]
       },
-      {
-        path: 'projects',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('../projects/projects.module').then(m => m.ProjectsModule)
-      }, 
-      {
-        path: 'assets',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('../assets/assets.module').then(m => m.AssetsModule)
-      },
-      {
-        path: 'apps',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('../apps/apps.module').then(m => m.AppsModule)
-      },    
-      {
-        path: 'myforms',
-        canActivate: [AuthGuard],
-        loadChildren: () => import('../my-forms/my-forms.module').then(m => m.MyFormsModule)
-      }
+      /*      {
+             path: 'projects',
+             canActivate: [AuthGuard],
+             loadChildren: () => import('../projects/projects.module').then(m => m.ProjectsModule)
+           }, 
+           {
+             path: 'assets',
+             canActivate: [AuthGuard],
+             loadChildren: () => import('../assets/assets.module').then(m => m.AssetsModule)
+           },
+           {
+             path: 'apps',
+             canActivate: [AuthGuard],
+             loadChildren: () => import('../apps/apps.module').then(m => m.AppsModule)
+           },    
+           {
+             path: 'myforms',
+             canActivate: [AuthGuard],
+             loadChildren: () => import('../my-forms/my-forms.module').then(m => m.MyFormsModule)
+           } */
     ]
   },
 

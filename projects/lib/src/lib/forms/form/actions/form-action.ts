@@ -9,6 +9,8 @@ export interface FormAction<T = any> {
     copy(): void;
     render(): Type<any>;
     builder(): Type<any>;
+    menu(): Type<any>;
+    topbar(): Type<any>;
 }
 
 export interface FormActions {

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
   selector: 'app-ce-admin',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./ce-admin.component.scss']
 })
 export class CeAdminComponent implements OnInit {
+
+  @Input() formWrapper: FormWrapper;
+  @Output() formChanges = new EventEmitter<FormWrapper>();
 
   appModuleStr = `
 import { NgModule } from '@angular/core';

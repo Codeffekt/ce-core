@@ -52,6 +52,7 @@ import { NavigationBreadcrumbItemComponent } from './navigation-breadcrumb-item/
     NavigationBreadcrumbItemsComponent,
     NavigationActionsComponent,
     NavigationBarContentComponent,
+    NavigationItemDefaultComponent,
   ]
 })
 export class CeNavigationModule { }

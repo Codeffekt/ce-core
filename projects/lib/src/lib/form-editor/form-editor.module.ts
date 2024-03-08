@@ -6,10 +6,14 @@ import { CeFormsModule } from "../forms";
 import { CeLayoutModule } from "../layout/layout.module";
 import { CeNavigationModule } from "../navigation/navigation.module";
 import { CeFormEditorComponent } from "./form-editor.component";
+import { CeFormEditorMenuComponent } from './form-editor-menu/form-editor-menu.component';
+import { CeFormEditorTopbarComponent } from './form-editor-topbar/form-editor-topbar.component';
 
 @NgModule({
     declarations: [
-        CeFormEditorComponent
+        CeFormEditorComponent,
+        CeFormEditorMenuComponent,
+        CeFormEditorTopbarComponent
     ],
     imports: [
         CommonModule,
@@ -20,7 +24,9 @@ import { CeFormEditorComponent } from "./form-editor.component";
         CeFormsModule,
     ],
     exports: [
-        CeFormEditorComponent,
+        CeFormEditorComponent,   
+        CeFormEditorMenuComponent, 
+        CeFormEditorTopbarComponent,    
     ]
 })
 export class CeFormEditorModule {}

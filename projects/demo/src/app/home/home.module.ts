@@ -5,21 +5,24 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { CeFormDataService, CeLayoutModule, CeNavigationModule, CeSideMenuModule } from '@codeffekt/ce-core';
+import {
+  CeFormDataService, CeFormEditorModule, 
+  CeFormsModule, CeLayoutModule,
+  CeNavigationModule, CeSideMenuModule
+} from '@codeffekt/ce-core';
 import { MockApiService } from '../api/mock-api.service';
 import { AppConfigSelectComponent } from './app-config-select/app-config-select.component';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
-import { ExamplesMainComponent } from './examples-main/examples-main.component';
 import { CeFormsPresentationComponent } from './ce-forms-presentation/ce-forms-presentation.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { QuickstartModule } from '../quickstart/quickstart.module';
 
 @NgModule({
   declarations: [
     HomeComponent,
     AppConfigSelectComponent,
-    ExamplesMainComponent,
     CeFormsPresentationComponent,
   ],
   imports: [
@@ -33,14 +36,18 @@ import { CeFormsPresentationComponent } from './ce-forms-presentation/ce-forms-p
     MatFormFieldModule,
     MatSelectModule,
     CeNavigationModule,
+    CeLayoutModule,
+    CeFormsModule,
+    CeFormEditorModule,
     CeSideMenuModule,
-    CeLayoutModule
+    QuickstartModule,
   ],
   providers: [
     {
       provide: CeFormDataService,
       useClass: MockApiService
     },
-  ],
+  ]
 })
-export class HomeModule { }
+export class HomeModule {
+}

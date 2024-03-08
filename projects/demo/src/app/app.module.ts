@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CeAuthModule, CeCoreModule, CE_APP_CONFIG } from '@codeffekt/ce-core';
+import { CeAuthModule, CeCoreModule, CE_APP_CONFIG, CeFormsService, FormsLocalService } from '@codeffekt/ce-core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
@@ -38,6 +38,10 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
           html: () => import('highlight.js/lib/languages/xml'),
         },
       }
+    },
+    {
+      provide: CeFormsService,
+      useClass: FormsLocalService,
     },
   ],
   bootstrap: [AppComponent]
