@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { BreadcrumbItem, CeBreadcrumbsService, CeFormEditorService, LayoutService } from '../../services';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { Router } from '@angular/router';
@@ -11,15 +11,17 @@ import { FormInfo, isFormInfo } from '../../models';
 })
 export class NavigationBreadcrumbItemsComponent implements OnInit {
 
+  private breadcrumbService = inject(CeBreadcrumbsService);
+  
   items$ = this.breadcrumbService.items$.asObservable();
   activeItem$ = this.breadcrumbService.activeItem$;
 
   constructor(
-    private layoutService: LayoutService,
-    private breadcrumbService: CeBreadcrumbsService,       
+    private layoutService: LayoutService,    
     private formEditorService: CeFormEditorService,
     private router: Router,
-  ) { }
+  ) {     
+  }
 
   ngOnInit(): void {
     this.observeResponsiveModeChanges();

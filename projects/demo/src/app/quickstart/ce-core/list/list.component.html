@@ -1,0 +1,10 @@
+<h3>Lister des formulaires</h3>
+
+<ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="true">
+    <ce-list>
+        <ce-list-item *ngFor="let form of forms$ | async">
+            <ce-list-item-factory [type]="form.core.root" [item]="form">
+            </ce-list-item-factory>          
+        </ce-list-item>            
+    </ce-list>
+</ce-formquery-wrapper>

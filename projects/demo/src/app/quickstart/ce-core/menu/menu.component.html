@@ -1,0 +1,17 @@
+<ce-side-menu title="Ce-Core Démo" logo="assets/app_logo.png">
+    <ce-side-menu-content>
+        <ce-side-menu-list>
+            <ce-side-menu-item label="Introduction" [routerLink]="['docs', 'quickstart', 'quickstart-introduction']"></ce-side-menu-item>
+            <ce-side-menu-header>Rendu ce-core</ce-side-menu-header>
+            <ce-side-menu-item routerLinkActive="active" [routerLink]="['docs', 'quickstart', 'ce-core-installation']"
+                label="Installation">
+            </ce-side-menu-item>  
+            <ce-side-menu-item routerLinkActive="active" [routerLink]="['docs', 'quickstart', 'ce-core-list']"
+            label="Lister les formulaires">
+        </ce-side-menu-item>                      
+        </ce-side-menu-list>                
+    </ce-side-menu-content>
+    <ce-side-menu-footer>
+        <div class="mat-caption text-light text-center">1.0.0</div>
+    </ce-side-menu-footer>
+</ce-side-menu>

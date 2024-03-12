@@ -16,7 +16,7 @@ import { SearchTokensLabelService } from './services/search-tokens-label.service
 import { SearchTokensQueryService } from './services/search-tokens-query.service';
 import { SearchTokensService } from './services/search-tokens-service';
 import { SearchTokenUtils } from './search-token';
-import { map, startWith } from 'rxjs';
+import { Observable, map, startWith } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -45,16 +45,19 @@ export class SearchboxComponent<T = any> implements OnDestroy {
   @Input() debounceTime = 1000;
   @Input() placeholder: string;
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
-  searchDisabled$ = this.tokensService.tokensValues().pipe(
-    startWith(this.tokensService.getTokens()),
-    map(tokens => !tokens.length));
+  searchDisabled$: Observable<boolean>;
 
   constructor(
     private queryService: CeFormQueryService<T>,
     private searchHintService: SearchHintService,
     private searchTokensQueryService: SearchTokensQueryService,
     private tokensService: SearchTokensService
-  ) { }
+  ) { 
+    this.searchDisabled$ = this.tokensService.tokensValues().pipe(
+      startWith(this.tokensService.getTokens()),
+      map(tokens => !tokens.length));
+
+  }
 
   ngOnDestroy(): void {
     this.searchHintService.destroy();
