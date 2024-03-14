@@ -11,6 +11,7 @@ export interface FormAction<T = any> {
     builder(): Type<any>;
     menu(): Type<any>;
     topbar(): Type<any>;
+    toolbar(): Type<any>;
 }
 
 export interface FormActions {

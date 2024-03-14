@@ -10,7 +10,7 @@ import { FormInfo } from "../models/form-info";
 import { CeAppService } from "./ce-app.service";
 import { CeCoreService } from "./ce-core.service";
 import { CeProjectsService } from "./ce-projects.service";
-import { CeFormsService } from "./ce-forms.service";
+import { FormsProxyLocalService } from "../local/forms-proxy-local.service";
 
 @Injectable({ providedIn: 'root' })
 export class CeFormInfosService {
@@ -21,7 +21,7 @@ export class CeFormInfosService {
         private projectService: CeProjectsService,
         private apiService: CeCoreService,
         private appService: CeAppService,
-        private formsService: CeFormsService,
+        private formsService: FormsProxyLocalService,
     ) { }
 
 

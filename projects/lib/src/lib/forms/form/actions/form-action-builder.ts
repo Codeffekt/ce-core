@@ -26,6 +26,7 @@ export class FormActionBuilder implements FormAction {
     private builderComponent: Type<any>;
     private menuComponent: Type<any>;
     private topbarComponent: Type<any>;
+    private toolbarComponent: Type<any>;
 
     constructor() {
     }
@@ -66,6 +67,10 @@ export class FormActionBuilder implements FormAction {
         return this.topbarComponent;
     }
 
+    toolbar(): Type<any> {
+        return this.toolbarComponent;
+    }
+
     setRender(component: Type<any>) {
         this.renderComponent = component;
         return this;
@@ -83,6 +88,11 @@ export class FormActionBuilder implements FormAction {
 
     setTopbar(component: Type<any>) {
         this.topbarComponent = component;
+        return this;
+    }
+
+    setToolbar(component: Type<any>) {
+        this.toolbarComponent = component;
         return this;
     }
 }

@@ -52,4 +52,9 @@ export class FormActionService {
         const action = this.getActionFromForm(form);
         return action?.topbar() ?? this.defaultAction?.topbar();
     }
+
+    getToolbarFromForm(form: FormInstance) {
+        const action = this.getActionFromForm(form);
+        return action?.toolbar() ?? this.defaultAction?.toolbar();
+    }
 }

@@ -9,6 +9,10 @@ export class FormsLocalService {
     constructor(private db: FormsLocalDatabaseService) {
     }
 
+    hasForm(id: IndexType): boolean {
+        return this.db.getForm(id) !== undefined;
+    }
+
     getRawFormQuery(id: IndexType, query?: FormQuery): Observable<FormInstance | FormInstanceExt> {
         return of(this.db.getForm(id));
     }

@@ -6,6 +6,7 @@ import { FormInstance, IndexType } from "@codeffekt/ce-core-data";
 import { FormNewComponent } from "../form-new/form-new.component";
 import { FormMenuComponent } from "../form-menu/form-menu.component";
 import { FormTopbarComponent } from "../form-topbar/form-topbar.component";
+import { FormToolbarComponent } from "../form-toolbar/form-toolbar.component";
 @Injectable({ providedIn: 'root' })
 export class FormActionDefault implements FormAction {
 
@@ -48,5 +49,9 @@ export class FormActionDefault implements FormAction {
 
     topbar(): Type<any> {
         return FormTopbarComponent;
+    }
+
+    toolbar(): Type<any> {
+        return FormToolbarComponent;
     }
 }

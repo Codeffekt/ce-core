@@ -25,6 +25,8 @@ import { FormActionDefault } from "./actions/form-action-default";
 import { FormMenuComponent } from './form-menu/form-menu.component';
 import { FormTopbarComponent } from './form-topbar/form-topbar.component';
 import { CeNavigationModule } from "../../navigation/navigation.module";
+import { FormToolbarComponent } from './form-toolbar/form-toolbar.component';
+import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
 
 @NgModule({
     declarations: [
@@ -36,7 +38,8 @@ import { CeNavigationModule } from "../../navigation/navigation.module";
         FormNewFactoryComponent,
         CeFormFactoryComponent,
         FormMenuComponent,
-        FormTopbarComponent
+        FormTopbarComponent,
+        FormToolbarComponent
     ],
     imports: [
         CommonModule,
@@ -55,6 +58,7 @@ import { CeNavigationModule } from "../../navigation/navigation.module";
         CeMediaPhotoModule,
         CeFormBlocksModule,
         CeFormCardModule,
+        CeEditTimeModule,
     ],
     exports: [
         CeFormComponent,
