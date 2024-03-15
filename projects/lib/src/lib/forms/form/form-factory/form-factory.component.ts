@@ -76,12 +76,16 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
 
     if (!this.formComponent) {
       this.createComponent(componentRoot);
-    } else if(this.lastComponentType !== this.formComponent.componentType) {
+    } else if(!this.isSameComponentType(this.lastComponentType, componentRoot)) {
       this.recreateComponent(componentRoot);
     } else {
       this.connectInputs(this.formComponent.instance);
       this.formComponent.changeDetectorRef.detectChanges();
     }
+  }
+
+  private isSameComponentType(prev: Type<any>, form: FormInstance) {
+    return prev === this.formActionService.getRenderFromForm(form);
   }
 
   private recreateComponent(form: FormInstance) {

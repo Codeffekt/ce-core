@@ -69,13 +69,10 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
     ]
 })
 export class CeFormModule {
-    constructor(
-        /* formStore: CeFormStoreService, */
+    constructor(        
         formActions: FormActionService,
         formActionDefault: FormActionDefault,
     ) {
-        formActions.setDefaultAction(formActionDefault);
-        /* formStore.setDefaultRenderer(CeFormComponent);
-        formStore.setDefaultBuilder(FormNewComponent); */
+        formActions.setDefaultAction(formActionDefault);        
     }
 }

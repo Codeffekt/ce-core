@@ -1,10 +1,8 @@
-import { Component, Injectable, Type } from '@angular/core';
+import { Component, Injectable, Type, inject } from '@angular/core';
 import { FormInstance } from '@codeffekt/ce-core-data';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormActionService } from '../../forms/form/actions/form-action.service';
 import { FormActionRenderService } from '../../forms/form/actions/form-action-render.service';
 import { CeFormEditorService } from '../../services/ce-form-editor.service';
-import { FormInfo } from '../../models';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionTopbarService {
@@ -18,7 +16,6 @@ export class FormActionTopbarService {
   }
 }
 
-@UntilDestroy()
 @Component({
   selector: 'ce-form-editor-topbar',
   templateUrl: './form-editor-topbar.component.html',
@@ -30,30 +27,6 @@ export class FormActionTopbarService {
     }
   ]
 })
-export class CeFormEditorTopbarComponent {
-  formInfos: FormInfo[] = [];
-  parentFormInfo!: FormInfo;
-
-  constructor(
-    private formEditorService: CeFormEditorService,
-  ) {
-    this.listenToFormInfo();
-  }
-
-  private updateFormInfo(formInfo: FormInfo) {
-    this.parentFormInfo = formInfo;
-
-    this.formInfos = [
-      formInfo,
-    ];
-  }
-
-  private async listenToFormInfo() {
-
-    this.formEditorService.onFormInfo().pipe(
-      untilDestroyed(this)
-    ).subscribe(formInfo => this.updateFormInfo(formInfo));
-
-  }
-
+export class CeFormEditorTopbarComponent {  
+  currentForm$ = inject(CeFormEditorService).onFormInfo();  
 }

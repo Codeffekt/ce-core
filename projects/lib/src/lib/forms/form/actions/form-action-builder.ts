@@ -22,6 +22,12 @@ export class FormActionBuilder implements FormAction {
         return builder;
     }
 
+    static withToolbar(component: Type<any>) {
+        const builder = new FormActionBuilder();
+        builder.setToolbar(component);
+        return builder;
+    }
+
     private renderComponent: Type<any>;
     private builderComponent: Type<any>;
     private menuComponent: Type<any>;

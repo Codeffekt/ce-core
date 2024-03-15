@@ -1,12 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
-import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CeFormUpdaterService } from '../forms/form-updater.service';
-import { ActivatedRoute } from '@angular/router';
 import { FormWrapperChangeNotifier } from '../models/FormWrapperChangeNotifier';
 import { CeFormEditorService, CeFormInfoBreadcrumbsService, CeFormsChangesService } from '../services';
 import { FormInfo } from '../models/form-info';
-@UntilDestroy()
 @Component({
   selector: 'ce-form-editor',
   templateUrl: './form-editor.component.html',
@@ -14,20 +11,18 @@ import { FormInfo } from '../models/form-info';
 })
 export class CeFormEditorComponent implements OnInit {
 
+  currentForm$ = inject(CeFormEditorService).onFormInfo();
   formInfos: FormInfo[] = [];
   parentFormInfo!: FormInfo;
 
   constructor(
-    private route: ActivatedRoute,
     private formUpdaterService: CeFormUpdaterService,
-    private formEditorService: CeFormEditorService,
     private formInfoBreadcrumbs: CeFormInfoBreadcrumbsService,
     private changesService: CeFormsChangesService,
-  ) {
-    this.listenToFormInfo();
+  ) {   
   }
 
-  ngOnInit(): void {
+  ngOnInit(): void {    
   }
 
   async onFormChanges(formInfo: FormInfo, wrapper: FormWrapper) {
@@ -47,22 +42,5 @@ export class CeFormEditorComponent implements OnInit {
     }))
       .filter(elt => elt.formInfo !== undefined)
       .forEach(elt => elt.formInfo.form = elt.update.wrapper.weakClone());
-  }
-
-  private updateFormInfo(formInfo: FormInfo) {
-    this.parentFormInfo = formInfo;
-
-    this.formInfos = [
-      formInfo,
-    ];
-  }
-
-  private async listenToFormInfo() {
-
-    this.formEditorService.onFormInfo().pipe(
-      untilDestroyed(this)
-    ).subscribe(formInfo => this.updateFormInfo(formInfo));
-
-  }
-
+  } 
 }
