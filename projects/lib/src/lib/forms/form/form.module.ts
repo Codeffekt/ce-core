@@ -20,8 +20,6 @@ import { PhotoPickerComponent } from './photo-picker/photo-picker.component';
 import { CeFormFactoryComponent } from './form-factory/form-factory.component';
 import { FormNewComponent } from "./form-new/form-new.component";
 import { FormNewFactoryComponent } from "./form-new-factory/form-new-factory.component";
-import { FormActionService } from "./actions/form-action.service";
-import { FormActionDefault } from "./actions/form-action-default";
 import { FormMenuComponent } from './form-menu/form-menu.component';
 import { FormTopbarComponent } from './form-topbar/form-topbar.component';
 import { CeNavigationModule } from "../../navigation/navigation.module";
@@ -68,11 +66,5 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
         PhotoPickerComponent,
     ]
 })
-export class CeFormModule {
-    constructor(        
-        formActions: FormActionService,
-        formActionDefault: FormActionDefault,
-    ) {
-        formActions.setDefaultAction(formActionDefault);        
-    }
+export class CeFormModule {    
 }

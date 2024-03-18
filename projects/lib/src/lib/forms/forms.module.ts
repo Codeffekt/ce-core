@@ -1,6 +1,5 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
-// import { NgxFilesizeModule } from 'ngx-filesize';
 
 import { CePipesModule } from '../pipes/pipes.module';
 import { CE_FORMS_ROUTE_RESOLVER } from './forms-route.resolver';
@@ -14,19 +13,19 @@ import { CeFormCardModule } from './form-card';
 import { CeFormsTableModule } from './forms-table';
 import { CeFormModule } from './form/form.module';
 @NgModule({
-  declarations: [             
+  declarations: [
   ],
   imports: [
-    CommonModule,   
+    CommonModule,
     CeFormBlocksModule,
     CeFormCardModule,
     CeFormsTableModule,
     CeFormModule,
-    CePipesModule,   
+    CePipesModule,
     CeSideMenuModule,
     CeLayoutModule
   ],
-  exports: [       
+  exports: [
     CeFormBlocksModule,
     CeFormCardModule,
     CeFormsTableModule,
@@ -43,5 +42,6 @@ import { CeFormModule } from './form/form.module';
   ]
 })
 export class CeFormsModule {
-  
+  constructor() {    
+  }
 }

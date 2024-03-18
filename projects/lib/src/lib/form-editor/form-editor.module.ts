@@ -2,7 +2,7 @@ import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { CeEditTimeModule } from "../widgets/edit-time/edit-time.module";
 import { CeFeatureBarModule } from "../widgets/feature-bar/feature-bar.module";
-import { CeFormsModule } from "../forms";
+import { CeFormModule } from "../forms/form/form.module";
 import { CeLayoutModule } from "../layout/layout.module";
 import { CeNavigationModule } from "../navigation/navigation.module";
 import { CeFormEditorComponent } from "./form-editor.component";
@@ -23,7 +23,7 @@ import { CeFormEditorToolbarComponent } from './form-editor-toolbar/form-editor-
         CeEditTimeModule,
         CeLayoutModule,
         CeNavigationModule,
-        CeFormsModule,
+        CeFormModule,
     ],
     exports: [
         CeFormEditorComponent,   

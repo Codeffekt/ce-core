@@ -1,12 +1,13 @@
-import { Injectable } from "@angular/core";
+import { Injectable, inject } from "@angular/core";
 import { FormInstance, FormRoot } from "@codeffekt/ce-core-data";
 import { FormAction, FormActions } from "./form-action";
+import { FormActionDefault } from "./form-action-default";
 
 @Injectable({ providedIn: 'root'})
 export class FormActionService {
 
     private actions: FormActions = {};
-    private defaultAction: FormAction;
+    private defaultAction: FormAction = inject(FormActionDefault);
 
     constructor() {}
 
