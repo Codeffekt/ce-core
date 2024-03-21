@@ -109,7 +109,7 @@ export class CeFormsService {
     return this.coreService.callForms("getFormQuery", id, query);
   }
 
-  rawFormMutation(query: FormMutate) {
+  rawFormMutation<T = any>(query: FormMutate): Promise<T> {
     return firstValueFrom(this.coreService.callForms("formMutation", query));
   }
 }
