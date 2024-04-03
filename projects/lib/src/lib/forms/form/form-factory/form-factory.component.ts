@@ -52,10 +52,10 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
 
   private formComponent: ComponentRef<IFormContent>;
-  private formComponentSubscriptions: Subscription;
+  private formComponentSubscriptions?: Subscription;
   private lastComponentType: Type<any>;
 
-  constructor(    
+  constructor(
     private formActionService: FormActionRenderService,
   ) { }
 
@@ -76,7 +76,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
 
     if (!this.formComponent) {
       this.createComponent(componentRoot);
-    } else if(!this.isSameComponentType(this.lastComponentType, componentRoot)) {
+    } else if (!this.isSameComponentType(this.lastComponentType, componentRoot)) {
       this.recreateComponent(componentRoot);
     } else {
       this.connectInputs(this.formComponent.instance);
@@ -94,7 +94,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
       return;
     }
 
-    this.formComponentSubscriptions.unsubscribe();
+    this.formComponentSubscriptions?.unsubscribe();
     this.vcr.remove();
     this.createComponent(form);
   }
@@ -122,10 +122,10 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   }
 
   private connectOutputChangedEvent(component: IFormContent) {
-    this.formComponentSubscriptions = component.formChanges.subscribe(
+    this.formComponentSubscriptions = component.formChanges?.subscribe(
       (value) => this.formChanges.next(value),
       (error) => this.formChanges.error(error),
       () => this.formChanges.complete()
     );
-  }  
+  }
 }

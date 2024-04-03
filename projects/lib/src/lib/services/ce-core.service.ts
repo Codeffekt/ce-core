@@ -234,6 +234,10 @@ export class CeCoreService {
     return this.call.apply(this, ["PublicSpaces", func].concat(params));
   }
 
+  callProcessing(func: string, ...params: any[]): Observable<any> {
+    return this.call.apply(this, ["PublicProcessing", func].concat(params));
+  }
+
   /**
    * Use this method to integrate other apis calls 
    * through core api auth session

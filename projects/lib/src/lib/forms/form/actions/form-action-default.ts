@@ -7,7 +7,7 @@ import { FormNewComponent } from "../form-new/form-new.component";
 import { FormMenuComponent } from "../form-menu/form-menu.component";
 import { FormTopbarComponent } from "../form-topbar/form-topbar.component";
 import { FormToolbarComponent } from "../form-toolbar/form-toolbar.component";
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class FormActionDefault implements FormAction {
 
     constructor(

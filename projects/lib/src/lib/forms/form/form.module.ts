@@ -64,6 +64,7 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
         FormNewComponent,
         FormNewFactoryComponent,
         PhotoPickerComponent,
+        FormToolbarComponent,
     ]
 })
 export class CeFormModule {    
