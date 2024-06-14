@@ -5,6 +5,7 @@ import {
   CeAppConfig,
   CeCoreModuleConfig, CE_APP_CONFIG, CE_CORE_CONFIG
 } from './ce-core.config';
+import { FormActionDefault } from './forms/form/actions/form-action-default';
 
 const DEFAULT_CE_CORE_CONFIG: CeCoreModuleConfig = {
   api_url: "http://localhost:3000",
@@ -33,6 +34,9 @@ const DEFAULT_CE_APP_CONFIG: CeAppConfig = {
     },
     {
       provide: CE_APP_CONFIG, useValue: DEFAULT_CE_APP_CONFIG
+    },
+    {
+      provide: FormActionDefault, useClass: FormActionDefault
     }
   ],
   declarations: [   

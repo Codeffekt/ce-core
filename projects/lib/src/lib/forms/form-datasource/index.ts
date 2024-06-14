@@ -4,6 +4,7 @@ export * from './form-assoc.datasource';
 export * from './form-wrappers.datasource';
 export * from './forms-datasource';
 export * from './forms-root-datasource';
+export * from './forms-root-instance-datasource';
 export * from './partial.datasource';
 export * from './reactive.datasource';
 export * from './paginator-filter.datasource';

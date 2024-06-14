@@ -40,6 +40,7 @@ import { CeNgReallyModule } from "../../widgets/ng-really";
 import { CeFormHintComponent } from "./form-hint/form-hint.component";
 import { CeFormDescriptionComponent } from "./form-description/form-description.component";
 import { FormAlertComponent } from './form-alert/form-alert.component';
+import { FormRootBlockComponent } from "./form-root-block/form-root-block.component";
 
 @NgModule({
     declarations: [
@@ -53,6 +54,7 @@ import { FormAlertComponent } from './form-alert/form-alert.component';
         FormIndexBlockComponent,
         FormAssocBlockComponent,
         FormAssetBlockComponent,
+        FormRootBlockComponent,
         FormBlockFieldComponent,
         FormBlockFieldActionsComponent,
         FormBlockFieldContentComponent,
@@ -107,6 +109,7 @@ export class CeFormBlocksModule {
             'text': FormTextBlockComponent,
             'timestamp': FormTimestampBlockComponent,
             'asset': FormAssetBlockComponent,
+            'root': FormRootBlockComponent,
         });
     }
 }

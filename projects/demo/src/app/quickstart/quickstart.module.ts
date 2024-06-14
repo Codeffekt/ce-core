@@ -9,12 +9,12 @@ import {
 } from "@codeffekt/ce-core";
 import { CeBarcodeModule } from "@codeffekt/ce-barcode";
 import { HighlightModule } from "ngx-highlightjs";
-import { CeCoreDataComponent } from './ce-core-data/ce-core-data.component';
 import { CeAdminComponent } from './ce-admin/ce-admin.component';
 import { ApplicationComponent } from './application/application.component';
 import { RouterModule } from "@angular/router";
 import { HomeMenuComponent } from "./home-menu/home-menu.component";
 import { CeCoreModule } from "./ce-core/ce-core.module";
+import { CeCoreDataModule } from "./ce-core-data/ce-core-data.module";
 
 @NgModule({
     imports: [
@@ -24,11 +24,11 @@ import { CeCoreModule } from "./ce-core/ce-core.module";
         CeBarcodeModule,
         CeSideMenuModule,
         CeCoreModule,
+        CeCoreDataModule,
         RouterModule,
     ],
     declarations: [
-        IntroductionComponent,       
-        CeCoreDataComponent,
+        IntroductionComponent,               
         CeAdminComponent,
         ApplicationComponent,
         HomeMenuComponent,
@@ -43,10 +43,7 @@ export class QuickstartModule {
         formActions.setActions({
             'form-quickstart-introduction': FormActionBuilder
                 .withRender(IntroductionComponent)
-                .setMenu(HomeMenuComponent),            
-            'form-quickstart-ce-core-data': FormActionBuilder
-                .withRender(CeCoreDataComponent)
-                .setMenu(HomeMenuComponent),
+                .setMenu(HomeMenuComponent),                        
             'form-quickstart-admin': FormActionBuilder
                 .withRender(CeAdminComponent)
                 .setMenu(HomeMenuComponent),
@@ -62,15 +59,7 @@ export class QuickstartModule {
                 valid: true,
                 root: 'form-quickstart-introduction',
                 content: {}
-            },         
-            'quickstart-ce-core-data': {
-                id: 'quickstart-ce-core-data',
-                title: 'Format et modèle',
-                ctime: Date.now(),
-                valid: true,
-                root: 'form-quickstart-ce-core-data',
-                content: {}
-            },
+            },                   
             'quickstart-admin': {
                 id: 'quickstart-admin',
                 title: 'Le module ce-admin',

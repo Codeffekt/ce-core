@@ -16,5 +16,5 @@ export class FormsRootDataSource extends FormQueryDatasource<FormRoot, FormRoot>
 
     protected wrap(form: FormRoot): FormRoot {
         return form;
-    }
+    }    
 }

@@ -1,0 +1,44 @@
+<ce-form-block-field [ngClass]="{'blockWithLink': formBlock.value !== undefined}"
+    [label]="formBlock.label ? formBlock.label :'-'" (click)="formBlock.value && openForm(formBlock.value)">
+    <ce-form-block-field-content *ngIf="formBlock.value" (click)="openForm(formBlock.value)">
+        <ce-grid gap="8px">
+            <ce-row *ngFor="let field of displayedFields" gap="12px">
+                <span class="text-muted">{{field.label}}</span>
+                <span>{{field.value}}</span>
+            </ce-row>
+        </ce-grid>
+        <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
+        <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
+    </ce-form-block-field-content>
+
+    <ce-form-block-field-content *ngIf="!formBlock.value">
+        <ce-grid gap="8px">
+            <ce-row gap="12px">
+                <p>Aucune valeur</p>
+            </ce-row>
+        </ce-grid>
+        <mat-error *ngIf="formControl.errors?.required">Champ requis</mat-error>
+        <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
+        <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
+    </ce-form-block-field-content>
+
+    <!-- Actions -->
+    <ce-form-block-field-floating-action>
+        <ng-container *ngIf="!formBlock.required && !formBlock.readonly">
+            <ce-grid autoFlow="column" gap="4px" alignItems="center">
+                <button mat-icon-button [matMenuTriggerFor]="menu" (click)="$event.stopPropagation()">
+                    <mat-icon>more_vert</mat-icon>
+                </button>
+                <mat-icon *ngIf="formBlock.value">chevron_right</mat-icon>
+            </ce-grid>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item (click)="edit()">Modifier</button>
+                <button mat-menu-item [disabled]="!formBlock.value" (click)="delete()">Remettre à zéro</button>
+            </mat-menu>
+        </ng-container>
+
+        <ng-container *ngIf="formBlock.value && (formBlock.required || formBlock.readonly)">
+            <mat-icon>chevron_right</mat-icon>
+        </ng-container>
+    </ce-form-block-field-floating-action>
+</ce-form-block-field>

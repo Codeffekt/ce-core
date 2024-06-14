@@ -1,0 +1,15 @@
+:host {
+    display: grid;
+    position: relative;
+    
+
+    .blockWithLink {
+        cursor: pointer;   
+        margin: -12px -24px;
+        padding: 12px 24px;    
+        &:hover {
+            background: rgb(249, 249, 249);
+        }
+
+    }
+}

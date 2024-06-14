@@ -2,7 +2,6 @@ import { Component, Inject } from "@angular/core";
 import { MatDialogRef, MAT_DIALOG_DATA, MatDialog } from "@angular/material/dialog";
 import { FormBlock, FormInstance, FormInstanceExt } from "@codeffekt/ce-core-data";
 import { CeFormDataService } from "../../form-data.service";
-import { FormArrayDatasource } from "../../form-datasource/form-array.datasource";
 import { FormQueryBuilder } from "../../forms-query/formquery.builder";
 import { CeFormQueryService } from "../../../services/ce-form-query.service";
 import { FormQueryDatasource } from "../../form-datasource";

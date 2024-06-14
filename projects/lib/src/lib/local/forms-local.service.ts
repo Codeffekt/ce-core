@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { FormsLocalDatabaseService } from "./forms-local-database.service";
-import { DbArrayRes, FormInstance, FormInstanceExt, FormQuery, IndexType } from "@codeffekt/ce-core-data";
+import { DbArrayRes, FormInstance, FormInstanceExt, FormQuery, FormRoot, IndexType } from "@codeffekt/ce-core-data";
 import { Observable, of } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
@@ -23,6 +23,15 @@ export class FormsLocalService {
             elts: [],
             limit: query.limit,
             offset: query.offset,
+        });
+    }
+
+    getRawFormsRootQuery(query: FormQuery): Observable<DbArrayRes<FormRoot>> {
+        return of({
+            total: 0,
+            elts: [],
+            limit: query.limit,
+            offset: query.offset
         });
     }
 }
