@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBlock, FormInstance, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlock, FormInstance, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
 import { CeFormRouteResolver } from '../../form-route.resolver';
-import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { UntilDestroy } from '@ngneat/until-destroy';
-import { CeFormsChangesService, CeFormsService } from '../../../services';
+import { CeFormsService } from '../../../services';
 import { firstValueFrom } from 'rxjs';
 import { FormsRootInstanceDataSource } from '../../form-datasource';
 import { FormQueryRootBuilder } from '../../forms-query';
@@ -27,7 +26,6 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
     public dialog: MatDialog,
     private formRouteResolver: CeFormRouteResolver,
     private formsService: CeFormsService,
-    private changesService: CeFormsChangesService,
     private activatedRoute: ActivatedRoute,
   ) {
     super();
@@ -95,7 +93,9 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
     this.updateDisplayFields(formRoot);    
   }  
 
-  private updateDisplayFields(form: FormInstance) {
-    this.displayedFields = this.formBlock.params.fields.map(f => FormUtils.getBlockFromField(form, f));
+  private updateDisplayFields(form: FormRoot) {
+    this.displayedFields = this.formBlock.params.fields
+      .map(f => FormUtils.retrieveBlockFromField(form, f))
+      .filter(f => f !== undefined);
   }
 }

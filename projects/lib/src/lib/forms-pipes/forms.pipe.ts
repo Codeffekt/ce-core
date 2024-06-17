@@ -163,29 +163,10 @@ export class FormBlockValuePipe implements PipeTransform {
   }
 }
 
-const ALLOWED_META_FIELDS = ['root', 'title', 'id', 'ctime', 'mtime', 'author', 'valid', 'table'];
-
-function retrieveBlockFromField(formInstance: FormInstanceExt, field: string): FormBlock {
-  if (field.startsWith('$')) {
-    const metaField = field.slice(1);
-    return ALLOWED_META_FIELDS.includes(metaField) ?
-      { value: formInstance[metaField], type: "text", field: metaField } :
-      { value: "-", type: "text", field: metaField };
-  } else if (field.startsWith('#')) {
-    const aggField = `agg_${field.slice(1)}`;
-    return formInstance.fields ? { value: (<any>formInstance).fields[aggField], type: "text", field } :
-      { value: "-", type: "text", field };
-  }
-  const elts = field.split(".", 2);
-  const formBlock = elts.length === 1 ? formInstance.content[elts[0]] :
-    FormUtils.getFormField(elts[0], formInstance)?.content[elts[1]];
-  return formBlock;
-}
-
 @Pipe({ name: 'formInstanceType' })
 export class FormInstanceTypePipe implements PipeTransform {
   transform(formInstance: FormInstance, field: string): string {
-    const formBlock = retrieveBlockFromField(formInstance, field);
+    const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
     return formBlock?.type;
   }
 }
@@ -193,13 +174,13 @@ export class FormInstanceTypePipe implements PipeTransform {
 @Pipe({ name: 'formInstanceBlock' })
 export class FormInstanceBlockPipe implements PipeTransform {
   transform(formInstance: FormInstance, field: string): FormBlock {
-    return retrieveBlockFromField(formInstance, field);
+    return FormUtils.retrieveBlockFromField(formInstance, field);
   }
 }
 @Pipe({ name: 'formInstanceValue' })
 export class FormInstanceValuePipe implements PipeTransform {
   transform(formInstance: FormInstanceExt, field: string): string {
-    const formBlock = retrieveBlockFromField(formInstance, field);
+    const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
     return formBlock ? getBlockValue(formBlock) : undefined;
   }
 }

@@ -21,8 +21,11 @@ export class BlockTypeRootComponent {
       model: {
         field: "model",
         type: "root" as any,
-        label: "Modèle",        
-      }
+        label: "Modèle",
+        params: {
+          fields: ["$id", "$title"]
+        }        
+      },      
     }
   });
 }

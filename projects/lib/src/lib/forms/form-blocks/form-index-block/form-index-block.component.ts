@@ -113,6 +113,6 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
   }
 
   private updateDisplayFields(form: FormInstance) {
-    this.displayedFields = this.formBlock.params.fields.map(f => FormUtils.getBlockFromField(form, f));
+    this.displayedFields = this.formBlock.params.fields.map(f => FormUtils.retrieveBlockFromField(form, f));
   }
 }

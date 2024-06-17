@@ -3,7 +3,7 @@
     <ce-form-block-field-content *ngIf="formBlock.value" (click)="openForm(formBlock.value)">
         <ce-grid gap="8px">
             <ce-row *ngFor="let field of displayedFields" gap="12px">
-                <span class="text-muted">{{field.label}}</span>
+                <span class="text-muted">{{field.label ?? field.field}}</span>
                 <span>{{field.value}}</span>
             </ce-row>
         </ce-grid>
@@ -21,8 +21,7 @@
         <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
         <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
     </ce-form-block-field-content>
-
-    <!-- Actions -->
+    
     <ce-form-block-field-floating-action>
         <ng-container *ngIf="!formBlock.required && !formBlock.readonly">
             <ce-grid autoFlow="column" gap="4px" alignItems="center">

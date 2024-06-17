@@ -57,6 +57,32 @@ export class CeCoreDataModule {
                 root: 'ce-core-data-block-types-root',
                 content: {}
             },
+        });
+        localDatabase.setRoots({
+            'forms-method': {
+                id: 'forms-method',
+                ctime: Date.now(),
+                title: 'Generic method',
+                content: {
+                    name: {
+                        field: "name",
+                        label: "Name",
+                        type: "text",
+                    }
+                }
+            },
+            'forms-algorithm': {
+                id: 'forms-algorithm',
+                ctime: Date.now(),
+                title: 'Generic algorithm',
+                content: {
+                    name: {
+                        field: "name",
+                        label: "Name",
+                        type: "text",
+                    }
+                }
+            }
         })
 
     }
