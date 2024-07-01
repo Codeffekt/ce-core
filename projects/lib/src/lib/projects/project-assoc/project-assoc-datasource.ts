@@ -23,7 +23,7 @@ export class CeProjectAssocDatasource extends FormQueryDatasource<FormWrapper> {
     }
 
     protected queryDb(query: FormQuery): Observable<DbArrayRes<FormInstanceExt>> {
-        return this.assoc ? this.coreService.callFormsQuery(this.pid, { ...query, root: this.assoc.root }) : of({
+        return this.assoc ? this.coreService.callFormsQuery(this.pid, query) : of({
             elts: [],
             total: 0,
             limit: 0,

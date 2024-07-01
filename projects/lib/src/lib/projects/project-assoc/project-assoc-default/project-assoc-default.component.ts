@@ -10,6 +10,7 @@ import {
 import { CeProjectAssocDatasource } from '../project-assoc-datasource';
 import { CeProjectAssocFormQueryBuilder } from '../project-assoc-formquery-builder';
 import { IProjectAssocContent } from '../project-assoc-models';
+import { FormQueryArrayBuilder } from '../../../forms/forms-query';
 
 @Component({
   selector: 'lib-project-assoc-default',
@@ -25,12 +26,12 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
   block: FormBlock;
 
   private datasource: CeProjectAssocDatasource;
-  private formQueryBuilder: CeProjectAssocFormQueryBuilder;
+  private formQueryBuilder: FormQueryArrayBuilder;
 
   constructor(
     private route: ActivatedRoute,
     private queryService: CeFormQueryService<FormWrapper>,
-    projectsService: CeProjectsService,
+    private projectsService: CeProjectsService,
     protected appService: CeAppService,
     coreService: CeCoreService,
     accountsService: CeAccountService,
@@ -57,7 +58,7 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
   }
 
   private async prepareQueryService() {
-    this.formQueryBuilder = CeProjectAssocFormQueryBuilder.fromBlock(this.block);
+    this.formQueryBuilder = FormQueryArrayBuilder.fromBlock(this.block, this.projectsService.getCurrentProject().core);
     this.queryService.setQueryBuilder(this.formQueryBuilder);
     this.queryService.setDatasource(this.datasource);
     const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.block.root));

@@ -47,7 +47,12 @@ export class FormQueryBuilder {
     }
 
     setRoot(root: IndexType) {
-        this.root = root;
+        // this.root = root;
+        this.setQueryField({
+            field: 'root',
+            onMeta: true,
+            value: root
+        });
     }
 
     getSort(): FormQuerySortField {
