@@ -91,11 +91,15 @@ export class CeFormsService {
   }
 
   getRawFormsRootQuery(query: FormQuery): Observable<DbArrayRes<FormRoot>> {
-    return this.coreService.callForms("getFormsRootQuery", query);
+    return this.coreService.callFormsRoot("getFormsQuery", query);
   }
 
   getRawFormsQuery(query: FormQuery): Observable<DbArrayRes<FormInstanceExt>> {
     return this.coreService.callForms("getFormsQuery", query);
+  }
+
+  getFormWithDeps(root: IndexType): Observable<DbArrayRes<FormRoot>> {
+    return this.coreService.callFormsRoot('getFormWithDeps', root);
   }
 
   /**

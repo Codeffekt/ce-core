@@ -9,3 +9,4 @@ export * from './assets-query.builder';
 export * from './form-instance-query.builder';
 export * from './ce-apps-query.builder';
 export * from './formquery-root.builder';
+export * from './spaces-editor-format-query.builder';

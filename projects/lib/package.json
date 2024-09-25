@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-core",
-  "version": "16.0.8",
+  "version": "16.0.9",
   "description": "Angular library for CeForms rendering",
   "author": {
     "name": "Codeffekt",

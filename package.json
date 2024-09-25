@@ -32,7 +32,7 @@
     "@angular/router": "^16.2.12",
     "@codeffekt/ce-barcode": "^16.0.0",
     "@codeffekt/ce-code-editor": "^16.0.0",
-    "@codeffekt/ce-core-data": "^1.1.4",
+    "@codeffekt/ce-core-data": "^1.1.6",
     "@codeffekt/ce-form-coordinates": "^16.0.0",
     "@ngneat/until-destroy": "^8.0.3",
     "@popperjs/core": "^2.10.2",
