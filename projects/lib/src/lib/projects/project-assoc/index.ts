@@ -9,3 +9,4 @@ export * from './project-assoc-formquery-builder';
 export * from './project-assoc-routing.module';
 export * from './project-assoc.module';
 export * from './project-assoc.resolver';
+export * from './project-assoc-render-module';

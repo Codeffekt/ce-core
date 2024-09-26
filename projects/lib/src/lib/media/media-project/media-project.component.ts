@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CeProjectsService } from '../../services/ce-projects.service';
 
 @Component({
@@ -8,10 +8,9 @@ import { CeProjectsService } from '../../services/ce-projects.service';
 })
 export class MediaProjectComponent {
 
-  pid = this.projectService.getCurrentProjectAssetsRef(); 
+  pid = inject(CeProjectsService).getCurrentProjectAssetsRef(); 
 
-  constructor(
-    private projectService: CeProjectsService) {
+  constructor() {
   }  
 
 }

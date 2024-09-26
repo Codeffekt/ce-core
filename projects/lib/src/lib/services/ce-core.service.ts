@@ -214,6 +214,10 @@ export class CeCoreService {
     return this.call.apply(this, ["PublicForms", func].concat(params));
   }
 
+  callFormsRoot(func: string, ...params: any[]): Observable<any> {
+    return this.call.apply(this, ["PublicFormsRoot", func].concat(params));
+  }
+
   callAccount(func: string, ...params: any[]): Observable<any> {
     return this.call.apply(this, ["PublicAccounts", func].concat(params));
   }
@@ -232,6 +236,10 @@ export class CeCoreService {
 
   callSpaces(func: string, ...params: any[]): Observable<any> {
     return this.call.apply(this, ["PublicSpaces", func].concat(params));
+  }
+
+  callSpacesEditor(func: string, ...params: any[]): Observable<any> {
+    return this.call.apply(this, ["PublicSpacesEditor", func].concat(params));
   }
 
   callProcessing(func: string, ...params: any[]): Observable<any> {

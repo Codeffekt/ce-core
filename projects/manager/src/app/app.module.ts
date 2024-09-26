@@ -16,16 +16,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     AppRoutingModule,
     CeCoreModule.forRoot({
       api_url: environment.ce_api_config.api_url
-    }, {
-      projectType: 'trias',
-      version: environment.ce_api_config.app_version,
-      title: 'CeCore Demo',
-      projectTypes: [{
-        projectType: 'trias',
-        label: 'default'
-      }],
-      params: {},
-      assets: {},
     }),
     BrowserAnimationsModule,
   ],

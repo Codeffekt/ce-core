@@ -42,7 +42,7 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
     {
       provide: CeFormsService,
       useClass: FormsLocalService,
-    },
+    },   
   ],
   bootstrap: [AppComponent]
 })
