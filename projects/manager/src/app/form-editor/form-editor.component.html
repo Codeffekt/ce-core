@@ -1,0 +1,13 @@
+<ce-nav-layout>
+    <ce-list>
+        <ce-list-item (click)="onGoElt(item.form.core.id)" *ngFor="let item of (currentForms$ | async)">
+            <ce-list-item-content>{{item.form.core.id}}</ce-list-item-content>
+        </ce-list-item>
+    </ce-list>
+    <ce-grid gap="12px">                    
+        <ng-container >
+            <ce-form-factory *ngIf="(currentForm$ | async) as currentForm" [formWrapper]="currentForm.form" [formMask]="currentForm.formMask"
+            (formChanges)="onFormChanges(currentForm, $event)"></ce-form-factory>        
+        </ng-container>            
+    </ce-grid>
+</ce-nav-layout>

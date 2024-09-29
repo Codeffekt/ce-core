@@ -15,9 +15,7 @@ export class ListItemDefaultComponent implements OnInit, IListItemContent {
 
   constructor() { }  
 
-  ngOnInit(): void {
-    console.log(this.item);
-    console.log(this.block);
+  ngOnInit(): void {   
   }
 
 }

@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LogoutComponent } from '@codeffekt/ce-core';
+import { AuthGuard, LogoutComponent } from '@codeffekt/ce-core';
 
 const routes: Routes = [
+  {
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full'
+  },  
   {
     path: 'login',
     loadChildren: () => import("./login/login.module").then(m => m.LoginModule)
@@ -12,7 +17,8 @@ const routes: Routes = [
     component: LogoutComponent
   },
   {
-    path: '',
+    path: 'home',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./main/main.module').then(m => m.MainModule)
   }  
 ];

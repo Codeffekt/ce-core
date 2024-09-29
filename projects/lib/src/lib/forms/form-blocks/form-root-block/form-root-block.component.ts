@@ -36,8 +36,7 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
   }
 
   openForm(formId: IndexType) {
-    const routeParams = this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);
-    this.router.navigate(routeParams.route, { relativeTo: routeParams.isRelativeRoute ? this.activatedRoute : null });
+    this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);    
   }
 
   edit() {

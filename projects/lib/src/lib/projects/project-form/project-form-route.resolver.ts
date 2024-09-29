@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormInstance } from "@codeffekt/ce-core-data";
-import { CeFormRouteParams, CeFormRouteResolver } from "../../forms/form-route.resolver";
+import { ICeFormRouteResolver } from "../../forms/form-route.resolver";
 import { CeProjectsService } from "../../services/ce-projects.service";
 import { CeBreadcrumbsService, CeFormEditorService } from "../../services";
 
@@ -18,7 +18,7 @@ import { CeBreadcrumbsService, CeFormEditorService } from "../../services";
  * en rajoutant l'id juste après l'élément actif du breadcrumb
  *  */
 @Injectable()
-export class CeProjectFormRouteResolver implements CeFormRouteResolver {
+export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
 
     constructor(
         protected projectService: CeProjectsService,
@@ -27,7 +27,7 @@ export class CeProjectFormRouteResolver implements CeFormRouteResolver {
         private router: Router,
     ) { }
 
-    resolve(_: string, formId: string, __: FormInstance): CeFormRouteParams {
+    resolve(_: string, formId: string, __: FormInstance): Promise<boolean> {
 
         const currentUrl = this.getCurrentUrl();
 
@@ -35,13 +35,13 @@ export class CeProjectFormRouteResolver implements CeFormRouteResolver {
         const currentActiveItem = this.breadcrumbsService.getLastActiveItem();
 
         if (!items.length || !currentActiveItem) {
-            return this.addRelativeRoute([ currentUrl, formId ]);
+            return this.router.navigate(this.addRelativeRoute([ currentUrl, formId ]));
         }
 
         const existingItemPos = items.findIndex(item => item.id === formId);
 
         if (existingItemPos === -1) {
-            return this.addRelativeRoute([ currentUrl, formId ]);
+            return this.router.navigate(this.addRelativeRoute([ currentUrl, formId ]));
         }
 
         const currentActiveItemPos = items.findIndex(item => item.id === currentActiveItem.id);
@@ -50,15 +50,15 @@ export class CeProjectFormRouteResolver implements CeFormRouteResolver {
             const existingItem = items[existingItemPos];
             this.formEditorService.setCurrentFormInfo(existingItem.data);
             this.breadcrumbsService.setActiveItem(existingItem);
-            return this.getSameRoute(currentUrl);
+            return this.router.navigate(this.getSameRoute(currentUrl));
         } else {
             const activeItem = items[currentActiveItemPos];
             const activeRouteIndex = currentUrl.indexOf(activeItem.id);
-            return this.addRelativeRoute([ 
+            return this.router.navigate(this.addRelativeRoute([ 
                 currentUrl.substring(0, activeRouteIndex), 
                 activeItem.id,
                 formId 
-            ]);
+            ]));
         }
     }    
 
@@ -67,10 +67,10 @@ export class CeProjectFormRouteResolver implements CeFormRouteResolver {
     }
 
     private getSameRoute(currentUrl: string) {
-        return { route: [currentUrl] };
+        return [currentUrl];
     }
 
     private addRelativeRoute(paths: string[]) {
-        return { route: paths };
+        return paths;
     }    
 }

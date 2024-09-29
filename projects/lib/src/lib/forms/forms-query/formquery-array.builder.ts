@@ -16,13 +16,13 @@ export function isContextProject(context: FormInstance) {
 // le type formArray
 export function isBlockAssoc(block: FormBlock) {
     return block.type === "formAssoc" ||
-    (block.type === "formArray" && block.index === undefined);
+        (block.type === "formArray" && block.index === undefined);
 }
 
 export class FormQueryArrayBuilder extends FormQueryBuilder {
 
     private extra: Partial<FormQuery> = {};
-    private ref: IndexType;    
+    private ref: IndexType;
 
     constructor() {
         super();
@@ -42,25 +42,9 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
 
         query.setRoot(formBlock.root);
 
-        if (isBlockAssoc(formBlock)) {
-            query.ref = formBlock.params?.ref ||
-                FormUtils.createFormAssocRef(context.id, formBlock.field);
-        } else {
-            query.setQueryField({
-                field: formBlock.index,
-                value: context.id
-            });
-        }
 
-        /* if (isContextProject(context)) {
-            query.ref = formBlock.params?.ref ||
-                FormUtils.createFormAssocRef(context.id, formBlock.field);
-        } else {
-            query.setQueryField({
-                field: formBlock.index,
-                value: context.id
-            });
-        } */
+        query.ref = formBlock.params?.ref ||
+            FormUtils.createFormAssocRef(context.id, formBlock.field);        
 
         return query;
     }
@@ -73,7 +57,7 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
         return {
             ...super.create(),
             ...this.extra,
-            ref: this.ref,            
+            ref: this.ref,
         };
     }
 

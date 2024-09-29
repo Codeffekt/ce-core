@@ -17,7 +17,7 @@ import { FormQueryDatasource } from "./form-query.datasource";
 */
 export class FormArrayDatasource extends FormQueryDatasource<FormInstanceExt> {
     
-    constructor(private apiService: CeFormDataService, public useProject = true) {
+    constructor(private apiService: CeFormDataService, public useProject = false) {
         super();
     }
 
