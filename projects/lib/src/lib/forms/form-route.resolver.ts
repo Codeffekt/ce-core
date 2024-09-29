@@ -7,7 +7,8 @@ export type CeFormRouteParams = {
     isRelativeRoute?: boolean;
 }
 export interface ICeFormRouteResolver {
-    resolve(formField: string, formId: IndexType, formInstance: FormInstance): Promise<boolean>;
+    navigate(formId: IndexType, formInstance: FormInstance): Promise<boolean>;
+    resolve(formField: string, formId: IndexType, formInstance: FormInstance): CeFormRouteParams;
 }
 
 @Injectable({
@@ -17,7 +18,11 @@ export class CeFormRouteResolver implements ICeFormRouteResolver {
 
     private router = inject(Router);
 
-    resolve(formField: string, formId: IndexType, formInstance: FormInstance): Promise<boolean> {
+    navigate(formId: IndexType, formInstance: FormInstance): Promise<boolean> {
         return this.router.navigate(['/form', formId]);
+    }
+
+    resolve(formField: string, formId: IndexType, formInstance: FormInstance): CeFormRouteParams {
+        return { route: ['/form', formId] };
     }
 }

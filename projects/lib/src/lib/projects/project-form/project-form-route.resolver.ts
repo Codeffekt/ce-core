@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { FormInstance } from "@codeffekt/ce-core-data";
-import { ICeFormRouteResolver } from "../../forms/form-route.resolver";
+import { CeFormRouteParams, ICeFormRouteResolver } from "../../forms/form-route.resolver";
 import { CeProjectsService } from "../../services/ce-projects.service";
 import { CeBreadcrumbsService, CeFormEditorService } from "../../services";
 
@@ -27,7 +27,12 @@ export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
         private router: Router,
     ) { }
 
-    resolve(_: string, formId: string, __: FormInstance): Promise<boolean> {
+    navigate(formId: string): Promise<boolean> {
+        const routeParams = this.resolve(undefined, formId, undefined);
+        return this.router.navigate(routeParams.route);        
+    }       
+    
+    resolve(_: string, formId: string, __: FormInstance): CeFormRouteParams {
 
         const currentUrl = this.getCurrentUrl();
 
@@ -35,13 +40,13 @@ export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
         const currentActiveItem = this.breadcrumbsService.getLastActiveItem();
 
         if (!items.length || !currentActiveItem) {
-            return this.router.navigate(this.addRelativeRoute([ currentUrl, formId ]));
+            return this.addRelativeRoute([ currentUrl, formId ]);
         }
 
         const existingItemPos = items.findIndex(item => item.id === formId);
 
         if (existingItemPos === -1) {
-            return this.router.navigate(this.addRelativeRoute([ currentUrl, formId ]));
+            return this.addRelativeRoute([ currentUrl, formId ]);
         }
 
         const currentActiveItemPos = items.findIndex(item => item.id === currentActiveItem.id);
@@ -50,15 +55,15 @@ export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
             const existingItem = items[existingItemPos];
             this.formEditorService.setCurrentFormInfo(existingItem.data);
             this.breadcrumbsService.setActiveItem(existingItem);
-            return this.router.navigate(this.getSameRoute(currentUrl));
+            return this.getSameRoute(currentUrl);
         } else {
             const activeItem = items[currentActiveItemPos];
             const activeRouteIndex = currentUrl.indexOf(activeItem.id);
-            return this.router.navigate(this.addRelativeRoute([ 
+            return this.addRelativeRoute([ 
                 currentUrl.substring(0, activeRouteIndex), 
                 activeItem.id,
                 formId 
-            ]));
+            ]);
         }
     }    
 
@@ -67,10 +72,10 @@ export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
     }
 
     private getSameRoute(currentUrl: string) {
-        return [currentUrl];
+        return { route: [currentUrl] };
     }
 
     private addRelativeRoute(paths: string[]) {
-        return paths;
+        return { route: paths };
     }    
 }
