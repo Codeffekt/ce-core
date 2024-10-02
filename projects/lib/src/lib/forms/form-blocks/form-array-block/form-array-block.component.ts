@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 import { CeFormsService } from '../../../services/ce-forms.service';
@@ -9,7 +8,7 @@ import { CeFormDataService } from '../../form-data.service';
 import { FormArrayDatasource } from '../../form-datasource/form-array.datasource';
 import { CeFormRouteResolver } from '../../form-route.resolver';
 import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
-import { FormQueryArrayBuilder, isBlockAssoc } from '../../forms-query/formquery-array.builder';
+import { FormQueryArrayBuilder } from '../../forms-query/formquery-array.builder';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { FormBlockComponent } from '../form-block/form-block.component';
 @Component({
@@ -29,13 +28,11 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
   isFormAssoc = false;
 
   constructor(
-    private router: Router,
     public dialog: MatDialog,
     private api: CeFormDataService,
     private formService: CeFormsService,
     private formRouteResolver: CeFormRouteResolver,
     private readonly queryService: CeFormQueryService<FormInstanceExt>,
-    private activatedRoute: ActivatedRoute,
   ) {
     super();
     this.dataSource = new FormArrayDatasource(api);
@@ -47,39 +44,11 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
     this.prepareQueryService();
   }
 
-  add() {
-
-    if (this.isFormAssoc) {
-      this.addEltFromAssoc();
-    } else {
-      this.dataSource.createElt(this.formBlock, this.formInstance);
-    }
+  onAdd() {
+    this.dataSource.createElt(this.formBlock, this.formInstance);
   }
 
-  delete(formId: IndexType) {
-
-    if (this.isFormAssoc) {
-      this.dataSource.removeEltsFromAssoc(this.formBlock, [formId], this.formInstance);
-    } else {
-      this.dataSource.deleteElt(this.formBlock, formId, this.formInstance);
-    }
-  }
-
-  open(formId: IndexType) {
-    this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);    
-  }
-
-  /**
-   * @override
-   */
-  formBlockChanged(): void {
-    this.isFormAssoc = isBlockAssoc(this.formBlock);
-    /* this.buildDisplayedColumns();
-    this.buildQuery();
-    this.prepareQueryService(); */
-  }
-
-  private addEltFromAssoc() {
+  onLink() {
 
     const ref = this.formBlock.params?.ref || FormUtils.createFormAssocRef(this.formInstance.id, this.formBlock.field);
 
@@ -92,9 +61,8 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
         formBlock: this.formBlock,
         query,
         dataSource: new FormArrayDatasource(
-          this.api,
-          this.formBlock.params?.scope === "global"
-          )
+          this.api,          
+        )
       }
     );
 
@@ -106,9 +74,24 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
 
   }
 
+  onDelete(formId: IndexType) {
+    this.dataSource.deleteElt(this.formBlock, formId, this.formInstance);
+  }
+
+  onUnlink(formId: IndexType) {
+    this.dataSource.removeEltsFromAssoc(this.formBlock, [formId], this.formInstance);
+  }
+
+  open(formId: IndexType) {
+    this.formRouteResolver.navigate(formId, this.formInstance);
+  }
+  
+  formBlockChanged(): void {    
+  }
+
   private buildDisplayedColumns() {
     this.colomnFields = this.formBlock.params?.fields?.length ? this.formBlock.params.fields : ["$id", "$ctime"];
-    this.displayedColumns = this.formBlock.readonly ? this.colomnFields : [...this.colomnFields, "delete"];
+    this.displayedColumns = this.formBlock.readonly ? this.colomnFields : [...this.colomnFields, "actions"];
   }
 
   private buildQuery() {

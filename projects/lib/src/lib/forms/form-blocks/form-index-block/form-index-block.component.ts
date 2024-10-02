@@ -38,7 +38,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
   }
 
   openForm(formId: IndexType) {
-    this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);   
+    this.formRouteResolver.navigate(formId, this.formInstance);   
   }
 
   edit() {

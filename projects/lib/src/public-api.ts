@@ -35,3 +35,4 @@ export * from './lib/account';
 export * from './lib/section';
 export * from './lib/searchbox';
 export * from './lib/local';
+export * from './lib/spaces';
