@@ -10,6 +10,7 @@ export class SpacesEditorFormatQueryBuilder extends FormQueryBuilder {
             op: '=',
             value: FormSpaceEditorFormat.ROOT
         });
+        this.setExtMode(true);
     }  
     
     static create() {

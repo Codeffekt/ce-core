@@ -12,4 +12,6 @@ export * from './form-block-factory/form-block-store.service';
 export * from './form-block-factory/form-block-factory.component';
 export * from './form-root-block/form-root-block.component';
 export * from './form-block-field';
+export * from './form-factory-block';
+export * from './form-action-block';
 export * from './form-blocks.module';

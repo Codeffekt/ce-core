@@ -1,0 +1,29 @@
+<ce-form-block-field [label]="formBlock.label" headerAppearance="bordered">
+
+    <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
+        <button mat-stroked-button color="primary" (click)="selectRoot()"><mat-icon>add</mat-icon>Modèle</button>
+        <button mat-stroked-button color="primary" [disabled]="!formBlock.value" (click)="createInstance()"><mat-icon>add</mat-icon>Instance</button>
+    </ce-form-block-field-actions>
+
+    <ce-form-block-field-content *ngIf="formBlock.value">
+        <ce-grid gap="8px">
+            <ce-row gap="12px">
+                <span class="text-muted">{{formBlock.label}}</span>
+                <span>{{formBlock.value}}</span>
+            </ce-row>
+        </ce-grid>
+        <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
+        <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
+    </ce-form-block-field-content>
+
+    <ce-form-block-field-content *ngIf="!formBlock.value">
+        <ce-grid gap="8px">
+            <ce-row gap="12px">
+                <p>Aucune valeur</p>
+            </ce-row>
+        </ce-grid>        
+        <p *ngIf="formBlock.description" class="alert alert-info">{{formBlock.description}}</p>
+        <p *ngIf="formBlock.hint" class="alert alert-info">{{formBlock.hint}}</p>
+    </ce-form-block-field-content>
+
+</ce-form-block-field>

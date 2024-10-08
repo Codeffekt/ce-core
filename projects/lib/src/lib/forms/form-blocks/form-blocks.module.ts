@@ -41,6 +41,8 @@ import { CeFormHintComponent } from "./form-hint/form-hint.component";
 import { CeFormDescriptionComponent } from "./form-description/form-description.component";
 import { FormAlertComponent } from './form-alert/form-alert.component';
 import { FormRootBlockComponent } from "./form-root-block/form-root-block.component";
+import { FormFactoryBlockComponent } from "./form-factory-block";
+import { FormActionBlockComponent } from "./form-action-block";
 
 @NgModule({
     declarations: [
@@ -54,13 +56,8 @@ import { FormRootBlockComponent } from "./form-root-block/form-root-block.compon
         FormIndexBlockComponent,
         FormAssocBlockComponent,
         FormAssetBlockComponent,
-        FormRootBlockComponent,
-        FormBlockFieldComponent,
-        FormBlockFieldActionsComponent,
-        FormBlockFieldContentComponent,
-        FormBlockFieldHeaderComponent,
-        FormBlockFieldFloatingActionComponent,
-        FormBlockFieldTitleComponent,
+        FormRootBlockComponent,                       
+        FormBlockFieldFloatingActionComponent,        
         CeFormHintComponent,
         CeFormDescriptionComponent,
         FormAlertComponent
@@ -86,6 +83,13 @@ import { FormRootBlockComponent } from "./form-root-block/form-root-block.compon
         CeFormsPipesModule,
         CePipesModule,
         CeNgReallyModule,
+        FormBlockFieldTitleComponent,
+        FormBlockFieldHeaderComponent,
+        FormBlockFieldActionsComponent,
+        FormBlockFieldContentComponent,        
+        FormBlockFieldComponent,
+        FormFactoryBlockComponent,
+        FormActionBlockComponent,
     ],
     exports: [
         FormBlockFactoryComponent,
@@ -109,7 +113,9 @@ export class CeFormBlocksModule {
             'text': FormTextBlockComponent,
             'timestamp': FormTimestampBlockComponent,
             'asset': FormAssetBlockComponent,
-            'root': FormRootBlockComponent,
+            'root': FormRootBlockComponent,   
+            'factory': FormFactoryBlockComponent,         
+            'action': FormActionBlockComponent,
         });
     }
 }

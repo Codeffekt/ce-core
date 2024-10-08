@@ -36,3 +36,4 @@ export * from './lib/section';
 export * from './lib/searchbox';
 export * from './lib/local';
 export * from './lib/spaces';
+export * from './lib/roots';

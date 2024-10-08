@@ -28,8 +28,7 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
 
 @NgModule({
     declarations: [
-        CeFormComponent,
-        FormChooserDialogComponent,
+        CeFormComponent,       
         PhotoPickerComponent,
         FormSubformTitleComponent,
         FormNewComponent,
@@ -57,6 +56,7 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
         CeFormBlocksModule,
         CeFormCardModule,
         CeEditTimeModule,
+        FormChooserDialogComponent,
     ],
     exports: [
         CeFormComponent,

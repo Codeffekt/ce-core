@@ -1,0 +1,8 @@
+<ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="true">
+    <ce-list>
+        <ce-list-item *ngFor="let form of forms$ | async" (click)="select(form)">
+            <ce-list-item-factory type="root" [item]="form">
+            </ce-list-item-factory>            
+        </ce-list-item>
+    </ce-list>
+</ce-formquery-wrapper>

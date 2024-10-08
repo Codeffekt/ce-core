@@ -1,0 +1,7 @@
+<ce-form-block-field [label]="formBlock.label" headerAppearance="bordered">
+
+    <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
+        <button mat-stroked-button color="primary" (click)="startAction()"><mat-icon>play_arrow</mat-icon>Start</button>        
+    </ce-form-block-field-actions>    
+
+</ce-form-block-field>
