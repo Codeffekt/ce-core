@@ -246,6 +246,10 @@ export class CeCoreService {
     return this.call.apply(this, ["PublicProcessing", func].concat(params));
   }
 
+  callAction(func: string, ...params: any[]): Observable<any> {
+    return this.call.apply(this, ["PublicAction", func].concat(params));
+  }
+
   /**
    * Use this method to integrate other apis calls 
    * through core api auth session
