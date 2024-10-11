@@ -54,7 +54,8 @@ import { CeNgReallyModule } from "../widgets/ng-really/ng-really.module";
         MediaListComponent,
         MediaProjectComponent,
         MediaAccountComponent,
-        AssetImportComponent,        
+        AssetImportComponent,  
+        MediaFactoryComponent,      
     ],
 })
 export class CeMediaModule { 

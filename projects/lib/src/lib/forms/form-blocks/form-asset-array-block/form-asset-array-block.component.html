@@ -1,0 +1,20 @@
+<ce-form-block-field [label]="formBlock.label">
+    <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
+        <button mat-stroked-button color="accent" matTooltip="Importer un asset" (click)="openAssetImporter()">
+            <mat-icon>file_upload</mat-icon>Importer
+        </button>
+    </ce-form-block-field-actions>
+
+
+    <ce-form-block-field-content>
+        <div class="flowable-y">
+            <ce-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></ce-paginator>
+            <div class="media-grid">
+                <ce-media-factory class="m-2" *ngFor="let asset of assets$ | async" [elt]="asset" (delete)="delete(asset)">
+                </ce-media-factory>
+            </div>    
+        </div>
+    </ce-form-block-field-content>
+    
+
+</ce-form-block-field>
