@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ModuleWithProviders, NgModule } from '@angular/core';
 import {
   CeAppConfig,
@@ -23,25 +23,18 @@ const DEFAULT_CE_APP_CONFIG: CeAppConfig = {
   assets: {}
 };
 
-@NgModule({
-  imports: [
-    CommonModule,
-    HttpClientModule,
-  ],
-  providers: [
-    {
-      provide: CE_CORE_CONFIG, useValue: DEFAULT_CE_CORE_CONFIG
-    },
-    {
-      provide: CE_APP_CONFIG, useValue: DEFAULT_CE_APP_CONFIG
-    },
-    {
-      provide: FormActionDefault, useClass: FormActionDefault
-    }
-  ],
-  declarations: [   
-  ]
-})
+@NgModule({ declarations: [], imports: [CommonModule], providers: [
+        {
+            provide: CE_CORE_CONFIG, useValue: DEFAULT_CE_CORE_CONFIG
+        },
+        {
+            provide: CE_APP_CONFIG, useValue: DEFAULT_CE_APP_CONFIG
+        },
+        {
+            provide: FormActionDefault, useClass: FormActionDefault
+        },
+        provideHttpClient(withInterceptorsFromDi())
+    ] })
 export class CeCoreModule {
 
   static forRoot(
