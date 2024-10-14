@@ -68,8 +68,8 @@ $colors-secondary: (
   ),
 ) !default;
 
-$palette-primary: mat.define-palette($colors-primary);
-$palette-accent: mat.define-palette($colors-secondary);
-$palette-warn: mat.define-palette(mat.$red-palette);
-$app-theme: mat.define-light-theme($palette-primary, $palette-accent, $palette-warn);
-$app-dark-theme: mat.define-dark-theme($palette-primary, $palette-accent, $palette-warn);
+$palette-primary: mat.m2-define-palette($colors-primary);
+$palette-accent: mat.m2-define-palette($colors-secondary);
+$palette-warn: mat.m2-define-palette(mat.$m2-red-palette);
+$app-theme: mat.m2-define-light-theme($palette-primary, $palette-accent, $palette-warn);
+$app-dark-theme: mat.m2-define-dark-theme($palette-primary, $palette-accent, $palette-warn);

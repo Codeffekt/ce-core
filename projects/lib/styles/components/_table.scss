@@ -13,11 +13,11 @@ mat-card.diag-table {
     }
     padding: 0px;
     .mat-row.active {
-        background: mat.get-color-from-palette(primaryColorPalette(), 100, 0.1);
+        background: mat.m2-get-color-from-palette(primaryColorPalette(), 100, 0.1);
     }
 
     .mat-row:hover {
-        background: mat.get-color-from-palette(primaryColorPalette(), 50, 0.1);
+        background: mat.m2-get-color-from-palette(primaryColorPalette(), 50, 0.1);
         cursor: pointer;
     }
     .diag-table-checkbox {

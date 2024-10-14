@@ -36,7 +36,7 @@
     }
   }
   .mat-list-item.diag-sidenav-item.active-link {
-    background: mat.get-color-from-palette(primaryColorPalette(), 400);
+    background: mat.m2-get-color-from-palette(primaryColorPalette(), 400);
   }
   .mat-drawer .mat-list-item {
     height: 80px;

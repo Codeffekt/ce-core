@@ -6,10 +6,10 @@
 @include mat.core();
 // @include mat.legacy-core();
 
-$primary-palette: mat.define-palette(createPaletteWithContrast($color-primary));
-$accent-palette: mat.define-palette(createPaletteWithContrast($color-secondary));
+$primary-palette: mat.m2-define-palette(createPaletteWithContrast($color-primary));
+$accent-palette: mat.m2-define-palette(createPaletteWithContrast($color-secondary));
 
-$theme: mat.define-light-theme(
+$theme: mat.m2-define-light-theme(
     (
         color: (
             primary: $primary-palette,
