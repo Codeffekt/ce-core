@@ -21,7 +21,7 @@
     "bootstrap": "^5.3.3",
     "@codeffekt/ce-core-data": "^1.2.0",
     "@ngneat/until-destroy": "^8.0.3",            
-    "ngx-uploader": "^16.0.0",
+    "ngx-uploader": "^17.0.1",
     "ngx-file-drop": "^16.0.0",
     "rxjs": "^7.5.7"
   },
