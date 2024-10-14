@@ -3,6 +3,8 @@ import { FormInstance } from '@codeffekt/ce-core-data';
 import { FormActionService } from '../../forms/form/actions/form-action.service';
 import { FormActionRenderService } from '../../forms/form/actions/form-action-render.service';
 import { CeFormEditorService } from '../../services/ce-form-editor.service';
+import { BehaviorSubject } from 'rxjs';
+import { FormInfo } from '../../models/form-info';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionTopbarService {
@@ -28,5 +30,5 @@ export class FormActionTopbarService {
   ]
 })
 export class CeFormEditorTopbarComponent {  
-  currentForm$ = inject(CeFormEditorService).onFormInfo();  
+  currentForm$: BehaviorSubject<FormInfo> = inject(CeFormEditorService).onFormInfo();  
 }
