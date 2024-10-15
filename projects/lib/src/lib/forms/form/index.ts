@@ -1,6 +1,6 @@
 export * from './form.component';
 export * from './form.validators';
-export * from './photo-picker/photo-picker.component';
+export * from './photo-picker';
 export * from './form-chooser-dialog/form-chooser-dialog.component';
 export * from './form-factory/form-factory.component';
 export * from './form-style.builder';

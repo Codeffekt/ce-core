@@ -8,7 +8,6 @@ import { MatTableModule } from "@angular/material/table";
 import { CeFormQueryWrapperModule } from "../../formquery-wrapper";
 import { CeFormsPipesModule } from "../../forms-pipes";
 import { CeLayoutModule } from "../../layout/layout.module";
-import { CeMediaPhotoModule } from "../../media-photo";
 import { CePaginatorModule } from "../../paginator";
 import { CeTableModule } from "../../table";
 import { CeFormBlocksModule } from "../form-blocks";
@@ -25,11 +24,11 @@ import { FormTopbarComponent } from './form-topbar/form-topbar.component';
 import { CeNavigationModule } from "../../navigation/navigation.module";
 import { FormToolbarComponent } from './form-toolbar/form-toolbar.component';
 import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
+import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
 
 @NgModule({
     declarations: [
-        CeFormComponent,       
-        PhotoPickerComponent,
+        CeFormComponent,              
         FormSubformTitleComponent,
         FormNewComponent,
         FormNewFactoryComponent,
@@ -52,11 +51,12 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
         CeNavigationModule,
         CeFormsPipesModule,
         CePaginatorModule,
-        CeMediaPhotoModule,
+        MediaPhotoComponent,
         CeFormBlocksModule,
         CeFormCardModule,
         CeEditTimeModule,
         FormChooserDialogComponent,
+        PhotoPickerComponent,
     ],
     exports: [
         CeFormComponent,

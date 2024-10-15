@@ -5,9 +5,9 @@
 
   <div class="photos-container" *ngIf="photos$ | async as photos; else noPhoto">
     <div class="photo-wrapper" *ngFor="let photo of photos" [class.active]="selectedPhoto?.id === photo.id">
-      <ce-media-photo class="m-2" [elt]="photo" mode="view" [enableLink]="false"
-        (click)="$event.stopPropagation();onSelectPhoto(photo)">
-      </ce-media-photo>
+      <ce-media-factory class="m-2" [elt]="photo"
+      (click)="$event.stopPropagation();onSelectPhoto(photo)">
+      </ce-media-factory>      
       <mat-icon>check</mat-icon>
     </div>
   </div>

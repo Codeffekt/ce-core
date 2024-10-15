@@ -1,0 +1,1 @@
+export * from './form-asset-block.component';

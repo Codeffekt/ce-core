@@ -21,6 +21,7 @@
     </div>
 </ng-template>
 
-<ng-template #imageTpl>
-    <img [src]="formBlock.value?.id | thumbPathWithAssetId:300">
+<ng-template #imageTpl>   
+    <ce-media-factory class="m-2" [elt]="formBlock.value" (delete)="delete(formBlock.value)">
+    </ce-media-factory>
 </ng-template>

@@ -59,14 +59,13 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
   }
 
   ngOnInit(): void {
-    this.datasource.pid = this.formBlock.value ?? "default";
     this.prepareQueryService();
   }
 
   openAssetImporter() {
 
     const config: AssetImportConfig = {
-      pid: this.datasource.pid,
+      pid: this.formBlock.value,
       title: "Importer un asset"
     };
 
@@ -86,7 +85,7 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
 
   async delete(photo: AssetElt) {
     try {
-      await firstValueFrom(this.assetsService.deleteAssets(this.datasource.pid, [photo.id]));
+      await firstValueFrom(this.assetsService.deleteAssets(this.formBlock.value, [photo.id]));
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
@@ -95,7 +94,7 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
   }
 
   private async prepareQueryService() {
-    this.queryService.setQueryBuilder(AssetsFormQueryBuilder.create());
+    this.queryService.setQueryBuilder(AssetsFormQueryBuilder.fromAssetArrayBlock(this.formBlock));
     this.assets$ = this.queryService.connect();
     this.queryService.load();
   }

@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { IndexType } from "@codeffekt/ce-core-data";
+import { FormBlock, FormUtils, IndexType } from "@codeffekt/ce-core-data";
 import { BehaviorSubject } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeFormEditorService } from "../services/ce-form-editor.service";
@@ -30,6 +30,22 @@ export class SpaceFormPathService {
         ];
         return nextPathElts.join(",");
     }    
+
+    findBlock(root: IndexType, field: IndexType): FormBlock {
+        const formInfo = this.findFormFromRoot(root);
+        if(!formInfo) {
+            throw new Error(`Form root ${root} not found in current space`);
+        }
+        const block = FormUtils.getBlockFromField(formInfo.form.core, field);
+        if(!block) {
+            throw new Error(`Block ${field} not found in form root ${root}`);
+        }
+        return block;
+    }
+
+    findFormFromRoot(root: IndexType) {
+        return this.currentFormInfos$.getValue().find(formInfo => formInfo.form.core.root === root);
+    }
 
     setCurrentForm(form: FormInfo) {
         this.currentForm$.next(form);

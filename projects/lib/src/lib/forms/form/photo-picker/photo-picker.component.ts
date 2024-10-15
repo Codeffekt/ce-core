@@ -1,24 +1,32 @@
 import { Component, Inject, OnInit } from '@angular/core';
-import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
+import { MatDialogRef, MAT_DIALOG_DATA, MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { AssetElt } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
-import { AssetsDatasource } from '../../form-datasource/assets-datasource';
-import { AssetsFormQueryBuilder } from '../../forms-query/assets-query.builder';
-import { CeAssetsService } from '../../../services/ce-assets.service';
-import { CeCoreService } from '../../../services/ce-core.service';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
-import { CeProjectsService } from '../../../services/ce-projects.service';
 import { FormQueryBuilder } from '../../forms-query';
 import { FormQueryDatasource } from '../../form-datasource';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { CePaginatorModule } from '../../../paginator';
+import { CeMediaModule } from '../../../media/media.module';
 
 export interface PhotoPickerConfig {
-  pid?: IndexType;
-  queryBuilder?: FormQueryBuilder;
-  datasource?: FormQueryDatasource<AssetElt>;
+  queryBuilder: FormQueryBuilder;
+  datasource: FormQueryDatasource<AssetElt>;
 }
 
 @Component({
   selector: 'app-photo-picker',
+  standalone: true,
+  imports: [
+    CommonModule,
+    MatDialogModule,
+    MatButtonModule,
+    MatIconModule,
+    CePaginatorModule,
+    CeMediaModule,
+  ],
   templateUrl: './photo-picker.component.html',
   styleUrls: ['./photo-picker.component.scss'],
   providers: [
@@ -27,23 +35,22 @@ export interface PhotoPickerConfig {
 })
 export class PhotoPickerComponent implements OnInit {
 
+
+  static open(dialog: MatDialog, config: PhotoPickerConfig) {
+    return dialog.open(PhotoPickerComponent, { data: config });
+  }
+
   selectedPhoto: AssetElt;
   photos$: Observable<readonly AssetElt[]>;
   datasource!: FormQueryDatasource<AssetElt>;
 
-  private pid: IndexType;
-
   constructor(
     private readonly queryService: CeFormQueryService<AssetElt>,
-    private readonly assetsService: CeAssetsService,
-    private projectService: CeProjectsService,
-    private coreService: CeCoreService,
     public dialogRef: MatDialogRef<PhotoPickerComponent>,
     @Inject(MAT_DIALOG_DATA) private data: PhotoPickerConfig) {
-    this.datasource = this.data?.datasource ?? this.createAssetsDatasource();
+    this.datasource = this.data.datasource;
     this.queryService.setQueryBuilder(
-      this.data?.queryBuilder ??
-      AssetsFormQueryBuilder.withPhotoMode()
+      this.data.queryBuilder
     );
     this.queryService.setDatasource(this.datasource);
     this.photos$ = this.queryService.connect();
@@ -67,14 +74,6 @@ export class PhotoPickerComponent implements OnInit {
 
   onDismiss(): void {
     this.dialogRef.close();
-  }  
-
-  private createAssetsDatasource() {
-    const currentProject = this.projectService.getCurrentProjectAssetsRef();
-    const currentUser = this.coreService.getCurrentUser();
-    this.pid = currentProject ? this.projectService.getCurrentProjectAssetsRef() : currentUser.settings.account;
-    const datasource = new AssetsDatasource(this.assetsService);
-    datasource.pid = this.pid;
-    return datasource;
   }
+
 }

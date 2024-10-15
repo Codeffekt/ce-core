@@ -8,7 +8,6 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatStepperModule } from "@angular/material/stepper";
 import { NgxUploaderModule } from "ngx-uploader";
 import { CeIllustrationModule } from "../illustration/illustration.module";
-import { CeMediaPhotoModule } from "../media-photo/media-photo.module";
 import { CeNavigationModule } from "../navigation/navigation.module";
 import { CePaginatorModule } from "../paginator/paginator.module";
 import { CePipesModule } from "../pipes/pipes.module";
@@ -43,8 +42,7 @@ import { CeNgReallyModule } from "../widgets/ng-really/ng-really.module";
         FormsModule,
         ReactiveFormsModule,
         NgxUploaderModule,        
-        CePipesModule,
-        CeMediaPhotoModule,        
+        CePipesModule,      
         CeIllustrationModule,
         CeNavigationModule,
         CePaginatorModule,

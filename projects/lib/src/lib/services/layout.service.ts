@@ -1,9 +1,8 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Inject, Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { MatDrawer, MatDrawerMode } from '@angular/material/sidenav';
 import { Observable, ReplaySubject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { CeCoreModuleConfig, CE_CORE_CONFIG } from '../ce-core.config';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 @Injectable({
@@ -16,15 +15,13 @@ export class LayoutService {
   // change: ReplaySubject<boolean> = new ReplaySubject();
 
   private sideMenuOpened!: boolean;
-  private sideMenuMode!: MatDrawerMode;
   private sideMenuToggled$ = new ReplaySubject<boolean>(1);
   private sideMenuMode$ = new ReplaySubject<MatDrawerMode>(1);
   private drawer!: MatDrawer;
 
   constructor(
     private snackBar: MatSnackBar,
-    private breakpointObserver: BreakpointObserver,
-    @Inject(CE_CORE_CONFIG) private config: CeCoreModuleConfig
+    private breakpointObserver: BreakpointObserver,   
   ) {
     this.title = 'no title';
   }
@@ -51,7 +48,6 @@ export class LayoutService {
   }
 
   setSideMenuMode(mode: MatDrawerMode) {
-    this.sideMenuMode = mode;
     this.sideMenuMode$.next(mode);
   }
 

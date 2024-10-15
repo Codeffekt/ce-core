@@ -13,7 +13,7 @@ export class FormQueryBuilder {
     protected extSubFields: string[] = [];
     protected pagination: Partial<FormQuery> = FormQueryBuilder.fromPagination(0, DEFAULT_LIMIT);
     protected extMode!: Partial<FormQuery>;
-    protected root: IndexType;
+    protected root: IndexType;   
     protected queryRootFields: FormQueryField[] = [];
     protected sortRootFields: FormQuerySortField[] = [];
     protected filterFields: FormFilter[] = [];
@@ -93,7 +93,7 @@ export class FormQueryBuilder {
 
     setFilter(value: string) {
         throw new Error("Must be implemented");
-    }
+    }    
 
     create(): FormQuery {
         return {
@@ -104,7 +104,7 @@ export class FormQueryBuilder {
             filters: this.filterFields.length ? this.filterFields : undefined,
             ...this.pagination,
             ...this.extMode,
-            root: this.root
+            root: this.root,         
         };
     }
 

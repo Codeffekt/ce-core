@@ -13,15 +13,13 @@ function convertDateToTimestamp(value: string | number | Date): number {
 }
 export class AssetsDatasource extends FormQueryDatasource<AssetElt> {
 
-    pid!: IndexType;
-
     constructor(private assetsService: CeAssetsService) {
         super();
     }
 
     protected queryDb(query: FormQuery): Observable<DbArrayRes<FormInstance>> {
 
-        return this.assetsService.getProjectFormsQuery(this.pid, query);
+        return this.assetsService.getFormsQuery(query);
     }
 
     protected wrap(form: FormInstance): AssetElt {

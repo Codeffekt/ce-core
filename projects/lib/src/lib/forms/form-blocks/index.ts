@@ -1,5 +1,5 @@
 export * from './form-array-block/form-array-block.component';
-export * from './form-asset-block/form-asset-block.component';
+export * from './form-asset-block';
 export * from './form-assoc-block/form-assoc-block.component';
 export * from './form-block/form-block.component';
 export * from './form-boolean-block/form-boolean-block.component';
@@ -15,3 +15,4 @@ export * from './form-block-field';
 export * from './form-factory-block';
 export * from './form-action-block';
 export * from './form-blocks.module';
+export * from './form-block-asset-factory';

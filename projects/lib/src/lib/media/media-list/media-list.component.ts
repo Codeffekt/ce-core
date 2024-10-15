@@ -26,6 +26,8 @@ export class MediaListComponent implements OnInit {
 
   @Input() pid: IndexType;
 
+  private ref: IndexType;
+
   constructor(
     public dialog: MatDialog,
     private layout: LayoutService,
@@ -37,13 +39,13 @@ export class MediaListComponent implements OnInit {
   }
 
   ngOnInit() {   
-    this.datasource.pid = this.pid ?? ASSETS_DEFAULT_REF;    
+    this.ref= this.pid ?? ASSETS_DEFAULT_REF;    
     this.prepareQueryService();
   }
 
   async delete(photo: AssetElt) {
     try {
-      await firstValueFrom(this.assetsService.deleteAssets(this.datasource.pid, [photo.id]));
+      await firstValueFrom(this.assetsService.deleteAssets(this.ref, [photo.id]));
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
@@ -54,7 +56,7 @@ export class MediaListComponent implements OnInit {
   openPhotoImport() {
 
     const config: AssetImportConfig = {
-      pid: this.datasource.pid,
+      pid: this.ref,
       title: "Importer un media"
     };
 

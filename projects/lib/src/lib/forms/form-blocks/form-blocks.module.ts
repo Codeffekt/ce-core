@@ -56,7 +56,6 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormArrayBlockComponent,
         FormIndexBlockComponent,
         FormAssocBlockComponent,
-        FormAssetBlockComponent,
         FormRootBlockComponent,                       
         FormBlockFieldFloatingActionComponent,        
         CeFormHintComponent,
@@ -92,6 +91,7 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormFactoryBlockComponent,
         FormActionBlockComponent,
         FormAssetArrayBlockComponent,
+        FormAssetBlockComponent,
     ],
     exports: [
         FormBlockFactoryComponent,

@@ -1,7 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormPathService } from '../form/form-path.service';
-import { CeFormModule, CeFormRouteResolver, CeGridModule, CeNavigationModule, FormInfo } from '@codeffekt/ce-core';
+import { CeFormModule, CeFormRouteResolver, CeFormUpdaterService, CeGridModule, CeNavigationModule, FormInfo, SpaceFormPathService } from '@codeffekt/ce-core';
 import { FormUrlQueryParamsDirective } from '../form/form-url-query-params-directive.component';
 import { FormRouteResolver } from '../form/form-route-resolver.service';
 import { CeListModule } from "../../../../lib/src/lib/list/list.module";
@@ -29,13 +28,14 @@ import { IndexType } from '@codeffekt/ce-core-data';
 })
 export class FormEditorComponent {
 
-  private formService = inject(FormPathService);
+  private formService = inject(SpaceFormPathService);
   private formRouteResolver = inject(CeFormRouteResolver);
+  private formUpdaterService = inject(CeFormUpdaterService);
   currentForm$ = this.formService.onCurrentForm();
   currentForms$ = this.formService.onCurrentForms();
 
-  onFormChanges(form: FormInfo, changes: any) {
-
+  async onFormChanges(form: FormInfo, changes: any) {
+    await this.formUpdaterService.updateForm(form.form);
   }
 
   onGoElt(formId: IndexType) {
