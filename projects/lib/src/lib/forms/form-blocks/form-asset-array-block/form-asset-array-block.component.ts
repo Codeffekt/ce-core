@@ -19,6 +19,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { AssetImportComponent, AssetImportConfig } from '../../../media/asset-import/asset-import.component';
 import { CeMediaModule } from '../../../media';
 import { CePaginatorModule } from '../../../paginator';
+import { CeNgReallyModule } from '../../../widgets/ng-really/ng-really.module';
 
 @Component({
   selector: 'lib-form-asset-array-block',
@@ -31,6 +32,7 @@ import { CePaginatorModule } from '../../../paginator';
     CeLayoutModule,       
     CeMediaModule,
     CePaginatorModule,
+    CeNgReallyModule,
     FormBlockFieldComponent,
     FormBlockFieldActionsComponent,
     FormBlockFieldContentComponent,
@@ -45,7 +47,7 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
 
   datasource!: AssetsDatasource;
   assetArrayRef!: IndexType;
-  assets$: Observable<readonly AssetElt[]>;
+  assets$!: Observable<readonly AssetElt[]>;
 
   constructor(
     private dialog: MatDialog,
@@ -89,7 +91,7 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
-      this.layout.showErrorMessage(`Erreur <${err.message}> lors de la suppression du media`);
+      this.layout.showErrorMessage(`Erreur <${(<any> err).message}> lors de la suppression du media`);
     }
   }
 

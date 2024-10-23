@@ -51,12 +51,12 @@ export class FormInstanceQueryBuilder extends FormQueryBuilder {
         const query = this.form.content.query.value as FormQuery;
         if (Array.isArray(query.queryRootFields)) {
             this.variablesFunc = this.variablesFunc.concat(
-                (query.queryRootFields.filter((q: FormQueryField) => q.value === "((now))") as FormQueryField[])
+                (query.queryRootFields.filter((q: any) => q.value === "((now))") as FormQueryField[])
                 .map(qf => () => qf.value = Date.now())
             );
 
             this.variablesFunc = this.variablesFunc.concat(
-                (query.queryRootFields.filter((q: FormQueryField) => q.value === "((author))") as FormQueryField[])
+                (query.queryRootFields.filter((q: any) => q.value === "((author))") as FormQueryField[])
                 .map(qf => () => qf.value = this.variables.author)
             );
         }

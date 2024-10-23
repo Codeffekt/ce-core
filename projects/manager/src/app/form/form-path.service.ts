@@ -7,8 +7,8 @@ import { BehaviorSubject } from "rxjs";
 export class FormPathService {
 
     private currentPathElts: string[] = [];
-    private currentForm$: BehaviorSubject<FormInfo | undefined> = new BehaviorSubject(undefined);
-    private currentFormInfos$: BehaviorSubject<FormInfo[]> = new BehaviorSubject([]);
+    private currentForm$ = new BehaviorSubject<FormInfo|undefined>(undefined);
+    private currentFormInfos$ = new BehaviorSubject<FormInfo[]>([]);
     private formEditorService = inject(CeFormEditorService);    
 
     async setCurrentPath(path: string) {

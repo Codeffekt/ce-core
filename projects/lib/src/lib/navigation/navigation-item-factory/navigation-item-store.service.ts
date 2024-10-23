@@ -9,7 +9,7 @@ export interface INavItemComponent<T = any> {
 }
 
 
-export type NavItemFactoryFunction = (FormWrapper) => Type<any>;
+export type NavItemFactoryFunction = (f: string) => Type<any>;
 
 export interface NavItemFactoryComponentClass {
     useClass: Type<any>;
@@ -40,10 +40,10 @@ export class NavigationItemStoreService {
         const existingComponent = this.store.components[form.core.root]; 
         
         if(!existingComponent) {
-            return elseUseDefault ? NavigationItemDefaultComponent : undefined;
+            return elseUseDefault ? NavigationItemDefaultComponent : undefined as any;
         }
 
-        return isFactoryFunction(existingComponent) ? existingComponent.useFunction(form) : existingComponent.useClass;
+        return isFactoryFunction(existingComponent) ? existingComponent.useFunction(form as any) : existingComponent.useClass;
     }    
 
     setComponents(components: NavItemFactoryComponents) {

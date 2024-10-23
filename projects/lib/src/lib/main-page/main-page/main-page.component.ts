@@ -21,7 +21,7 @@ export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
 
   mobileQuery!: MediaQueryList;
 
-  private _mobileQueryListener: () => void;
+  private _mobileQueryListener!: () => void;
 
   constructor(
     private layout: LayoutService,

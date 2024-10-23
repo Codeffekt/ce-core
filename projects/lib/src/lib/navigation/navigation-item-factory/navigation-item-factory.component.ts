@@ -19,12 +19,12 @@ export class NavigationItemFactoryComponent<T = any> implements OnInit, AfterVie
   @Input()
   @HostBinding('class.active') active: boolean = false;
 
-  _items: readonly T[];
+  _items!: readonly T[];
   get items(): readonly T[] {
     return this._items;
   }
 
-  _formWrapper: FormWrapper;
+  _formWrapper!: FormWrapper;
   get formWrapper(): FormWrapper {
     return this._formWrapper;
   }
@@ -46,9 +46,9 @@ export class NavigationItemFactoryComponent<T = any> implements OnInit, AfterVie
 
   @Output() itemChangedEvent = new EventEmitter<boolean>();
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  private navItemComponent: ComponentRef<INavItemComponent>;
+  private navItemComponent!: ComponentRef<INavItemComponent>;
 
   constructor(private navItemService: NavigationItemStoreService) { }
 

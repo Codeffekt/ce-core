@@ -43,7 +43,7 @@ import { Observable, map, startWith } from 'rxjs';
 export class SearchboxComponent<T = any> implements OnDestroy {
 
   @Input() debounceTime = 1000;
-  @Input() placeholder: string;
+  @Input() placeholder!: string;
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
   searchDisabled$: Observable<boolean>;
 
@@ -79,7 +79,7 @@ export class SearchboxComponent<T = any> implements OnDestroy {
   }
 
   private updateQueryFilter(query?: string) {
-    this.queryService.setFilter(query);
+    this.queryService.setFilter(query as any);
     this.reload();
   }
 

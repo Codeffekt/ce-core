@@ -25,7 +25,7 @@ export class SearchTokensQueryService {
                     value: queryField.field
                 },
                 op: {
-                    label: this.tokenLabelService.getOperatorLabelForValue(queryField.operator),
+                    label: this.tokenLabelService.getOperatorLabelForValue(queryField.operator!),
                     value: queryField.operator,
                 },
                 value: {
@@ -35,6 +35,6 @@ export class SearchTokensQueryService {
             }
         })
 
-        return tokens;
+        return tokens as any;
     }
 }

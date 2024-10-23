@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class EditTimeComponent implements OnInit {
 
-  @Input() mTime: number;
-  @Input() saving: boolean;
+  @Input() mTime!: number;
+  @Input() saving!: boolean;
 
   constructor() {  }
 

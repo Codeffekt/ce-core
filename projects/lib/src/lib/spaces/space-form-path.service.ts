@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { FormBlock, FormUtils, IndexType } from "@codeffekt/ce-core-data";
+import { FormBlock, FormInstance, FormUtils, IndexType } from "@codeffekt/ce-core-data";
 import { BehaviorSubject } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeFormEditorService } from "../services/ce-form-editor.service";
@@ -50,7 +50,7 @@ export class SpaceFormPathService {
     setCurrentForm(form: FormInfo) {
         this.currentForm$.next(form);
     }
-
+    
     onCurrentForm() {
         return this.currentForm$;
     }

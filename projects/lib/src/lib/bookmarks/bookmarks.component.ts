@@ -18,8 +18,8 @@ export class BookmarksComponent<T> implements OnInit {
 
   @Input() displayMode: BookmarksComponentDisplayMode = 'tabs';
   @Input() menuTitle: string = "Menu";
-  bookmarks$: Observable<CeFormQueryBookmarks>;
-  activeBookmark: IndexType;
+  bookmarks$!: Observable<CeFormQueryBookmarks>;
+  activeBookmark!: IndexType;
 
   constructor(private queryService: CeFormQueryService<T>) { }
 
@@ -42,6 +42,6 @@ export class BookmarksComponent<T> implements OnInit {
     this.queryService.evt().pipe(
       untilDestroyed(this),
       filter(evt => evt.type === "active-bookmark")
-    ).subscribe(evt => this.activeBookmark = evt.data?.id);
+    ).subscribe(evt => this.activeBookmark = evt.data?.id as any);
   }
 }

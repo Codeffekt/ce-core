@@ -8,12 +8,12 @@ const DEFAULT_LIMIT = 10;
 export class FormQueryBuilder {
 
     protected queryFields: FormQueryField[] = [];
-    protected queryFieldLogic: FormQueryFieldLogic;
+    protected queryFieldLogic!: FormQueryFieldLogic;
     protected sortFields: FormQuerySortField[] = [];
     protected extSubFields: string[] = [];
     protected pagination: Partial<FormQuery> = FormQueryBuilder.fromPagination(0, DEFAULT_LIMIT);
     protected extMode!: Partial<FormQuery>;
-    protected root: IndexType;   
+    protected root!: IndexType;   
     protected queryRootFields: FormQueryField[] = [];
     protected sortRootFields: FormQuerySortField[] = [];
     protected filterFields: FormFilter[] = [];
@@ -109,7 +109,7 @@ export class FormQueryBuilder {
     }
 
     clearQueryFieldLogic() {
-        this.queryFieldLogic = undefined;
+        this.queryFieldLogic = undefined as any;
     }
 
     setQueryFieldLogic(logic: FormQueryFieldLogic) {
@@ -127,7 +127,7 @@ export class FormQueryBuilder {
             return [...queryFieldsAndMeta, this.queryFieldLogic];
         }
 
-        return this.queryFieldLogic ? this.queryFieldLogic : queryFieldsAndMeta.length ? queryFieldsAndMeta : undefined;
+        return this.queryFieldLogic ? this.queryFieldLogic : queryFieldsAndMeta.length ? queryFieldsAndMeta : undefined as any;
     }
 
     private createSortFields(): FormQuerySortField[] {
@@ -135,7 +135,7 @@ export class FormQueryBuilder {
             ...this.sortFields,
             ...this.sortRootFields.map((qrf => ({ ...qrf, onMeta: true })))
         ];
-        return sortFieldsAndMeta.length ? sortFieldsAndMeta : undefined;
+        return sortFieldsAndMeta.length ? sortFieldsAndMeta : undefined as any;
     }
 
     protected setSubField(sf: string) {

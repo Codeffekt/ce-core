@@ -17,7 +17,7 @@ import { FormActionRenderService } from '../actions/form-action-render.service';
 })
 export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewInit {
 
-  _formWrapper: FormWrapper;
+  _formWrapper!: FormWrapper;
   get formWrapper(): FormWrapper {
     return this._formWrapper;
   }
@@ -49,11 +49,11 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
 
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  private formComponent: ComponentRef<IFormContent>;
+  private formComponent!: ComponentRef<IFormContent>;
   private formComponentSubscriptions?: Subscription;
-  private lastComponentType: Type<any>;
+  private lastComponentType!: Type<any>;
 
   constructor(
     private formActionService: FormActionRenderService,

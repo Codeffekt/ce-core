@@ -10,7 +10,7 @@ import { CeFormsService } from "../../../services/ce-forms.service";
     styleUrls: ['./form-new.component.scss'],
 })
 export class FormNewComponent implements OnInit {
-    root: FormRoot;
+    root!: FormRoot;
 
     constructor(
         private router: Router,

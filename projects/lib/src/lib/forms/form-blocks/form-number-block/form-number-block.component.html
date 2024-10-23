@@ -1,15 +1,22 @@
 <mat-form-field floatLabel="always" class="w-100">
     <mat-label>{{formBlock.label}}</mat-label>
-    <input matInput [errorStateMatcher]="stateMatcher" [(ngModel)]="value" type="number" [disabled]="formBlock.readonly"
-        [required]="formBlock.required">
+    <input matInput [errorStateMatcher]="stateMatcher" type="number" [disabled]="formBlock.readonly"
+        [required]="formBlock.required"
+        (keydown.enter)="isEditMode = false; updateValue(input.value)"
+        (focus)="isEditMode = true; input.select()"         
+        (click)="isEditMode = true; input.select()"
+        (keydown.esc)="isEditMode = false; input.value = getLastValueAsStr(); input.setSelectionRange(0, 0); input.blur()"
+        #input 
+        [value]="value"         
+        (blur)="isEditMode = false; updateValue(input.value)">
     <span *ngIf="formBlock.unit" matSuffix>{{formBlock.unit}}</span>
     <mat-hint *ngIf="formBlock.hint">{{formBlock.hint}}</mat-hint>
     <mat-error *ngIf="formControl.errors?.required">Valeur requise</mat-error>
-    <mat-error *ngIf="formControl.errors?.min">Valeur doit être &gt; {{formControl.errors.min.min }}</mat-error>
-    <mat-error *ngIf="formControl.errors?.max">Valeur doit être &lt; {{formControl.errors.max.max}}</mat-error>
+    <mat-error *ngIf="formControl.errors?.min">Valeur doit être &gt; {{formControl.errors?.min.min }}</mat-error>
+    <mat-error *ngIf="formControl.errors?.max">Valeur doit être &lt; {{formControl.errors?.max.max}}</mat-error>
     <mat-error *ngIf="formControl.errors?.range">
-        Valeur doit être compris entre {{formControl.errors.range.min}}
+        Valeur doit être compris entre {{formControl.errors?.range.min}}
         et
-        {{formControl.errors.range.max}}
+        {{formControl.errors?.range.max}}
     </mat-error>
 </mat-form-field>

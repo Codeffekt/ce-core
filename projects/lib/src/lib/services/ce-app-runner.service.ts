@@ -106,7 +106,7 @@ export class CeAppRunnerService {
 
         const formInfo: FormInfo = {
             form,
-            formMask,
+            formMask: formMask!,
             isProject: true
         };
 
@@ -181,8 +181,8 @@ export class CeAppRunnerService {
         const formMask = this.getCurrentProjectMask();
 
         const form: FormInstance = {
-            ...project.core,
-            title: assoc.label,        
+            ...project!.core,
+            title: assoc.label as any,        
             content: {
               [assoc.field]: {
                 ...assoc,
@@ -192,7 +192,7 @@ export class CeAppRunnerService {
 
         const formInfo: FormInfo = {
             form: FormWrapper.fromForm(form),
-            formMask,
+            formMask: formMask!,
         };
 
         this.formEditorService.setCurrentFormInfo(formInfo);
@@ -276,7 +276,7 @@ export class CeAppRunnerService {
         const builder = new FormQueryAssocBuilder();
         const appForm = this.currentApp!.core;
         builder.setAssoc(block, appForm);
-        return this.formsService.getRawFormsQuery(builder.create()).toPromise();
+        return this.formsService.getRawFormsQuery(builder.create()).toPromise() as any;
     }
 
     private clearConfig() {

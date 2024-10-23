@@ -68,6 +68,6 @@ export class FormControlsBuilder {
             return null;
         }
 
-        return validators.find(validator => validator.name === validatorName);
+        return validators.find((validator: any) => validator.name === validatorName);
     }
 }

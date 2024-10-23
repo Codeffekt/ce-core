@@ -9,7 +9,7 @@ import { SearchTokensService } from '../services/search-tokens-service';
 })
 export class SearchTokenComponent implements OnInit {
 
-  @Input() searchToken: SearchToken;
+  @Input() searchToken!: SearchToken;
 
   constructor(private tokensService: SearchTokensService) { }
 

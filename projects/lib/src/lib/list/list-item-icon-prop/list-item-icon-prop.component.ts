@@ -6,9 +6,9 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./list-item-icon-prop.component.scss']
 })
 export class ListItemIconPropComponent {
-  @Input() icon: string;
-  @Input() fontIcon: string;
-  @Input() tooltip: string;
+  @Input() icon!: string;
+  @Input() fontIcon!: string;
+  @Input() tooltip!: string;
 }
 
 @Component({

@@ -15,11 +15,11 @@ export abstract class ReactiveDatasource<T> extends DataSource<T> {
     this.data$.complete();
   }
 
-  load(...params) {
+  load(...params: any) {
     this.queryData().subscribe(_ => this.updateData(_));
   }
 
-  protected abstract queryData(...params): Observable<T[]>;
+  protected abstract queryData(...params: any): Observable<T[]>;
 
   protected updateData(_data: T[]) {
     this._data = _data;

@@ -25,7 +25,7 @@ export interface AssetImportConfig {
 })
 export class AssetImportComponent implements OnInit, OnDestroy {
 
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatPaginator, { static: false }) paginator!: MatPaginator;
 
   uploadOptions: UploaderOptions;
   uploadInput: EventEmitter<UploadInput>;
@@ -34,9 +34,9 @@ export class AssetImportComponent implements OnInit, OnDestroy {
 
   responsiveMode = false;
 
-  file: UploadFile;
+  file!: UploadFile;
 
-  eltForm: UntypedFormGroup;
+  eltForm!: UntypedFormGroup;
   title: string;
 
   constructor(
@@ -85,7 +85,7 @@ export class AssetImportComponent implements OnInit, OnDestroy {
   onCancelImport() {
     this.uploadInput.emit({ type: 'cancel', id: this.file.id });
     this.uploadInput.emit({ type: 'remove', id: this.file.id });
-    this.file = null;
+    this.file = null as any;
     this.eltForm.reset();
   }
 
@@ -102,7 +102,7 @@ export class AssetImportComponent implements OnInit, OnDestroy {
       } as AssetElt));
       this.config.isDone = false;
       this.config.asset = assetElt;
-      const event = this.coreService.newAssetUploadInput(this.config.asset.id);
+      const event = this.coreService.newAssetUploadInput(this.config.asset!.id);
       this.uploadInput.emit(event);
     } catch (_) {
       this.config.hasError = true;

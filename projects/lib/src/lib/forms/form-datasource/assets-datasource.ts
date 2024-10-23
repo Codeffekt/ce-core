@@ -9,7 +9,7 @@ import { CeAssetsService } from '../../services/ce-assets.service';
 import { FormQueryDatasource } from './form-query.datasource';
 
 function convertDateToTimestamp(value: string | number | Date): number {
-    return value instanceof Date ? value.getTime() : isNaN(parseInt(value as string)) ? undefined : parseInt(value as string);
+    return value instanceof Date ? value.getTime() : isNaN(parseInt(value as string)) ? undefined : parseInt(value as string) as any;
 }
 export class AssetsDatasource extends FormQueryDatasource<AssetElt> {
 

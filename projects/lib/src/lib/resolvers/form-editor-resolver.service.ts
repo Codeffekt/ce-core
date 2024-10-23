@@ -13,7 +13,7 @@ export class FormEditorResolverService  {
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormInfo> {
         const id = route.paramMap.get('form');
-        const form = await this.formEditorService.getForm(id);
+        const form = await this.formEditorService.getForm(id as any);
         this.formInfoBreadcrumbs.processFormInfo(form);
         return form;
     }

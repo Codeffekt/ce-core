@@ -1,8 +1,10 @@
 import { Injectable, Type } from "@angular/core";
 import {
     MediaFactoryComponentClass, MediaFactoryComponentFunction,
-    MediaFactoryComponents, MediaFactoryOptions
+    MediaFactoryComponents, MediaFactoryOptions,
+    MediaToTypeFunc
 } from "./media-models";
+import { AssetElt } from "@codeffekt/ce-core-data";
 
 function isFactoryFunction(elt: MediaFactoryComponentClass | MediaFactoryComponentFunction): elt is MediaFactoryComponentFunction {
     return (<MediaFactoryComponentFunction>elt)?.useFunction !== undefined;
@@ -10,13 +12,16 @@ function isFactoryFunction(elt: MediaFactoryComponentClass | MediaFactoryCompone
 @Injectable({ providedIn: 'root' })
 export class MediaStoreService {
 
-    private defaultComponent: Type<any>;
+    private defaultComponent!: Type<any>;
 
     private store: MediaFactoryOptions = {
         components: {}
     };
 
-    getComponentType<T>(type: string, elseUseDefault = true): Type<any> {
+    private mediaToTypeFuncs: MediaToTypeFunc[] = [];
+
+    getComponentType<T>(asset: AssetElt, elseUseDefault = true): Type<any>|undefined {
+        const type = this.getFactoryTypeFromAssetElt(asset);
         const existingComponent = this.store.components[type];
 
         if (!existingComponent) {
@@ -32,5 +37,20 @@ export class MediaStoreService {
 
     setDefaultComponent(component: Type<any>) {
         this.defaultComponent = component;
+    }
+
+    registerMediaToTypeFunc(mttf: MediaToTypeFunc) {
+        this.mediaToTypeFuncs.push(mttf);
+    }
+
+    private getFactoryTypeFromAssetElt(asset: AssetElt): string {
+        const factoryType = asset.mimetype ?? "unknown";
+        for(const mediaToTypeFunc of this.mediaToTypeFuncs) {
+            const factoryTypeFromFunc = mediaToTypeFunc(asset);
+            if(factoryTypeFromFunc !== undefined) {
+                return factoryTypeFromFunc;
+            }
+        }
+        return factoryType;
     }
 }

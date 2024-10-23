@@ -8,8 +8,8 @@ import { IListItemContent } from '../list-item-factory/list-item-models';
 })
 export class ListItemContentComponent<T = any> implements OnInit, IListItemContent {
 
-  itemChangedEvent: EventEmitter<boolean>;
-  item: T;
+  itemChangedEvent!: EventEmitter<boolean>;
+  item!: T;
 
   constructor() { }
 

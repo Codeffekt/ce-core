@@ -1,4 +1,4 @@
-<ce-form-block-field [label]="formBlock.label" headerAppearance="bordered">
+<ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">
 
     <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
         <button mat-stroked-button color="primary" (click)="onLink()"><mat-icon>link</mat-icon>Associer</button>

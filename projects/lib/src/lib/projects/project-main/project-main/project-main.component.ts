@@ -59,7 +59,7 @@ export class CeProjectMainComponent implements OnInit {
   private applyProjectMaskOnMenuEntries(): MenuEntry[] {
 
     const formProjectInstance =
-      this.projectService.getCurrentProjectFormMasked().core as FormInstance;
+      this.projectService.getCurrentProjectFormMasked()!.core as FormInstance;
 
     const assocsBlocks = FormUtils.getBlocks(formProjectInstance)
       .filter(block => block.type === "formArray");
@@ -69,6 +69,6 @@ export class CeProjectMainComponent implements OnInit {
       routerLink: [assoc.field],
       icon: '',
       label: assoc.label
-    }));
+    })) as any;
   }  
 }

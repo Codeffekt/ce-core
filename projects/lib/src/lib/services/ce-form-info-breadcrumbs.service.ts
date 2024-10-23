@@ -43,9 +43,9 @@ export class CeFormInfoBreadcrumbsService {
         })).filter(pair => pair.item !== undefined);
 
         for (const itemChangePair of itemChangePairs) {
-            const formInfo = itemChangePair.item.data;
-            this.updateFormInfo(itemChangePair.item.data, itemChangePair.change.wrapper);
-            itemChangePair.item.label = this.resolveLabel(formInfo);
+            const formInfo = itemChangePair!.item!.data;
+            this.updateFormInfo(itemChangePair!.item!.data, itemChangePair.change.wrapper);
+            itemChangePair!.item!.label = this.resolveLabel(formInfo);
         }
     }
 

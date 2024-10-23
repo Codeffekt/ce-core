@@ -15,7 +15,7 @@ export class SearchTokenUpdater {
 
         token.field = {
             value: field,
-            label: this.searchLabelService.getFieldLabelForValue(field)
+            label: this.searchLabelService.getFieldLabelForValue(field) as any
         }
         return token;
     }
@@ -27,7 +27,7 @@ export class SearchTokenUpdater {
 
         token.op = {
             value: op,
-            label: this.searchLabelService.getOperatorLabelForValue(op)
+            label: this.searchLabelService.getOperatorLabelForValue(op) as any
         }
         return token;
     }
@@ -39,7 +39,7 @@ export class SearchTokenUpdater {
 
         token.value = {
             value,
-            label: this.searchLabelService.getValueLabelForValue(token.field?.value, value)
+            label: this.searchLabelService.getValueLabelForValue(token.field?.value, value) as any
         };
         return token;
     }

@@ -66,7 +66,7 @@ export class CeCoreService {
 
   error$: Subject<any> = new Subject();
 
-  private tokenTimeoutId;
+  private tokenTimeoutId: any;
 
   constructor(
     private http: HttpClient,
@@ -112,7 +112,7 @@ export class CeCoreService {
   }
 
   call<T>(...params: any[]): Observable<T> {
-    return this._call.bind(this, this.getApi.bind(this) as any, this.getCallPost, {
+    return this._call.bind(this, this.getApi.bind(this) as any, this.getCallPost as any, {
       headers: this.getHeaders()
     }).apply(this, params) as any;
   }
@@ -152,8 +152,8 @@ export class CeCoreService {
       withCredentials: true
     }).toPromise();
 
-    const token = session.token;
-    this.setLocalUser({ token: token, settings: session.data, expMs: session.exp * 1000 });
+    const token = session!.token;
+    this.setLocalUser({ token: token, settings: session!.data, expMs: session!.exp * 1000 });
     this.setTokenTimeout();
 
     return true;
@@ -170,8 +170,8 @@ export class CeCoreService {
     }
     try {
       const resp = await this.http.get<ResAuthenticate>(`${this.getAuth()}/persistent`, { withCredentials: true }).toPromise();
-      const token = resp.token;
-      this.setLocalUser({ token: token, settings: resp.data, expMs: resp.exp * 1000 });
+      const token = resp!.token;
+      this.setLocalUser({ token: token, settings: resp!.data, expMs: resp!.exp * 1000 });
       this.setTokenTimeout();
       return true;
     } catch (err) {

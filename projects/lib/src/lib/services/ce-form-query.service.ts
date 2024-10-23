@@ -17,10 +17,10 @@ export interface CeFormQueryEvt {
 @Injectable()
 export class CeFormQueryService<T = any> {
 
-    private datasource: ShareableDataSource<T>;
-    private queryBuilder: FormQueryBuilder;
+    private datasource!: ShareableDataSource<T>;
+    private queryBuilder!: FormQueryBuilder;
     private evt$: ReplaySubject<CeFormQueryEvt> = new ReplaySubject(1);
-    private model: FormRoot;
+    private model!: FormRoot;
     private logicBuilder: FormQueryLogicBuilder = new FormQueryLogicBuilder();
     private bookmarks$: ReplaySubject<CeFormQueryBookmarks> = new ReplaySubject(1);
     public query$: ReplaySubject<FormQuery> = new ReplaySubject(1);
@@ -31,7 +31,7 @@ export class CeFormQueryService<T = any> {
     setDatasource(ds: PartialDatasource<T>) {
 
         if (this.datasource) {
-            this.datasource.disconnect(null);
+            this.datasource.disconnect(null as any);
         }
 
         this.datasource = new ShareableDataSource(ds);
@@ -66,7 +66,7 @@ export class CeFormQueryService<T = any> {
     }
 
     connect(): Observable<readonly T[]> {
-        return this.datasource.connect(null);
+        return this.datasource.connect(null as any);
     }
 
     evt() {

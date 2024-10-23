@@ -23,6 +23,6 @@ export class SearchHintValueBuilderStoreService {
     }
 
     getBuilder(block:FormBlock) : Type<any> | undefined {
-        return this.store.field[block.field] ?? this.store.blockType[block.type];
+        return this.store.field[block.field] ?? this.store.blockType[block.type!];
     }
 }

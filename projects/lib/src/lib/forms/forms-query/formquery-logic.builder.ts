@@ -5,9 +5,9 @@ import {
 import { Utils } from "../../utils/Utils";
 
 const FORMROOT_META: FormRoot = {
-    id: undefined,
-    ctime: undefined,
-    title: undefined,
+    id: undefined as any,
+    ctime: undefined as any,
+    title: undefined as any,
     content: {
         author: {
             field: "author",
@@ -41,9 +41,9 @@ const FORMROOT_META: FormRoot = {
 }
 
 const EMPTY_MODEL: FormRoot = {
-    id: undefined,
-    ctime: undefined,
-    title: undefined,
+    id: undefined as any,
+    ctime: undefined as any,
+    title: undefined as any,
     content: {}
 };
 
@@ -86,7 +86,7 @@ export class FormQueryLogicBuilder {
         } while ((match = fieldValueRegexp.exec(value)) !== null);
 
         return {
-            and: queryFields.filter(qf => qf !== undefined)
+            and: queryFields.filter(qf => qf !== undefined) as any
         };
     }
 
@@ -113,7 +113,7 @@ export class FormQueryLogicBuilder {
     ): FormQueryField {
         const block = FormUtils.getBlockFromField(model, qf.field);
         if (!block) {
-            return undefined;
+            return undefined as any;
         }
         if (block.type === "number") {
             return this.createQueryFieldFromNumber(qf);
@@ -150,8 +150,8 @@ export class FormQueryLogicBuilder {
     }
 
     private createQueryFieldFromTimestamp(qf: FormQueryField<string>, groups: any): FormQueryField {
-        const value = isNaN(parseInt(qf.value)) ?
-            Utils.getTimeFromDateStr(qf.value) :
+        const value = isNaN(parseInt(qf.value!)) ?
+            Utils.getTimeFromDateStr(qf.value!) :
             qf.value;
         return {
             ...qf,

@@ -12,11 +12,11 @@ export class TableCellFactoryComponent implements OnInit, AfterViewInit {
   @Input()
   @HostBinding('class.active') active: boolean = false;
 
-  @Input() block: FormBlock;
+  @Input() block!: FormBlock;
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  private tableCellComponent: ComponentRef<any>;
+  private tableCellComponent!: ComponentRef<any>;
 
   constructor(private cellStoreService: TableCellStoreService) { }
 

@@ -18,7 +18,7 @@ export class SortFilterDropdownComponent implements OnInit, OnDestroy {
   sortFilter = new EventEmitter();
 
   @Input()
-  activeFilter: FormQuerySortFieldWithLabel;
+  activeFilter!: FormQuerySortFieldWithLabel;
 
   constructor(private sortFiltersService: SortFilterDropdownService) {
     this.listenSortFilters();

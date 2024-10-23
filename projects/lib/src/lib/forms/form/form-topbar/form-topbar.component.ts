@@ -8,7 +8,7 @@ import { FormWrapper } from '@codeffekt/ce-core-data';
 })
 export class FormTopbarComponent {
 
-  @Input() formWrapper: FormWrapper;
+  @Input() formWrapper!: FormWrapper;
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
 }

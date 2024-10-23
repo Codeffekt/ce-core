@@ -13,7 +13,7 @@ import { firstValueFrom } from 'rxjs';
 export class ProjectAssocNavComponent implements OnInit {
 
   pid: IndexType;
-  formWrapper: FormWrapper;
+  formWrapper!: FormWrapper;
 
   constructor(
     projectsService: CeProjectsService,    

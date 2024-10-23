@@ -53,7 +53,7 @@ export class FormAssocBlockComponent extends FormBlockComponent<void> implements
     const ref = this.formBlock.params?.ref || FormUtils.createFormAssocRef(this.formInstance.id, this.formBlock.field);
 
     const query = new FormQueryIndexBuilder();
-    query.setFormRoot(this.formBlock.root);
+    query.setFormRoot(this.formBlock.root!);
     query.setExcludedRef(ref);
 
     const dialogRef = FormChooserDialogComponent.open(this.dialog,
@@ -76,7 +76,7 @@ export class FormAssocBlockComponent extends FormBlockComponent<void> implements
   }
 
   create() {
-    this.dataSource.createElt(this.formBlock.root);
+    this.dataSource.createElt(this.formBlock.root!);
   }
 
   remove(id: IndexType) {
@@ -101,7 +101,7 @@ export class FormAssocBlockComponent extends FormBlockComponent<void> implements
   private async prepareQueryService() {
     this.queryService.setDatasource(this.dataSource);
     this.queryService.setQueryBuilder(this.queryBuilder);
-    const formRoot = await firstValueFrom(this.formService.getFormRoot(this.formBlock.root));
+    const formRoot = await firstValueFrom(this.formService.getFormRoot(this.formBlock.root!));
     this.queryService.setModel(formRoot);
   }
 }

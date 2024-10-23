@@ -19,9 +19,9 @@ import { FormBlockFieldTitleComponent } from './form-block-field-title/form-bloc
 export class FormBlockFieldComponent {
 
   @Input()
-  headerAppearance?: FormBlockFieldHeaderAppearance;
+  headerAppearance: FormBlockFieldHeaderAppearance = 'default';
 
-  @Input() label: string;
+  @Input() label!: string;
 }
 
 

@@ -7,7 +7,7 @@ export interface IListItemContent<T = any> {
     block?: FormBlock;
 }
 
-export type ListItemFactoryFunction = (FormWrapper) => Type<any>;
+export type ListItemFactoryFunction = (field: string) => Type<any>;
 
 export interface ListItemFactoryComponentClass {
     useClass: Type<any>;

@@ -10,13 +10,13 @@ function isFactoryFunction(elt: ListItemFactoryComponentClass | ListItemFactoryC
 @Injectable({ providedIn: 'root' })
 export class ListItemStoreService {
 
-    private defaultComponent: Type<any>;
+    private defaultComponent!: Type<any>;
 
     private store: ListItemFactoryOptions = {
         components: {}
     };
 
-    getComponentType<T>(type: string, elseUseDefault = true): Type<any> {
+    getComponentType<T>(type: string, elseUseDefault = true): Type<any>|undefined {
         const existingComponent = this.store.components[type];
 
         if (!existingComponent) {

@@ -45,7 +45,7 @@ export class SortFiltersBuilder {
         }
     ];
 
-    private model: FormRoot;
+    private model!: FormRoot;
     
     withModel(model: FormRoot) {
         this.model = model;
@@ -63,7 +63,7 @@ export class SortFiltersBuilder {
                     return { field: block.field, label: block.label };
                 })
                 // .filter(sortField => sortField.type !== undefined);
-            sortFields.push(...blockQuerySortFields);
+            sortFields.push(...blockQuerySortFields as any);
         }
 
         return sortFields;

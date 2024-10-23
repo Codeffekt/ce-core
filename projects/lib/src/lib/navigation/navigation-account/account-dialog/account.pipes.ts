@@ -6,7 +6,7 @@ import { AccountSettings } from '@codeffekt/ce-core-data';
 })
 export class NameOrAccountPipe implements PipeTransform {
     
-    transform(accountSettings: AccountSettings): string | undefined {
+    transform(accountSettings?: AccountSettings|null): string | undefined {
 
         if (!accountSettings) {
             return undefined;

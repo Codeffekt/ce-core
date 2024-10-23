@@ -22,9 +22,9 @@ export const CE_TABLE_CELL_ASSET_DEFAULT_OPTIONS = new InjectionToken<CeTableCel
 })
 export class TableCellAssetComponent implements OnInit {
 
-  block: FormBlock;
+  block!: FormBlock;
 
-  constructor(@Inject(CE_TABLE_CELL_ASSET_DEFAULT_OPTIONS) public readonly options) { }
+  constructor(@Inject(CE_TABLE_CELL_ASSET_DEFAULT_OPTIONS) public readonly options: CeTableCellAssetOptions) { }
 
   ngOnInit(): void {
   }

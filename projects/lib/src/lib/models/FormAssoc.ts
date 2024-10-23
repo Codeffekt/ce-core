@@ -6,7 +6,7 @@ export class FormAssoc {
     static readonly ROOT = "forms-assoc";
 
     @FormBlockEntity({ type: "object" })
-    assoc: FormBlock;
+    assoc!: FormBlock;
 }
 
 export class FormAssocBuilder {
@@ -20,7 +20,7 @@ export class FormAssocBuilder {
             id: block.field,
             ctime: form.ctime,
             root: FormAssoc.ROOT,
-            title: block.label,
+            title: block.label!,
             valid: true,
             content: {
                 assoc: {

@@ -39,6 +39,6 @@ export class FormEditorComponent {
   }
 
   onGoElt(formId: IndexType) {
-    this.formRouteResolver.resolve(undefined, formId, undefined);
+    this.formRouteResolver.resolve(formId);
   }
 }

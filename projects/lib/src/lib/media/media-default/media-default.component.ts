@@ -10,7 +10,7 @@ export class MediaDefaultComponent implements OnInit {
 
   @Input() mode: 'view' | 'edit' = 'edit';
   @Input() enableLink = true;
-  @Input() elt: AssetElt;
+  @Input() elt!: AssetElt;
   @Output() delete: EventEmitter<AssetElt> = new EventEmitter();
 
   constructor() { }

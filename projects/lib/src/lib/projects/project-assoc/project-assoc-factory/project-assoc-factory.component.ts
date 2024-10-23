@@ -10,7 +10,7 @@ import { ProjectAssocStoreService } from '../project-assoc-store.service';
 })
 export class ProjectAssocFactoryComponent implements OnInit, AfterViewInit {
 
-  _block: FormBlock;
+  _block!: FormBlock;
   get block(): FormBlock {
     return this._block;
   }
@@ -20,9 +20,9 @@ export class ProjectAssocFactoryComponent implements OnInit, AfterViewInit {
     this.updateComponent();
   }
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  private projectAssocComponent: ComponentRef<IProjectAssocContent>;
+  private projectAssocComponent!: ComponentRef<IProjectAssocContent>;
 
   constructor(
     private projectAssocService: ProjectAssocStoreService

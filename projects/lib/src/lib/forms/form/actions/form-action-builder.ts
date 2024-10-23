@@ -28,11 +28,11 @@ export class FormActionBuilder implements FormAction {
         return builder;
     }
 
-    private renderComponent: Type<any>;
-    private builderComponent: Type<any>;
-    private menuComponent: Type<any>;
-    private topbarComponent: Type<any>;
-    private toolbarComponent: Type<any>;
+    private renderComponent!: Type<any>;
+    private builderComponent!: Type<any>;
+    private menuComponent!: Type<any>;
+    private topbarComponent!: Type<any>;
+    private toolbarComponent!: Type<any>;
 
     constructor() {
     }

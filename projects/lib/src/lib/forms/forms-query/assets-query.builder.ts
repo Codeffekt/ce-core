@@ -5,7 +5,7 @@ const PHOTO_MIMETYPES = ["application/octet-stream", "image/png", "image/jpeg"];
 
 export class AssetsFormQueryBuilder extends FormQueryBuilder {
 
-    private ref: IndexType;
+    private ref!: IndexType;
 
     private constructor() {
         super();

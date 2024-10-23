@@ -56,8 +56,8 @@ export class FormStyleBuilder {
             return [];
         }
 
-        let usedBlocks = [];
-        let customCards = [];
+        let usedBlocks: any = [];
+        let customCards: any = [];
         let formBlocks = FormUtils.getBlocks(form);
 
         if (formStyle?.props?.style?.cards?.length) {
@@ -80,7 +80,7 @@ export class FormStyleBuilder {
         const elts = blocks.filter(block => card.blocks.includes(block.field));
         return {
             id: card.id,
-            title: card.title ? card.title : null,//this.buildCardTitleFromBlocks(card, blocks),
+            title: card.title ? card.title : null as any,//this.buildCardTitleFromBlocks(card, blocks),
             elts,
         };
     }
@@ -90,7 +90,7 @@ export class FormStyleBuilder {
             return DEFAULT_CARD_TITLE;
         }
         const block = blocks.find(b => b.field === card.blocks[0]);
-        return block.label ?? DEFAULT_CARD_TITLE;
+        return block!.label ?? DEFAULT_CARD_TITLE;
     }
 
 

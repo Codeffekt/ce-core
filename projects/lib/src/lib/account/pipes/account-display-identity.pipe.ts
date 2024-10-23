@@ -8,12 +8,12 @@ export class AccountIdentityLabelPipe implements PipeTransform {
             return defaultValue ?? account.login;
         }
 
-        const firstName = capitalizeFirstLetter(account.firstName);
-        const lastName = capitalizeFirstLetter(account.lastName);
+        const firstName = capitalizeFirstLetter(account.firstName!);
+        const lastName = capitalizeFirstLetter(account.lastName!);
         return `${firstName} ${lastName}`.trim();
     }
 }
 
-function capitalizeFirstLetter(str) {
+function capitalizeFirstLetter(str: string) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }

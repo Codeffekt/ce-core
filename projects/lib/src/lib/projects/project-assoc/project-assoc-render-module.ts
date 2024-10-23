@@ -55,7 +55,7 @@ export class CeProjectAssocRenderModule {
     
         console.log("ProjectAssocRenderModule");
 
-        navItemStore.setComponents({
+        /* navItemStore.setComponents({
           [FormAssoc.ROOT]: {
             useFunction: (wrapper: FormWrapper) => {
               const block: FormBlock = FormWrapper.getFormValue("assoc", wrapper.core);
@@ -63,7 +63,7 @@ export class CeProjectAssocRenderModule {
                 id: block.field,
                 ctime: wrapper.core.ctime,
                 root: `${block.field}`,
-                title: block.label,
+                title: block.label ?? "NO LABEL",
                 valid: true,
                 content: {}
               });
@@ -71,7 +71,7 @@ export class CeProjectAssocRenderModule {
               return existingComponentType ?? ProjectAssocNavComponent;
             }
           }
-        })
+        }) */
       }
     
 }

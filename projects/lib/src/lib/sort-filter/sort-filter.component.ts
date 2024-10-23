@@ -13,13 +13,13 @@ import { FormQuerySortFieldWithLabel } from './sort-filter-dropdown/sort-filters
 export class SortFilterComponent<T = any> implements OnInit {
 
   @Input()
-  sortFilter: FormQuerySortFieldWithLabel;
+  sortFilter!: FormQuerySortFieldWithLabel;
 
   @ViewChild(CdkConnectedOverlay)
-  connectedOverlay: CdkConnectedOverlay;
+  connectedOverlay!: CdkConnectedOverlay;
 
   @ViewChild(CdkOverlayOrigin, { read: ElementRef })
-  overlayOrigin: ElementRef;
+  overlayOrigin!: ElementRef;
 
   shouldOpenFilter = false;
 

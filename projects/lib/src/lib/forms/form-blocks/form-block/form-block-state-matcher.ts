@@ -8,6 +8,6 @@ export class FormBlockStateMatcher implements ErrorStateMatcher {
   isErrorState(control: UntypedFormControl | null, formGroupDirective: FormGroupDirective | NgForm | null): boolean {
     
     // allow matInput to show error as soon as parent FormControl is invalid 
-    return formGroupDirective.form.controls[this.formField]?.invalid;
+    return formGroupDirective?.form.controls[this.formField]?.invalid ?? false;
   }
 }

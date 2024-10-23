@@ -22,7 +22,7 @@ export class FormBlockStoreService {
     };
 
     getComponentType<T>(block: FormBlock): FormBlockComponentType<FormBlockComponentAccessor<T>> {
-        return this.store.components[block.type];
+        return this.store.components[block.type!];
     }
 
     setComponents(components: FormBlockFactoryComponents) {

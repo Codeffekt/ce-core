@@ -18,11 +18,11 @@ export class SearchValueHintBuilder extends SearchHintBaseBuilder {
     }
 
     getHintFromValue(value: string): SearchHint {
-        return this.getBuilder()?.getHintFromValue(value);
+        return this.getBuilder()?.getHintFromValue(value) as any;
     }
 
     protected getBuilder(): SearchHintBaseBuilder | null {
-        const builderType: Type<any> = this.store.getBuilder(this.block);
+        const builderType: Type<any> = this.store.getBuilder(this.block!) as any;
         if (builderType) {
             const builder: SearchHintBaseBuilder = this.injector.get(builderType);
             builder.withContext(this.context);

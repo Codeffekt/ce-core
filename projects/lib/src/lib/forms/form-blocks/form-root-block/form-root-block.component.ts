@@ -71,10 +71,10 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
 
   delete() {
     // event.stopPropagation();
-    this.value = undefined;
+    this.value = undefined as any;
     this.formInstance.fields = {
       ...this.formInstance.fields,
-      [this.formBlock.field]: undefined
+      [this.formBlock.field]: undefined as any
     };
     this.buildDisplayedFields();
   }
@@ -94,7 +94,7 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
 
   private updateDisplayFields(form: FormRoot) {
     this.displayedFields = this.formBlock.params.fields
-      .map(f => FormUtils.retrieveBlockFromField(form, f))
-      .filter(f => f !== undefined);
+      .map((f: string) => FormUtils.retrieveBlockFromField(form, f))
+      .filter((f: string) => f !== undefined);
   }
 }

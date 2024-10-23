@@ -13,8 +13,8 @@ const SUPPORTED_DATE_FORMATS = ['YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY
 })
 export class FormTimestampBlockComponent extends FormBlockComponent<number> implements OnInit {
 
-  timeStr: string;
-  dateStr: string;
+  timeStr!: string;
+  dateStr!: string;
 
   showTime: boolean = true;
   showDate: boolean = true;

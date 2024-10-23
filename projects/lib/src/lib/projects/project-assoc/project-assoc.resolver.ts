@@ -14,7 +14,7 @@ export class CeProjectAssocResolver  {
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormInfo> {
         const assoc = route.paramMap.get('assoc');
-        const form = await this.formEditorService.getFormAssoc(assoc);
+        const form = await this.formEditorService.getFormAssoc(assoc!);
         this.formInfoBreadcrumbs.processFormInfo(form);
         return form;
     }

@@ -36,7 +36,7 @@ export class SearchHintDropdownComponent implements OnInit {
   private listenActiveHint() {
     this.searchHintsService.activeHintChanges()
       .pipe(untilDestroyed(this))
-      .subscribe(activeHint => this.activeHint = activeHint);
+      .subscribe(activeHint => this.activeHint = activeHint!);
   }
 
   private listenHints() {

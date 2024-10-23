@@ -7,9 +7,9 @@ import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 })
 export class ListHeaderComponent implements OnInit {
 
-  searchBox: boolean;
+  searchBox!: boolean;
   
-  @Input() label: string;
+  @Input() label!: string;
   
   constructor(private cdr: ChangeDetectorRef) { }
 

@@ -12,9 +12,9 @@ import { CeCoreService } from '../../services/ce-core.service';
 
 export class CeProjectAssocDatasource extends FormQueryDatasource<FormWrapper> {
 
-    pid: IndexType;
+    pid!: IndexType;
     assoc: FormBlock | undefined;
-    mask: FormInstanceMaskWrapper;
+    mask!: FormInstanceMaskWrapper;
     members: AccountSettings[] = [];
 
     constructor(

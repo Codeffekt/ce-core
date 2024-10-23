@@ -16,12 +16,12 @@ export class FormActionService {
     }
 
     getActionFromForm(form: FormInstance): FormAction {
-        const existingAction = this.actions[form.root] ?? this.actions[form.type];
+        const existingAction = this.actions[form.root] ?? this.actions[form.type!];
         return existingAction ?? this.defaultAction;
     }
 
     getActionFromRoot(root: FormRoot): FormAction {
-        const existingAction = this.actions[root.id] ?? this.actions[root.type];
+        const existingAction = this.actions[root.id] ?? this.actions[root.type!];
         return existingAction ?? this.defaultAction;
     }
 

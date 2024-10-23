@@ -11,6 +11,6 @@ export class AccountIdentityHelper {
     }
 }
 
-function capitalizeFirstLetter(str) {
+function capitalizeFirstLetter(str: any) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }

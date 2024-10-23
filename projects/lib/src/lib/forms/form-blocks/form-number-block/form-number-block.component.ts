@@ -7,7 +7,10 @@ import { FormBlockComponent } from '../form-block/form-block.component';
   styleUrls: ['./form-number-block.component.scss']
 })
 export class FormNumberBlockComponent extends FormBlockComponent<number> {
-  @HostListener('keypress', ['$event']) onKeyPress(event) {
+
+  isEditMode = false;
+
+  @HostListener('keypress', ['$event']) onKeyPress(event: KeyboardEvent) {
 
     if (!this.formBlock.params) {
       return true;
@@ -28,5 +31,16 @@ export class FormNumberBlockComponent extends FormBlockComponent<number> {
     }
 
     return true;
+  }
+
+  updateValue(strValue: string) {
+    const newValue = parseFloat(strValue);
+    if (newValue !== this.value) {
+      this.value = newValue;
+    }
+  }
+
+  getLastValueAsStr() {
+    return this.value?.toString();
   }
 }

@@ -23,7 +23,7 @@ export class FormUrlQueryParamsDirective {
             filter(params => params.get('form') !== null),
         ).subscribe(params => {            
             const id = params.get('form');
-            this.updateForm(id);
+            this.updateForm(id!);
         });
     }
 

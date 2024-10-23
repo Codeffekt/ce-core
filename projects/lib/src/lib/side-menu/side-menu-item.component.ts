@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class CeSideMenuItemComponent {
 
-  @Input() icon: string;
-  @Input() fontIcon: string;
-  @Input() label: string;
+  @Input() icon!: string;
+  @Input() fontIcon!: string;
+  @Input() label!: string;
 }

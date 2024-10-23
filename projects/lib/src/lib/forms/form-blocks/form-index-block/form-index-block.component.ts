@@ -45,7 +45,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
 
     const query = new FormQueryIndexBuilder();
 
-    query.setFormRoot(this.formBlock.root);
+    query.setFormRoot(this.formBlock.root!);
 
     if (this.formBlock.value) {
       query.setExcludedIndices([this.formBlock.value]);
@@ -76,10 +76,10 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
 
   delete() {
     // event.stopPropagation();
-    this.value = undefined;
+    this.value = undefined as any;
     this.formInstance.fields = {
       ...this.formInstance.fields,
-      [this.formBlock.field]: undefined
+      [this.formBlock.field]: undefined as any
     };
     this.buildDisplayedFields();
   }
@@ -107,11 +107,11 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
       untilDestroyed(this),
       map(changes => changes.find((change) => change.wrapper.core.id === form.id)),
       filter(change => change !== undefined),
-      tap(change => this.updateDisplayFields(change.wrapper.core))
+      tap(change => this.updateDisplayFields(change!.wrapper.core))
     )
   }
 
   private updateDisplayFields(form: FormInstance) {
-    this.displayedFields = this.formBlock.params.fields.map(f => FormUtils.retrieveBlockFromField(form, f));
+    this.displayedFields = this.formBlock.params.fields.map((f: string) => FormUtils.retrieveBlockFromField(form, f));
   }
 }

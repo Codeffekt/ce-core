@@ -22,11 +22,11 @@ const ASSETS_DEFAULT_REF = "default";
 export class MediaListComponent implements OnInit {
 
   datasource!: AssetsDatasource;
-  photos$: Observable<readonly AssetElt[]>;
+  photos$!: Observable<readonly AssetElt[]>;
 
-  @Input() pid: IndexType;
+  @Input() pid!: IndexType;
 
-  private ref: IndexType;
+  private ref!: IndexType;
 
   constructor(
     public dialog: MatDialog,
@@ -49,7 +49,7 @@ export class MediaListComponent implements OnInit {
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
-      this.layout.showErrorMessage(`Erreur <${err.message}> lors de la suppression du media`);
+      this.layout.showErrorMessage(`Erreur <${(<any>err).message}> lors de la suppression du media`);
     }
   }
 

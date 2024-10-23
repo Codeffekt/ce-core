@@ -10,8 +10,8 @@ export class ListComponent<T = any> implements AfterViewInit {
 
   @ContentChild(ListHeaderComponent) listHeader?: ListHeaderComponent;
 
-  @Input() searchBox: boolean;
-  @Input() paginator: boolean;
+  @Input() searchBox!: boolean;
+  @Input() paginator!: boolean;
 
   @Input() pageSize = 10;
   @Input() pageSizeOptions = [5, 10, 20];

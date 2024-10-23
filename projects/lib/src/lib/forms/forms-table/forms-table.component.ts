@@ -18,14 +18,14 @@ import { CeFormsRouteResolver, CE_FORMS_ROUTE_RESOLVER } from '../forms-route.re
 })
 export class FormsTableComponent implements OnInit {
 
-  @ViewChild(MatSort) tableSort: MatSort;
-  @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) tableSort!: MatSort;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   @Input() displayedColumns = ['id', 'ctime', 'mtime', 'title', 'delete'];
   @Input() queryBuilder: FormsFormQueryBuilder = new FormsFormQueryBuilder();
 
-  formsDataSource: FormsDataSource;
-  paginatorUrl: PaginatorURLHandler;
+  formsDataSource!: FormsDataSource;
+  paginatorUrl!: PaginatorURLHandler;
 
   private paginatorSubscription = new Subscription();
 
@@ -51,7 +51,7 @@ export class FormsTableComponent implements OnInit {
 
   applySort(sort: Sort) {
     const sortField = sort.direction ? { field: sort.active, order: sort.direction } : null;
-    this.queryBuilder.setSort(sortField);
+    this.queryBuilder.setSort(sortField!);
     this.paginatorUrl.reset();
     this.load();
   }

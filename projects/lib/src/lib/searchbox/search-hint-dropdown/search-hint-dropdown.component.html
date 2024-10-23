@@ -1,9 +1,9 @@
-<div class="search-hint-dropdown" *ngIf="hints.values.length">
+<div class="search-hint-dropdown" *ngIf="hints?.values?.length">
     <ce-grid>
-        <ce-search-hint-widget-factory *ngIf="hints.context.token?.op" [formBlock]="hints.context.block"
+        <ce-search-hint-widget-factory *ngIf="hints?.context?.token?.op" [formBlock]="hints?.context?.block!"
             (value)="selectValue($event)"></ce-search-hint-widget-factory>
         <ce-grid class="mat-typography search-hint" cePadding="8px 10px" templateColumns="1fr auto"
-            *ngFor="let hint of hints.values" (mousedown)="select(hint)" [class.active]="hint === activeHint">
+            *ngFor="let hint of hints?.values" (mousedown)="select(hint)" [class.active]="hint === activeHint">
             <span ceMarginEnd="48px">{{hint.label ?? hint.value}}</span>
             <span *ngIf="hint.description" class="text-muted">{{hint.description}}</span>
         </ce-grid>

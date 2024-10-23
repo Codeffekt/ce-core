@@ -19,7 +19,7 @@ export interface FormFactoryComponents {
     [type: string]: Type<any>;
 }
 
-export type FormFactoryDeleteFunction = (id) => Promise<void>;
+export type FormFactoryDeleteFunction = (id: any) => Promise<void>;
 
 export interface FormFactoryDeleteFunctions {
     [type: string]: FormFactoryDeleteFunction;

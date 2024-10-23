@@ -40,7 +40,7 @@ export class PhotoPickerComponent implements OnInit {
     return dialog.open(PhotoPickerComponent, { data: config });
   }
 
-  selectedPhoto: AssetElt;
+  selectedPhoto!: AssetElt;
   photos$: Observable<readonly AssetElt[]>;
   datasource!: FormQueryDatasource<AssetElt>;
 
@@ -62,7 +62,7 @@ export class PhotoPickerComponent implements OnInit {
 
   onSelectPhoto(photo: AssetElt) {
     if (this.selectedPhoto === photo) {
-      this.selectedPhoto = null;
+      this.selectedPhoto = null as any;
       return;
     }
     this.selectedPhoto = photo;

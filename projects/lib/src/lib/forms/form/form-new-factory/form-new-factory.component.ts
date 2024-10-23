@@ -10,7 +10,7 @@ import { FormActionService } from "../actions/form-action.service";
 })
 export class FormNewFactoryComponent {
 
-    _formRoot: FormRoot;
+    _formRoot!: FormRoot;
     get formRoot(): FormRoot {
         return this._formRoot;
     }
@@ -20,10 +20,10 @@ export class FormNewFactoryComponent {
         this.updateComponent();
     }
 
-    @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+    @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-    private formComponent: ComponentRef<IFormNewContent>;
-    private lastComponentType: Type<any>;
+    private formComponent!: ComponentRef<IFormNewContent>;
+    private lastComponentType!: Type<any>;
 
     constructor(        
         private formActionService: FormActionService,

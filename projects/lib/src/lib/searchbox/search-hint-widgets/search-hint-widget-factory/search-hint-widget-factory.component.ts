@@ -7,7 +7,7 @@ import { SearchHintWidgetFactoryService } from '../../services/search-hint-widge
 
 export class SearchHintBaseWidget {
 
-  formBlock: FormBlock;
+  formBlock!: FormBlock;
 
   protected value$ = new Subject<any>();
 
@@ -24,11 +24,11 @@ export class SearchHintBaseWidget {
 })
 export class SearchHintWidgetFactoryComponent implements AfterViewInit {
 
-  @Input() formBlock: FormBlock;
+  @Input() formBlock!: FormBlock;
   @Output() value = new EventEmitter();
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
-  private hintWidgetComponent: ComponentRef<SearchHintBaseWidget>;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
+  private hintWidgetComponent!: ComponentRef<SearchHintBaseWidget>;
 
   constructor(
     private factoryService: SearchHintWidgetFactoryService

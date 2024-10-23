@@ -16,7 +16,7 @@ export abstract class FormEditorServiceBase {
 
     protected formInfo!: FormInfo;
 
-    protected formInfo$: BehaviorSubject<FormInfo | undefined> = new BehaviorSubject(undefined);
+    protected formInfo$ = new BehaviorSubject<FormInfo|undefined>(undefined);
 
     constructor(
         protected appService: CeAppService,
@@ -58,7 +58,12 @@ export class CeFormEditorService extends FormEditorServiceBase {
     }
 
     async getFormAssoc(assoc: IndexType): Promise<FormInfo> {
-        const projectForm = this.projectService.getCurrentProjectFormMasked();        
+        const projectForm = this.projectService.getCurrentProjectFormMasked();
+        
+        if(!projectForm) {
+            throw new Error(`Project form not defined`);
+        }
+
         const onlyAssocForm = FormAssocBuilder.fromForm(projectForm.core, assoc);
         const formInfo: FormInfo = {
             form: onlyAssocForm,

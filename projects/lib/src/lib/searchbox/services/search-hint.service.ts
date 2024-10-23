@@ -11,9 +11,9 @@ import { SearchTokensService } from "./search-tokens-service";
 @Injectable()
 export class SearchHintService {
 
-    private filter: string;
-    private model: FormRoot;
-    private subscription: Subscription;
+    private filter!: string;
+    private model!: FormRoot;
+    private subscription!: Subscription;
     private activeHint: SearchHint | undefined;
     private activeHint$ = new Subject<SearchHint>();
     private hints?: SearchHints;
@@ -29,7 +29,7 @@ export class SearchHintService {
     }
 
     applyfilter(filter: string | undefined) {
-        this.filter = filter;
+        this.filter = filter as any;
         this.updateHints();
     }
 
@@ -44,7 +44,7 @@ export class SearchHintService {
     }
 
     getActiveHint(): SearchHint | null {
-        return this.activeHint;
+        return this.activeHint as any;
     }
 
     activeHintChanges(): Observable<SearchHint | null> {
@@ -79,25 +79,25 @@ export class SearchHintService {
     }
 
     private selectNextHint() {
-        var index = this.hints.values.indexOf(this.activeHint) + 1;
-        index = index % this.hints.values.length;
-        this.updateActiveHint(this.hints.values[index]);
+        var index = this.hints!.values.indexOf(this.activeHint as any) + 1;
+        index = index % this.hints!.values.length;
+        this.updateActiveHint(this.hints!.values[index]);
     }
 
     private selectPreviousHint() {
-        var index = this.hints.values.indexOf(this.activeHint) - 1;
-        index = index === -1 ? this.hints.values.length - 1 : index;
-        this.updateActiveHint(this.hints.values[index]);
+        var index = this.hints!.values.indexOf(this.activeHint as any) - 1;
+        index = index === -1 ? this.hints!.values.length - 1 : index;
+        this.updateActiveHint(this.hints!.values[index]);
     }
 
     private updateActiveHint(hint: SearchHint | null) {
-        this.activeHint = hint;
-        this.activeHint$.next(this.activeHint);
+        this.activeHint = hint as any;
+        this.activeHint$.next(this.activeHint as any);
     }
 
     private updateHints() {
         const currentToken = this.searchTokenService.getCurrentToken();
-        const context: SearchHintsContext = { model: this.model, token: currentToken, filter: this.filter, block: this.getBlockFromField(currentToken?.field.value) }
+        const context: SearchHintsContext = { model: this.model, token: currentToken as any, filter: this.filter, block: this.getBlockFromField(currentToken?.field?.value) as any}
         this.hints = this.hintBuilder.build(context);
         this.hints$.next(this.hints);
     }
@@ -126,7 +126,7 @@ export class SearchHintService {
 
         block.field = isMetaField ? `${META_FIELD_OP}${field}` : block.field;
 
-        return block;
+        return block as any;
 
     }
 }

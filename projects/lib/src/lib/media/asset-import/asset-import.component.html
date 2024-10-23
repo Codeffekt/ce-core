@@ -45,7 +45,7 @@
 </ng-template>
 
 <ng-template #uploading>
-  <ng-container *ngIf="file.progress?.data?.percentage < 100">
+  <ng-container *ngIf="file.progress?.data?.percentage! < 100">
     <mat-progress-bar class="mb-2" [mode]="responsiveMode ? 'indeterminate': 'determinate'"
       value="{{file.progress?.data?.percentage}}">
     </mat-progress-bar>

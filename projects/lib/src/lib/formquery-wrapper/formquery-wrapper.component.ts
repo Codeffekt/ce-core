@@ -64,7 +64,7 @@ export class FormQueryWrapperComponent<T> implements OnInit {
       map(query => ({ offset: query.offset, limit: query.limit })),
       distinct(),
     ).subscribe(query => {
-      this.updateRouteSilent(query.offset, query.limit);
+      this.updateRouteSilent(query.offset!, query.limit!);
     });
   }
 

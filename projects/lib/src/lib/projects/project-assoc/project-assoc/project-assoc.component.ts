@@ -8,7 +8,7 @@ import { IFormContent } from "../../../forms/form/form-models";
 })
 export class CeProjectAssocComponent implements IFormContent {
   
-  _formWrapper: FormWrapper;
+  _formWrapper!: FormWrapper;
     get formWrapper(): FormWrapper {
         return this._formWrapper;
     }
@@ -25,7 +25,7 @@ export class CeProjectAssocComponent implements IFormContent {
 
     @Output() formChanges = new EventEmitter<FormWrapper>();
 
-    assoc: FormBlock;
+    assoc!: FormBlock;
 
     constructor() { }    
 }

@@ -24,7 +24,7 @@ export class FormsLocalService {
             elts: [],
             limit: query.limit,
             offset: query.offset,
-        });
+        }) as any;
     }
 
     getRawFormsRootQuery(query: FormQuery): Observable<DbArrayRes<FormRoot>> {
@@ -34,7 +34,7 @@ export class FormsLocalService {
             elts: roots.slice(query.offset ?? 0, query.limit ?? QUERY_LIMIT_DEFAULT),
             limit: query.limit,
             offset: query.offset
-        });
+        }) as any;
     }
 
     getFormRoot(id: IndexType): Observable<FormRoot> {

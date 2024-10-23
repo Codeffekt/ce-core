@@ -16,7 +16,7 @@ export class TableComponent<T = any> implements AfterViewInit {
   @ContentChild(MatTable) table!: MatTable<T>;
   @ContentChild(MatSort) sort!: MatSort;  
 
-  sortValue: FormQuerySortField;
+  sortValue?: FormQuerySortField;
 
   constructor(
     private formQueryService: CeFormQueryService<T>,
@@ -32,8 +32,10 @@ export class TableComponent<T = any> implements AfterViewInit {
   }  
 
   applySort(sort: Sort) {
-    this.sortValue = sort.direction ? { field: sort.active, order: sort.direction } : null;
-    this.formQueryService.setSort(this.sortValue);
+    this.sortValue = sort.direction ? { field: sort.active, order: sort.direction } : undefined;
+    if(this.sortValue) {
+      this.formQueryService.setSort(this.sortValue);
+    }
     this.resetAndReload();
   }  
 

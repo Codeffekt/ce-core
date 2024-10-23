@@ -9,6 +9,9 @@ export class ListItemComponent<T = any> implements OnInit {
   @Input()
   @HostBinding('class.active') active: boolean = false;  
 
+  @Input()
+  @HostBinding('class.selectable') selectable: boolean = true;
+
   constructor() { }
 
   ngOnInit(): void {

@@ -14,7 +14,7 @@ export class CeSideMenuComponent implements OnInit {
   constructor(
     appService: CeAppService,
   ) {
-    this.logo = appService.getAssets().logoPath;
+    this.logo = appService.getAssets().logoPath!;
     this.title = appService.getTitle();
   }
 

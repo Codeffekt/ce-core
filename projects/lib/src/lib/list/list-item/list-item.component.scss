@@ -4,9 +4,11 @@
     grid-template-columns: 1fr auto;
     align-items: center;
 
-    &:hover{
-        cursor: pointer;
-        background: #f6f6f6;
+    &.selectable {
+        &:hover {
+            cursor: pointer;
+            background: #f6f6f6;
+        }
     }
 
     &.active {

@@ -14,13 +14,18 @@ export class FormProjectResolverService  {
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormInfo> {
         const id = route.paramMap.get('project');
+
+        if(!id) {
+            throw new Error(`No project route param`);
+        }
+
         const project = await this.projectService.getProject(id);
         if (project && project.core.id) {
             const form = await this.formEditorService.getForm(id);
             return form;
         } else { // id not found
             this.router.navigate(['/']);
-            return null;
+            return null as any;
         }
     }
 }

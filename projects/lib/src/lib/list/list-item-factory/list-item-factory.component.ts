@@ -19,17 +19,17 @@ export class ListItemFactoryComponent<T = any> implements OnInit, AfterViewInit 
     @Input()
     @HostBinding('class.active') active: boolean = false;
 
-    _item: T;
+    _item!: T;
     get item(): T {
         return this._item;
     }
 
-    _block: FormBlock;
+    _block!: FormBlock;
     get block(): FormBlock {
         return this._block;
     }
 
-    _type: string;
+    _type!: string;
     get type(): string {
         return this._type;
     }
@@ -57,9 +57,9 @@ export class ListItemFactoryComponent<T = any> implements OnInit, AfterViewInit 
 
     @Output() itemChangedEvent = new EventEmitter<boolean>();
 
-    @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+    @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-    private listItemComponent: ComponentRef<IListItemContent>;
+    private listItemComponent!: ComponentRef<IListItemContent>;
 
     constructor(
         private listItemService: ListItemStoreService

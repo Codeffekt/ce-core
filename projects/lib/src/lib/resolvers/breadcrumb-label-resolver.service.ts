@@ -18,7 +18,7 @@ export class CeBreadcrumbLabelResolver {
         const data = activatedRoute.snapshot.data;
 
         if (!data.routeId) {
-            return undefined;
+            return undefined as any;
         }
 
         if (data.labelFromData) {
@@ -42,7 +42,7 @@ export class CeBreadcrumbLabelResolver {
             const blockId = data.useParams ? activatedRoute.snapshot.paramMap.get(data.routeId) : data.routeId;
             const projectBlock = FormUtils.getBlockFromField(projectForm, blockId);
             if (projectBlock) {
-                return projectBlock.label;
+                return projectBlock.label as any;
             }
         }
 

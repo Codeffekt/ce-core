@@ -85,7 +85,7 @@ export class CeFormInfosService {
     private getFormInfoFromCurrentProject() {
         const formInfo: FormInfo = {
             form: this.projectService.getCurrentProject(),
-            formMask: this.projectService.getCurrentProjectMask(),
+            formMask: this.projectService.getCurrentProjectMask() as any,
             formMasked: this.projectService.getCurrentProjectFormMasked(),
         };
 

@@ -22,11 +22,11 @@ import { FormQueryArrayBuilder } from '../../../forms/forms-query';
 })
 export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocContent {
 
-  forms$: Observable<readonly FormWrapper[]>;
-  block: FormBlock;
+  forms$!: Observable<readonly FormWrapper[]>;
+  block!: FormBlock;
 
   private datasource: CeProjectAssocDatasource;
-  private formQueryBuilder: FormQueryArrayBuilder;
+  private formQueryBuilder!: FormQueryArrayBuilder;
 
   constructor(
     private route: ActivatedRoute,
@@ -45,7 +45,7 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
 
   ngOnInit(): void {
     this.datasource.assoc = this.block;
-    this.datasource.mask = this.appService.getMask(this.block.root);
+    this.datasource.mask = this.appService.getMask(this.block.root!);
     this.prepareQueryService();
   }
 
@@ -61,7 +61,7 @@ export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocConten
     this.formQueryBuilder = FormQueryArrayBuilder.fromBlock(this.block, this.projectsService.getCurrentProject().core);
     this.queryService.setQueryBuilder(this.formQueryBuilder);
     this.queryService.setDatasource(this.datasource);
-    const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.block.root));
+    const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.block.root!));
     if (!formRoot?.id) {
       throw new Error(`Form root ${this.block.root} not found.`);
     }

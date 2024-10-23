@@ -9,18 +9,18 @@ export interface FormBlockComponentAccessor<T = any> {
   formControl: AbstractControl;
 
   valueChanges(): Observable<T>;
-  patchValue(value: T);  
+  patchValue(value: T): void;  
 }
 
 export class FormBlockComponent<T = any> implements FormBlockComponentAccessor<T> {
 
-  errors: ValidationErrors;
-  formControl: AbstractControl;
-  stateMatcher: FormBlockStateMatcher;
+  errors!: ValidationErrors;
+  formControl!: AbstractControl;
+  stateMatcher!: FormBlockStateMatcher;
 
-  private _value: T;
-  private _formBlock: FormBlock;
-  private _formInstance: FormInstanceExt;
+  private _value!: T;
+  private _formBlock!: FormBlock;
+  private _formInstance!: FormInstanceExt;
   private value$ = new Subject<T>();
 
   valueChanges(): Observable<T> {

@@ -17,18 +17,18 @@ import { SearchTokensService } from '../services/search-tokens-service';
 export class SearchInputTokenComponent implements OnChanges, OnDestroy, AfterViewInit {
 
   @Input() value?: string;
-  @ViewChild(MatInput, { read: ElementRef }) inputRef: ElementRef;
-  @ViewChild(MatInput) input: ElementRef;
-  @ViewChild(CdkOverlayOrigin, { read: ElementRef }) overlayOrigin: ElementRef;
-  @ViewChild(CdkConnectedOverlay, { read: TemplateRef }) overlayTemplate: TemplateRef<any>;
+  @ViewChild(MatInput, { read: ElementRef }) inputRef!: ElementRef;
+  @ViewChild(MatInput) input!: ElementRef;
+  @ViewChild(CdkOverlayOrigin, { read: ElementRef }) overlayOrigin!: ElementRef;
+  @ViewChild(CdkConnectedOverlay, { read: TemplateRef }) overlayTemplate!: TemplateRef<any>;
   @Output() search = new EventEmitter<string>();
 
   formControl = new UntypedFormControl();
   shouldShowPlaceholder = true;
   shouldPreserveFocus = false;
-  overlayRef: OverlayRef;
-  portal: TemplatePortal;
-  resizeObserver: ResizeObserver;
+  overlayRef!: OverlayRef;
+  portal!: TemplatePortal;
+  resizeObserver!: ResizeObserver;
 
   constructor(
     private overlay: Overlay,
@@ -64,7 +64,7 @@ export class SearchInputTokenComponent implements OnChanges, OnDestroy, AfterVie
   resetInput() {
     this.formControl.patchValue('', { emitEvent: false });
     this.tokensHintService.resetActiveHint();
-    this.tokensHintService.applyfilter(null);
+    this.tokensHintService.applyfilter(null as any);
   }
 
   onSelectedHint(hint: SearchHint) {
@@ -96,7 +96,7 @@ export class SearchInputTokenComponent implements OnChanges, OnDestroy, AfterVie
     event.preventDefault();
     const restoredValue = this.tokensService.removeLastTokenPart();
     this.formControl.patchValue(restoredValue, { emitEvent: false });
-    this.tokensHintService.applyfilter(restoredValue);
+    this.tokensHintService.applyfilter(restoredValue as any);
   }
 
   onKeyDown(keyCode: number) {

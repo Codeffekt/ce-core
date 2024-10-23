@@ -16,6 +16,10 @@ export class SpaceEditorResolverService  {
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<SpaceEditorInfo> {
         const id = route.paramMap.get('form');
         
+        if(!id) {
+            throw new Error(`No form route param`);
+        }
+
         const form = await firstValueFrom(this.formsService.getRawFormQuery(id, { extMode: true }));
         const project = await this.spacesService.getSpaceEditor(id);
 

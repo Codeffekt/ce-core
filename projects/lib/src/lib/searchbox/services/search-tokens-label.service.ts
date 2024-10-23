@@ -14,16 +14,16 @@ export class SearchTokensLabelService {
 
   getFieldLabelForValue(value: string): string | null {
     const hint = this.searchFieldHintBuilder.getHintFromValue(value)
-    return hint?.label;
+    return hint?.label as any;
   }
 
   getOperatorLabelForValue(value: string): string | null {
     const hint = this.searchOpHintBuilder.getHintFromValue(value)
-    return hint?.description;
+    return hint?.description as any;
   }
 
   getValueLabelForValue(field: string | undefined, value: string): string | null {
     const hint = this.searchValueHintBuilder.getHintFromValue(value)
-    return hint?.label;
+    return hint?.label as any;
   }
 }

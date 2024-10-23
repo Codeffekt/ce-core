@@ -12,12 +12,12 @@ export class AccountResolverService  {
 
   async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormAccountWrapper> {
     const id = route.paramMap.get('account');
-    const account = await this.accountsService.getAccountFromForm(id);
+    const account = await this.accountsService.getAccountFromForm(id as any);
     if (account) {
       return new FormAccountWrapper(account);
     } else { // id not found
       this.router.navigate(['/']);
-      return null;
+      return null as any;
     }
   }
 }

@@ -1,6 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { FormInstance } from "@codeffekt/ce-core-data";
 import { CeFormRouteParams, ICeFormRouteResolver } from "../../forms/form-route.resolver";
 import { CeProjectsService } from "../../services/ce-projects.service";
 import { CeBreadcrumbsService, CeFormEditorService } from "../../services";
@@ -28,11 +27,11 @@ export class CeProjectFormRouteResolver implements ICeFormRouteResolver {
     ) { }
 
     navigate(formId: string): Promise<boolean> {
-        const routeParams = this.resolve(undefined, formId, undefined);
+        const routeParams = this.resolve(formId);
         return this.router.navigate(routeParams.route);        
     }       
     
-    resolve(_: string, formId: string, __: FormInstance): CeFormRouteParams {
+    resolve(formId: string): CeFormRouteParams {
 
         const currentUrl = this.getCurrentUrl();
 

@@ -14,7 +14,7 @@ import { CeCoreService } from '../../services/ce-core.service';
 export class LoginComponent implements OnInit {
 
   appVersion: string;
-  form: UntypedFormGroup;
+  form!: UntypedFormGroup;
   error$ = new Subject<string>();
   authenticating$ = new Subject<boolean>();
   assets: CeAppAssetsConfig;

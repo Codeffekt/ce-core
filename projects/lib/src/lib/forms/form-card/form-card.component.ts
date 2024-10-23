@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class FormCardComponent implements OnInit {
 
   @Input()
-  hasError: boolean;
+  hasError!: boolean;
 
   constructor() { }
 

@@ -4,7 +4,7 @@ import { ProjectAssocFactoryOptions, ProjectAssocFactoryComponents } from "./pro
 @Injectable({ providedIn: 'root'})
 export class ProjectAssocStoreService {
 
-    private defaultComponent: Type<any>;
+    private defaultComponent!: Type<any>;
 
     private store: ProjectAssocFactoryOptions = {
         components: {}

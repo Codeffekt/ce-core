@@ -3,7 +3,7 @@
 </div>
 <div class="media-image-infos text-muted">
     <span><small>{{(elt.metadata?.timestamp ?? elt.mtime ?? elt.ctime) | date:'short'}}</small></span>
-    <span class="ms-auto me-2"><small>{{elt.size | filesize}} </small></span>
+    <span class="ms-auto me-2"><small>{{elt.size! | filesize}} </small></span>
     <button mat-icon-button [matMenuTriggerFor]="menu" *ngIf="mode ==='edit'">
         <mat-icon>more_vert</mat-icon>
     </button>

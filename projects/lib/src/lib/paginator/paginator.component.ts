@@ -53,8 +53,8 @@ export class PaginatorComponent<T = any> implements AfterViewInit {
     this.queryService.query$.pipe(
       untilDestroyed(this),
     ).subscribe(query => {
-      this.pageSize = query.limit;      
-      this.paginator.pageIndex = query.offset / this.pageSize
+      this.pageSize = query.limit!;      
+      this.paginator.pageIndex = query.offset! / this.pageSize
     });
   }
 

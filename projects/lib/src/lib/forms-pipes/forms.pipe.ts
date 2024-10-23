@@ -26,7 +26,7 @@ export class FormsValueForKeyPipe implements PipeTransform {
       let curInstance: FormInstanceExt | undefined = formInstance;
       while (elts.length > 1) {
         const curField = elts.pop();
-        curInstance = formInstance.fields[curField] as FormInstanceExt;
+        curInstance = formInstance.fields[curField!] as FormInstanceExt;
         if (!curInstance) {
           return null;
         }
@@ -167,7 +167,7 @@ export class FormBlockValuePipe implements PipeTransform {
 export class FormInstanceTypePipe implements PipeTransform {
   transform(formInstance: FormInstance, field: string): string {
     const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
-    return formBlock?.type;
+    return formBlock?.type as any;
   }
 }
 

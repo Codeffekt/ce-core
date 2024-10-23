@@ -12,7 +12,7 @@ export class FormAssocDatasource extends FormQueryDatasource<FormInstanceExt> {
     }
 
     protected queryDb(query: FormQuery): Observable<DbArrayRes<FormInstanceExt>> {
-        return this.apiService.getForm(query.root, query, this.useProject);
+        return this.apiService.getForm(query.root!, query, this.useProject);
     }
 
     protected wrap(form: FormInstanceExt): FormInstanceExt {

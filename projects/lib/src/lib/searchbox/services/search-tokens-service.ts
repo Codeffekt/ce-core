@@ -104,8 +104,8 @@ export class SearchTokensService {
         }
 
         const currentToken = this.getCurrentToken();
-        if (SearchTokenUtils.isUncompleted(currentToken)) {
-            this.removeToken(currentToken);
+        if (SearchTokenUtils.isUncompleted(currentToken!)) {
+            this.removeToken(currentToken!);
         }
         this._tokens.push(...tokens);
         this.onTokenChanges();
@@ -132,7 +132,7 @@ export class SearchTokensService {
     private updateCurrentTokenPart() {
         const currentToken = this.getCurrentToken();
         const currentPart = this._currentTokenPart$.value;
-        const newPart = SearchTokenUtils.getTokenPartFrom(currentToken);
+        const newPart = SearchTokenUtils.getTokenPartFrom(currentToken!);
 
         if (currentPart != newPart) {
             this._currentTokenPart$.next(newPart);

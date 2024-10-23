@@ -3,7 +3,7 @@ import { FormQueryBuilder } from "./formquery.builder";
 
 export class FormQueryAssocBuilder extends FormQueryBuilder {
 
-    private ref: IndexType;
+    private ref!: IndexType;
 
     constructor() {
         super();

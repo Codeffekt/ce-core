@@ -8,7 +8,7 @@ export interface IMediaContent {
     delete: EventEmitter<AssetElt>;
 }
 
-export type MediaFactoryFunction = (FormWrapper) => Type<any>;
+export type MediaFactoryFunction = (f: string) => Type<any>;
 
 export interface MediaFactoryComponentClass {
     useClass: Type<any>;
@@ -24,3 +24,5 @@ export interface MediaFactoryComponents {
 export interface MediaFactoryOptions {
     components: MediaFactoryComponents;
 }
+
+export type MediaToTypeFunc = (a: AssetElt) => string|undefined;

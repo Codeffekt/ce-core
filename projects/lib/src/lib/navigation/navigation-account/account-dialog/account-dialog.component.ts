@@ -11,7 +11,7 @@ import { CeAccountService } from '../../../services/ce-account.service';
 })
 export class AccountDialogComponent implements OnInit {
 
-  account$: Observable<AccountSettings>;
+  account$!: Observable<AccountSettings>;
 
   constructor(
     private router: Router,

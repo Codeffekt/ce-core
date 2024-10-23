@@ -12,7 +12,7 @@ export class FormSelectBlockComponent extends FormBlockComponent<string> {
 
   useFormsParams = false;
 
-  formsParamsOptions: FormBlockSelectOption[];
+  formsParamsOptions!: FormBlockSelectOption[];
 
   constructor(private formsParams: CeFormsParamsService) {
     super();

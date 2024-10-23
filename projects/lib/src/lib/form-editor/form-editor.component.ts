@@ -41,6 +41,6 @@ export class CeFormEditorComponent implements OnInit {
       formInfo: this.formInfos.find(subForm => subForm.form.core.id === update.wrapper.core.id)
     }))
       .filter(elt => elt.formInfo !== undefined)
-      .forEach(elt => elt.formInfo.form = elt.update.wrapper.weakClone());
+      .forEach(elt => elt.formInfo!.form = elt.update.wrapper.weakClone());
   } 
 }

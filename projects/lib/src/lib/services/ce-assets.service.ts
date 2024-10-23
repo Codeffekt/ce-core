@@ -6,7 +6,7 @@ import { CeCoreService } from "./ce-core.service";
 @Injectable({
     providedIn: 'root'
 })
-export class CeAssetsService {
+export class CeAssetsService {    
 
     constructor(private coreService: CeCoreService) { }
 
@@ -26,4 +26,5 @@ export class CeAssetsService {
 
         return this.coreService.callAssets("deleteAssets", pid, assets, deleteFile);
     }
+    
 }

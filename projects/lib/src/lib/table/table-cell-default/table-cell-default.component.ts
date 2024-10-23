@@ -8,7 +8,7 @@ import { FormBlock } from '@codeffekt/ce-core-data';
 })
 export class TableCellDefaultComponent implements OnInit {
 
-  block: FormBlock;
+  block!: FormBlock;
 
   constructor() { }
 

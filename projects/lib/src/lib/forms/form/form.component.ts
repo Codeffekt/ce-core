@@ -26,7 +26,7 @@ const CE_FORM_CSS_CLASS_NAME = "ce-form";
 })
 export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
 
-  _formWrapper: FormWrapper;
+  _formWrapper!: FormWrapper;
   get formWrapper(): FormWrapper {
     return this._formWrapper;
   }
@@ -45,7 +45,7 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
       this.buildForm();
       this.updateCSSClassNames();
     }
-    else if (this.lastUpdatedTime < this._formWrapper.core.mtime) {
+    else if (this.lastUpdatedTime < this._formWrapper!.core!.mtime!) {
       this.patchUpdatedProps();
     }
   }
@@ -72,9 +72,9 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
   @HostBinding('class.invalid')
   get isInvalid() { return this.formGroup && !this.formGroup?.valid; }
 
-  formGroup: UntypedFormGroup;
+  formGroup!: UntypedFormGroup;
 
-  formInstance: FormInstance;
+  formInstance!: FormInstance;
 
   lastUpdatedTime: number = 0;
 
@@ -82,7 +82,7 @@ export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
 
   cssFormClassNames = [CE_FORM_CSS_CLASS_NAME];
 
-  private subscription: Subscription;
+  private subscription!: Subscription;
 
   private formMaskBuilder = new FormMaskBuilder();
   private formStyleBuilder = new FormStyleBuilder();

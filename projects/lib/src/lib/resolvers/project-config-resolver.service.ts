@@ -17,13 +17,18 @@ export class ProjectConfigResolverService  {
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormInfo> {
         const id = route.paramMap.get('project');
+
+        if(!id) {
+            throw new Error(`No project route param`);
+        }
+
         const formInfo = await this.appRunnerService.fetchAppProject(id);
         if (formInfo.form) {
             this.formInfoBreadcrumbs.processFormInfo(formInfo);            
             return formInfo;
         } else { // id not found
             this.router.navigate(['/users']);
-            return null;
+            return null as any;
         }
     }
 }

@@ -7,7 +7,7 @@ export class FormValidators {
             if (formControl.value != null && (formControl.value < min || formControl.value > max)) {
                 return { range: { min, max } }
             }
-            return null;
+            return null as any;
         }
 
         return validatorFn;

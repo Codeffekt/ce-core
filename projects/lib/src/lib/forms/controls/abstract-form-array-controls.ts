@@ -19,7 +19,7 @@ export abstract class AbstractFormArray<T> extends UntypedFormArray {
             .map(cv => cv.value);
 
         addedValues.forEach(value => {
-            this.push(this.fb.group(value), { emitEvent: true });
+            this.push(this.fb.group(value as any), { emitEvent: true });
         });
 
         existingValues.forEach(value => {

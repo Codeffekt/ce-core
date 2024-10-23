@@ -8,7 +8,7 @@ export type FormQueryFunc<T> = (query: FormQuery) => Observable<DbArrayRes<T>>;
 
 export abstract class FormQueryDatasource<T = any, U = FormInstanceExt> extends PartialDatasource<T> {
 
-    private query: FormQuery;
+    private query!: FormQuery;
 
     constructor() {
         super();

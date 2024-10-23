@@ -28,7 +28,7 @@ export class SearchTokenUtils {
     static getQuery(tokens: SearchToken[]): string {
         return tokens
         .filter(token => this.isCompleted(token))
-        .reduce((prev, token) => prev + `${token.field.value}:${token.op.value || ''}${token.value.value || ''} `, '');
+        .reduce((prev, token) => prev + `${token!.field!.value}:${token!.op!.value || ''}${token!.value!.value || ''} `, '');
     }
 
     static removeLastPart(token: SearchToken): string | null {
@@ -36,17 +36,17 @@ export class SearchTokenUtils {
 
         if (!!token.value) {
             token.value = undefined;
-            return value.value;
+            return value!.value;
         }
 
         if (!!token.op) {
             token.op = undefined;
-            return op.value;
+            return op!.value;
         }
 
         if (!!token.field) {
             token.field = undefined;
-            return field.value;
+            return field!.value;
         }
 
         return null;

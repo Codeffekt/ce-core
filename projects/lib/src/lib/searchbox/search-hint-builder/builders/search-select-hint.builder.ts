@@ -6,7 +6,7 @@ import { SearchHintBaseBuilder } from "../search-hint-base.builder";
 export class SearchSelectHintBuilder extends SearchHintBaseBuilder {
 
     getHints(): SearchHint[] {
-        return this.block.params.options.map(option => {
+        return this.block!.params.options.map((option: any) => {
             return {
                 label: option.label,
                 value: option.value

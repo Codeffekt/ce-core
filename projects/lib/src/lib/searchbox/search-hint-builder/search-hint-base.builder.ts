@@ -4,9 +4,9 @@ import { SearchHint, SearchHintsContext } from "../model/search-hint";
 export const META_FIELD_OP = "$";
 
 export const FORMROOT_META: FormRoot = {
-    id: undefined,
-    ctime: undefined,
-    title: undefined,
+    id: undefined as any,
+    ctime: undefined as any,
+    title: undefined as any,
     content: {
         author: {
             field: "author",
@@ -48,7 +48,7 @@ export const FORMROOT_META: FormRoot = {
 
 export abstract class SearchHintBaseBuilder {
 
-    protected context: SearchHintsContext;
+    protected context!: SearchHintsContext;
 
     withContext(context: SearchHintsContext): SearchHintBaseBuilder {
         this.context = context;
@@ -67,7 +67,7 @@ export abstract class SearchHintBaseBuilder {
     abstract getHints(): SearchHint[];
 
     protected get field(): string {
-        return this.context.token.field.value;
+        return this.context!.token!.field!.value;
     }
 
     protected get model(): FormRoot {
@@ -82,11 +82,11 @@ export abstract class SearchHintBaseBuilder {
         if (!this.context) {
             return null;
         }
-        return this.context.block;
+        return this.context.block as any;
     }
 
     protected get fieldType(): FormBlockType | null{
-        return this.block?.type;
+        return this.block?.type as any;
     }
 
     protected filterHints(filter: string, hints: SearchHint[]): SearchHint[] {

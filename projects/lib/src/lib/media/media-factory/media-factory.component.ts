@@ -20,12 +20,12 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
   @HostBinding('class.active') active: boolean = false;
   @Output() delete: EventEmitter<AssetElt> = new EventEmitter();
 
-  _elt: AssetElt;
+  _elt!: AssetElt;
   get elt(): AssetElt {
     return this._elt;
   }
 
-  _type: string;
+  _type!: string;
   get type(): string {
     return this._type;
   }
@@ -43,9 +43,9 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
     this.updateComponent();
   }
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
-  private mediaComponent: ComponentRef<IMediaContent>;
+  private mediaComponent!: ComponentRef<IMediaContent>;
 
   constructor(
     private mediaStoreService: MediaStoreService
@@ -68,7 +68,7 @@ export class MediaFactoryComponent implements OnInit, AfterViewInit {
       this.vcr.remove();
     }
 
-    const componentType = this.mediaStoreService.getComponentType(this.elt.mimetype);
+    const componentType = this.mediaStoreService.getComponentType(this.elt);
     if (componentType) {
       this.mediaComponent = this.vcr.createComponent(componentType);
       this.connectInputItem(this.mediaComponent.instance);

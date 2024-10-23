@@ -9,6 +9,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
 })
 export class FormTextBlockComponent extends FormBlockComponent<string> implements OnInit {
 
+  isEditMode = false;
   suggestions$ = new ReplaySubject<string[]>();
 
   constructor() {
@@ -23,6 +24,13 @@ export class FormTextBlockComponent extends FormBlockComponent<string> implement
     if (this.hasSuggestions()) {
       this.filterSuggestions(value);
     }
+  }
+
+  updateValue(newValue: string) {
+    if (newValue !== this.value) {
+      this.value = newValue;
+      this.valueChanged(newValue);      
+    }        
   }
 
   private initSuggestions() {

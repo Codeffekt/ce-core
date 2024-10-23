@@ -11,7 +11,7 @@ export class SearchTokenPartComponent implements OnInit {
 
   @Input()
   @HostBinding('class')
-  type: SearchTokenPartType;
+  type!: SearchTokenPartType;
 
   constructor() { }
 

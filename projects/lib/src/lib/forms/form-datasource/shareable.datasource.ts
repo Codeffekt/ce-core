@@ -14,7 +14,7 @@ export class ShareableDataSource<T> implements DataSource<T> {
     connect(collectionViewer: CollectionViewer): Observable<readonly T[]> {
 
         if(!this.isConnected) {
-            this.src.connect(null).subscribe(elts => this.data$.next(elts));
+            this.src.connect(null as any).subscribe(elts => this.data$.next(elts));
             this.isConnected = true;
         }
 
@@ -24,7 +24,7 @@ export class ShareableDataSource<T> implements DataSource<T> {
     disconnect(collectionViewer: CollectionViewer): void {
 
         if(this.isConnected) {
-            this.src.disconnect(null);
+            this.src.disconnect(null as any);
             this.isConnected = false;
         }
 

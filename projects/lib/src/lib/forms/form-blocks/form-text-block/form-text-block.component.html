@@ -1,15 +1,29 @@
 <mat-form-field class="w-100">
     <mat-label>{{formBlock.label}}</mat-label>
-    <textarea *ngIf="formBlock.params?.multiline" matInput [(ngModel)]="value" rows="5"></textarea>
-    <input *ngIf="!formBlock.params?.multiline" matInput type="text" [errorStateMatcher]="stateMatcher"
-        [(ngModel)]="value"  [required]="formBlock.required"
-        (ngModelChange)="valueChanged($event)" [matAutocomplete]="autocomplete" [readonly]="formBlock.readonly">
+    <textarea *ngIf="formBlock.params?.multiline" matInput [value]="value" [(ngModel)]="value" rows="5"
+    (keydown.enter)="isEditMode = false; updateValue(input.value)"
+    (focus)="isEditMode = true; input.select()"
+    [readOnly]="!isEditMode" 
+    (click)="isEditMode = true; input.select()" 
+    (keydown.esc)="isEditMode = false; input.value = value ?? ''; input.setSelectionRange(0, 0); input.blur()"
+    #input
+    (blur)="isEditMode = false; updateValue(input.value)">
+    </textarea>    
+    <input type="text"  matInput [errorStateMatcher]="stateMatcher" [required]="formBlock.required"
+        [matAutocomplete]="autocomplete" [readonly]="!isEditMode || formBlock.readonly"
+        (keydown.enter)="isEditMode = false; updateValue(input.value)" 
+        (focus)="isEditMode = true; input.select()"         
+        (click)="isEditMode = true; input.select()"
+        (keydown.esc)="isEditMode = false; input.value = value ?? ''; input.setSelectionRange(0, 0); input.blur()"
+        #input 
+        [value]="value"         
+        (blur)="isEditMode = false; updateValue(input.value)">
     <mat-autocomplete #autocomplete="matAutocomplete">
         <mat-option *ngFor="let suggestion of suggestions$ | async " [value]="suggestion">{{suggestion}}</mat-option>
     </mat-autocomplete>
     <mat-hint *ngIf="formBlock.hint">{{formBlock.hint}}</mat-hint>
     <mat-error *ngIf="formControl.errors?.required">Champ requis</mat-error>
     <mat-error *ngIf="formControl.errors?.pattern">Valeur ne respecte pas le pattern
-        {{formControl.errors.pattern.requiredPattern}}
+        {{formControl.errors?.pattern.requiredPattern}}
     </mat-error>
 </mat-form-field>

@@ -24,7 +24,7 @@ export class FormMaskBuilder {
             ...form,
             ...formMask,
             content: FormUtils.getBlocks(form)
-                .map((block: FormBlock) => ({ ...block, ...formMask?.content[block.field] }))
+                .map((block: FormBlock) => ({ ...block, ...formMask?.content![block.field] }))
                 .filter((block: FormBlock) => !block.disabled)
                 .reduce((content: FormContent, block: FormBlock) => ({
                     ...content,

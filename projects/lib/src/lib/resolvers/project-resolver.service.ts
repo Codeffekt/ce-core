@@ -12,12 +12,12 @@ export class ProjectResolverService  {
 
   async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormProjectWrapper> {
     const id = route.paramMap.get('form');
-    const project = await this.projectService.getProject(id);
+    const project = await this.projectService.getProject(id as any);
     if (project && project.core.id) {
       return project;
     } else { // id not found
       this.router.navigate(['/']);
-      return null;
+      return null as any;
     }
   }
 }

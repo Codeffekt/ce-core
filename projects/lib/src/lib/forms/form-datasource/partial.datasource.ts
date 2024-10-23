@@ -4,8 +4,8 @@ export abstract class PartialDatasource<T> extends ReactiveDatasource<T> {
 
   length = 0;  
 
-  protected isEnd: boolean;
-  protected accumulate: boolean;
+  protected isEnd!: boolean;
+  protected accumulate!: boolean;
 
   protected updateDataCount(count: number) {
     this.length = count;

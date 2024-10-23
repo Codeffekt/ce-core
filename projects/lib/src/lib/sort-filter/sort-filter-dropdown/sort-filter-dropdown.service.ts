@@ -7,7 +7,7 @@ import { FormQuerySortFieldWithLabel, SortFiltersBuilder } from './sort-filters.
 @Injectable()
 export class SortFilterDropdownService {
 
-    private model: FormRoot;
+    private model!: FormRoot;
     private subscription: Subscription = new Subscription();
     private sortFilters: FormQuerySortFieldWithLabel[] = [];
     private sortFilters$ = new ReplaySubject<FormQuerySortFieldWithLabel[]>(1);

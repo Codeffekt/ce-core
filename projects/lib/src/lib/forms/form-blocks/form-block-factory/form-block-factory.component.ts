@@ -17,21 +17,21 @@ import { FormBlockComponentAccessor } from '../form-block/form-block.component';
 })
 export class FormBlockFactoryComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 
-  @Input() formBlock: FormBlock;
-  @Input() formInstance: FormInstance;
-  @Input() formControlName: string;
+  @Input() formBlock!: FormBlock;
+  @Input() formInstance!: FormInstance;
+  @Input() formControlName!: string;
 
-  @ViewChild(FormControlDirective) formControlDirective: FormControlDirective;
+  @ViewChild(FormControlDirective) formControlDirective!: FormControlDirective;
 
-  @ViewChild('container', { read: ViewContainerRef }) vcr: ViewContainerRef;
+  @ViewChild('container', { read: ViewContainerRef }) vcr!: ViewContainerRef;
 
   value: any;  
-  isDisabled: boolean;  
+  isDisabled!: boolean;  
 
-  private formBlockComponent: ComponentRef<FormBlockComponentAccessor>;
+  private formBlockComponent!: ComponentRef<FormBlockComponentAccessor>;
 
-  private onTouched: () => void;
-  private onChange: (value: any) => void;
+  private onTouched!: () => void;
+  private onChange!: (value: any) => void;
 
   constructor(
     private factoryService: FormBlockFactoryService,
@@ -47,7 +47,7 @@ export class FormBlockFactoryComponent implements OnInit, AfterViewInit, Control
       this.formBlockComponent = this.vcr.createComponent<FormBlockComponentAccessor>(componentType);
       this.formBlockComponent.instance.formBlock = this.formBlock;
       this.formBlockComponent.instance.formInstance = this.formInstance;
-      this.formBlockComponent.instance.formControl = this.controlContainer.control.get(this.formControlName);
+      this.formBlockComponent.instance.formControl = this.controlContainer.control!.get(this.formControlName)!;
       this.formBlockComponent.instance.valueChanges()
         .pipe(untilDestroyed(this))
         .subscribe(value => this.setValue(value));

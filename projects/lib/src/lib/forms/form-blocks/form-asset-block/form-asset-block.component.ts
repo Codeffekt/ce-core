@@ -42,7 +42,7 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
   }
 
   onClear() {
-    this.value = undefined;
+    this.value = undefined as any;
   }
 
   delete(asset: AssetElt) {
@@ -56,7 +56,7 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
     const dialogRef = PhotoPickerComponent.open(this.dialog, {
         datasource: new AssetsDatasource(this.assetsService),
         queryBuilder: AssetsFormQueryBuilder.fromAssetArrayBlock(
-          this.spacePathService.findBlock(this.formBlock.root, this.formBlock.index)
+          this.spacePathService.findBlock(this.formBlock.root!, this.formBlock.index)
         )
     });
 
