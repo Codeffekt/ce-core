@@ -20,3 +20,4 @@ export * from './ce-forms-changes.service';
 export * from './ce-form-infos.service';
 export * from './ce-form-info-breadcrumbs.service';
 export * from './ce-processing.service';
+export * from './ce-events.service';

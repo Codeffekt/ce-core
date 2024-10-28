@@ -103,6 +103,10 @@ export class CeCoreService {
     return `${this.api_url}/api`;
   }
 
+  getEvents(): string {
+    return `${this.api_url}/events`;
+  }
+
   getAuth(): string {
     return this.api_url;
   }
@@ -268,6 +272,10 @@ export class CeCoreService {
       headers: this.getHeaders()
     }).apply(this) as any;
   }
+
+  getEventSource(apiFunc: () => string): EventSource {
+    return new EventSource(apiFunc(), { withCredentials: true });
+  } 
 
   handleError(error: HttpErrorResponse) {
     const apiError: APIError = error.error instanceof ErrorEvent ?

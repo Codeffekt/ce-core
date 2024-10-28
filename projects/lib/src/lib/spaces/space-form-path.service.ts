@@ -1,8 +1,9 @@
 import { inject, Injectable } from "@angular/core";
 import { FormBlock, FormInstance, FormUtils, IndexType } from "@codeffekt/ce-core-data";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, distinct, filter, startWith, switchMap } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeFormEditorService } from "../services/ce-form-editor.service";
+import { CeEventsService } from "../services/ce-events.service";
 
 @Injectable()
 export class SpaceFormPathService {
@@ -10,7 +11,8 @@ export class SpaceFormPathService {
     private currentPathElts: string[] = [];
     private currentForm$ = new BehaviorSubject<FormInfo|undefined>(undefined);
     private currentFormInfos$ = new BehaviorSubject<FormInfo[]>([]);
-    private formEditorService = inject(CeFormEditorService);    
+    private formEditorService = inject(CeFormEditorService); 
+    private eventsService = inject(CeEventsService);   
 
     async setCurrentPath(path: string) {
         const pathElts = [... new Set(path.split(","))]; // remove duplicates
@@ -52,7 +54,15 @@ export class SpaceFormPathService {
     }
     
     onCurrentForm() {
-        return this.currentForm$;
+        return this.currentForm$.pipe(
+            filter(form => form !== undefined),
+            switchMap(form => 
+                this.eventsService.onFormUpdate(form!.form.core.id).pipe(
+                    startWith(form)
+                )
+            ), 
+            distinct((form) => form!.form.core.mtime),            
+        );
     }
 
     onCurrentForms() {

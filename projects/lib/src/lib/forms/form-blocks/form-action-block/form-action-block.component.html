@@ -1,15 +1,18 @@
-<ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">
+<ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">        
+
+    @let status = status$ | async;
 
     <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
-        <button mat-stroked-button color="primary" [disabled]="status() === 'PENDING' || status() === 'RUNNING'" (click)="startAction()"><mat-icon>play_arrow</mat-icon>Start</button>                
-        <button mat-stroked-button color="primary" [disabled]="status() !== 'PENDING' && status() !== 'RUNNING'" (click)="cancelAction()"><mat-icon>cancel</mat-icon>Cancel</button>
+        
+        <button mat-stroked-button color="primary" [disabled]="status | isActionPendingOrRunning" (click)="startAction()"><mat-icon>play_arrow</mat-icon>Start</button>                
+        <button mat-stroked-button color="primary" [disabled]="!(status | isActionPendingOrRunning)" (click)="cancelAction()"><mat-icon>cancel</mat-icon>Cancel</button>
     </ce-form-block-field-actions>    
 
     <ce-form-block-field-content>
-        <mat-progress-bar mode="determinate" *ngIf="status() !== 'PENDING' && status() !== 'RUNNING'"></mat-progress-bar>
-        <mat-progress-bar mode="indeterminate" *ngIf="status() === 'RUNNING'"></mat-progress-bar>
-        <mat-progress-bar mode="buffer" *ngIf="status() === 'PENDING'"></mat-progress-bar>
-        <textarea [readOnly]="true" #textarea class="messages-area" [scrollTop]="textarea.scrollHeight">{{messages().join("\n")}}</textarea>
+        <mat-progress-bar mode="determinate" *ngIf="status | isActionPendingOrRunning"></mat-progress-bar>
+        <mat-progress-bar mode="indeterminate" *ngIf="status | isActionRunning"></mat-progress-bar>
+        <mat-progress-bar mode="buffer" *ngIf="status | isActionPending"></mat-progress-bar>
+        <textarea [readOnly]="true" #textarea class="messages-area" [scrollTop]="textarea.scrollHeight">{{messages$ | async}}</textarea>
     </ce-form-block-field-content>
 
 </ce-form-block-field>
