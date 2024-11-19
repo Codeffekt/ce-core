@@ -1,18 +1,21 @@
 import { inject, Injectable } from "@angular/core";
 import { FormBlock, FormInstance, FormUtils, IndexType } from "@codeffekt/ce-core-data";
-import { BehaviorSubject, distinct, filter, startWith, switchMap } from "rxjs";
+import { BehaviorSubject, distinct, filter, Observable, startWith, switchMap } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeFormEditorService } from "../services/ce-form-editor.service";
 import { CeEventsService } from "../services/ce-events.service";
 
-@Injectable()
-export class SpaceFormPathService {
+@Injectable({ providedIn: 'root'})
+export class SpaceFormPathService {    
 
     private currentPathElts: string[] = [];
     private currentForm$ = new BehaviorSubject<FormInfo|undefined>(undefined);
     private currentFormInfos$ = new BehaviorSubject<FormInfo[]>([]);
     private formEditorService = inject(CeFormEditorService); 
-    private eventsService = inject(CeEventsService);   
+    private eventsService = inject(CeEventsService);       
+
+    constructor() {        
+    }    
 
     async setCurrentPath(path: string) {
         const pathElts = [... new Set(path.split(","))]; // remove duplicates
@@ -20,7 +23,8 @@ export class SpaceFormPathService {
             pathElts.map(path => this.formEditorService.getForm(path))
         );
         this.currentFormInfos$.next(formInfos);
-        this.currentForm$.next(formInfos.length ? formInfos[formInfos.length - 1] : undefined);
+        const nextForm = formInfos.length ? formInfos[formInfos.length - 1] : undefined;        
+        this.currentForm$.next(nextForm);
         this.currentPathElts = pathElts;
     }
 
@@ -53,15 +57,15 @@ export class SpaceFormPathService {
         this.currentForm$.next(form);
     }
     
-    onCurrentForm() {
+    onCurrentForm(): Observable<FormInfo | undefined> {
         return this.currentForm$.pipe(
             filter(form => form !== undefined),
             switchMap(form => 
                 this.eventsService.onFormUpdate(form!.form.core.id).pipe(
+                    distinct((form) => form!.form.core.mtime),      
                     startWith(form)
                 )
-            ), 
-            distinct((form) => form!.form.core.mtime),            
+            ),                               
         );
     }
 
