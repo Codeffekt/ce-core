@@ -13,7 +13,7 @@ import { Observable } from 'rxjs';
 })
 export class ListComponent implements OnInit {
 
-  @Input() formWrapper: FormWrapper;
+  @Input() formWrapper!: FormWrapper;
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
   forms$!: Observable<readonly FormWrapper[]>;
@@ -33,8 +33,7 @@ export class ListComponent implements OnInit {
   }
 
   private async prepareQueryService() {
-    this.queryService.setQueryBuilder(this.formQueryBuilder);
-    this.queryService.setModel(null as any);
+    this.queryService.setQueryBuilder(this.formQueryBuilder);    
     this.forms$ = this.queryService.connect();
     this.queryService.load();
   }

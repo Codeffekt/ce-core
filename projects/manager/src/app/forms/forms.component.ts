@@ -55,8 +55,7 @@ export class FormsComponent {
   }
 
   private async prepareQueryService() {
-    this.queryService.setQueryBuilder(this.formQueryBuilder);
-    this.queryService.setModel(null as any);
+    this.queryService.setQueryBuilder(this.formQueryBuilder);    
     this.forms$ = this.queryService.connect();
     this.queryService.load();
   }
