@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { FormBlockFieldComponent } from '../form-block-field/form-block-field.component';
@@ -8,12 +8,10 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { CeProcessingService } from '../../../services/ce-processing.service';
-import { SpaceFormPathService } from '../../../spaces';
 import { FormBlockFieldContentComponent } from "../form-block-field/form-block-field-content/form-block-field-content.component";
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 import { FormActionPipesModule } from './form-action-pipes.module';
-import { filter, map, scan, share } from 'rxjs';
 
 @UntilDestroy()
 @Component({
@@ -33,26 +31,17 @@ import { filter, map, scan, share } from 'rxjs';
   templateUrl: './form-action-block.component.html',
   styleUrls: ['./form-action-block.component.scss']
 })
-export class FormActionBlockComponent extends FormBlockComponent {
+export class FormActionBlockComponent extends FormBlockComponent implements OnInit {
 
   private actionService = inject(CeProcessingService);
-  private spacePathService = inject(SpaceFormPathService);
 
-  currentForm$ = this.spacePathService.onCurrentForm().pipe(
-    share()
-  );
+  status: string = "";
+  messages: string = "";  
 
-  status$ = this.currentForm$.pipe(
-    map(formInfo => FormWrapper.getFormValue('status', formInfo!.form.core))
-  )
-
-  messages$ = this.currentForm$.pipe(
-    filter(formInfo => this.actionService.isRunning(
-      FormWrapper.getFormValue('status', formInfo!.form.core))
-    ),
-    map(formInfo => FormWrapper.getFormValue('message', formInfo!.form.core)),
-    scan((acc, cur) => `${acc}\n${cur}`),
-  )
+  ngOnInit(): void {
+      this.status = FormWrapper.getFormValue("status", this.formInstance);
+      this.messages = FormWrapper.getFormValue("message", this.formInstance);
+  }
 
   async startAction() {
     try {

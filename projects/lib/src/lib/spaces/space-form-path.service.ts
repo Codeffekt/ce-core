@@ -1,5 +1,5 @@
 import { inject, Injectable } from "@angular/core";
-import { FormBlock, FormInstance, FormUtils, IndexType } from "@codeffekt/ce-core-data";
+import { FormBlock, FormUtils, IndexType } from "@codeffekt/ce-core-data";
 import { BehaviorSubject, distinct, filter, Observable, startWith, switchMap } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeFormEditorService } from "../services/ce-form-editor.service";

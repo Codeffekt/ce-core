@@ -1,6 +1,4 @@
-<ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">        
-
-    @let status = status$ | async;
+<ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">            
 
     <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
         
@@ -12,7 +10,7 @@
         <mat-progress-bar mode="determinate" *ngIf="status | isActionPendingOrRunning"></mat-progress-bar>
         <mat-progress-bar mode="indeterminate" *ngIf="status | isActionRunning"></mat-progress-bar>
         <mat-progress-bar mode="buffer" *ngIf="status | isActionPending"></mat-progress-bar>
-        <textarea [readOnly]="true" #textarea class="messages-area" [scrollTop]="textarea.scrollHeight">{{messages$ | async}}</textarea>
+        <textarea [readOnly]="true" #textarea class="messages-area" [scrollTop]="textarea.scrollHeight">{{messages}}</textarea>
     </ce-form-block-field-content>
 
 </ce-form-block-field>
