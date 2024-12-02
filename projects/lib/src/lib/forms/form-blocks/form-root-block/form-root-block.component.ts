@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBlock, FormInstance, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlock, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
 import { CeFormRouteResolver } from '../../form-route.resolver';
 import { FormBlockComponent } from '../form-block/form-block.component';
@@ -83,18 +83,19 @@ export class FormRootBlockComponent extends FormBlockComponent<IndexType> implem
 
     this.displayedFields = [];
 
-    if (!this.formBlock.value || !this.formBlock.params?.fields) {
+    if (!this.formBlock.value) {
       return;
     }    
 
     const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.formBlock.value));
 
-    this.updateDisplayFields(formRoot);    
+    this.updateDisplayFields(this.formBlock, formRoot);    
   }  
 
-  private updateDisplayFields(form: FormRoot) {
-    this.displayedFields = this.formBlock.params.fields
+  private updateDisplayFields(block: FormBlock, form: FormRoot) {
+    const fields = block.params?.fields?.length ? block.params.fields : form.params?.fields;
+    this.displayedFields = fields ? fields
       .map((f: string) => FormUtils.retrieveBlockFromField(form, f))
-      .filter((f: string) => f !== undefined);
+      .filter((f: string) => f !== undefined) : [];
   }
 }

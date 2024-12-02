@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
 import { FormBlock, FormInstance, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
 import { CeFormRouteResolver } from '../../form-route.resolver';
@@ -23,12 +22,10 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
   displayedFields: FormBlock[] = [];
 
   constructor(
-    private router: Router,
     public dialog: MatDialog,
     private formRouteResolver: CeFormRouteResolver,
     private formDataService: CeFormDataService,
     private changesService: CeFormsChangesService,
-    private activatedRoute: ActivatedRoute,
   ) {
     super();
   }
@@ -38,7 +35,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
   }
 
   openForm(formId: IndexType) {
-    this.formRouteResolver.navigate(formId, this.formInstance);   
+    this.formRouteResolver.navigate(formId, this.formInstance);
   }
 
   edit() {
@@ -58,7 +55,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
         dataSource: new FormArrayDatasource(
           this.formDataService,
           this.formBlock.params?.scope === "global"
-          )
+        )
       }
     );
 
@@ -88,7 +85,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
 
     this.displayedFields = [];
 
-    if (!this.formBlock.root || !this.formBlock.params?.fields) {
+    if (!this.formBlock.root) {
       return;
     }
 
@@ -98,20 +95,22 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
       return;
     }
 
-    this.updateDisplayFields(formField);
+    this.updateDisplayFields(this.formBlock, formField);
     this.listenToFormChange(formField);
   }
 
   private listenToFormChange(form: FormInstance) {
+    // TODO: the subscription is not cancelled after edit !
     this.changesService.changes.pipe(
       untilDestroyed(this),
       map(changes => changes.find((change) => change.wrapper.core.id === form.id)),
       filter(change => change !== undefined),
-      tap(change => this.updateDisplayFields(change!.wrapper.core))
+      tap(change => this.updateDisplayFields(this.formBlock, change!.wrapper.core))
     )
   }
 
-  private updateDisplayFields(form: FormInstance) {
-    this.displayedFields = this.formBlock.params.fields.map((f: string) => FormUtils.retrieveBlockFromField(form, f));
+  private updateDisplayFields(block: FormBlock, form: FormInstance) {
+    const fields = block.params?.fields?.length ? block.params.fields : form.params?.fields;
+    this.displayedFields = fields ? fields.map((f: string) => FormUtils.retrieveBlockFromField(form, f)) : [];    
   }
 }

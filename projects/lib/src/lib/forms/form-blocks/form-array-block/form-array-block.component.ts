@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormInstanceBase, FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 import { CeFormsService } from '../../../services/ce-forms.service';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
@@ -26,6 +26,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
   displayedColumns: string[] = [];
   colomnFields: string[] = [];
   isFormAssoc = false;
+  private formRoot!: FormInstanceBase;
 
   constructor(
     public dialog: MatDialog,
@@ -39,9 +40,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
   }
 
   ngOnInit(): void {
-    this.buildDisplayedColumns();
-    this.buildQuery();
-    this.prepareQueryService();
+    this.init();
   }
 
   onAdd() {
@@ -61,7 +60,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
         formBlock: this.formBlock,
         query,
         dataSource: new FormArrayDatasource(
-          this.api,          
+          this.api,
         )
       }
     );
@@ -85,23 +84,26 @@ export class FormArrayBlockComponent extends FormBlockComponent<void> implements
   open(formId: IndexType) {
     this.formRouteResolver.navigate(formId, this.formInstance);
   }
-  
-  formBlockChanged(): void {    
+
+  formBlockChanged(): void {
+  }
+
+  private async init() {
+    await this.prepareQueryService();
+    this.buildDisplayedColumns();
   }
 
   private buildDisplayedColumns() {
-    this.colomnFields = this.formBlock.params?.fields?.length ? this.formBlock.params.fields : ["$id", "$ctime"];
+    const fields: string[] | undefined = this.formBlock.params?.fields?.length ? this.formBlock.params.fields : this.formRoot.params?.fields;
+    this.colomnFields = fields?.length ? fields : ["$id", "$ctime"];
     this.displayedColumns = this.formBlock.readonly ? this.colomnFields : [...this.colomnFields, "actions"];
   }
 
-  private buildQuery() {
-    this.queryBuilder = FormQueryArrayBuilder.fromBlock(this.formBlock, this.formInstance);
-  }
-
   private async prepareQueryService() {
+    this.queryBuilder = FormQueryArrayBuilder.fromBlock(this.formBlock, this.formInstance);
     this.queryService.setDatasource(this.dataSource);
     this.queryService.setQueryBuilder(this.queryBuilder);
-    const formRoot = await firstValueFrom(this.formService.getFormRoot(this.formBlock.root!));
-    this.queryService.setModel(formRoot);
+    this.formRoot = await firstValueFrom(this.formService.getFormRoot(this.formBlock.root!));
+    this.queryService.setModel(this.formRoot);
   }
 }
