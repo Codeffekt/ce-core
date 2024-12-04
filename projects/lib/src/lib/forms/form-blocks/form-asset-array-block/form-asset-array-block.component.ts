@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
-import { AssetsDatasource } from '../../form-datasource/assets-datasource';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LayoutService } from '../../../services/layout.service';
 import { CeAssetsService } from '../../../services/ce-assets.service';
@@ -20,6 +19,7 @@ import { AssetImportComponent, AssetImportConfig } from '../../../media/asset-im
 import { CeMediaModule } from '../../../media';
 import { CePaginatorModule } from '../../../paginator';
 import { CeNgReallyModule } from '../../../widgets/ng-really/ng-really.module';
+import { AssetsArrayDatasource } from '../../form-datasource/assets-array-datasource';
 
 @Component({
   selector: 'lib-form-asset-array-block',
@@ -45,7 +45,7 @@ import { CeNgReallyModule } from '../../../widgets/ng-really/ng-really.module';
 })
 export class FormAssetArrayBlockComponent extends FormBlockComponent<void> implements OnInit {
 
-  datasource!: AssetsDatasource;
+  datasource!: AssetsArrayDatasource;
   assetArrayRef!: IndexType;
   assets$!: Observable<readonly AssetElt[]>;
 
@@ -56,7 +56,7 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
     private readonly assetsService: CeAssetsService,
   ) {
     super();
-    this.datasource = new AssetsDatasource(this.assetsService);
+    this.datasource = new AssetsArrayDatasource(this.assetsService);
     this.queryService.setDatasource(this.datasource);
   }
 
@@ -68,6 +68,8 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
 
     const config: AssetImportConfig = {
       pid: this.formBlock.value,
+      formId: this.formInstance.id,
+      field: this.formBlock.field,
       title: "Importer un asset"
     };
 
@@ -87,7 +89,10 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
 
   async delete(photo: AssetElt) {
     try {
-      await firstValueFrom(this.assetsService.deleteAssets(this.formBlock.value, [photo.id]));
+      await firstValueFrom(this.assetsService.deleteAssetsArray(
+        this.formInstance.id,
+        this.formBlock.field, [photo.id]
+      ));
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
@@ -96,7 +101,8 @@ export class FormAssetArrayBlockComponent extends FormBlockComponent<void> imple
   }
 
   private async prepareQueryService() {
-    this.queryService.setQueryBuilder(AssetsFormQueryBuilder.fromAssetArrayBlock(this.formBlock));
+    this.datasource.setAssetsArray(this.formInstance.id, this.formBlock.field);
+    this.queryService.setQueryBuilder(AssetsFormQueryBuilder.create());
     this.assets$ = this.queryService.connect();
     this.queryService.load();
   }

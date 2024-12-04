@@ -9,7 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { CeNgReallyModule } from '../../../widgets/ng-really';
 import { CeMediaModule } from '../../../media/media.module';
 import { SpaceFormPathService } from '../../../spaces/space-form-path.service';
-import { AssetsDatasource } from '../../form-datasource';
+import { AssetsArrayDatasource } from '../../form-datasource';
 import { CeAssetsService } from '../../../services';
 import { AssetsFormQueryBuilder } from '../../forms-query';
 
@@ -53,11 +53,22 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
       return;
     }
 
+    if(!this.formBlock.root) {
+      return
+    }
+
+    const form = this.spacePathService.findFormFromRoot(this.formBlock.root!);
+
+    if(!form) {
+      return;
+    }
+
+    const datasource = new AssetsArrayDatasource(this.assetsService);
+    datasource.setAssetsArray(form.form.core.id, this.formBlock.index);
+
     const dialogRef = PhotoPickerComponent.open(this.dialog, {
-        datasource: new AssetsDatasource(this.assetsService),
-        queryBuilder: AssetsFormQueryBuilder.fromAssetArrayBlock(
-          this.spacePathService.findBlock(this.formBlock.root!, this.formBlock.index)
-        )
+        datasource,
+        queryBuilder: AssetsFormQueryBuilder.create(),
     });
 
     dialogRef.afterClosed().subscribe((assetElt: AssetElt) => {

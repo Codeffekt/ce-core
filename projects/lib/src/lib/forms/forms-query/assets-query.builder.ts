@@ -34,7 +34,7 @@ export class AssetsFormQueryBuilder extends FormQueryBuilder {
         return builder;
     }
 
-    static fromAssetArrayBlock(block: FormBlock) {
+    static fromAssetArrayBlock(formId: IndexType, block: FormBlock) {
         const builder = new AssetsFormQueryBuilder();
         builder.ref = block.value;
         return builder;

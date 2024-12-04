@@ -53,11 +53,11 @@ export class FormChooserDialogComponent {
         private readonly queryService: CeFormQueryService<FormInstanceExt>,
         private dialogRef: MatDialogRef<FormChooserDialogComponent>,
     ) {
-        this.dataSource = this.config.dataSource;        
+        this.dataSource = this.config.dataSource;
     }
 
     ngOnInit(): void {
-        this.init();                
+        this.init();
     }
 
     select(form: FormInstance) {
@@ -67,20 +67,18 @@ export class FormChooserDialogComponent {
     private async init() {
         await this.prepareQueryService();
         this.buildDisplayedColumns();
-        this.queryService.load();
+        // this.queryService.load();
     }
 
-    private async prepareQueryService() {        
+    private async prepareQueryService() {
         this.queryService.setDatasource(this.dataSource);
         this.queryService.setQueryBuilder(this.config.query);
         this.formRoot = await firstValueFrom(this.formService.getFormRoot(this.config.formBlock.root!));
         this.queryService.setModel(this.formRoot);
-      }
+    }
 
     private buildDisplayedColumns() {
         const fields: string[] | undefined = this.config.formBlock.params?.fields?.length ? this.config.formBlock.params.fields : this.formRoot.params?.fields;
-        if (this.config.formBlock.params && this.config.formBlock.params.fields) {
-            this.displayedColumns = fields ?? ["$id", "$ctime"];
-        }
+        this.displayedColumns = fields ?? ["$id", "$ctime"];
     }
 }

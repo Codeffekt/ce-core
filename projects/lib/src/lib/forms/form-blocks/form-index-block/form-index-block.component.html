@@ -32,7 +32,8 @@
                 <mat-icon *ngIf="formBlock.value">chevron_right</mat-icon>
             </ce-grid>
             <mat-menu #menu="matMenu">
-                <button mat-menu-item (click)="edit()">Modifier</button>
+                <button mat-menu-item [disabled]="formBlock.value" (click)="onCreate()">Nouveau</button>
+                <button mat-menu-item (click)="edit()">Choisir</button>
                 <button mat-menu-item [disabled]="!formBlock.value" (click)="delete()">Remettre à zéro</button>
             </mat-menu>
         </ng-container>

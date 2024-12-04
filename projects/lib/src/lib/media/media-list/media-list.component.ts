@@ -8,6 +8,7 @@ import { AssetsDatasource } from '../../forms/form-datasource/assets-datasource'
 import { LayoutService } from '../../services/layout.service';
 import { CeAssetsService } from '../../services/ce-assets.service';
 import { AssetsFormQueryBuilder } from '../../forms/forms-query/assets-query.builder';
+import { Exception } from '@zxing/library';
 
 const ASSETS_DEFAULT_REF = "default";
 
@@ -44,18 +45,21 @@ export class MediaListComponent implements OnInit {
   }
 
   async delete(photo: AssetElt) {
-    try {
+    /* try {
       await firstValueFrom(this.assetsService.deleteAssets(this.ref, [photo.id]));
       this.layout.showSingleMessage('Media supprimé avec succès');
       this.queryService.load();
     } catch (err) {
       this.layout.showErrorMessage(`Erreur <${(<any>err).message}> lors de la suppression du media`);
-    }
+    } */
+   throw new Exception("Deprecated component");
   }
 
   openPhotoImport() {
 
-    const config: AssetImportConfig = {
+    throw new Exception("Deprecated component");
+
+    /* const config: AssetImportConfig = {
       pid: this.ref,
       title: "Importer un media"
     };
@@ -70,7 +74,7 @@ export class MediaListComponent implements OnInit {
       if (config.isDone && config.asset) {
         this.queryService.load();
       }
-    });
+    }); */
 
   }
 

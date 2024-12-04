@@ -6,7 +6,7 @@ import { CeFormRouteResolver } from '../../form-route.resolver';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
-import { CeFormsChangesService } from '../../../services';
+import { CeFormsChangesService, CeFormsService, LayoutService } from '../../../services';
 import { filter, map, tap } from 'rxjs';
 import { FormArrayDatasource } from '../../form-datasource';
 import { CeFormDataService } from '../../form-data.service';
@@ -26,6 +26,8 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
     private formRouteResolver: CeFormRouteResolver,
     private formDataService: CeFormDataService,
     private changesService: CeFormsChangesService,
+    private layout: LayoutService,
+    private formsService: CeFormsService,
   ) {
     super();
   }
@@ -36,6 +38,21 @@ export class FormIndexBlockComponent extends FormBlockComponent<IndexType> imple
 
   openForm(formId: IndexType) {
     this.formRouteResolver.navigate(formId, this.formInstance);
+  }
+
+  async onCreate() {
+    if(!this.formBlock.root) {
+      return;
+    }
+
+    try {
+      const newForm = await this.formsService.createForm(this.formBlock.root);
+      this.value = newForm.id;
+      this.layout.showSingleMessage(`Le formulaire à été créé.`);
+      this.buildDisplayedFields();
+  } catch(err) {
+      this.layout.showErrorMessage(`Erreur lors de la création d'un nouveau formulaire`);
+  }
   }
 
   edit() {

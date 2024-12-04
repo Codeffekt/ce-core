@@ -12,6 +12,8 @@ const DEFAULT_TITLE = "Asset Importer";
 
 export interface AssetImportConfig {
   pid: IndexType;
+  formId: IndexType;
+  field: IndexType;
   title?: string;
   asset?: AssetElt;
   isDone?: boolean;
@@ -97,7 +99,10 @@ export class AssetImportComponent implements OnInit, OnDestroy {
 
     // create the bucket
     try {
-      const assetElt = await firstValueFrom(this.coreService.callAssets("createBucket", this.config.pid, {
+      const assetElt = await firstValueFrom(this.coreService.callAssets(
+        "createBucketAssetsArray", 
+        this.config.formId, 
+        this.config.field, {
         metadata: { timestamp: timestamp.toString() }
       } as AssetElt));
       this.config.isDone = false;

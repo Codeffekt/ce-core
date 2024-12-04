@@ -1,7 +1,7 @@
 <div class="d-flex flex-row mb-2">
     <span class="h4" *ngIf="formBlock.label">{{formBlock.label}}</span>
     <div class="ms-auto">
-        <button mat-stroked-button color="primary" (click)="openMediaPicker()">
+        <button mat-stroked-button color="primary" [disabled]="!formBlock.index" (click)="openMediaPicker()">
             <mat-icon class="me-2">edit</mat-icon>Modifier
         </button>
         <button mat-button color="warn" ngReallyTitle="Confirmation require"
@@ -17,7 +17,7 @@
 
 <ng-template #noImageTpl>
     <div class="no-image">
-        <h4 class="text-muted">Aucune image</h4>
+        <h4 class="text-muted">Aucune Donnée</h4>
     </div>
 </ng-template>
 

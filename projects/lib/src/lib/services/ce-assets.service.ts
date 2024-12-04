@@ -18,6 +18,10 @@ export class CeAssetsService {
         return this.coreService.callAssets("getFormsQuery", query);
     }
 
+    getAssetsArrayQuery(formId: IndexType, field: IndexType, query: FormQuery): Observable<DbArrayRes<FormInstance>> {
+        return this.coreService.callAssets("getAssetsArrayQuery", formId, field, query);
+    }
+
     deleteAssets(pid?: IndexType, assets: IndexType[] = [], deleteFile = true): Observable<boolean> {
 
         if(!assets.length) {
@@ -27,4 +31,12 @@ export class CeAssetsService {
         return this.coreService.callAssets("deleteAssets", pid, assets, deleteFile);
     }
     
+    deleteAssetsArray(formId: IndexType, field: IndexType, assets: IndexType[] = [], deleteFile = true): Observable<boolean> {
+
+        if(!assets.length) {
+            return of(true);
+        }
+
+        return this.coreService.callAssets("deleteAssetsArray", formId, field, assets, deleteFile);
+    }
 }

@@ -13,3 +13,4 @@ export * from './projects-datasource';
 export * from './assets-datasource';
 export * from './ce-apps.datasource';
 export * from './spaces-editor-format.datasource';
+export * from './assets-array-datasource';
