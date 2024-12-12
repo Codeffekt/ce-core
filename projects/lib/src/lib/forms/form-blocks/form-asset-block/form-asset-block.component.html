@@ -1,13 +1,13 @@
 <div class="d-flex flex-row mb-2">
     <span class="h4" *ngIf="formBlock.label">{{formBlock.label}}</span>
     <div class="ms-auto">
-        <button mat-stroked-button color="primary" [disabled]="!formBlock.index" (click)="openMediaPicker()">
+        <button mat-stroked-button color="primary" [disabled]="!assetsForm" (click)="openMediaPicker()">
             <mat-icon class="me-2">edit</mat-icon>Modifier
         </button>
         <button mat-button color="warn" ngReallyTitle="Confirmation require"
             ngReallyMessage="Voulez-vous vraiement supprimer l'association avec ce media ?" (ngReallyClick)="onClear()"
             [disabled]="!formBlock.value">
-            supprimer
+            <mat-icon class="me-2">link_off</mat-icon>Dissocier
         </button>
     </div>
 </div>

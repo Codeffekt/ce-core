@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
-import { CeCoreService, CeEventsService } from '@codeffekt/ce-core';
+import { Component, inject } from '@angular/core';
+import { CeEventsService } from '@codeffekt/ce-core';
 
 @Component({
   selector: 'app-events',
@@ -11,16 +11,10 @@ import { CeCoreService, CeEventsService } from '@codeffekt/ce-core';
   templateUrl: './events.component.html',
   styleUrl: './events.component.scss'
 })
-export class EventsComponent implements OnInit {
+export class EventsComponent {
 
   private eventsService = inject(CeEventsService);  
 
   event$ = this.eventsService.all();
 
-  ngOnInit(): void {
-      const eventSource = new EventSource("http://localhost:3000/events/all", { withCredentials: true });
-      eventSource.onmessage = (e) => {
-        console.log("RECEIVE", e);
-      };
-  }
 }

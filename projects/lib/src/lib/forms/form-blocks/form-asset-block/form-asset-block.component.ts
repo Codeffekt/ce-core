@@ -12,6 +12,7 @@ import { SpaceFormPathService } from '../../../spaces/space-form-path.service';
 import { AssetsArrayDatasource } from '../../form-datasource';
 import { CeAssetsService } from '../../../services';
 import { AssetsFormQueryBuilder } from '../../forms-query';
+import { FormInfo } from '../../../models/form-info';
 
 @Component({
   selector: 'ce-form-asset-block',
@@ -29,9 +30,11 @@ import { AssetsFormQueryBuilder } from '../../forms-query';
 })
 export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implements OnInit {
 
+  assetsForm?: FormInfo
+
   private dialog = inject(MatDialog);
   private spacePathService = inject(SpaceFormPathService);
-  private assetsService = inject(CeAssetsService);
+  private assetsService = inject(CeAssetsService);  
 
   constructor(    
   ) {
@@ -39,6 +42,7 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
   }
 
   ngOnInit(): void {
+    this.initAssetsForm();
   }
 
   onClear() {
@@ -48,23 +52,14 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
   delete(asset: AssetElt) {
   }
 
-  openMediaPicker() {
-    if(!this.formBlock.index) {
+  openMediaPicker() {    
+
+    if(!this.assetsForm || !this.formBlock.index) {
       return;
-    }
-
-    if(!this.formBlock.root) {
-      return
-    }
-
-    const form = this.spacePathService.findFormFromRoot(this.formBlock.root!);
-
-    if(!form) {
-      return;
-    }
+    }    
 
     const datasource = new AssetsArrayDatasource(this.assetsService);
-    datasource.setAssetsArray(form.form.core.id, this.formBlock.index);
+    datasource.setAssetsArray(this.assetsForm.form.core.id, this.formBlock.index);
 
     const dialogRef = PhotoPickerComponent.open(this.dialog, {
         datasource,
@@ -76,5 +71,16 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
         this.value = assetElt
       }
     });
+  }
+
+  private initAssetsForm() {
+    
+    this.assetsForm = undefined;
+
+    if(!this.formBlock.index || !this.formBlock.root) {
+      return;
+    }    
+
+    this.assetsForm = this.spacePathService.findFormFromRoot(this.formBlock.root!);
   }
 }
