@@ -26,7 +26,7 @@ export class Utils {
         snackBar.open(msg, undefined, { duration: duration });
     }
 
-    public static deepcopy<T>(o: T): T {
+    public static deepcopy<T>(o: T): T | undefined {
         return o === undefined ? undefined : JSON.parse(JSON.stringify(o));
     }
 }

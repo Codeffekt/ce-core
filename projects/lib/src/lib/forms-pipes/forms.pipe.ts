@@ -227,7 +227,7 @@ export class FormInstanceBlockPipe implements PipeTransform {
     standalone: false
 })
 export class FormInstanceValuePipe implements PipeTransform {
-  transform(formInstance: FormInstanceExt, field: string): string {
+  transform(formInstance: FormInstanceExt, field: string): string | undefined {
     const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
     return formBlock ? getBlockValue(formBlock) : undefined;
   }

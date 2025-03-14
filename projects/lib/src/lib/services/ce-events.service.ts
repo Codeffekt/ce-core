@@ -56,7 +56,7 @@ export class CeEventsService {
 
     onFormUpdate(elt: IndexType) {
         return this.all().pipe(
-            filter(evt => evt.type === "update" && evt.elts.includes(elt)),
+            filter(evt => evt.type === "update" && (<any> evt.elts).includes(elt)),
             distinct(evt => evt.time),
             mergeMap(_ => this.formEditorService.getForm(elt, { forceReload: true })),            
             distinct((form) => form.form.core.mtime),            
