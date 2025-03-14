@@ -2,11 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { ReplaySubject } from 'rxjs';
 @Component({
-  selector: 'app-forms-factory',
-  templateUrl: './forms-factory.component.html',
-  styleUrls: ['./forms-factory.component.scss'],
-  providers: [   
-  ]
+    selector: 'app-forms-factory',
+    templateUrl: './forms-factory.component.html',
+    styleUrls: ['./forms-factory.component.scss'],
+    providers: [],
+    standalone: false
 })
 export class FormsFactoryComponent implements OnInit {
 

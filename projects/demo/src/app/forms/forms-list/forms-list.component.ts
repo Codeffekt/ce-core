@@ -4,12 +4,13 @@ import { FormInstance } from '@codeffekt/ce-core-data';
 import { MockApiService } from '../../api/mock-api.service';
 
 @Component({
-  selector: 'app-forms-list',
-  templateUrl: './forms-list.component.html',
-  styleUrls: ['./forms-list.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'app-forms-list',
+    templateUrl: './forms-list.component.html',
+    styleUrls: ['./forms-list.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class FormsListComponent implements OnInit {
 

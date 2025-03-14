@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-installation',
-  templateUrl: './installation.component.html',
-  styleUrls: ['./installation.component.scss']
+    selector: 'app-installation',
+    templateUrl: './installation.component.html',
+    styleUrls: ['./installation.component.scss'],
+    standalone: false
 })
 export class InstallationComponent {
 

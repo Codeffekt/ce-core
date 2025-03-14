@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-form-coordinates-page',
-  templateUrl: './form-coordinates-page.component.html',
-  styleUrls: ['./form-coordinates-page.component.scss']
+    selector: 'app-form-coordinates-page',
+    templateUrl: './form-coordinates-page.component.html',
+    styleUrls: ['./form-coordinates-page.component.scss'],
+    standalone: false
 })
 export class FormCoordinatesPageComponent implements OnInit {
 

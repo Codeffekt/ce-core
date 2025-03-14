@@ -4,9 +4,10 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-row',
-  templateUrl: './row.component.html',
-  styleUrls: ['./row.component.scss'],
+    selector: 'ce-row',
+    templateUrl: './row.component.html',
+    styleUrls: ['./row.component.scss'],
+    standalone: false
 })
 export class RowComponent implements OnChanges {
 

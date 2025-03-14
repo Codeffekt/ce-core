@@ -2,7 +2,8 @@ import { Directive, ElementRef, Input, OnInit } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 @Directive({
-    selector: '[appIcon]'
+    selector: '[appIcon]',
+    standalone: false
 })
 export class CeFontIconDirective implements OnInit {
 

@@ -8,6 +8,7 @@ import { CeFormsService } from "../../../services/ce-forms.service";
     selector: 'ce-new-form',
     templateUrl: './form-new.component.html',
     styleUrls: ['./form-new.component.scss'],
+    standalone: false
 })
 export class FormNewComponent implements OnInit {
     root!: FormRoot;

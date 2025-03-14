@@ -22,26 +22,25 @@ import { CeNgReallyModule } from '../../../widgets/ng-really/ng-really.module';
 import { AssetsArrayDatasource } from '../../form-datasource/assets-array-datasource';
 
 @Component({
-  selector: 'lib-form-asset-array-block',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,    
-    CeLayoutModule,       
-    CeMediaModule,
-    CePaginatorModule,
-    CeNgReallyModule,
-    FormBlockFieldComponent,
-    FormBlockFieldActionsComponent,
-    FormBlockFieldContentComponent,
-  ],
-  templateUrl: './form-asset-array-block.component.html',
-  styleUrls: ['./form-asset-array-block.component.scss'],
-  providers: [
-    CeFormQueryService,    
-  ]
+    selector: 'lib-form-asset-array-block',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatIconModule,
+        CeLayoutModule,
+        CeMediaModule,
+        CePaginatorModule,
+        CeNgReallyModule,
+        FormBlockFieldComponent,
+        FormBlockFieldActionsComponent,
+        FormBlockFieldContentComponent,
+    ],
+    templateUrl: './form-asset-array-block.component.html',
+    styleUrls: ['./form-asset-array-block.component.scss'],
+    providers: [
+        CeFormQueryService,
+    ]
 })
 export class FormAssetArrayBlockComponent extends FormBlockComponent<void> implements OnInit {
 

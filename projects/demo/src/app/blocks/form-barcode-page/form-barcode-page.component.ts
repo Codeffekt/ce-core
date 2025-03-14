@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-form-barcode-page',
-  templateUrl: './form-barcode-page.component.html',
-  styleUrls: ['./form-barcode-page.component.scss']
+    selector: 'app-form-barcode-page',
+    templateUrl: './form-barcode-page.component.html',
+    styleUrls: ['./form-barcode-page.component.scss'],
+    standalone: false
 })
 export class FormBarcodePageComponent implements OnInit {
 

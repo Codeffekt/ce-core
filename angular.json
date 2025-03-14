@@ -15,15 +15,18 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "allowedCommonJsDependencies": [
               "jsbarcode"
             ],
-            "outputPath": "dist/demo",
+            "outputPath": {
+              "base": "dist/demo"
+            },
             "index": "projects/demo/src/index.html",
-            "main": "projects/demo/src/main.ts",
-            "polyfills": "projects/demo/src/polyfills.ts",
+            "polyfills": [
+              "projects/demo/src/polyfills.ts"
+            ],
             "tsConfig": "projects/demo/tsconfig.app.json",
             "assets": [
               "projects/demo/src/favicon.ico",
@@ -45,12 +48,11 @@
               ]
             },
             "scripts": [],
-            "vendorChunk": true,
             "extractLicenses": false,
-            "buildOptimizer": false,
             "sourceMap": true,
             "optimization": false,
-            "namedChunks": true
+            "namedChunks": true,
+            "browser": "projects/demo/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -65,8 +67,6 @@
               "sourceMap": false,
               "namedChunks": false,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
@@ -186,13 +186,16 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "preserveSymlinks": true,
-            "outputPath": "dist/manager",
+            "outputPath": {
+              "base": "dist/manager"
+            },
             "index": "projects/manager/src/index.html",
-            "main": "projects/manager/src/main.ts",
-            "polyfills": "projects/manager/src/polyfills.ts",
+            "polyfills": [
+              "projects/manager/src/polyfills.ts"
+            ],
             "tsConfig": "projects/manager/tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -203,7 +206,8 @@
               "./node_modules/material-design-icons-iconfont/dist/material-design-icons.css",
               "projects/manager/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/manager/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -228,9 +232,7 @@
               "outputHashing": "all"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true

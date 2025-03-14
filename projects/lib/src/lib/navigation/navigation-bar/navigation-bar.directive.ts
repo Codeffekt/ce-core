@@ -3,7 +3,8 @@ import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { CeNavBarService } from '../../services/ce-navbar.service';
 
 @Directive({
-    selector: '[ceNavBar]'
+    selector: '[ceNavBar]',
+    standalone: false
 })
 export class CeNavigationBarDirective implements OnDestroy {
 

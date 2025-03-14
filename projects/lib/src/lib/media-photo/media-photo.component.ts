@@ -9,18 +9,17 @@ import { CePipesModule } from '../pipes/pipes.module';
 import { CeNgReallyModule } from '../widgets/ng-really';
 
 @Component({
-  selector: 'ce-media-photo',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatMenuModule,
-    CePipesModule,
-    CeNgReallyModule,
-  ],
-  templateUrl: './media-photo.component.html',
-  styleUrls: ['./media-photo.component.scss']
+    selector: 'ce-media-photo',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        MatMenuModule,
+        CePipesModule,
+        CeNgReallyModule,
+    ],
+    templateUrl: './media-photo.component.html',
+    styleUrls: ['./media-photo.component.scss']
 })
 export class MediaPhotoComponent implements IMediaContent, OnInit {
 

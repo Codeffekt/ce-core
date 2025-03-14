@@ -10,9 +10,10 @@ import { INavItemComponent, NavigationItemStoreService } from './navigation-item
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'ce-navbar-item-factory',
-  templateUrl: './navigation-item-factory.component.html',
-  styleUrls: ['./navigation-item-factory.component.scss']
+    selector: 'ce-navbar-item-factory',
+    templateUrl: './navigation-item-factory.component.html',
+    styleUrls: ['./navigation-item-factory.component.scss'],
+    standalone: false
 })
 export class NavigationItemFactoryComponent<T = any> implements OnInit, AfterViewInit {
 

@@ -14,8 +14,9 @@ interface MenuEntry {
 }
 
 @Component({
-  selector: 'app-project-main',
-  templateUrl: 'project-main.component.html',
+    selector: 'app-project-main',
+    templateUrl: 'project-main.component.html',
+    standalone: false
 })
 export class CeProjectMainComponent implements OnInit {
 

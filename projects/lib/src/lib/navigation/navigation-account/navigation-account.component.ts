@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-navigation-account',
-  templateUrl: './navigation-account.component.html',
-  styleUrls: ['./navigation-account.component.scss']
+    selector: 'ce-navigation-account',
+    templateUrl: './navigation-account.component.html',
+    styleUrls: ['./navigation-account.component.scss'],
+    standalone: false
 })
 export class NavigationAccountComponent implements OnInit {
 

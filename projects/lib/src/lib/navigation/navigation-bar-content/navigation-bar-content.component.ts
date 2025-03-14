@@ -3,9 +3,10 @@ import { Component, HostBinding, Input } from '@angular/core';
 // export type NavigationBarContentAlignment = 'start' | 'center' | 'end';
 
 @Component({
-  selector: 'ce-navbar-content',
-  templateUrl: './navigation-bar-content.component.html',
-  styleUrls: ['./navigation-bar-content.component.scss']
+    selector: 'ce-navbar-content',
+    templateUrl: './navigation-bar-content.component.html',
+    styleUrls: ['./navigation-bar-content.component.scss'],
+    standalone: false
 })
 export class NavigationBarContentComponent {
 

@@ -1,6 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[ceMargin]' })
+@Directive({
+    selector: '[ceMargin]',
+    standalone: false
+})
 export class CeMarginDirective implements AfterViewInit {
 
     @Input() ceMargin?: string;
@@ -14,7 +17,10 @@ export class CeMarginDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[ceMarginX]' })
+@Directive({
+    selector: '[ceMarginX]',
+    standalone: false
+})
 export class CeXMarginDirective implements AfterViewInit {
 
     @Input() ceMarginX?: string;
@@ -29,7 +35,10 @@ export class CeXMarginDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[ceMarginY]' })
+@Directive({
+    selector: '[ceMarginY]',
+    standalone: false
+})
 export class CeYMarginDirective implements AfterViewInit {
 
     @Input() ceMarginY?: string;
@@ -44,7 +53,10 @@ export class CeYMarginDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[ceMarginEnd]' })
+@Directive({
+    selector: '[ceMarginEnd]',
+    standalone: false
+})
 export class CeMarginEndDirective implements AfterViewInit {
 
     @Input() ceMarginEnd?: string;
@@ -58,7 +70,10 @@ export class CeMarginEndDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[ceMarginStart]' })
+@Directive({
+    selector: '[ceMarginStart]',
+    standalone: false
+})
 export class CeMarginStartDirective implements AfterViewInit {
 
     @Input() ceMarginStart?: string;
@@ -73,7 +88,10 @@ export class CeMarginStartDirective implements AfterViewInit {
 }
 
 
-@Directive({ selector: '[ceMarginTop]' })
+@Directive({
+    selector: '[ceMarginTop]',
+    standalone: false
+})
 export class CeMarginTopDirective implements AfterViewInit {
 
     @Input() ceMarginTop?: string;
@@ -89,7 +107,10 @@ export class CeMarginTopDirective implements AfterViewInit {
 
 
 
-@Directive({ selector: '[ceMarginBottom]' })
+@Directive({
+    selector: '[ceMarginBottom]',
+    standalone: false
+})
 export class CeMarginBotttomDirective implements AfterViewInit {
 
     @Input() ceMarginBottom?: string;

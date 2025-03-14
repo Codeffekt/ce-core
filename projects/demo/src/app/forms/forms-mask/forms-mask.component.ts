@@ -4,9 +4,10 @@ import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/c
 import { MockApiService } from '../../api/mock-api.service';
 
 @Component({
-  selector: 'app-forms-mask',
-  templateUrl: './forms-mask.component.html',
-  styleUrls: ['./forms-mask.component.scss']
+    selector: 'app-forms-mask',
+    templateUrl: './forms-mask.component.html',
+    styleUrls: ['./forms-mask.component.scss'],
+    standalone: false
 })
 export class FormsMaskComponent implements OnInit {
 

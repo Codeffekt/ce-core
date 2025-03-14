@@ -1,8 +1,9 @@
 import { Component, HostBinding, Input, OnInit } from '@angular/core';
 @Component({
-  selector: 'ce-list-item',
-  templateUrl: './list-item.component.html',
-  styleUrls: ['./list-item.component.scss']
+    selector: 'ce-list-item',
+    templateUrl: './list-item.component.html',
+    styleUrls: ['./list-item.component.scss'],
+    standalone: false
 })
 export class ListItemComponent<T = any> implements OnInit {
   

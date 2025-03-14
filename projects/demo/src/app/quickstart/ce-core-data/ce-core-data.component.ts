@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-ce-core-data',
-  templateUrl: './ce-core-data.component.html',
-  styleUrls: ['./ce-core-data.component.scss']
+    selector: 'app-ce-core-data',
+    templateUrl: './ce-core-data.component.html',
+    styleUrls: ['./ce-core-data.component.scss'],
+    standalone: false
 })
 export class CeCoreDataComponent implements OnInit {
 

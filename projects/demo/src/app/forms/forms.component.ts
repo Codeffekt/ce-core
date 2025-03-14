@@ -6,9 +6,10 @@ import { MockFormEditorService } from './mock-form-editor.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'app-forms',
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.scss'],
+    selector: 'app-forms',
+    templateUrl: './forms.component.html',
+    styleUrls: ['./forms.component.scss'],
+    standalone: false
 })
 export class FormsComponent implements OnInit {
 

@@ -6,9 +6,10 @@ import { SearchHintService } from '../services/search-hint.service';
 import { FormBlock } from '@codeffekt/ce-core-data';
 @UntilDestroy()
 @Component({
-  selector: 'ce-search-hint-dropdown',
-  templateUrl: './search-hint-dropdown.component.html',
-  styleUrls: ['./search-hint-dropdown.component.scss']
+    selector: 'ce-search-hint-dropdown',
+    templateUrl: './search-hint-dropdown.component.html',
+    styleUrls: ['./search-hint-dropdown.component.scss'],
+    standalone: false
 })
 export class SearchHintDropdownComponent implements OnInit {
 

@@ -6,9 +6,10 @@ import { CeFormQueryService } from '../services/ce-form-query.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-formquery-wrapper',
-  templateUrl: './formquery-wrapper.component.html',
-  styleUrls: ['./formquery-wrapper.component.scss']
+    selector: 'ce-formquery-wrapper',
+    templateUrl: './formquery-wrapper.component.html',
+    styleUrls: ['./formquery-wrapper.component.scss'],
+    standalone: false
 })
 export class FormQueryWrapperComponent<T> implements OnInit {
 

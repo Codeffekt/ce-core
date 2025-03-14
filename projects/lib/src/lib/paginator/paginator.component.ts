@@ -8,9 +8,10 @@ const DEFAULT_LIMIT = 10;
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-paginator',
-  templateUrl: './paginator.component.html',
-  styleUrls: ['./paginator.component.scss']
+    selector: 'ce-paginator',
+    templateUrl: './paginator.component.html',
+    styleUrls: ['./paginator.component.scss'],
+    standalone: false
 })
 export class PaginatorComponent<T = any> implements AfterViewInit {
 

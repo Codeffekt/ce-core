@@ -7,24 +7,23 @@ import { CeListModule } from "../../../../lib/src/lib/list/list.module";
 import { IndexType } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-form-editor',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CeNavigationModule,
-    CeGridModule,
-    CeFormModule,
-    FormUrlQueryParamsDirective,
-    CeListModule
-  ],
-  templateUrl: './form-editor.component.html',
-  styleUrls: ['./form-editor.component.scss'],
-  providers: [
-    {
-      provide: CeFormRouteResolver,
-      useClass: FormRouteResolver,
-    },
-  ]
+    selector: 'app-form-editor',
+    imports: [
+        CommonModule,
+        CeNavigationModule,
+        CeGridModule,
+        CeFormModule,
+        FormUrlQueryParamsDirective,
+        CeListModule
+    ],
+    templateUrl: './form-editor.component.html',
+    styleUrls: ['./form-editor.component.scss'],
+    providers: [
+        {
+            provide: CeFormRouteResolver,
+            useClass: FormRouteResolver,
+        },
+    ]
 })
 export class FormEditorComponent {
 

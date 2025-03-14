@@ -2,9 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CeAppService } from '../services/ce-app.service';
 
 @Component({
-  selector: 'ce-side-menu',
-  templateUrl: './side-menu.component.html',
-  styleUrls: ['./side-menu.component.scss']
+    selector: 'ce-side-menu',
+    templateUrl: './side-menu.component.html',
+    styleUrls: ['./side-menu.component.scss'],
+    standalone: false
 })
 export class CeSideMenuComponent implements OnInit {
 
@@ -22,31 +23,35 @@ export class CeSideMenuComponent implements OnInit {
 }
 
 @Component({
-  selector: 'ce-side-menu-content',
-  template: `<ng-content></ng-content>`,
+    selector: 'ce-side-menu-content',
+    template: `<ng-content></ng-content>`,
+    standalone: false
 })
 export class CeSideMenuContentComponent { }
 
 @Component({
-  selector: 'ce-side-menu-header',
-  template: `<ng-content></ng-content>`,
-  styles: [':host { display: flex; }']
+    selector: 'ce-side-menu-header',
+    template: `<ng-content></ng-content>`,
+    styles: [':host { display: flex; }'],
+    standalone: false
 })
 export class CeSideMenuHeaderComponent { }
 
 @Component({
-  selector: 'ce-side-menu-footer',
-  template: `<ng-content></ng-content>`,
+    selector: 'ce-side-menu-footer',
+    template: `<ng-content></ng-content>`,
+    standalone: false
 })
 export class CeSideMenuFooterComponent { }
 
 
 @Component({
-  selector: 'ce-side-menu-list',
-  template: `
+    selector: 'ce-side-menu-list',
+    template: `
     <mat-nav-list (click)="toggleMenu()">
         <ng-content></ng-content>
     </mat-nav-list>`,
+    standalone: false
 })
 export class CeSideMenuListComponent {
 

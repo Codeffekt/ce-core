@@ -7,12 +7,13 @@ import { Observable } from 'rxjs';
 import { getFormModel } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-list-wrapper-example',
-  templateUrl: './list-wrapper-example.component.html',
-  styleUrls: ['./list-wrapper-example.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'app-list-wrapper-example',
+    templateUrl: './list-wrapper-example.component.html',
+    styleUrls: ['./list-wrapper-example.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class ListWrapperExampleComponent implements OnInit {
 

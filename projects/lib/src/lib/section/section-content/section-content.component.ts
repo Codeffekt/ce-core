@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-section-content',
-  templateUrl: './section-content.component.html',
-  styleUrls: ['./section-content.component.scss']
+    selector: 'ce-section-content',
+    templateUrl: './section-content.component.html',
+    styleUrls: ['./section-content.component.scss'],
+    standalone: false
 })
 export class CeSectionContentComponent implements OnInit {
 

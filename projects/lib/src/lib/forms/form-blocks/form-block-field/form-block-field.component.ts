@@ -5,16 +5,15 @@ import { CeGridModule } from '../../../layout/grid/grid.module';
 import { FormBlockFieldTitleComponent } from './form-block-field-title/form-block-field-title.component';
 
 @Component({
-  selector: 'ce-form-block-field',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormBlockFieldHeaderComponent,
-    FormBlockFieldTitleComponent,
-    CeGridModule,
-  ],
-  templateUrl: './form-block-field.component.html',
-  styleUrls: ['./form-block-field.component.scss']
+    selector: 'ce-form-block-field',
+    imports: [
+        CommonModule,
+        FormBlockFieldHeaderComponent,
+        FormBlockFieldTitleComponent,
+        CeGridModule,
+    ],
+    templateUrl: './form-block-field.component.html',
+    styleUrls: ['./form-block-field.component.scss']
 })
 export class FormBlockFieldComponent {
 

@@ -1,7 +1,8 @@
 import { AfterViewInit, Directive, ElementRef, Input, OnInit } from "@angular/core";
 
 @Directive({
-  selector: '[gridRowStart],[gridColumnStart],[gridRowEnd],[gridColumnEnd]'
+    selector: '[gridRowStart],[gridColumnStart],[gridRowEnd],[gridColumnEnd]',
+    standalone: false
 })
 export class GridStartEndDirective implements AfterViewInit {
 
@@ -20,7 +21,10 @@ export class GridStartEndDirective implements AfterViewInit {
   }
 }
 
-@Directive({ selector: '[gridColumn]' })
+@Directive({
+    selector: '[gridColumn]',
+    standalone: false
+})
 export class GridColumnDirective implements OnInit {
 
   @Input() gridColumn?: string;

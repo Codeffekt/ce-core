@@ -7,10 +7,11 @@ import { ProjectsSharedDatasource } from './projects-shared-datasource';
 import { CeFormsService } from '../../services/ce-forms.service';
 
 @Component({
-  selector: 'ce-projects-user-shared',
-  templateUrl: './projects-user-shared.component.html',
-  styleUrls: ['./projects-user-shared.component.scss'],
-  providers: [CeFormQueryService]
+    selector: 'ce-projects-user-shared',
+    templateUrl: './projects-user-shared.component.html',
+    styleUrls: ['./projects-user-shared.component.scss'],
+    providers: [CeFormQueryService],
+    standalone: false
 })
 export class ProjectsUserSharedComponent implements OnInit {
 

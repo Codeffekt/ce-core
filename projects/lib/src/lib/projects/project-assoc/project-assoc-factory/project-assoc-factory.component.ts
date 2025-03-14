@@ -4,9 +4,10 @@ import { IProjectAssocContent } from '../project-assoc-models';
 import { ProjectAssocStoreService } from '../project-assoc-store.service';
 
 @Component({
-  selector: 'ce-project-assoc-factory',
-  templateUrl: './project-assoc-factory.component.html',
-  styleUrls: ['./project-assoc-factory.component.scss']
+    selector: 'ce-project-assoc-factory',
+    templateUrl: './project-assoc-factory.component.html',
+    styleUrls: ['./project-assoc-factory.component.scss'],
+    standalone: false
 })
 export class ProjectAssocFactoryComponent implements OnInit, AfterViewInit {
 

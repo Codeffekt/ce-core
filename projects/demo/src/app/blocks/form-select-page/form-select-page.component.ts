@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormInstanceExt, FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-form-select-page',
-  templateUrl: './form-select-page.component.html',
-  styleUrls: ['./form-select-page.component.scss']
+    selector: 'app-form-select-page',
+    templateUrl: './form-select-page.component.html',
+    styleUrls: ['./form-select-page.component.scss'],
+    standalone: false
 })
 export class FormSelectPageComponent implements OnInit {
 

@@ -3,7 +3,8 @@ import { AccountSettings } from '@codeffekt/ce-core-data';
 import { CeAccountService } from '../../services';
 
 @Pipe({
-    name: 'accountFromLogin'
+    name: 'accountFromLogin',
+    standalone: false
 })
 export class AccountFromLoginPipe implements PipeTransform {
 

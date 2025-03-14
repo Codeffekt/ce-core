@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input } from '@angular/core';
 
 @Component({
-  selector: 'ce-grid',
-  templateUrl: './grid.component.html',
-  styleUrls: ['./grid.component.scss']
+    selector: 'ce-grid',
+    templateUrl: './grid.component.html',
+    styleUrls: ['./grid.component.scss'],
+    standalone: false
 })
 export class CeGridComponent implements AfterViewInit {
 

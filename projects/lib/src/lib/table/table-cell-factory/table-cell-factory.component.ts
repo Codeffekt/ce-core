@@ -3,9 +3,10 @@ import { FormBlock } from '@codeffekt/ce-core-data';
 import { TableCellStoreService } from './table-cell-store.service';
 
 @Component({
-  selector: 'ce-table-cell-factory',
-  templateUrl: './table-cell-factory.component.html',
-  styleUrls: ['./table-cell-factory.component.scss']
+    selector: 'ce-table-cell-factory',
+    templateUrl: './table-cell-factory.component.html',
+    styleUrls: ['./table-cell-factory.component.scss'],
+    standalone: false
 })
 export class TableCellFactoryComponent implements OnInit, AfterViewInit {
 

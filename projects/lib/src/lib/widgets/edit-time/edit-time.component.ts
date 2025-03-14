@@ -2,9 +2,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-edit-time',
-  templateUrl: './edit-time.component.html',
-  styleUrls: ['./edit-time.component.scss']
+    selector: 'ce-edit-time',
+    templateUrl: './edit-time.component.html',
+    styleUrls: ['./edit-time.component.scss'],
+    standalone: false
 })
 export class EditTimeComponent implements OnInit {
 

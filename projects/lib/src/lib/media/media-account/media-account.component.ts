@@ -5,7 +5,8 @@ import { CeCoreService } from '../../services/ce-core.service';
 @Component({
     selector: 'app-media-account',
     templateUrl: './media-account.component.html',
-    styleUrls: ['./media-account.component.scss']
+    styleUrls: ['./media-account.component.scss'],
+    standalone: false
 })
 export class MediaAccountComponent implements OnInit {
 

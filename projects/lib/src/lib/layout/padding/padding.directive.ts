@@ -1,6 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[cePadding]' })
+@Directive({
+    selector: '[cePadding]',
+    standalone: false
+})
 export class CePaddingDirective implements AfterViewInit {
 
     @Input() cePadding?: string;
@@ -14,7 +17,10 @@ export class CePaddingDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[cePaddingX]' })
+@Directive({
+    selector: '[cePaddingX]',
+    standalone: false
+})
 export class CeXPaddingDirective implements AfterViewInit {
 
     @Input() cePaddingX?: string;
@@ -29,7 +35,10 @@ export class CeXPaddingDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[cePaddingY]' })
+@Directive({
+    selector: '[cePaddingY]',
+    standalone: false
+})
 export class CeYPaddingDirective implements AfterViewInit {
 
     @Input() cePaddingY?: string;

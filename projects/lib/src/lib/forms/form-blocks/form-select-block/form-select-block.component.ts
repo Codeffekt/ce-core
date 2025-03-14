@@ -4,9 +4,10 @@ import { CeFormsParamsService } from '../../../services/ce-forms-params.service'
 import { FormBlockComponent } from '../form-block/form-block.component';
 
 @Component({
-  selector: 'ce-form-select-block',
-  templateUrl: './form-select-block.component.html',
-  styleUrls: ['./form-select-block.component.scss']
+    selector: 'ce-form-select-block',
+    templateUrl: './form-select-block.component.html',
+    styleUrls: ['./form-select-block.component.scss'],
+    standalone: false
 })
 export class FormSelectBlockComponent extends FormBlockComponent<string> {
 

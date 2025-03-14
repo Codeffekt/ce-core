@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { CeCoreService } from '../../services/ce-core.service';
 
 @Component({
-  selector: 'ce-logout',
-  templateUrl: './logout.component.html',
-  styleUrls: ['./logout.component.scss']
+    selector: 'ce-logout',
+    templateUrl: './logout.component.html',
+    styleUrls: ['./logout.component.scss'],
+    standalone: false
 })
 export class LogoutComponent implements OnInit {
 

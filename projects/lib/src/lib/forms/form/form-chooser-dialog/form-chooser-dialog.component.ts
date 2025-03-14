@@ -21,7 +21,6 @@ export interface FormChooserDialogConfig {
 
 @Component({
     selector: 'app-form-chooser-dialog',
-    standalone: true,
     imports: [
         CommonModule,
         CeFormQueryWrapperModule,

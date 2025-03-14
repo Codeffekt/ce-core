@@ -7,9 +7,10 @@ import { SearchTokensService } from '../services/search-tokens-service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-search-input',
-  templateUrl: './search-input.component.html',
-  styleUrls: ['./search-input.component.scss']
+    selector: 'ce-search-input',
+    templateUrl: './search-input.component.html',
+    styleUrls: ['./search-input.component.scss'],
+    standalone: false
 })
 export class SearchInputComponent implements OnDestroy {
 

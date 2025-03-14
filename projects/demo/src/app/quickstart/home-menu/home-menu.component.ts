@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-home-menu',
-  templateUrl: './home-menu.component.html',
-  styleUrls: ['./home-menu.component.scss']
+    selector: 'app-home-menu',
+    templateUrl: './home-menu.component.html',
+    styleUrls: ['./home-menu.component.scss'],
+    standalone: false
 })
 export class HomeMenuComponent {
 

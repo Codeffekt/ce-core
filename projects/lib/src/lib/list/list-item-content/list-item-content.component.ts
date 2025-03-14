@@ -2,9 +2,10 @@ import { Component, EventEmitter, OnInit } from '@angular/core';
 import { IListItemContent } from '../list-item-factory/list-item-models';
 
 @Component({
-  selector: 'ce-list-item-content',
-  templateUrl: './list-item-content.component.html',
-  styleUrls: ['./list-item-content.component.scss']
+    selector: 'ce-list-item-content',
+    templateUrl: './list-item-content.component.html',
+    styleUrls: ['./list-item-content.component.scss'],
+    standalone: false
 })
 export class ListItemContentComponent<T = any> implements OnInit, IListItemContent {
 

@@ -1,9 +1,10 @@
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-list-header',
-  templateUrl: './list-header.component.html',
-  styleUrls: ['./list-header.component.scss']
+    selector: 'ce-list-header',
+    templateUrl: './list-header.component.html',
+    styleUrls: ['./list-header.component.scss'],
+    standalone: false
 })
 export class ListHeaderComponent implements OnInit {
 

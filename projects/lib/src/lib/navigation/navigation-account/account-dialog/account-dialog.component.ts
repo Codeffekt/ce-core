@@ -5,9 +5,10 @@ import { map, Observable } from 'rxjs';
 import { CeAccountService } from '../../../services/ce-account.service';
 
 @Component({
-  selector: 'ce-account-dialog',
-  templateUrl: './account-dialog.component.html',
-  styleUrls: ['./account-dialog.component.scss']
+    selector: 'ce-account-dialog',
+    templateUrl: './account-dialog.component.html',
+    styleUrls: ['./account-dialog.component.scss'],
+    standalone: false
 })
 export class AccountDialogComponent implements OnInit {
 

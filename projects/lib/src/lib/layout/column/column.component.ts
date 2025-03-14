@@ -1,9 +1,10 @@
 import { AfterViewInit, Component, ElementRef, Input, OnDestroy } from '@angular/core';
 
 @Component({
-  selector: 'ce-column',
-  templateUrl: './column.component.html',
-  styleUrls: ['./column.component.scss']
+    selector: 'ce-column',
+    templateUrl: './column.component.html',
+    styleUrls: ['./column.component.scss'],
+    standalone: false
 })
 export class ColumnComponent implements AfterViewInit, OnDestroy {
 

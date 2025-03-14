@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-ce-admin',
-  templateUrl: './ce-admin.component.html',
-  styleUrls: ['./ce-admin.component.scss']
+    selector: 'app-ce-admin',
+    templateUrl: './ce-admin.component.html',
+    styleUrls: ['./ce-admin.component.scss'],
+    standalone: false
 })
 export class CeAdminComponent implements OnInit {
 

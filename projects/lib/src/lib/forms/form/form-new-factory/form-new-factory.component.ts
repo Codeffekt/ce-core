@@ -7,6 +7,7 @@ import { FormActionService } from "../actions/form-action.service";
     selector: 'ce-form-new-factory',
     templateUrl: './form-new-factory.component.html',
     styleUrls: ['./form-new-factory.component.scss'],
+    standalone: false
 })
 export class FormNewFactoryComponent {
 

@@ -3,13 +3,12 @@ import { Component, inject } from '@angular/core';
 import { CeEventsService } from '@codeffekt/ce-core';
 
 @Component({
-  selector: 'app-events',
-  standalone: true,
-  imports: [
-    CommonModule,
-  ],
-  templateUrl: './events.component.html',
-  styleUrl: './events.component.scss'
+    selector: 'app-events',
+    imports: [
+        CommonModule,
+    ],
+    templateUrl: './events.component.html',
+    styleUrl: './events.component.scss'
 })
 export class EventsComponent {
 

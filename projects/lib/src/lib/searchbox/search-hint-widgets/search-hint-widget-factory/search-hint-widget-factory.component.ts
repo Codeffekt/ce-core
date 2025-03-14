@@ -18,9 +18,10 @@ export class SearchHintBaseWidget {
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-search-hint-widget-factory',
-  templateUrl: './search-hint-widget-factory.component.html',
-  styleUrls: ['./search-hint-widget-factory.component.scss']
+    selector: 'ce-search-hint-widget-factory',
+    templateUrl: './search-hint-widget-factory.component.html',
+    styleUrls: ['./search-hint-widget-factory.component.scss'],
+    standalone: false
 })
 export class SearchHintWidgetFactoryComponent implements AfterViewInit {
 

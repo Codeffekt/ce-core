@@ -5,9 +5,10 @@ import { Router } from '@angular/router';
 import { FormInfo, isFormInfo } from '../../models';
 @UntilDestroy()
 @Component({
-  selector: 'ce-nav-breadcrumb-items',
-  templateUrl: './navigation-breadcrumb-items.component.html',
-  styleUrls: ['./navigation-breadcrumb-items.component.scss']
+    selector: 'ce-nav-breadcrumb-items',
+    templateUrl: './navigation-breadcrumb-items.component.html',
+    styleUrls: ['./navigation-breadcrumb-items.component.scss'],
+    standalone: false
 })
 export class NavigationBreadcrumbItemsComponent implements OnInit {
 

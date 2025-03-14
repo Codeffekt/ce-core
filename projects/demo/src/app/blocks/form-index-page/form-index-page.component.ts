@@ -59,9 +59,10 @@ const mask = FormWrapper.fromForm({
 })
 
 @Component({
-  selector: 'app-form-index-page',
-  templateUrl: './form-index-page.component.html',
-  styleUrls: ['./form-index-page.component.scss']
+    selector: 'app-form-index-page',
+    templateUrl: './form-index-page.component.html',
+    styleUrls: ['./form-index-page.component.scss'],
+    standalone: false
 })
 export class FormIndexPageComponent implements OnInit {
 

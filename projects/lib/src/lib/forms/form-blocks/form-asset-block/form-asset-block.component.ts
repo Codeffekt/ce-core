@@ -15,18 +15,17 @@ import { AssetsFormQueryBuilder } from '../../forms-query';
 import { FormInfo } from '../../../models/form-info';
 
 @Component({
-  selector: 'ce-form-asset-block',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatButtonModule,
-    MatIconModule,
-    MatDialogModule,
-    CeNgReallyModule,
-    CeMediaModule,
-  ],
-  templateUrl: './form-asset-block.component.html',
-  styleUrls: ['./form-asset-block.component.scss']
+    selector: 'ce-form-asset-block',
+    imports: [
+        CommonModule,
+        MatButtonModule,
+        MatIconModule,
+        MatDialogModule,
+        CeNgReallyModule,
+        CeMediaModule,
+    ],
+    templateUrl: './form-asset-block.component.html',
+    styleUrls: ['./form-asset-block.component.scss']
 })
 export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implements OnInit {
 

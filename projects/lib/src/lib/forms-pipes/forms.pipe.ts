@@ -11,7 +11,10 @@ import { FormStyleBuilder } from "../forms/form/form-style.builder";
 import { FormWrapperChangeNotifier } from "../models/FormWrapperChangeNotifier";
 import { Utils } from "../utils/Utils";
 
-@Pipe({ name: 'valueForKey' })
+@Pipe({
+    name: 'valueForKey',
+    standalone: false
+})
 export class FormsValueForKeyPipe implements PipeTransform {
 
   transform(formInstance: FormInstanceExt, field: string): any {
@@ -41,7 +44,10 @@ export class FormsValueForKeyPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formWithId' })
+@Pipe({
+    name: 'formWithId',
+    standalone: false
+})
 export class FormsWithIdPipe implements PipeTransform {
 
   transform(formInstance: FormInstanceExt, formId: string): any {
@@ -53,7 +59,10 @@ export class FormsWithIdPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'getInstance' })
+@Pipe({
+    name: 'getInstance',
+    standalone: false
+})
 export class FormsGetInstance implements PipeTransform {
 
   transform(formWrapper: FormWrapper<any>, field: string): FormInstance | undefined {
@@ -67,7 +76,10 @@ export class FormsGetInstance implements PipeTransform {
 
 }
 
-@Pipe({ name: 'getReferenceName' })
+@Pipe({
+    name: 'getReferenceName',
+    standalone: false
+})
 export class FormsGetReferenceName implements PipeTransform {
   transform(formWrapper: FormWrapper<any>, field?: string): string | undefined {
 
@@ -80,7 +92,10 @@ export class FormsGetReferenceName implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formChange' })
+@Pipe({
+    name: 'formChange',
+    standalone: false
+})
 export class FormsChangeFieldPipe<T = FormWrapper> implements PipeTransform {
 
   transform(notifier$: Observable<FormWrapperChangeNotifier<FormWrapper>>, field?: keyof T): Observable<FormWrapper<T>> {
@@ -92,7 +107,10 @@ export class FormsChangeFieldPipe<T = FormWrapper> implements PipeTransform {
 
 }
 
-@Pipe({ name: 'formTitle' })
+@Pipe({
+    name: 'formTitle',
+    standalone: false
+})
 export class FormTitlePipe<T> implements PipeTransform {
 
   transform(formWrapper: FormWrapper<T>): string {
@@ -100,7 +118,10 @@ export class FormTitlePipe<T> implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formAuthor' })
+@Pipe({
+    name: 'formAuthor',
+    standalone: false
+})
 export class FormsAuthorPipe implements PipeTransform {
 
   transform(wrapper: FormWrapper): string {
@@ -115,7 +136,10 @@ export class FormsAuthorPipe implements PipeTransform {
 
 }
 
-@Pipe({ name: 'formInstanceTitle' })
+@Pipe({
+    name: 'formInstanceTitle',
+    standalone: false
+})
 export class FormInstanceTitlePipe<T> implements PipeTransform {
 
   transform(form: FormInstance): string {
@@ -123,7 +147,10 @@ export class FormInstanceTitlePipe<T> implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formInstanceCreation' })
+@Pipe({
+    name: 'formInstanceCreation',
+    standalone: false
+})
 export class FormInstanceCreationPipe<T> implements PipeTransform {
 
   transform(form: FormInstance): string {
@@ -131,7 +158,10 @@ export class FormInstanceCreationPipe<T> implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formInstanceModif' })
+@Pipe({
+    name: 'formInstanceModif',
+    standalone: false
+})
 export class FormInstanceModificationPipe<T> implements PipeTransform {
 
   transform(form: FormInstance): string {
@@ -139,14 +169,20 @@ export class FormInstanceModificationPipe<T> implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formBlocks' })
+@Pipe({
+    name: 'formBlocks',
+    standalone: false
+})
 export class FormBlocksPipe<T> implements PipeTransform {
   transform(formWrapper: FormWrapper<T>): FormBlock[] {
     return FormUtils.getBlocks((<FormInstance>(formWrapper.core)));
   }
 }
 
-@Pipe({ name: 'formInstanceBlocks' })
+@Pipe({
+    name: 'formInstanceBlocks',
+    standalone: false
+})
 export class FormInstanceBlocks<T> implements PipeTransform {
   constructor() { }
 
@@ -156,14 +192,20 @@ export class FormInstanceBlocks<T> implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formBlockValue' })
+@Pipe({
+    name: 'formBlockValue',
+    standalone: false
+})
 export class FormBlockValuePipe implements PipeTransform {
   transform(formBlock: FormBlock): string {
     return getBlockValue(formBlock);
   }
 }
 
-@Pipe({ name: 'formInstanceType' })
+@Pipe({
+    name: 'formInstanceType',
+    standalone: false
+})
 export class FormInstanceTypePipe implements PipeTransform {
   transform(formInstance: FormInstance, field: string): string {
     const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
@@ -171,13 +213,19 @@ export class FormInstanceTypePipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formInstanceBlock' })
+@Pipe({
+    name: 'formInstanceBlock',
+    standalone: false
+})
 export class FormInstanceBlockPipe implements PipeTransform {
   transform(formInstance: FormInstance, field: string): FormBlock {
     return FormUtils.retrieveBlockFromField(formInstance, field);
   }
 }
-@Pipe({ name: 'formInstanceValue' })
+@Pipe({
+    name: 'formInstanceValue',
+    standalone: false
+})
 export class FormInstanceValuePipe implements PipeTransform {
   transform(formInstance: FormInstanceExt, field: string): string {
     const formBlock = FormUtils.retrieveBlockFromField(formInstance, field);
@@ -195,7 +243,10 @@ function getBlockValue(formBlock: FormBlock) {
   }
 }
 
-@Pipe({ name: 'formWrapperBuild' })
+@Pipe({
+    name: 'formWrapperBuild',
+    standalone: false
+})
 export class FormWrapperBuildPipe implements PipeTransform {
   transform(wrapper: FormWrapper, field?: string): FormWrapper {
     if (field) {
@@ -210,7 +261,10 @@ export class FormWrapperBuildPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'formWrapperChange' })
+@Pipe({
+    name: 'formWrapperChange',
+    standalone: false
+})
 export class FormWrapperChangeFieldPipe implements PipeTransform {
 
   transform<T>(notifier$: Observable<FormWrapperChangeNotifier<any>>, field?: string): Observable<FormWrapper<any>> {

@@ -1,6 +1,9 @@
 import { AfterViewInit, Directive, ElementRef, Input, OnInit } from '@angular/core';
 
-@Directive({ selector: '[ceAlignItems]' })
+@Directive({
+    selector: '[ceAlignItems]',
+    standalone: false
+})
 export class CeAlignItemsDirective implements AfterViewInit {
 
     @Input() ceAlignItems?: string;
@@ -15,7 +18,10 @@ export class CeAlignItemsDirective implements AfterViewInit {
 }
 
 
-@Directive({ selector: '[ceJustifyContent]' })
+@Directive({
+    selector: '[ceJustifyContent]',
+    standalone: false
+})
 export class CeJustifyContentDirective implements AfterViewInit {
 
     @Input() ceJustifyContent?: string;
@@ -29,7 +35,10 @@ export class CeJustifyContentDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[ceAlignSelf]' })
+@Directive({
+    selector: '[ceAlignSelf]',
+    standalone: false
+})
 export class CeAlignSelfContentDirective implements AfterViewInit {
 
     @Input() ceAlignSelf?: string;

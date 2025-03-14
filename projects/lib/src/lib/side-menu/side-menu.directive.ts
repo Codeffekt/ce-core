@@ -3,7 +3,8 @@ import { Directive, ElementRef, OnDestroy } from '@angular/core';
 import { CeSideMenuService } from '../services/ce-side-menu.service';
 
 @Directive({
-    selector: '[ceSideMenu]'
+    selector: '[ceSideMenu]',
+    standalone: false
 })
 export class CeSideMenuDirective implements OnDestroy {
 

@@ -8,10 +8,11 @@ import { NavigationBarConfigService } from './navigation-bar-config.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-navbar',
-  templateUrl: './navigation-bar.component.html',
-  styleUrls: ['./navigation-bar.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'ce-navbar',
+    templateUrl: './navigation-bar.component.html',
+    styleUrls: ['./navigation-bar.component.scss'],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    standalone: false
 })
 export class NavigationBarComponent implements OnInit {
 

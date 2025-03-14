@@ -17,15 +17,16 @@ export class FormActionMenuService {
 }
 
 @Component({
-  selector: 'ce-form-editor-menu',
-  templateUrl: './form-editor-menu.component.html',
-  styleUrls: ['./form-editor-menu.component.scss'],
-  providers: [
-    {
-      provide: FormActionRenderService,
-      useClass: FormActionMenuService,
-    }
-  ]
+    selector: 'ce-form-editor-menu',
+    templateUrl: './form-editor-menu.component.html',
+    styleUrls: ['./form-editor-menu.component.scss'],
+    providers: [
+        {
+            provide: FormActionRenderService,
+            useClass: FormActionMenuService,
+        }
+    ],
+    standalone: false
 })
 export class CeFormEditorMenuComponent {
   currentForm$ = inject(CeFormEditorService).onFormInfo();  

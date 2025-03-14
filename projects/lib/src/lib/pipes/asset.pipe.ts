@@ -2,7 +2,10 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { AssetElt, FormWrapper, IndexType } from '@codeffekt/ce-core-data';
 import { CeCoreService } from '../services/ce-core.service';
 
-@Pipe({ name: 'thumbPath' })
+@Pipe({
+    name: 'thumbPath',
+    standalone: false
+})
 export class AssetThumbnailPipe implements PipeTransform {
 
   constructor(private apiService: CeCoreService) { }
@@ -13,7 +16,10 @@ export class AssetThumbnailPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'thumbPathAssetElt' })
+@Pipe({
+    name: 'thumbPathAssetElt',
+    standalone: false
+})
 export class AssetEltThumbnailPipe implements PipeTransform {
 
   constructor(private apiService: CeCoreService) { }
@@ -24,7 +30,10 @@ export class AssetEltThumbnailPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'thumbPathWithAssetId' })
+@Pipe({
+    name: 'thumbPathWithAssetId',
+    standalone: false
+})
 export class AssetThumbnailWithIdPipe implements PipeTransform {
 
   constructor(private apiService: CeCoreService) { }
@@ -35,7 +44,10 @@ export class AssetThumbnailWithIdPipe implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'originalSizeImage' })
+@Pipe({
+    name: 'originalSizeImage',
+    standalone: false
+})
 export class AssetOriginalSizeImage implements PipeTransform {
 
   constructor(private apiService: CeCoreService) { }
@@ -45,7 +57,10 @@ export class AssetOriginalSizeImage implements PipeTransform {
   }
 }
 
-@Pipe({ name: 'assetUrl'})
+@Pipe({
+    name: 'assetUrl',
+    standalone: false
+})
 export class AssetUrl implements PipeTransform {
   constructor(private apiService: CeCoreService) { }
 

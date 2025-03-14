@@ -7,9 +7,10 @@ import { MatTable } from '@angular/material/table';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-table-wrapper',
-  templateUrl: './table.component.html',
-  styleUrls: ['./table.component.scss']
+    selector: 'ce-table-wrapper',
+    templateUrl: './table.component.html',
+    styleUrls: ['./table.component.scss'],
+    standalone: false
 })
 export class TableComponent<T = any> implements AfterViewInit {  
 

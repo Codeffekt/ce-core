@@ -3,9 +3,10 @@ import { CeFormInputAutocompleteStoreService } from '../form-input-autocomplete-
 import { IFormAutocompleteItemContent } from '../form-input-item-models';
 
 @Component({
-  selector: 'ce-form-input-autocomplete-item-factory',
-  templateUrl: './form-input-autocomplete-item-factory.component.html',
-  styleUrls: ['./form-input-autocomplete-item-factory.component.css']
+    selector: 'ce-form-input-autocomplete-item-factory',
+    templateUrl: './form-input-autocomplete-item-factory.component.html',
+    styleUrls: ['./form-input-autocomplete-item-factory.component.css'],
+    standalone: false
 })
 export class FormInputAutocompleteItemFactoryComponent<T = any> implements AfterViewInit {
 

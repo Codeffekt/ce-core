@@ -6,12 +6,13 @@ import { CeNavBarService, CeSideMenuService, LayoutService } from '../../service
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'lib-main-page',
-  templateUrl: './main-page.component.html',
-  styleUrls: ['./main-page.component.scss'],
-  providers: [
-    LayoutService
-  ]
+    selector: 'lib-main-page',
+    templateUrl: './main-page.component.html',
+    styleUrls: ['./main-page.component.scss'],
+    providers: [
+        LayoutService
+    ],
+    standalone: false
 })
 export class MainPageComponent implements OnInit, AfterViewInit, OnDestroy {
 

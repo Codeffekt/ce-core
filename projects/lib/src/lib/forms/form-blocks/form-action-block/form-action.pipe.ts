@@ -1,7 +1,10 @@
 import { inject, Pipe, PipeTransform } from "@angular/core";
 import { CeProcessingService } from "../../../services/ce-processing.service";
 
-@Pipe({ name: 'isActionPendingOrRunning'})
+@Pipe({
+    name: 'isActionPendingOrRunning',
+    standalone: false
+})
 export class IsActionPendingOrRunningPipe implements PipeTransform {
 
     private processingService = inject(CeProcessingService)
@@ -12,7 +15,10 @@ export class IsActionPendingOrRunningPipe implements PipeTransform {
 
 }
 
-@Pipe({ name: 'isActionRunning'})
+@Pipe({
+    name: 'isActionRunning',
+    standalone: false
+})
 export class IsActionRunningPipe implements PipeTransform {
 
     private processingService = inject(CeProcessingService)
@@ -23,7 +29,10 @@ export class IsActionRunningPipe implements PipeTransform {
 
 }
 
-@Pipe({ name: 'isActionPending'})
+@Pipe({
+    name: 'isActionPending',
+    standalone: false
+})
 export class IsActionPendingPipe implements PipeTransform {
 
     private processingService = inject(CeProcessingService)

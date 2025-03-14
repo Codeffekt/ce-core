@@ -5,9 +5,10 @@ import { FormWrapperChangeNotifier } from '../models/FormWrapperChangeNotifier';
 import { CeFormEditorService, CeFormInfoBreadcrumbsService, CeFormsChangesService } from '../services';
 import { FormInfo } from '../models/form-info';
 @Component({
-  selector: 'ce-form-editor',
-  templateUrl: './form-editor.component.html',
-  styleUrls: ['./form-editor.component.scss']
+    selector: 'ce-form-editor',
+    templateUrl: './form-editor.component.html',
+    styleUrls: ['./form-editor.component.scss'],
+    standalone: false
 })
 export class CeFormEditorComponent implements OnInit {
 

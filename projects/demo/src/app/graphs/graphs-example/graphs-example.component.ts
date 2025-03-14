@@ -25,9 +25,10 @@ interface CyElement {
 }
 
 @Component({
-  selector: 'app-graphs-example',
-  templateUrl: './graphs-example.component.html',
-  styleUrls: ['./graphs-example.component.scss']
+    selector: 'app-graphs-example',
+    templateUrl: './graphs-example.component.html',
+    styleUrls: ['./graphs-example.component.scss'],
+    standalone: false
 })
 export class GraphsExampleComponent implements OnInit, AfterViewInit {
 

@@ -2,7 +2,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 import { AccountSettings } from '@codeffekt/ce-core-data';
 
 @Pipe({
-    name: 'nameOrAccount'
+    name: 'nameOrAccount',
+    standalone: false
 })
 export class NameOrAccountPipe implements PipeTransform {
     

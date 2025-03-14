@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ce-side-menu-item',
-  templateUrl: './side-menu-item.component.html',
-  styleUrls: ['./side-menu-item.component.scss']
+    selector: 'ce-side-menu-item',
+    templateUrl: './side-menu-item.component.html',
+    styleUrls: ['./side-menu-item.component.scss'],
+    standalone: false
 })
 export class CeSideMenuItemComponent {
 

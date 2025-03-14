@@ -21,9 +21,10 @@ export interface AssetImportConfig {
 }
 
 @Component({
-  selector: 'app-asset-import',
-  templateUrl: './asset-import.component.html',
-  styleUrls: ['./asset-import.component.scss']
+    selector: 'app-asset-import',
+    templateUrl: './asset-import.component.html',
+    styleUrls: ['./asset-import.component.scss'],
+    standalone: false
 })
 export class AssetImportComponent implements OnInit, OnDestroy {
 

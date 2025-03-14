@@ -13,9 +13,10 @@ import { CeFormDataService } from '../../form-data.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-index-block',
-  templateUrl: './form-index-block.component.html',
-  styleUrls: ['./form-index-block.component.scss']
+    selector: 'ce-form-index-block',
+    templateUrl: './form-index-block.component.html',
+    styleUrls: ['./form-index-block.component.scss'],
+    standalone: false
 })
 export class FormIndexBlockComponent extends FormBlockComponent<IndexType> implements OnInit {
 

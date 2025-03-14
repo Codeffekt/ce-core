@@ -4,12 +4,13 @@ import { FormInstance } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-forms-query',
-  templateUrl: './forms-query.component.html',
-  styleUrls: ['./forms-query.component.scss'],
-  providers: [
-    CeFormQueryService,    
-  ]
+    selector: 'app-forms-query',
+    templateUrl: './forms-query.component.html',
+    styleUrls: ['./forms-query.component.scss'],
+    providers: [
+        CeFormQueryService,
+    ],
+    standalone: false
 })
 export class FormsQueryComponent implements OnInit {
 

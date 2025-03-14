@@ -6,14 +6,15 @@ import { FormBlockFactoryService } from '../form-block-factory/form-block-factor
 import { FormBlockComponentAccessor } from '../form-block/form-block.component';
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-block-factory',
-  templateUrl: './form-block-factory.component.html',
-  providers: [{
-    provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => FormBlockFactoryComponent),
-    multi: true
-  }],
-  styleUrls: ['./form-block-factory.component.scss']
+    selector: 'ce-form-block-factory',
+    templateUrl: './form-block-factory.component.html',
+    providers: [{
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => FormBlockFactoryComponent),
+            multi: true
+        }],
+    styleUrls: ['./form-block-factory.component.scss'],
+    standalone: false
 })
 export class FormBlockFactoryComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 

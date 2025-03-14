@@ -15,21 +15,20 @@ import { FormActionPipesModule } from './form-action-pipes.module';
 
 @UntilDestroy()
 @Component({
-  selector: 'lib-form-action-block',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CeLayoutModule,
-    MatIconModule,
-    MatButtonModule,
-    MatProgressBarModule,
-    FormActionPipesModule,
-    FormBlockFieldComponent,
-    FormBlockFieldActionsComponent,
-    FormBlockFieldContentComponent,
-  ],
-  templateUrl: './form-action-block.component.html',
-  styleUrls: ['./form-action-block.component.scss']
+    selector: 'lib-form-action-block',
+    imports: [
+        CommonModule,
+        CeLayoutModule,
+        MatIconModule,
+        MatButtonModule,
+        MatProgressBarModule,
+        FormActionPipesModule,
+        FormBlockFieldComponent,
+        FormBlockFieldActionsComponent,
+        FormBlockFieldContentComponent,
+    ],
+    templateUrl: './form-action-block.component.html',
+    styleUrls: ['./form-action-block.component.scss']
 })
 export class FormActionBlockComponent extends FormBlockComponent implements OnInit {
 

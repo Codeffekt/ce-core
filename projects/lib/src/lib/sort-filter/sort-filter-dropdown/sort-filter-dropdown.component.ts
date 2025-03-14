@@ -5,10 +5,11 @@ import { FormQuerySortFieldWithLabel } from './sort-filters.builder';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-sort-filter-dropdown',
-  templateUrl: './sort-filter-dropdown.component.html',
-  styleUrls: ['./sort-filter-dropdown.component.scss'],
-  providers: [SortFilterDropdownService]
+    selector: 'ce-sort-filter-dropdown',
+    templateUrl: './sort-filter-dropdown.component.html',
+    styleUrls: ['./sort-filter-dropdown.component.scss'],
+    providers: [SortFilterDropdownService],
+    standalone: false
 })
 export class SortFilterDropdownComponent implements OnInit, OnDestroy {
 

@@ -19,10 +19,11 @@ import { FormCard, FormStyleBuilder } from './form-style.builder';
 const DEBOUNCE_TIME_MS = 1000;
 const CE_FORM_CSS_CLASS_NAME = "ce-form";
 @Component({
-  selector: 'ce-form',
-  templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss'],
-  providers: [FormControlsBuilder]
+    selector: 'ce-form',
+    templateUrl: './form.component.html',
+    styleUrls: ['./form.component.scss'],
+    providers: [FormControlsBuilder],
+    standalone: false
 })
 export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
 

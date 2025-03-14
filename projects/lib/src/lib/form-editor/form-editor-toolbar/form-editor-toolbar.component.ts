@@ -17,15 +17,16 @@ export class FormActionToolbarService {
 }
 
 @Component({
-  selector: 'ce-form-editor-toolbar',
-  templateUrl: './form-editor-toolbar.component.html',
-  styleUrls: ['./form-editor-toolbar.component.scss'],
-  providers: [
-    {
-      provide: FormActionRenderService,
-      useClass: FormActionToolbarService,
-    }
-  ]
+    selector: 'ce-form-editor-toolbar',
+    templateUrl: './form-editor-toolbar.component.html',
+    styleUrls: ['./form-editor-toolbar.component.scss'],
+    providers: [
+        {
+            provide: FormActionRenderService,
+            useClass: FormActionToolbarService,
+        }
+    ],
+    standalone: false
 })
 export class CeFormEditorToolbarComponent {
   currentForm$ = inject(CeFormEditorService).onFormInfo();  

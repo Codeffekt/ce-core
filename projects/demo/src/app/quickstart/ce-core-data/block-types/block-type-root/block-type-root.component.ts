@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-block-type-root',
-  templateUrl: './block-type-root.component.html',
-  styleUrls: ['./block-type-root.component.scss']
+    selector: 'app-block-type-root',
+    templateUrl: './block-type-root.component.html',
+    styleUrls: ['./block-type-root.component.scss'],
+    standalone: false
 })
 export class BlockTypeRootComponent {
 

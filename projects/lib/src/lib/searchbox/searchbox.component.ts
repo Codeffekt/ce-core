@@ -20,25 +20,26 @@ import { Observable, map, startWith } from 'rxjs';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-searchbox',
-  templateUrl: './searchbox.component.html',
-  styleUrls: ['./searchbox.component.scss'],
-  providers: [
-    SearchHintService,
-    SearchTokensService,
-    SearchTokenUpdater,
-    SearchTokenMatcher,
-    SearchTokensLabelService,
-    SearchValueHintBuilder,
-    SearchOpHintBuilder,
-    SearchFieldHintBuilder,
-    SearchHintBuilder,
-    SearchAuthorHintBuilder,
-    SearchSelectHintBuilder,
-    SearchHintTimestampBuilder,
-    SearchHintBooleanBuilder,
-    SearchTokensQueryService
-  ]
+    selector: 'ce-searchbox',
+    templateUrl: './searchbox.component.html',
+    styleUrls: ['./searchbox.component.scss'],
+    providers: [
+        SearchHintService,
+        SearchTokensService,
+        SearchTokenUpdater,
+        SearchTokenMatcher,
+        SearchTokensLabelService,
+        SearchValueHintBuilder,
+        SearchOpHintBuilder,
+        SearchFieldHintBuilder,
+        SearchHintBuilder,
+        SearchAuthorHintBuilder,
+        SearchSelectHintBuilder,
+        SearchHintTimestampBuilder,
+        SearchHintBooleanBuilder,
+        SearchTokensQueryService
+    ],
+    standalone: false
 })
 export class SearchboxComponent<T = any> implements OnDestroy {
 

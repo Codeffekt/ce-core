@@ -13,9 +13,10 @@ import { FormQueryRootBuilder } from '../../forms-query';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-root-block',
-  templateUrl: './form-root-block.component.html',
-  styleUrls: ['./form-root-block.component.scss']
+    selector: 'ce-form-root-block',
+    templateUrl: './form-root-block.component.html',
+    styleUrls: ['./form-root-block.component.scss'],
+    standalone: false
 })
 export class FormRootBlockComponent extends FormBlockComponent<IndexType> implements OnInit {
 

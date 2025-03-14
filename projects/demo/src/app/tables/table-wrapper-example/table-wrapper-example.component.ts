@@ -6,12 +6,13 @@ import { DataFormQueryBuilder } from './datasources/data-formquery-builder';
 import { TableWrapperExampleFormQueryDataSource } from './datasources/table-wrapper-example.query-datasource';
 
 @Component({
-  selector: 'app-table-wrapper-example',
-  templateUrl: './table-wrapper-example.component.html',
-  styleUrls: ['./table-wrapper-example.component.scss'],   
-  providers: [
-    CeFormQueryService
-  ] 
+    selector: 'app-table-wrapper-example',
+    templateUrl: './table-wrapper-example.component.html',
+    styleUrls: ['./table-wrapper-example.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class TableWrapperExampleComponent {
 

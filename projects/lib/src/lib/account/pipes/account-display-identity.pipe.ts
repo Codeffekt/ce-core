@@ -1,7 +1,10 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { AccountSettings } from '@codeffekt/ce-core-data';
 
-@Pipe({ name: 'identityLabel' })
+@Pipe({
+    name: 'identityLabel',
+    standalone: false
+})
 export class AccountIdentityLabelPipe implements PipeTransform {
     transform(account: AccountSettings, defaultValue?: string): string {
         if (!account.firstName && !account.lastName) {

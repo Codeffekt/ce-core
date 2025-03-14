@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'lib-form-menu',
-  templateUrl: './form-menu.component.html',
-  styleUrls: ['./form-menu.component.scss']
+    selector: 'lib-form-menu',
+    templateUrl: './form-menu.component.html',
+    styleUrls: ['./form-menu.component.scss'],
+    standalone: false
 })
 export class FormMenuComponent {
 

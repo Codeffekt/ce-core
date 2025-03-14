@@ -1,6 +1,9 @@
 import { AfterViewInit, Directive, ElementRef } from '@angular/core';
 
-@Directive({ selector: '[overflow-auto]' })
+@Directive({
+    selector: '[overflow-auto]',
+    standalone: false
+})
 export class CeOverflowAutoDirective implements AfterViewInit {
 
     constructor(private elementRef: ElementRef) { }
@@ -10,7 +13,10 @@ export class CeOverflowAutoDirective implements AfterViewInit {
     }
 }
 
-@Directive({ selector: '[overflow-x-auto]' })
+@Directive({
+    selector: '[overflow-x-auto]',
+    standalone: false
+})
 export class CeOverflowXAutoDirective implements AfterViewInit {
 
     constructor(private elementRef: ElementRef) { }

@@ -12,12 +12,13 @@ import { FormQueryArrayBuilder } from '../../forms-query/formquery-array.builder
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { FormBlockComponent } from '../form-block/form-block.component';
 @Component({
-  selector: 'ce-form-array-block',
-  templateUrl: './form-array-block.component.html',
-  styleUrls: ['./form-array-block.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'ce-form-array-block',
+    templateUrl: './form-array-block.component.html',
+    styleUrls: ['./form-array-block.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class FormArrayBlockComponent extends FormBlockComponent<void> implements OnInit {
 

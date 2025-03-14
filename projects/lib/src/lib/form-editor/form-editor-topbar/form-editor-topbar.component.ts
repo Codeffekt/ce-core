@@ -17,15 +17,16 @@ export class FormActionTopbarService {
 }
 
 @Component({
-  selector: 'ce-form-editor-topbar',
-  templateUrl: './form-editor-topbar.component.html',
-  styleUrls: ['./form-editor-topbar.component.scss'],
-  providers: [
-    {
-      provide: FormActionRenderService,
-      useClass: FormActionTopbarService,
-    }
-  ]
+    selector: 'ce-form-editor-topbar',
+    templateUrl: './form-editor-topbar.component.html',
+    styleUrls: ['./form-editor-topbar.component.scss'],
+    providers: [
+        {
+            provide: FormActionRenderService,
+            useClass: FormActionTopbarService,
+        }
+    ],
+    standalone: false
 })
 export class CeFormEditorTopbarComponent {  
   currentForm$ = inject(CeFormEditorService).onFormInfo();  

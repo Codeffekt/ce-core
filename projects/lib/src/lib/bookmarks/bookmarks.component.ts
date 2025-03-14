@@ -10,9 +10,10 @@ export type BookmarksComponentDisplayMode = 'tabs' | 'menu';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-bookmarks',
-  templateUrl: './bookmarks.component.html',
-  styleUrls: ['./bookmarks.component.scss']
+    selector: 'ce-bookmarks',
+    templateUrl: './bookmarks.component.html',
+    styleUrls: ['./bookmarks.component.scss'],
+    standalone: false
 })
 export class BookmarksComponent<T> implements OnInit {
 

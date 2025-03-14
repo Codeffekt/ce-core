@@ -1,9 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-illustration',
-  templateUrl: './illustration.component.html',
-  styleUrls: []
+    selector: 'ce-illustration',
+    templateUrl: './illustration.component.html',
+    styleUrls: [],
+    standalone: false
 })
 export class CeIllustrationComponent implements OnInit {
 

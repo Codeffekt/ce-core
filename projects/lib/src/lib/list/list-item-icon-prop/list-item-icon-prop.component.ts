@@ -1,9 +1,10 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'ce-list-item-icon-prop',
-  templateUrl: './list-item-icon-prop.component.html',
-  styleUrls: ['./list-item-icon-prop.component.scss']
+    selector: 'ce-list-item-icon-prop',
+    templateUrl: './list-item-icon-prop.component.html',
+    styleUrls: ['./list-item-icon-prop.component.scss'],
+    standalone: false
 })
 export class ListItemIconPropComponent {
   @Input() icon!: string;
@@ -12,8 +13,9 @@ export class ListItemIconPropComponent {
 }
 
 @Component({
-  selector: 'ce-list-item-icon-prop-list',
-  template: `<div class="d-flex flex-row"><ng-content select="ce-list-item-icon-prop"></ng-content></div>`,
-  styleUrls: ['./list-item-icon-prop.component.scss']
+    selector: 'ce-list-item-icon-prop-list',
+    template: `<div class="d-flex flex-row"><ng-content select="ce-list-item-icon-prop"></ng-content></div>`,
+    styleUrls: ['./list-item-icon-prop.component.scss'],
+    standalone: false
 })
 export class ListItemIconPropListComponent { }

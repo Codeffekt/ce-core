@@ -7,9 +7,10 @@ const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
 const SUPPORTED_DATE_FORMATS = ['YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY-MM-DD', 'HH:mm:ss', 'HH:mm'];
 
 @Component({
-  selector: 'ce-form-timestamp-block',
-  templateUrl: './form-timestamp-block.component.html',
-  styleUrls: ['./form-timestamp-block.component.scss']
+    selector: 'ce-form-timestamp-block',
+    templateUrl: './form-timestamp-block.component.html',
+    styleUrls: ['./form-timestamp-block.component.scss'],
+    standalone: false
 })
 export class FormTimestampBlockComponent extends FormBlockComponent<number> implements OnInit {
 

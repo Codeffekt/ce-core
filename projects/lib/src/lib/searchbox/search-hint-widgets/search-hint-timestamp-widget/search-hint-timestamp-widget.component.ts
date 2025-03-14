@@ -3,9 +3,10 @@ import { Moment } from 'moment';
 import { SearchHint } from '../../model/search-hint';
 import { SearchHintBaseWidget } from '../search-hint-widget-factory/search-hint-widget-factory.component';
 @Component({
-  selector: 'ce-search-hint-timestamp-widget',
-  templateUrl: './search-hint-timestamp-widget.component.html',
-  styleUrls: ['./search-hint-timestamp-widget.component.scss']
+    selector: 'ce-search-hint-timestamp-widget',
+    templateUrl: './search-hint-timestamp-widget.component.html',
+    styleUrls: ['./search-hint-timestamp-widget.component.scss'],
+    standalone: false
 })
 export class SearchHintTimestampWidgetComponent extends SearchHintBaseWidget implements OnInit {
 

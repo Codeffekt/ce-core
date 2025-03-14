@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { AssetElt } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'ce-media-default',
-  templateUrl: './media-default.component.html',
-  styleUrls: ['./media-default.component.scss']
+    selector: 'ce-media-default',
+    templateUrl: './media-default.component.html',
+    styleUrls: ['./media-default.component.scss'],
+    standalone: false
 })
 export class MediaDefaultComponent implements OnInit {
 

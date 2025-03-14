@@ -11,19 +11,18 @@ import { FormWrapper } from '@codeffekt/ce-core-data';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-forms',
-  standalone: true,
-  imports: [
-    CommonModule,
-    CeNavigationModule,
-    CeFormQueryWrapperModule,
-    CeListModule,    
-  ],
-  templateUrl: './forms.component.html',
-  styleUrls: ['./forms.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'app-forms',
+    imports: [
+        CommonModule,
+        CeNavigationModule,
+        CeFormQueryWrapperModule,
+        CeListModule,
+    ],
+    templateUrl: './forms.component.html',
+    styleUrls: ['./forms.component.scss'],
+    providers: [
+        CeFormQueryService
+    ]
 })
 export class FormsComponent {
 

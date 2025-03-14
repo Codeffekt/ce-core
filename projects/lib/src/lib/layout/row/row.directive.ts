@@ -1,7 +1,8 @@
 import { AfterViewInit, Directive, ElementRef } from "@angular/core";
 
 @Directive({
-    selector: '[rowFill]'
+    selector: '[rowFill]',
+    standalone: false
 })
 export class RowFillDirective implements AfterViewInit {
 

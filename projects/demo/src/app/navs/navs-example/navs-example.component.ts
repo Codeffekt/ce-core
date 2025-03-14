@@ -3,9 +3,10 @@ import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import { BreadcrumbItem, CeBreadcrumbsService } from '@codeffekt/ce-core';
 
 @Component({
-  selector: 'app-navs-example',
-  templateUrl: './navs-example.component.html',
-  styleUrls: ['./navs-example.component.scss']
+    selector: 'app-navs-example',
+    templateUrl: './navs-example.component.html',
+    styleUrls: ['./navs-example.component.scss'],
+    standalone: false
 })
 export class NavsExampleComponent implements OnInit {
 

@@ -15,12 +15,13 @@ import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-
 import { FormArrayDatasource } from '../../form-datasource';
 
 @Component({
-  selector: 'lib-form-assoc-block',
-  templateUrl: './form-assoc-block.component.html',
-  styleUrls: ['./form-assoc-block.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'lib-form-assoc-block',
+    templateUrl: './form-assoc-block.component.html',
+    styleUrls: ['./form-assoc-block.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class FormAssocBlockComponent extends FormBlockComponent<void> implements OnInit {
 

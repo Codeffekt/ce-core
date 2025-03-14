@@ -10,9 +10,10 @@ import { SearchTokensService } from '../services/search-tokens-service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-search-input-token',
-  templateUrl: './search-input-token.component.html',
-  styleUrls: ['./search-input-token.component.scss']
+    selector: 'ce-search-input-token',
+    templateUrl: './search-input-token.component.html',
+    styleUrls: ['./search-input-token.component.scss'],
+    standalone: false
 })
 export class SearchInputTokenComponent implements OnChanges, OnDestroy, AfterViewInit {
 

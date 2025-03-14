@@ -8,12 +8,13 @@ import { FormQueryBuilder, FormQueryDatasource } from '../forms';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-form-input-autocomplete',
-  templateUrl: './form-input-autocomplete.component.html',
-  styleUrls: ['./form-input-autocomplete.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'ce-form-input-autocomplete',
+    templateUrl: './form-input-autocomplete.component.html',
+    styleUrls: ['./form-input-autocomplete.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class FormInputAutocompleteComponent implements OnInit {
 

@@ -13,12 +13,13 @@ import { IProjectAssocContent } from '../project-assoc-models';
 import { FormQueryArrayBuilder } from '../../../forms/forms-query';
 
 @Component({
-  selector: 'lib-project-assoc-default',
-  templateUrl: './project-assoc-default.component.html',
-  styleUrls: ['./project-assoc-default.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'lib-project-assoc-default',
+    templateUrl: './project-assoc-default.component.html',
+    styleUrls: ['./project-assoc-default.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocContent {
 

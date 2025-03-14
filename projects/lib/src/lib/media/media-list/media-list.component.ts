@@ -13,12 +13,13 @@ import { Exception } from '@zxing/library';
 const ASSETS_DEFAULT_REF = "default";
 
 @Component({
-  selector: 'ce-media-list',
-  templateUrl: './media-list.component.html',
-  styleUrls: ['./media-list.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'ce-media-list',
+    templateUrl: './media-list.component.html',
+    styleUrls: ['./media-list.component.scss'],
+    providers: [
+        CeFormQueryService
+    ],
+    standalone: false
 })
 export class MediaListComponent implements OnInit {
 

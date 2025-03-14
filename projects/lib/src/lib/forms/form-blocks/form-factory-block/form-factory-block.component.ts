@@ -15,21 +15,20 @@ import { FormBlockFieldContentComponent } from '../form-block-field/form-block-f
 import { CeLayoutModule } from '../../../layout';
 
 @Component({
-  selector: 'lib-form-factory-block',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatIconModule,
-    MatButtonModule,
-    MatDialogModule,  
-    CeLayoutModule,
-    FormBlockFieldComponent,
-    FormBlockFieldActionsComponent,
-    FormBlockFieldContentComponent,
-    RootChooserDialogComponent,
-  ],
-  templateUrl: './form-factory-block.component.html',
-  styleUrls: ['./form-factory-block.component.scss']
+    selector: 'lib-form-factory-block',
+    imports: [
+        CommonModule,
+        MatIconModule,
+        MatButtonModule,
+        MatDialogModule,
+        CeLayoutModule,
+        FormBlockFieldComponent,
+        FormBlockFieldActionsComponent,
+        FormBlockFieldContentComponent,
+        RootChooserDialogComponent,
+    ],
+    templateUrl: './form-factory-block.component.html',
+    styleUrls: ['./form-factory-block.component.scss']
 })
 export class FormFactoryBlockComponent extends FormBlockComponent {
 

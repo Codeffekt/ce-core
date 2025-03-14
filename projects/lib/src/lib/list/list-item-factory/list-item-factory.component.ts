@@ -12,7 +12,8 @@ import { ListItemStoreService } from "./list-item-store.service";
 @Component({
     selector: 'ce-list-item-factory',
     templateUrl: './list-item-factory.component.html',
-    styleUrls: ['./list-item-factory.component.scss']
+    styleUrls: ['./list-item-factory.component.scss'],
+    standalone: false
 })
 export class ListItemFactoryComponent<T = any> implements OnInit, AfterViewInit {
 

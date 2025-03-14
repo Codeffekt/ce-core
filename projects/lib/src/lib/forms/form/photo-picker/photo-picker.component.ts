@@ -17,21 +17,20 @@ export interface PhotoPickerConfig {
 }
 
 @Component({
-  selector: 'app-photo-picker',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    MatButtonModule,
-    MatIconModule,
-    CePaginatorModule,
-    CeMediaModule,
-  ],
-  templateUrl: './photo-picker.component.html',
-  styleUrls: ['./photo-picker.component.scss'],
-  providers: [
-    CeFormQueryService
-  ]
+    selector: 'app-photo-picker',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        MatButtonModule,
+        MatIconModule,
+        CePaginatorModule,
+        CeMediaModule,
+    ],
+    templateUrl: './photo-picker.component.html',
+    styleUrls: ['./photo-picker.component.scss'],
+    providers: [
+        CeFormQueryService
+    ]
 })
 export class PhotoPickerComponent implements OnInit {
 

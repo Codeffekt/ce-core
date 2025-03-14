@@ -4,7 +4,8 @@ import relativeTime from "dayjs/plugin/relativeTime"
 import 'dayjs/locale/fr';
 
 @Pipe({
-    name: 'ellapsedTime'
+    name: 'ellapsedTime',
+    standalone: false
 })
 
 export class CeEllapsedTimePipe implements PipeTransform {

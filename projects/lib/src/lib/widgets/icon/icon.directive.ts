@@ -2,7 +2,8 @@ import { Directive, ElementRef, Input } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 
 @Directive({
-  selector: '[iconSize]'
+    selector: '[iconSize]',
+    standalone: false
 })
 export class IconSizeDirective {
   @Input() iconSize?: string;

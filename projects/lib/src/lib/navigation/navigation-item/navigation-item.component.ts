@@ -4,9 +4,10 @@ import { LayoutService } from '../../services/layout.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-navbar-item',
-  templateUrl: './navigation-item.component.html',
-  styleUrls: ['./navigation-item.component.scss']
+    selector: 'ce-navbar-item',
+    templateUrl: './navigation-item.component.html',
+    styleUrls: ['./navigation-item.component.scss'],
+    standalone: false
 })
 export class NavigationItemComponent implements OnInit {
 

@@ -12,9 +12,10 @@ import { FormsFormQueryBuilder } from '../forms-query';
 import { CeFormsRouteResolver, CE_FORMS_ROUTE_RESOLVER } from '../forms-route.resolver';
 
 @Component({
-  selector: 'ce-forms-table',
-  templateUrl: './forms-table.component.html',
-  styleUrls: ['./forms-table.component.scss']
+    selector: 'ce-forms-table',
+    templateUrl: './forms-table.component.html',
+    styleUrls: ['./forms-table.component.scss'],
+    standalone: false
 })
 export class FormsTableComponent implements OnInit {
 

@@ -4,9 +4,10 @@ import { FormInstance, FormWrapper, IndexType } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'app-config-select',
-  templateUrl: './app-config-select.component.html',
-  styleUrls: ['./app-config-select.component.scss']
+    selector: 'app-config-select',
+    templateUrl: './app-config-select.component.html',
+    styleUrls: ['./app-config-select.component.scss'],
+    standalone: false
 })
 export class AppConfigSelectComponent implements OnInit {
 

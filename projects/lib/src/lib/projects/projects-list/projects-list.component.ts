@@ -5,9 +5,10 @@ import { CeAppConfig } from '../../ce-core.config';
 import { CeAppService, CeCoreService } from '../../services';
 
 @Component({
-  selector: 'app-projects-list',
-  templateUrl: './projects-list.component.html',
-  styleUrls: ['./projects-list.component.scss'],
+    selector: 'app-projects-list',
+    templateUrl: './projects-list.component.html',
+    styleUrls: ['./projects-list.component.scss'],
+    standalone: false
 })
 export class CeProjectsListComponent implements OnInit {
 

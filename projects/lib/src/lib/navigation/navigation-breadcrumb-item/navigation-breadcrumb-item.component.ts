@@ -4,9 +4,10 @@ import { LayoutService } from '../../services/layout.service';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-nav-breadcrumb-item',
-  templateUrl: './navigation-breadcrumb-item.component.html',
-  styleUrls: ['./navigation-breadcrumb-item.component.scss']
+    selector: 'ce-nav-breadcrumb-item',
+    templateUrl: './navigation-breadcrumb-item.component.html',
+    styleUrls: ['./navigation-breadcrumb-item.component.scss'],
+    standalone: false
 })
 export class NavigationBreadcrumbItemComponent implements OnInit {
 

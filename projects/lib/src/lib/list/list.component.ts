@@ -2,9 +2,10 @@ import { AfterViewInit, Component, ContentChild, Input } from '@angular/core';
 import { ListHeaderComponent } from './list-header/list-header.component';
 
 @Component({
-  selector: 'ce-list',
-  templateUrl: './list.component.html',
-  styleUrls: ['./list.component.scss']
+    selector: 'ce-list',
+    templateUrl: './list.component.html',
+    styleUrls: ['./list.component.scss'],
+    standalone: false
 })
 export class ListComponent<T = any> implements AfterViewInit {
 

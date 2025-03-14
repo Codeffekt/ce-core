@@ -6,9 +6,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { firstValueFrom } from 'rxjs';
 
 @Component({
-  selector: 'lib-project-assoc-nav',
-  templateUrl: './project-assoc-nav.component.html',
-  styleUrls: ['./project-assoc-nav.component.scss']
+    selector: 'lib-project-assoc-nav',
+    templateUrl: './project-assoc-nav.component.html',
+    styleUrls: ['./project-assoc-nav.component.scss'],
+    standalone: false
 })
 export class ProjectAssocNavComponent implements OnInit {
 

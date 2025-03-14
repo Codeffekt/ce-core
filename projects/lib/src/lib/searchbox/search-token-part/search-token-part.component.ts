@@ -3,9 +3,10 @@ import { SearchTokenPartType } from '../services/search-tokens-service';
 
 
 @Component({
-  selector: 'ce-search-token-part',
-  templateUrl: './search-token-part.component.html',
-  styleUrls: ['./search-token-part.component.scss']
+    selector: 'ce-search-token-part',
+    templateUrl: './search-token-part.component.html',
+    styleUrls: ['./search-token-part.component.scss'],
+    standalone: false
 })
 export class SearchTokenPartComponent implements OnInit {
 

@@ -16,9 +16,10 @@ export const CE_TABLE_CELL_ASSET_DEFAULT_OPTIONS = new InjectionToken<CeTableCel
 );
 
 @Component({
-  selector: 'lib-table-cell-asset',
-  templateUrl: './table-cell-asset.component.html',
-  styleUrls: ['./table-cell-asset.component.scss']
+    selector: 'lib-table-cell-asset',
+    templateUrl: './table-cell-asset.component.html',
+    styleUrls: ['./table-cell-asset.component.scss'],
+    standalone: false
 })
 export class TableCellAssetComponent implements OnInit {
 

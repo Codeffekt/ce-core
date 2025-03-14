@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormInstanceExt, FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'app-form-number-page',
-  templateUrl: './form-number-page.component.html',
-  styleUrls: ['./form-number-page.component.scss']
+    selector: 'app-form-number-page',
+    templateUrl: './form-number-page.component.html',
+    styleUrls: ['./form-number-page.component.scss'],
+    standalone: false
 })
 export class FormNumberPageComponent implements OnInit {
 

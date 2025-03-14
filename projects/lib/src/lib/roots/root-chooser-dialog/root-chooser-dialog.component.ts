@@ -15,20 +15,18 @@ export interface RootChooserDialogConfig {
 }
 
 @Component({
-  selector: 'lib-root-chooser-dialog',
-  standalone: true,
-  imports: [
-    CommonModule,
-    MatDialogModule,
-    CeFormQueryWrapperModule,
-    CeListModule,
-  ],
-  templateUrl: './root-chooser-dialog.component.html',
-  styleUrls: ['./root-chooser-dialog.component.scss'],
-  providers: [
-    CeFormQueryService,
-
-  ]
+    selector: 'lib-root-chooser-dialog',
+    imports: [
+        CommonModule,
+        MatDialogModule,
+        CeFormQueryWrapperModule,
+        CeListModule,
+    ],
+    templateUrl: './root-chooser-dialog.component.html',
+    styleUrls: ['./root-chooser-dialog.component.scss'],
+    providers: [
+        CeFormQueryService,
+    ]
 })
 export class RootChooserDialogComponent {
 

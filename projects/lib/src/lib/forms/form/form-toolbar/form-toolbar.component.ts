@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
 
 @Component({
-  selector: 'lib-form-toolbar',
-  templateUrl: './form-toolbar.component.html',
-  styleUrls: ['./form-toolbar.component.scss']
+    selector: 'lib-form-toolbar',
+    templateUrl: './form-toolbar.component.html',
+    styleUrls: ['./form-toolbar.component.scss'],
+    standalone: false
 })
 export class FormToolbarComponent {
 

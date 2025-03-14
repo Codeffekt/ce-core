@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'ce-form-alert',
-  templateUrl: './form-alert.component.html',
-  styleUrls: ['./form-alert.component.scss']
+    selector: 'ce-form-alert',
+    templateUrl: './form-alert.component.html',
+    styleUrls: ['./form-alert.component.scss'],
+    standalone: false
 })
 export class FormAlertComponent implements OnInit {
 

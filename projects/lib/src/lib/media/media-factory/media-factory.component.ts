@@ -10,9 +10,10 @@ import { IMediaContent } from './media-models';
 import { MediaStoreService } from './media-store.service';
 
 @Component({
-  selector: 'ce-media-factory',
-  templateUrl: './media-factory.component.html',
-  styleUrls: ['./media-factory.component.scss']
+    selector: 'ce-media-factory',
+    templateUrl: './media-factory.component.html',
+    styleUrls: ['./media-factory.component.scss'],
+    standalone: false
 })
 export class MediaFactoryComponent implements OnInit, AfterViewInit {
 

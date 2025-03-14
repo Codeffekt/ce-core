@@ -5,10 +5,10 @@ import { SortFilterMapper } from './sort-filter-dropdown/sort-filter.mapper';
 import { FormQuerySortFieldWithLabel } from './sort-filter-dropdown/sort-filters.builder';
 
 @Component({
-  selector: 'ce-sort-filter',
-  templateUrl: './sort-filter.component.html',
-  styleUrls: ['./sort-filter.component.scss'],
-
+    selector: 'ce-sort-filter',
+    templateUrl: './sort-filter.component.html',
+    styleUrls: ['./sort-filter.component.scss'],
+    standalone: false
 })
 export class SortFilterComponent<T = any> implements OnInit {
 

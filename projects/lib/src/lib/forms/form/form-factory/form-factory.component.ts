@@ -11,9 +11,10 @@ import { IFormContent } from '../form-models';
 import { FormActionRenderService } from '../actions/form-action-render.service';
 
 @Component({
-  selector: 'ce-form-factory',
-  templateUrl: './form-factory.component.html',
-  styleUrls: ['./form-factory.component.scss']
+    selector: 'ce-form-factory',
+    templateUrl: './form-factory.component.html',
+    styleUrls: ['./form-factory.component.scss'],
+    standalone: false
 })
 export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewInit {
 

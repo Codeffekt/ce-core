@@ -3,9 +3,10 @@ import { SearchToken } from '../search-token';
 import { SearchTokensService } from '../services/search-tokens-service';
 
 @Component({
-  selector: 'ce-search-token',
-  templateUrl: './search-token.component.html',
-  styleUrls: ['./search-token.component.scss']
+    selector: 'ce-search-token',
+    templateUrl: './search-token.component.html',
+    styleUrls: ['./search-token.component.scss'],
+    standalone: false
 })
 export class SearchTokenComponent implements OnInit {
 

@@ -7,9 +7,10 @@ import { CeAppService } from '../../services/ce-app.service';
 import { CeCoreService } from '../../services/ce-core.service';
 
 @Component({
-  selector: 'ce-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss'],
+    selector: 'ce-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.scss'],
+    standalone: false
 })
 export class LoginComponent implements OnInit {
 

@@ -3,9 +3,10 @@ import { UntilDestroy } from '@ngneat/until-destroy';
 
 @UntilDestroy()
 @Component({
-  selector: 'ce-feature-bar',
-  templateUrl: './feature-bar.component.html',
-  styleUrls: ['./feature-bar.component.scss'],
+    selector: 'ce-feature-bar',
+    templateUrl: './feature-bar.component.html',
+    styleUrls: ['./feature-bar.component.scss'],
+    standalone: false
 })
 export class FeatureBarComponent {
   @Input() alignment: 'start' | 'center' | 'end' = 'center';

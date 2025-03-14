@@ -3,9 +3,10 @@ import { ReplaySubject } from 'rxjs';
 import { FormBlockComponent } from '../form-block/form-block.component';
 
 @Component({
-  selector: 'ce-form-text-block',
-  templateUrl: './form-text-block.component.html',
-  styleUrls: ['./form-text-block.component.scss']
+    selector: 'ce-form-text-block',
+    templateUrl: './form-text-block.component.html',
+    styleUrls: ['./form-text-block.component.scss'],
+    standalone: false
 })
 export class FormTextBlockComponent extends FormBlockComponent<string> implements OnInit {
 

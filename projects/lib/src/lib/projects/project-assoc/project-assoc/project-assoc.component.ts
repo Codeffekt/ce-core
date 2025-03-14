@@ -2,9 +2,10 @@ import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { FormBlock, FormInstanceMaskWrapper, FormWrapper } from "@codeffekt/ce-core-data";
 import { IFormContent } from "../../../forms/form/form-models";
 @Component({
-  selector: 'app-project-assoc',
-  templateUrl: './project-assoc.component.html',
-  styleUrls: ['./project-assoc.component.scss']
+    selector: 'app-project-assoc',
+    templateUrl: './project-assoc.component.html',
+    styleUrls: ['./project-assoc.component.scss'],
+    standalone: false
 })
 export class CeProjectAssocComponent implements IFormContent {
   
