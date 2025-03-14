@@ -22,13 +22,17 @@ export class CeEventsService {
 
         this.eventSource = this.coreService.getEventSource(() => `${this.coreService.getEvents()}/all`);
 
+        this.eventSource.addEventListener('init', (event: MessageEvent) => {
+            console.log("Event source init", event.data);
+        });
+
         this.eventSource.addEventListener('message', (event: MessageEvent) => {                
             const messageData = JSON.parse(event.data) as FormEvent;
             this.sseEvents$.next(messageData);
         });
 
         this.eventSource.onerror = () => {
-            this.sseEvents$.error("Event source error");
+            console.log("Event source error close connection");
             this.close();
         }
     }
