@@ -73,6 +73,10 @@ export class CeFormsService {
     return this.coreService.callFormQuery(pid, id, query);
   }
 
+  formQueryPath(id: IndexType, path: string) {
+    return this.coreService.callFormQueryPath(id, path);
+  }
+
   formMutation(pid: IndexType, mutation: FormMutate) {
     return firstValueFrom(this.coreService.callProject("formMutation", pid, mutation));
   }

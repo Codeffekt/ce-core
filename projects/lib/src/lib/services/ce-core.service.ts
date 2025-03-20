@@ -234,6 +234,10 @@ export class CeCoreService {
     return this.callProject("formQuery", pid, id, query);
   }
 
+  callFormQueryPath(id: IndexType, path: string): Observable<FormInstance> {
+    return this.callForms("getFormQueryPath", id, path);
+  }
+
   callFormMutation(pid: IndexType, mutation: FormMutate): Observable<FormInstance> {
     return this.callProject("formMutation", pid, mutation);
   }
