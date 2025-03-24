@@ -1,6 +1,6 @@
 {
   "name": "@codeffekt/ce-core",
-  "version": "19.0.1",
+  "version": "19.0.2",
   "description": "Angular library for CeForms rendering",
   "author": {
     "name": "Codeffekt",
@@ -13,9 +13,9 @@
   },
   "license": "Apache-2.0",
   "peerDependencies": {
-    "@angular/common": "^19.2.2",
+    "@angular/common": "^19.2.3",
     "@angular/cdk": "^19.2.3",
-    "@angular/core": "^19.2.2",
+    "@angular/core": "^19.2.3",
     "@angular/material": "^19.2.3",
     "@angular/material-moment-adapter": "^19.2.3",
     "bootstrap": "^5.3.3",
