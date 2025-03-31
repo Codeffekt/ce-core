@@ -114,14 +114,14 @@ export class CeFormQueryService<T = any> {
         this.queryBuilder?.setSort(sf);
     }
 
-    load() {
+    async load() {
         if (!this.queryBuilder || !this.datasource) {
             //throw Error('Missing queryBuilder or datasource. Please call setDatasource or/and setQueryBuilder');
             return;
         }
 
         const query = this.queryBuilder.create();
-        this.datasource.getDatasource().load(query);
+        await this.datasource.getDatasource().load(query);
 
         this.query$.next(query);
     }

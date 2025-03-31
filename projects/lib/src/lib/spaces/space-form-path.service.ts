@@ -57,8 +57,8 @@ export class SpaceFormPathService {
         this.currentForm$.next(form);
     }
     
-    onCurrentForm(): Observable<FormInfo | undefined> {
-        return this.currentForm$.pipe(
+    onCurrentForm(): Observable<FormInfo> {
+        return this.currentForm$.asObservable().pipe(
             filter(form => form !== undefined),
             switchMap(form => 
                 this.eventsService.onFormUpdate(form!.form.core.id).pipe(

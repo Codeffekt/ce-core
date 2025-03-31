@@ -11,7 +11,7 @@
             <ce-paginator [pageSize]="10" [pageSizeOptions]="[5,10,20]"></ce-paginator>
             <div class="media-grid">
                 <div class="media-elt" *ngFor="let asset of assets$ | async">
-                    <button mat-button color="warn" ngReallyTitle="Confirmation require"
+                    <button mat-button color="warn" ngReallyTitle="Confirmation requise"
                     ngReallyMessage="Voulez-vous vraiement supprimer ce media ?" (ngReallyClick)="delete(asset)"
                     [disabled]="!formBlock.value">
                     supprimer

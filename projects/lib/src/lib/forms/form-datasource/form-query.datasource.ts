@@ -14,13 +14,13 @@ export abstract class FormQueryDatasource<T = any, U = FormInstanceExt> extends 
         super();
     }
 
-    load(query: FormQuery) {
+    async load(query: FormQuery) {
         this.query = query;
-        this.queryAndUpdateData();
+        await super.load(this.query);
     }
 
-    reload() {
-        this.queryAndUpdateData();
+    async reload() {
+        await super.load(this.query);
     }
 
     protected queryData(query: FormQuery): Observable<T[]> {
@@ -33,9 +33,5 @@ export abstract class FormQueryDatasource<T = any, U = FormInstanceExt> extends 
     protected abstract queryDb(query: FormQuery): Observable<DbArrayRes<U>>;
 
     protected abstract wrap(form: U, res?: DbArrayRes<U>): T;
-
-    private queryAndUpdateData() {
-        this.queryData(this.query)
-            .subscribe(data => this.updateData(data));
-    }
+    
 }

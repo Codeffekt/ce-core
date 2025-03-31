@@ -13,23 +13,18 @@ export abstract class PaginatorFilterDatasource<T> extends PartialDatasource<T> 
     super();
   }
 
-  load(pageIndex: number, pageSize: number, filter?: string, sortDirection?: FormQuerySortField, accumulate = false) {
+  async load(pageIndex: number, pageSize: number, filter?: string, sortDirection?: FormQuerySortField, accumulate = false) {
     this.pageIndex = pageIndex;
     this.pageSize = pageSize;
     this.filter = filter;
     this.sortDirection = sortDirection;
     this.accumulate = accumulate;
-    this.queryAndUpdateData();
+    await super.load(this.pageIndex, this.pageSize, this.filter, this.sortDirection);    
   }
 
-  reload() {
-    this.queryAndUpdateData()
-  }
-
-  private queryAndUpdateData() {
-    this.queryData(this.pageIndex, this.pageSize, this.filter, this.sortDirection)
-      .subscribe(data => this.updateData(data));
-  }
+  async reload() {
+    await super.load(this.pageIndex, this.pageSize, this.filter, this.sortDirection);
+  }  
 
   protected abstract queryData(pageIndex: number, pageSize: number, filter?: string, sortDirection?: FormQuerySortField): Observable<T[]>;
 

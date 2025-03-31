@@ -1,4 +1,4 @@
-import { Subscription, Observable, BehaviorSubject } from 'rxjs';
+import { Subscription, Observable, BehaviorSubject, firstValueFrom } from 'rxjs';
 import { CollectionViewer, DataSource } from "@angular/cdk/collections";
 
 export abstract class ReactiveDatasource<T> extends DataSource<T> {
@@ -15,8 +15,9 @@ export abstract class ReactiveDatasource<T> extends DataSource<T> {
     this.data$.complete();
   }
 
-  load(...params: any) {
-    this.queryData().subscribe(_ => this.updateData(_));
+  async load(...params: any) {
+    const res = await firstValueFrom(this.queryData(params));
+    this.updateData(res);
   }
 
   protected abstract queryData(...params: any): Observable<T[]>;
