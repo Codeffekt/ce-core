@@ -1,0 +1,19 @@
+<ce-nav-layout>
+    <ce-navbar [useToggleSideMenu]="false">
+        <ce-navbar-content>
+            <ce-navbar-item>Forms {{root().id}}</ce-navbar-item>
+        </ce-navbar-content>
+    </ce-navbar>
+
+    <ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="false">
+        <ce-grid templateColumns="1fr auto" rowfill>
+            <ce-input-search></ce-input-search>
+        </ce-grid>
+        <ce-list>
+            <ce-list-item *ngFor="let form of forms$ | async" (click)="onSelected(form)">
+                <ce-list-item-factory [type]="form.core.root" [item]="form">
+                </ce-list-item-factory>
+            </ce-list-item>
+        </ce-list>
+    </ce-formquery-wrapper>
+</ce-nav-layout>

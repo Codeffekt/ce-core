@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit } from '@angular/core';
-import { FormBlock } from '@codeffekt/ce-core-data';
+import { FormBlock, FormUtils, FormWrapper } from '@codeffekt/ce-core-data';
 import { IListItemContent } from '../list-item-factory/list-item-models';
 
 @Component({
@@ -8,15 +8,23 @@ import { IListItemContent } from '../list-item-factory/list-item-models';
     styleUrls: ['./list-item-default.component.scss'],
     standalone: false
 })
-export class ListItemDefaultComponent implements OnInit, IListItemContent {
+export class ListItemDefaultComponent implements OnInit, IListItemContent<FormWrapper> {
 
   itemChangedEvent?: EventEmitter<boolean>;
-  item: any;
+  item!: FormWrapper;
   block?: FormBlock;
 
-  constructor() { }  
+  displayedFields: FormBlock[] = [];
+
+  constructor() {     
+  }  
 
   ngOnInit(): void {   
+    this.retrieveDisplayFields();
   }
 
+  private retrieveDisplayFields() {
+    const fields = this.item.core.params?.fields;
+    this.displayedFields = fields ? fields.map((f: string) => FormUtils.retrieveBlockFromField(this.item.core, f)) : [];
+  }
 }

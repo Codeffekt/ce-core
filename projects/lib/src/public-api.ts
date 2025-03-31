@@ -37,3 +37,4 @@ export * from './lib/searchbox';
 export * from './lib/local';
 export * from './lib/spaces';
 export * from './lib/roots';
+export * from './lib/input-search';

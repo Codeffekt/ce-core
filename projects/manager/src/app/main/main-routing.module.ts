@@ -1,5 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
+import { FormListService } from "../form-list/form-list.service";
+import { formListResolver } from "../form-list/form-list-resolver.service";
 
 const routes: Routes = [
     {
@@ -14,6 +16,16 @@ const routes: Routes = [
     {
         path: 'form',        
         loadChildren: () => import('../form/form.module').then(m => m.FormModule),        
+    },
+    {
+        path: 'form-list/:id',
+        providers: [
+            FormListService
+        ],
+        resolve: {
+            root: formListResolver,
+        },
+        loadComponent: () => import('../form-list/form-list.component').then(m => m.FormListComponent),
     },
     {
         path: 'events',        

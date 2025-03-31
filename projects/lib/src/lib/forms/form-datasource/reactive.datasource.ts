@@ -16,7 +16,7 @@ export abstract class ReactiveDatasource<T> extends DataSource<T> {
   }
 
   async load(...params: any) {
-    const res = await firstValueFrom(this.queryData(params));
+    const res = await firstValueFrom(this.queryData(...params));
     this.updateData(res);
   }
 
