@@ -3,7 +3,6 @@ export * from './lib/ce-core.module';
 export * from './lib/ce-core.config';
 
 export * from './lib/auth';
-export * from './lib/apps';
 export * from './lib/table';
 export * from './lib/bookmarks';
 export * from './lib/formquery-wrapper';

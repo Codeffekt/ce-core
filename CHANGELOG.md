@@ -7,6 +7,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [19.0.3]
  - Add a form query search
+ - Remove apps forms-apps components
 
 ## [19.0.2]
  - Add form query path support
