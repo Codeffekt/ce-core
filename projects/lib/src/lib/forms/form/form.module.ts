@@ -12,7 +12,6 @@ import { CePaginatorModule } from "../../paginator";
 import { CeTableModule } from "../../table";
 import { CeFormBlocksModule } from "../form-blocks";
 import { CeFormCardModule } from "../form-card";
-import { FormChooserDialogComponent } from './form-chooser-dialog/form-chooser-dialog.component';
 import { FormSubformTitleComponent } from './form-subform-title/form-subform-title.component';
 import { CeFormComponent } from './form.component';
 import { PhotoPickerComponent } from './photo-picker/photo-picker.component';
@@ -54,8 +53,7 @@ import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
         MediaPhotoComponent,
         CeFormBlocksModule,
         CeFormCardModule,
-        CeEditTimeModule,
-        FormChooserDialogComponent,
+        CeEditTimeModule,        
         PhotoPickerComponent,
     ],
     exports: [

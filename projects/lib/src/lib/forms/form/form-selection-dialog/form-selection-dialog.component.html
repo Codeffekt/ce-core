@@ -1,0 +1,20 @@
+<h2 mat-dialog-title>{{data.mainTitle}}</h2>
+
+<mat-dialog-content>
+    <ce-formquery-wrapper [paginationEnabled]="true" [searchEnabled]="true">
+        <ce-list>
+            <ce-list-header label="{{data.listTitle}}"></ce-list-header>
+            <ce-list-item *ngFor="let form of forms$ | async" (click)="selectForm(form)"
+                [active]="currentSelection?.core?.id === form.core.id">
+                <ce-list-item-factory [type]="form.core.root" [item]="form">
+                </ce-list-item-factory>
+            </ce-list-item>
+        </ce-list>
+    </ce-formquery-wrapper>
+</mat-dialog-content>
+
+<mat-dialog-actions>
+    <button mat-button (click)="dismiss()">Fermer</button>
+    <button mat-raised-button class="ms-auto" color="primary" (click)="submit()"
+        [disabled]="!currentSelection">Valider</button>
+</mat-dialog-actions>

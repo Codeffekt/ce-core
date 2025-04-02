@@ -2,6 +2,7 @@ export * from './form.component';
 export * from './form.validators';
 export * from './photo-picker';
 export * from './form-chooser-dialog/form-chooser-dialog.component';
+export * from './form-selection-dialog/form-selection-dialog.component';
 export * from './form-factory/form-factory.component';
 export * from './form-style.builder';
 export * from './form-mask.builder';
