@@ -1,11 +1,13 @@
 import { Observable } from "rxjs";
-import { FormInstance, FormQuery, DbArrayRes, FormWrapper } from "@codeffekt/ce-core-data";
+import { FormInstance, FormQuery, DbArrayRes, FormWrapper, AccountSettings } from "@codeffekt/ce-core-data";
 import { FormQueryDatasource } from "./form-query.datasource";
 import { CeFormsService } from "../../services/ce-forms.service";
 
-export class FormWrappersDataSource extends FormQueryDatasource<FormWrapper> {
+export class FormWrappersDataSource extends FormQueryDatasource<FormWrapper> {    
+
     constructor(
-        private formsService: CeFormsService
+        private formsService: CeFormsService,
+        private members: AccountSettings[] = [],
     ) {
         super();
     }
@@ -15,6 +17,7 @@ export class FormWrappersDataSource extends FormQueryDatasource<FormWrapper> {
     }
 
     protected wrap(form: FormInstance): FormWrapper {
-        return FormWrapper.fromForm(form);
+        const existingMember = this.members.find(member => member.id === form.author);
+        return FormWrapper.fromForm(form, existingMember);
     }
 }

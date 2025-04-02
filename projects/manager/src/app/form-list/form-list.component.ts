@@ -14,7 +14,6 @@ import {
 import { FormWrapper } from '@codeffekt/ce-core-data';
 import { Observable } from 'rxjs';
 import { FormListService } from './form-list.service';
-import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-form-list',
@@ -23,8 +22,7 @@ import { MatInputModule } from '@angular/material/input';
     CeNavigationModule,
     CeFormQueryWrapperModule,
     CeGridModule,
-    CeListModule,
-    MatInputModule,
+    CeListModule,    
     InputSearchComponent,
 ],
   providers: [

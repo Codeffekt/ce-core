@@ -1,6 +1,7 @@
 import {
     FormQueryField, FormQuerySortField,
-    FormQuery, IndexType, FormQueryFieldLogic, FormQueryFieldExpr, FormAggField, FormFilter
+    FormQuery, IndexType, FormQueryFieldLogic, FormQueryFieldExpr, FormAggField, FormFilter,
+    FormNode
 } from "@codeffekt/ce-core-data";
 
 const DEFAULT_LIMIT = 10;
@@ -18,6 +19,7 @@ export class FormQueryBuilder {
     protected sortRootFields: FormQuerySortField[] = [];
     protected filterFields: FormFilter[] = [];
     protected aggFields: FormAggField[] = [];
+    protected nodes: FormNode[] = [];
 
     static fromPagination(pageIndex: number, pageSize: number): FormQuery {
         return {
@@ -95,6 +97,14 @@ export class FormQueryBuilder {
         throw new Error("Must be implemented");
     }    
 
+    setNodes(nodes: FormNode[])  {
+        this.nodes = nodes;
+    }
+
+    clearNodes() {
+        this.nodes = [];
+    }
+
     create(): FormQuery {
         return {
             queryFields: this.createQueryFields(),
@@ -104,7 +114,8 @@ export class FormQueryBuilder {
             filters: this.filterFields.length ? this.filterFields : undefined,
             ...this.pagination,
             ...this.extMode,
-            root: this.root,         
+            root: this.root,
+            nodes: this.nodes.length ? this.nodes : undefined,         
         };
     }
 
