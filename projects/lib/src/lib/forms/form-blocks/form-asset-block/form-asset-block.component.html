@@ -1,6 +1,9 @@
 <div class="d-flex flex-row mb-2">
     <span class="h4" *ngIf="formBlock.label">{{formBlock.label}}</span>
     <div class="ms-auto">
+        <button mat-stroked-button color="accent" [disabled]="!assetsForm" matTooltip="Importer un asset" (click)="openAssetImporter()">
+            <mat-icon>file_upload</mat-icon>Importer
+        </button>
         <button mat-stroked-button color="primary" [disabled]="!assetsForm" (click)="openMediaPicker()">
             <mat-icon class="me-2">edit</mat-icon>Modifier
         </button>

@@ -1,18 +1,14 @@
 import { inject, Injectable } from "@angular/core";
-import { FormBlock, FormUtils, IndexType } from "@codeffekt/ce-core-data";
-import { BehaviorSubject, distinct, filter, Observable, startWith, switchMap } from "rxjs";
-import { FormInfo } from "../models/form-info";
+import { IndexType } from "@codeffekt/ce-core-data";
 import { CeFormEditorService } from "../services/ce-form-editor.service";
-import { CeEventsService } from "../services/ce-events.service";
+import { SpaceFormContextService } from "./space-form-context.service";
 
 @Injectable({ providedIn: 'root'})
 export class SpaceFormPathService {    
 
-    private currentPathElts: string[] = [];
-    private currentForm$ = new BehaviorSubject<FormInfo|undefined>(undefined);
-    private currentFormInfos$ = new BehaviorSubject<FormInfo[]>([]);
+    private currentPathElts: string[] = [];    
     private formEditorService = inject(CeFormEditorService); 
-    private eventsService = inject(CeEventsService);       
+    private spaceFormContextService = inject(SpaceFormContextService);
 
     constructor() {        
     }    
@@ -22,9 +18,7 @@ export class SpaceFormPathService {
         const formInfos = await Promise.all(
             pathElts.map(path => this.formEditorService.getForm(path))
         );
-        this.currentFormInfos$.next(formInfos);
-        const nextForm = formInfos.length ? formInfos[formInfos.length - 1] : undefined;        
-        this.currentForm$.next(nextForm);
+        this.spaceFormContextService.setForms(formInfos);                       
         this.currentPathElts = pathElts;
     }
 
@@ -35,41 +29,5 @@ export class SpaceFormPathService {
                 this.currentPathElts.slice(0, existingEltId)), formId
         ];
         return nextPathElts.join(",");
-    }    
-
-    findBlock(root: IndexType, field: IndexType): FormBlock {
-        const formInfo = this.findFormFromRoot(root);
-        if(!formInfo) {
-            throw new Error(`Form root ${root} not found in current space`);
-        }
-        const block = FormUtils.getBlockFromField(formInfo.form.core, field);
-        if(!block) {
-            throw new Error(`Block ${field} not found in form root ${root}`);
-        }
-        return block;
-    }
-
-    findFormFromRoot(root: IndexType) {
-        return this.currentFormInfos$.getValue().find(formInfo => formInfo.form.core.root === root);
-    }
-
-    setCurrentForm(form: FormInfo) {
-        this.currentForm$.next(form);
-    }
-    
-    onCurrentForm(): Observable<FormInfo> {
-        return this.currentForm$.asObservable().pipe(
-            filter(form => form !== undefined),
-            switchMap(form => 
-                this.eventsService.onFormUpdate(form!.form.core.id).pipe(
-                    distinct((form) => form!.form.core.mtime),      
-                    startWith(form)
-                )
-            ),                               
-        );
-    }
-
-    onCurrentForms() {
-        return this.currentFormInfos$;
-    }
+    }        
 }

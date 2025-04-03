@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { FormPathResolverService } from './form-path-resolver.service';
-import { SpaceFormPathService } from '@codeffekt/ce-core';
+import { SpaceFormContextService, SpaceFormPathService } from '@codeffekt/ce-core';
 
 const routes: Routes = [
     {
@@ -16,6 +16,7 @@ const routes: Routes = [
                 providers: [
                     FormPathResolverService,
                     SpaceFormPathService,
+                    SpaceFormContextService,
                 ]
             },            
         ]

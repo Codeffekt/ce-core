@@ -1,6 +1,10 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CeFormModule, CeFormRouteResolver, CeFormUpdaterService, CeGridModule, CeNavigationModule, FormInfo, SpaceFormPathService } from '@codeffekt/ce-core';
+import { 
+  CeFormModule, CeFormRouteResolver, 
+  CeFormUpdaterService, CeGridModule, 
+  CeNavigationModule, FormInfo, 
+  SpaceFormContextService } from '@codeffekt/ce-core';
 import { FormUrlQueryParamsDirective } from '../form/form-url-query-params-directive.component';
 import { FormRouteResolver } from '../form/form-route-resolver.service';
 import { CeListModule } from "../../../../lib/src/lib/list/list.module";
@@ -27,7 +31,7 @@ import { IndexType } from '@codeffekt/ce-core-data';
 })
 export class FormEditorComponent {
 
-  private formService = inject(SpaceFormPathService);
+  private formService = inject(SpaceFormContextService);
   private formRouteResolver = inject(CeFormRouteResolver);
   private formUpdaterService = inject(CeFormUpdaterService);
   currentForm$ = this.formService.onCurrentForm();

@@ -13,29 +13,31 @@ import { AssetsArrayDatasource } from '../../form-datasource';
 import { CeAssetsService } from '../../../services';
 import { AssetsFormQueryBuilder } from '../../forms-query';
 import { FormInfo } from '../../../models/form-info';
+import { AssetImportComponent, AssetImportConfig } from '../../../media/asset-import/asset-import.component';
+import { SpaceFormContextService } from '../../../spaces';
 
 @Component({
-    selector: 'ce-form-asset-block',
-    imports: [
-        CommonModule,
-        MatButtonModule,
-        MatIconModule,
-        MatDialogModule,
-        CeNgReallyModule,
-        CeMediaModule,
-    ],
-    templateUrl: './form-asset-block.component.html',
-    styleUrls: ['./form-asset-block.component.scss']
+  selector: 'ce-form-asset-block',
+  imports: [
+    CommonModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDialogModule,
+    CeNgReallyModule,
+    CeMediaModule,
+  ],
+  templateUrl: './form-asset-block.component.html',
+  styleUrls: ['./form-asset-block.component.scss']
 })
 export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implements OnInit {
 
   assetsForm?: FormInfo
 
   private dialog = inject(MatDialog);
-  private spacePathService = inject(SpaceFormPathService);
-  private assetsService = inject(CeAssetsService);  
+  private spaceContextService = inject(SpaceFormContextService);
+  private assetsService = inject(CeAssetsService);
 
-  constructor(    
+  constructor(
   ) {
     super();
   }
@@ -51,18 +53,18 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
   delete(asset: AssetElt) {
   }
 
-  openMediaPicker() {    
+  openMediaPicker() {
 
-    if(!this.assetsForm || !this.formBlock.index) {
+    if (!this.assetsForm || !this.formBlock.index) {
       return;
-    }    
+    }
 
     const datasource = new AssetsArrayDatasource(this.assetsService);
     datasource.setAssetsArray(this.assetsForm.form.core.id, this.formBlock.index);
 
     const dialogRef = PhotoPickerComponent.open(this.dialog, {
-        datasource,
-        queryBuilder: AssetsFormQueryBuilder.create(),
+      datasource,
+      queryBuilder: AssetsFormQueryBuilder.create(),
     });
 
     dialogRef.afterClosed().subscribe((assetElt: AssetElt) => {
@@ -72,14 +74,41 @@ export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implem
     });
   }
 
+  openAssetImporter() {
+
+    if(!this.assetsForm || !this.formBlock.index) {
+      return;
+    }
+
+    const config: AssetImportConfig = {
+      pid: this.assetsForm.form.core.id,
+      formId: this.assetsForm.form.core.id,
+      field: this.formBlock.index,
+      title: "Importer un asset"
+    };
+
+    const dialogRef = this.dialog.open(
+      AssetImportComponent, {
+      width: "800px",
+      data: config
+    });
+
+    dialogRef.afterClosed().subscribe(_ => {
+      if (config.isDone && config.asset) {
+        this.value = config.asset;
+      }
+    });
+
+  }
+
   private initAssetsForm() {
-    
+
     this.assetsForm = undefined;
 
-    if(!this.formBlock.index || !this.formBlock.root) {
+    if (!this.formBlock.index || !this.formBlock.root) {
       return;
-    }    
+    }
 
-    this.assetsForm = this.spacePathService.findFormFromRoot(this.formBlock.root!);
+    this.assetsForm = this.spaceContextService.findFormFromRoot(this.formBlock.root!);
   }
 }
