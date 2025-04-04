@@ -11,6 +11,7 @@ export class FormQuerySearchBuilder extends FormQueryBuilder {
 
     constructor(private model: FormRoot) {
         super();
+        this.setRoot(model.id);
         this.initSearchFields();
     }
 
