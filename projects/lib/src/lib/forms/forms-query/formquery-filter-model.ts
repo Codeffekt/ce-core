@@ -1,30 +1,29 @@
 import { FormQueryField, FormRoot, FormUtils } from "@codeffekt/ce-core-data";
+import { FormQueryFilter } from "./formquery-filter";
 import { FormQueryBuilder } from "./formquery.builder";
 
 const ALLOWED_META_FIELDS = ["$id", "$root", "$title"];
 const DEFAULT_SEARCH_FIELDS = ["$id", "$root", "$title"];
 const META_FIELD_OP = "$";
 
-export class FormQuerySearchBuilder extends FormQueryBuilder {
+export class FormQueryFilterModel implements FormQueryFilter {
 
     private searchFields: FormQueryField[] = [];
 
-    constructor(private model: FormRoot) {
-        super();
-        this.setRoot(model.id);
+    constructor(private model: FormRoot) {        
         this.initSearchFields();
     }
 
-    clearFilter() {
-        this.clearQueryFieldLogic();
+    clearFilter(qb: FormQueryBuilder) {
+        qb.clearQueryFieldLogic();
     }
 
-    setFilter(value: string) {
+    setFilter(qb: FormQueryBuilder, value: string) {
         if (!this.searchFields.length) {
             return;
         }
 
-        this.setQueryFieldLogic({
+        qb.setQueryFieldLogic({
             or:
                 this.searchFields.map(sf => ({
                     ...sf,
@@ -41,7 +40,7 @@ export class FormQuerySearchBuilder extends FormQueryBuilder {
     }
 
     private createQueryFieldFromField(field: string): FormQueryField | undefined {
-        if(field.startsWith(META_FIELD_OP) && !ALLOWED_META_FIELDS.includes(field)) {
+        if (field.startsWith(META_FIELD_OP) && !ALLOWED_META_FIELDS.includes(field)) {
             return undefined;
         }
 
@@ -52,4 +51,5 @@ export class FormQuerySearchBuilder extends FormQueryBuilder {
             onMeta: ALLOWED_META_FIELDS.includes(field),
         } : undefined;
     }
+
 }

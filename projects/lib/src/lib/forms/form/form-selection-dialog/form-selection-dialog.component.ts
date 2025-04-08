@@ -8,13 +8,16 @@ import { FormWrappersDataSource } from '../../form-datasource/form-wrappers.data
 import { CeFormsService } from '../../../services/ce-forms.service';
 import { CommonModule } from '@angular/common';
 import { CeListModule } from '../../../list/list.module';
-import { CeRowModule } from '../../../layout';
+import { CeGridModule, CeRowModule } from '../../../layout';
 import { MatButtonModule } from '@angular/material/button';
 import { CeFormQueryWrapperModule } from '../../../formquery-wrapper';
+import { FormQueryFilter } from '../../forms-query';
+import { InputSearchComponent } from '../../../input-search';
 
 export interface FormSelectionConfig {
     filterForms: IndexType[];
     queryBuilder: FormQueryBuilder;
+    queryFilter?: FormQueryFilter;
     mainTitle: string;
     listTitle: string;
 }
@@ -26,10 +29,12 @@ export interface FormSelectionConfig {
     imports: [
         CommonModule,
         CeListModule,
+        CeGridModule,
         CeRowModule,
         CeFormQueryWrapperModule,
         MatButtonModule,
         MatDialogModule,
+        InputSearchComponent,
     ],
     providers: [
         CeFormQueryService
@@ -50,6 +55,7 @@ export class FormSelectionDialogComponent implements OnInit {
     formsDataSource!: FormWrappersDataSource;
     forms$!: Observable<readonly FormWrapper[]>;
     currentSelection: FormWrapper | undefined;
+    hasQueryFilter: boolean = false;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: FormSelectionConfig,
@@ -60,6 +66,12 @@ export class FormSelectionDialogComponent implements OnInit {
         this.formsDataSource = new FormWrappersDataSource(formsService);
         queryService.setQueryBuilder(data.queryBuilder);
         queryService.setDatasource(this.formsDataSource);
+
+        if(data.queryFilter) {
+            this.hasQueryFilter = true;
+            queryService.setQueryFilter(data.queryFilter);
+        }
+
         this.forms$ = queryService.connect().pipe(map(forms => this.filterForms(forms)));
     }
 

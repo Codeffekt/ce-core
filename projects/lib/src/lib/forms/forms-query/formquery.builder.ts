@@ -1,6 +1,8 @@
 import {
     FormQueryField, FormQuerySortField,
-    FormQuery, IndexType, FormQueryFieldLogic, FormQueryFieldExpr, FormAggField, FormFilter,
+    FormQuery, IndexType, 
+    FormQueryFieldLogic, FormQueryFieldExpr, 
+    FormAggField, FormFilter,
     FormNode
 } from "@codeffekt/ce-core-data";
 
@@ -87,7 +89,7 @@ export class FormQueryBuilder {
 
     clearSortRootField(fieldName: string) {
         this.clearGenericField(fieldName, this.sortRootFields);
-    }
+    }    
 
     clearFilter() {
         throw new Error("Must be implemented");

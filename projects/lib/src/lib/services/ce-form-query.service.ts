@@ -6,8 +6,10 @@ import { ShareableDataSource } from "../forms/form-datasource/shareable.datasour
 import {
     CeFormQueryBookmarks,
     FormQueryBookmark, FormQueryBuilder,
+    FormQueryFilter,
     FormQueryLogicBuilder
 } from "../forms/forms-query";
+import { F } from "@angular/cdk/keycodes";
 
 export interface CeFormQueryEvt {
     type: 'pagination-first-page' | 'active-bookmark' | 'model'
@@ -19,6 +21,7 @@ export class CeFormQueryService<T = any> {
 
     private datasource!: ShareableDataSource<T>;
     private queryBuilder!: FormQueryBuilder;
+    private queryFilter?: FormQueryFilter;
     private evt$: ReplaySubject<CeFormQueryEvt> = new ReplaySubject(1);
     private model!: FormRoot;
     private logicBuilder: FormQueryLogicBuilder = new FormQueryLogicBuilder();
@@ -41,6 +44,10 @@ export class CeFormQueryService<T = any> {
 
     setQueryBuilder(qb: FormQueryBuilder) {
         this.queryBuilder = qb;
+    }
+
+    setQueryFilter(qf: FormQueryFilter) {
+        this.queryFilter = qf;
     }
 
     getModel(): FormRoot {
@@ -92,17 +99,25 @@ export class CeFormQueryService<T = any> {
     }
 
     setFilter(filter: string) {
-        const logic = this.logicBuilder.fromFilter(filter);
-        if (logic) {
-            this.queryBuilder?.setQueryFieldLogic(logic);
+        if (this.queryFilter && this.queryBuilder) {
+            this.queryFilter.setFilter(this.queryBuilder, filter);
         } else {
-            this.queryBuilder?.setFilter(filter);
+            const logic = this.logicBuilder.fromFilter(filter);
+            if (logic) {
+                this.queryBuilder?.setQueryFieldLogic(logic);
+            } else {
+                this.queryBuilder?.setFilter(filter);
+            }
         }
     }
 
     clearFilter() {
-        this.queryBuilder?.clearQueryFieldLogic();
-        this.queryBuilder?.clearFilter();
+        if (this.queryFilter && this.queryBuilder) {
+            this.queryFilter?.clearFilter(this.queryBuilder);
+        } else {
+            this.queryBuilder?.clearQueryFieldLogic();
+            this.queryBuilder?.clearFilter();
+        }
     }
 
     getSort() {
