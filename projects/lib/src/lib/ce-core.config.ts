@@ -6,6 +6,7 @@ export const CE_CORE_CONFIG = new InjectionToken<CeCoreModuleConfig>('ce.core.co
 
 export interface CeCoreModuleConfig {
     api_url: string;
+    api_token?: string;
 }
 
 export const CE_APP_CONFIG = new InjectionToken<CeAppConfig>('ce.app.config');

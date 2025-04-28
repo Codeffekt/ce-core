@@ -62,6 +62,7 @@ const COUNTDOWN_DELTA_MS = 5000;
 export class CeCoreService {
 
   private api_url: string;
+  private api_token?: string;
   private currentUser!: LocalUserSettings;
 
   error$: Subject<any> = new Subject();
@@ -112,7 +113,7 @@ export class CeCoreService {
   }
 
   getToken(): string {
-    return this.getLocalUser().token;
+    return this.api_token ?? this.getLocalUser()?.token ?? "";
   }
 
   call<T>(...params: any[]): Observable<T> {
@@ -279,7 +280,7 @@ export class CeCoreService {
 
   getEventSource(apiFunc: () => string): EventSource {
     return new EventSource(apiFunc(), { withCredentials: true });
-  } 
+  }
 
   handleError(error: HttpErrorResponse) {
     const apiError: APIError = error.error instanceof ErrorEvent ?
@@ -345,18 +346,12 @@ export class CeCoreService {
       catchError(this.handleError.bind(this))
     );
   }
-  
+
   private getHeaders(): any {
-    const headers: any = {
-      "Content-Type": "application/json"
+    return {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer" + this.getToken(),
     };
-
-    const currentUser = this.getLocalUser();
-    if (currentUser && currentUser.token) {
-      headers["Authorization"] = "Bearer " + currentUser.token;
-    }
-
-    return headers;
   }
 
   protected getLocalUser(): LocalUserSettings {
