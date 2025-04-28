@@ -3,4 +3,10 @@
     grid-template-rows: auto 1fr auto;
     overflow: auto;
     height: 100%;
+
+    .form-selection-dialog-title {
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 12px;
+        padding:12px;
+    }
 }

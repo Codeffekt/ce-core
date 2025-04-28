@@ -11,4 +11,5 @@ export * from './list-item-factory/list-item-factory.component';
 export * from './list-item-factory/list-item-store.service';
 export * from './list-item-default/list-item-default.component';
 export * from './list-item-factory/list-item-models';
+export * from './list-nav-links';
 export * from './list.module';

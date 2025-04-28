@@ -1,4 +1,4 @@
-<mat-form-field class="w-100">
+<mat-form-field class="w-100" subscriptSizing="dynamic">
     <mat-label>{{formBlock.label}}</mat-label>
     <textarea *ngIf="formBlock.params?.multiline" matInput [value]="value" [(ngModel)]="value" rows="5"
     (keydown.enter)="isEditMode = false; updateValue(input.value)"

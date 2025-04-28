@@ -1,4 +1,22 @@
+@use '@angular/material' as mat;
+
+// Customize the entire app. Change :root to your selector if you want to scope the styles.
 :host {
+    @include mat.button-overrides((
+        text-label-text-size:16px
+        ));
+}
+
+:host {
+    .form-asset-block-header {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid lightgray;
+        margin-bottom: 12px;
+    }
+
     .image-wrapper {
         margin-bottom: 24px;
         background: #f4f4f4;

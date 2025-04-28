@@ -21,6 +21,7 @@ import { ListItemStoreService } from './list-item-factory/list-item-store.servic
 import { CeSearchboxModule } from '../searchbox/searchbox.module';
 import { CePipesModule } from '../pipes/pipes.module';
 import { CeFormsPipesModule } from '../forms-pipes';
+import { CeListNavLinksModule } from './list-nav-links';
 
 
 
@@ -63,7 +64,8 @@ import { CeFormsPipesModule } from '../forms-pipes';
         ListItemIconPropListComponent,
         ListItemLabelComponent,
         ListItemFactoryComponent,
-        ListComponent
+        ListComponent,
+        CeListNavLinksModule
     ],
     providers: [],
 })

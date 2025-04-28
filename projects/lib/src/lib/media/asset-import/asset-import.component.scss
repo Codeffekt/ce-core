@@ -3,6 +3,11 @@
   grid-template-rows: auto 1fr auto;
   height: 100%;
 
+  .asset-import-title {
+    padding: 12px;
+    border-bottom: 1px solid #e5e5e5;
+  }
+
   form {
     height: 200px;
     display: grid;
