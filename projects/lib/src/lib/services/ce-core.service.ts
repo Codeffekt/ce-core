@@ -350,7 +350,7 @@ export class CeCoreService {
   private getHeaders(): any {
     return {
       "Content-Type": "application/json",
-      "Authorization": "Bearer" + this.getToken(),
+      "Authorization": `Bearer ${this.getToken()}`,
     };
   }
 
