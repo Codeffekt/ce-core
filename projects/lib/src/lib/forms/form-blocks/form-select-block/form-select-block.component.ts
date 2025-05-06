@@ -9,7 +9,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
     styleUrls: ['./form-select-block.component.scss'],
     standalone: false
 })
-export class FormSelectBlockComponent extends FormBlockComponent<string> {
+export class FormSelectBlockComponent extends FormBlockComponent {
 
   useFormsParams = false;
 

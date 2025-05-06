@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormInstanceBase, FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlockArray, FormInstanceBase, FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 import { CeFormsService } from '../../../services/ce-forms.service';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
@@ -20,7 +20,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
     ],
     standalone: false
 })
-export class FormArrayBlockComponent extends FormBlockComponent<void> implements OnInit {
+export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> implements OnInit {
 
   dataSource: FormArrayDatasource;
   queryBuilder: FormQueryArrayBuilder = new FormQueryArrayBuilder();

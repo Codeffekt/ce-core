@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReplaySubject } from 'rxjs';
 import { FormBlockComponent } from '../form-block/form-block.component';
+import { FormBlockText } from '@codeffekt/ce-core-data';
 
 @Component({
     selector: 'ce-form-text-block',
@@ -8,7 +9,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
     styleUrls: ['./form-text-block.component.scss'],
     standalone: false
 })
-export class FormTextBlockComponent extends FormBlockComponent<string> implements OnInit {
+export class FormTextBlockComponent extends FormBlockComponent<FormBlockText> implements OnInit {
 
   isEditMode = false;
   suggestions$ = new ReplaySubject<string[]>();

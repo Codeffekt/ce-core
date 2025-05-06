@@ -18,7 +18,7 @@ import { FormQueryRootBuilder } from '../../forms-query';
     styleUrls: ['./form-root-block.component.scss'],
     standalone: false
 })
-export class FormRootBlockComponent extends FormBlockComponent<IndexType> implements OnInit {
+export class FormRootBlockComponent extends FormBlockComponent<FormBlock> implements OnInit {
 
   displayedFields: FormBlock[] = [];
 

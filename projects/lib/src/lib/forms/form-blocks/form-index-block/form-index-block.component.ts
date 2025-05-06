@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBlock, FormInstance, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlock, FormBlockIndex, FormInstance, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
 import { CeFormRouteResolver } from '../../form-route.resolver';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
@@ -18,7 +18,7 @@ import { CeFormDataService } from '../../form-data.service';
     styleUrls: ['./form-index-block.component.scss'],
     standalone: false
 })
-export class FormIndexBlockComponent extends FormBlockComponent<IndexType> implements OnInit {
+export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> implements OnInit {
 
   displayedFields: FormBlock[] = [];
 

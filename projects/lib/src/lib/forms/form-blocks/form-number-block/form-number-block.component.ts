@@ -1,5 +1,6 @@
 import { Component, HostListener } from '@angular/core';
 import { FormBlockComponent } from '../form-block/form-block.component';
+import { FormBlockNumber } from '@codeffekt/ce-core-data';
 
 @Component({
     selector: 'ce-form-number-block',
@@ -7,7 +8,7 @@ import { FormBlockComponent } from '../form-block/form-block.component';
     styleUrls: ['./form-number-block.component.scss'],
     standalone: false
 })
-export class FormNumberBlockComponent extends FormBlockComponent<number> {
+export class FormNumberBlockComponent extends FormBlockComponent<FormBlockNumber> {
 
   isEditMode = false;
 

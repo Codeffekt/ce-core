@@ -4,7 +4,7 @@ import { CeFormRouteResolver } from '../../form-route.resolver';
 import { CeFormDataService } from '../../form-data.service';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { FormAssocDatasource } from '../../form-datasource/form-assoc.datasource';
-import { FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlockArray, FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { FormQueryAssocBuilder } from '../../forms-query/formquery-assoc.builder';
 import { MatDialog } from '@angular/material/dialog';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
@@ -23,7 +23,7 @@ import { FormArrayDatasource } from '../../form-datasource';
     ],
     standalone: false
 })
-export class FormAssocBlockComponent extends FormBlockComponent<void> implements OnInit {
+export class FormAssocBlockComponent extends FormBlockComponent<FormBlockArray> implements OnInit {
 
   dataSource: FormAssocDatasource;
   queryBuilder: FormQueryAssocBuilder = new FormQueryAssocBuilder();

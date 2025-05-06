@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Utils } from '../../../utils/Utils';
 import { FormBlockComponent } from '../form-block/form-block.component';
+import { FormBlock } from '@codeffekt/ce-core-data';
 
 const DEFAULT_TIME_FORMAT = "HH:mm:ss";
 const DEFAULT_DATE_FORMAT = "YYYY-MM-DD";
@@ -12,7 +13,7 @@ const SUPPORTED_DATE_FORMATS = ['YYYY-MM-DD HH:mm:ss', 'YYYY-MM-DD HH:mm', 'YYYY
     styleUrls: ['./form-timestamp-block.component.scss'],
     standalone: false
 })
-export class FormTimestampBlockComponent extends FormBlockComponent<number> implements OnInit {
+export class FormTimestampBlockComponent extends FormBlockComponent<FormBlock> implements OnInit {
 
   timeStr!: string;
   dateStr!: string;

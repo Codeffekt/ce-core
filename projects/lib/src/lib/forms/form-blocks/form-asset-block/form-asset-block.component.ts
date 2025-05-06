@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
-import { AssetElt } from '@codeffekt/ce-core-data';
+import { AssetElt, FormBlockAsset } from '@codeffekt/ce-core-data';
 import { PhotoPickerComponent } from '../../form/photo-picker/photo-picker.component';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { CommonModule } from '@angular/common';
@@ -29,7 +29,7 @@ import { SpaceFormContextService } from '../../../spaces';
   templateUrl: './form-asset-block.component.html',
   styleUrls: ['./form-asset-block.component.scss']
 })
-export class FormAssetBlockComponent extends FormBlockComponent<AssetElt> implements OnInit {
+export class FormAssetBlockComponent extends FormBlockComponent<FormBlockAsset> implements OnInit {
 
   assetsForm?: FormInfo
 
