@@ -5,8 +5,7 @@ import { CeCoreService } from '../../services/ce-core.service';
 @Component({
     selector: 'ce-logout',
     templateUrl: './logout.component.html',
-    styleUrls: ['./logout.component.scss'],
-    standalone: false
+    styleUrls: ['./logout.component.scss'],    
 })
 export class LogoutComponent implements OnInit {
 

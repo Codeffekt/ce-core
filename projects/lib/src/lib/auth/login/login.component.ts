@@ -1,16 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Subject } from 'rxjs';
 import { CeAppAssetsConfig } from '../../ce-core.config';
 import { CeAppService } from '../../services/ce-app.service';
 import { CeCoreService } from '../../services/ce-core.service';
+import { CommonModule } from '@angular/common';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
     selector: 'ce-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+      MatCardModule,
+      MatFormFieldModule,
+      MatProgressSpinnerModule,
+      MatButtonModule,
+      MatInputModule,
+      FormsModule,
+      ReactiveFormsModule,
+    ]   
 })
 export class LoginComponent implements OnInit {
 
