@@ -59,6 +59,14 @@ export class FormQueryBuilder {
         });
     }
 
+    setCat(cat: IndexType) {
+        this.setQueryField({
+            field: 'cat',
+            onMeta: true,
+            value: cat
+        });
+    }
+
     getSort(): FormQuerySortField {
         return this.sortFields.length ? this.sortFields[0] : { field: 'ctime', order: 'desc', onMeta: true };
     }

@@ -34,7 +34,7 @@ export class FormBlockComponent<T extends FormBlock = FormBlock> implements Form
     this.formBlockChanged();
   }
 
-  get formBlock(): FormBlock {
+  get formBlock(): T {
     return this._formBlock;
   }
 

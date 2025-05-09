@@ -8,7 +8,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { CeNgReallyModule } from '../../../widgets/ng-really';
 import { CeMediaModule } from '../../../media/media.module';
-import { SpaceFormPathService } from '../../../spaces/space-form-path.service';
 import { AssetsArrayDatasource } from '../../form-datasource';
 import { CeAssetsService } from '../../../services';
 import { AssetsFormQueryBuilder } from '../../forms-query';
@@ -47,7 +46,7 @@ export class FormAssetBlockComponent extends FormBlockComponent<FormBlockAsset> 
   }
 
   onClear() {
-    this.value = undefined as any;
+    this.value = undefined;
   }
 
   delete(asset: AssetElt) {

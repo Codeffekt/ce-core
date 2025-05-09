@@ -7,16 +7,18 @@ import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CeFormsChangesService, CeFormsService, LayoutService } from '../../../services';
-import { filter, map, tap } from 'rxjs';
-import { FormArrayDatasource } from '../../form-datasource';
+import { filter, firstValueFrom, map, tap } from 'rxjs';
+import { FormArrayDatasource, FormsRootDataSource } from '../../form-datasource';
 import { CeFormDataService } from '../../form-data.service';
+import { RootChooserDialogComponent } from '../../../roots/root-chooser-dialog/root-chooser-dialog.component';
+import { FormQueryBuilder } from '../../forms-query';
 
 @UntilDestroy()
 @Component({
-    selector: 'ce-form-index-block',
-    templateUrl: './form-index-block.component.html',
-    styleUrls: ['./form-index-block.component.scss'],
-    standalone: false
+  selector: 'ce-form-index-block',
+  templateUrl: './form-index-block.component.html',
+  styleUrls: ['./form-index-block.component.scss'],
+  standalone: false
 })
 export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> implements OnInit {
 
@@ -42,18 +44,25 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
   }
 
   async onCreate() {
+
     if(!this.formBlock.root) {
       return;
     }
 
+    const root = await this.selectRootFromCat(this.formBlock) ?? this.formBlock.root;
+
+    if (!root) {
+      return;
+    }    
+
     try {
-      const newForm = await this.formsService.createForm(this.formBlock.root);
+      const newForm = await this.formsService.createForm(root);
       this.value = newForm.id;
-      this.layout.showSingleMessage(`Le formulaire à été créé.`);
+      this.layout.showSingleMessage(`Le formulaire ${root} à été créé.`);
       this.buildDisplayedFields();
-  } catch(err) {
+    } catch (err) {
       this.layout.showErrorMessage(`Erreur lors de la création d'un nouveau formulaire`);
-  }
+    }
   }
 
   edit() {
@@ -99,6 +108,29 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
     this.buildDisplayedFields();
   }
 
+  private async selectRootFromCat(block: FormBlockIndex) {
+
+    if (!block.params?.useCategory || !block.root) {
+      return undefined;
+    }
+
+    const query = new FormQueryBuilder();
+    query.setCat(block.root);    
+
+    const dialogRef = RootChooserDialogComponent.open(this.dialog,
+      {
+        dataSource: new FormsRootDataSource(
+          this.formsService
+        ),
+        query,
+      }
+    );
+
+    const root = await firstValueFrom(dialogRef.afterClosed());    
+
+    return root.id;
+  }
+
   private buildDisplayedFields() {
 
     this.displayedFields = [];
@@ -129,6 +161,6 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
 
   private updateDisplayFields(block: FormBlock, form: FormInstance) {
     const fields = block.params?.fields?.length ? block.params.fields : form.params?.fields;
-    this.displayedFields = fields ? fields.map((f: string) => FormUtils.retrieveBlockFromField(form, f)) : [];    
+    this.displayedFields = fields ? fields.map((f: string) => FormUtils.retrieveBlockFromField(form, f)) : [];
   }
 }

@@ -4,7 +4,7 @@ import {
     FormInstanceMaskWrapper,
     IndexType
 } from "@codeffekt/ce-core-data";
-import { BehaviorSubject } from "rxjs";
+import { BehaviorSubject, Observable } from "rxjs";
 import { FormInfo } from "../models/form-info";
 import { CeAppService } from "./ce-app.service";
 import { CeFormInfosService } from "./ce-form-infos.service";
@@ -34,8 +34,8 @@ export abstract class FormEditorServiceBase {
         return this.formInfo;
     }
 
-    onFormInfo() {
-        return this.formInfo$;
+    onFormInfo(): Observable<FormInfo|undefined> {
+        return this.formInfo$.asObservable();
     }   
 }
 

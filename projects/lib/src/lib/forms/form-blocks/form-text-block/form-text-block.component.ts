@@ -53,6 +53,6 @@ export class FormTextBlockComponent extends FormBlockComponent<FormBlockText> im
   }
 
   private getFormSuggestions(): string[] {
-    return this.formBlock.params?.suggestions;
+    return this.formBlock.params?.suggestions ?? [];
   }
 }

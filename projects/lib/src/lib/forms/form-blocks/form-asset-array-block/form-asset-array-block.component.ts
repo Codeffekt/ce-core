@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormBlockComponent } from '../form-block/form-block.component';
-import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
+import { AssetElt, FormBlock, IndexType } from '@codeffekt/ce-core-data';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { LayoutService } from '../../../services/layout.service';
@@ -42,7 +42,7 @@ import { AssetsArrayDatasource } from '../../form-datasource/assets-array-dataso
         CeFormQueryService,
     ]
 })
-export class FormAssetArrayBlockComponent extends FormBlockComponent<void> implements OnInit {
+export class FormAssetArrayBlockComponent extends FormBlockComponent<FormBlock> implements OnInit {
 
   datasource!: AssetsArrayDatasource;
   assetArrayRef!: IndexType;

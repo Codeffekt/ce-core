@@ -1,8 +1,9 @@
 import { Injectable } from "@angular/core";
 import { CeCoreService } from "./ce-core.service";
-import { distinct, filter, mergeMap, Subject } from "rxjs";
+import { distinct, filter, mergeMap, Observable, Subject } from "rxjs";
 import { FormEvent, IndexType } from "@codeffekt/ce-core-data";
 import { CeFormEditorService } from "./ce-form-editor.service";
+import { FormInfo } from "../models";
 
 @Injectable({ providedIn: 'root'})
 export class CeEventsService {
@@ -54,7 +55,7 @@ export class CeEventsService {
         return this.sseEvents$.asObservable();
     }
 
-    onFormUpdate(elt: IndexType) {
+    onFormUpdate(elt: IndexType): Observable<FormInfo> {
         return this.all().pipe(
             filter(evt => evt.type === "update" && (<any> evt.elts).includes(elt)),
             distinct(evt => evt.time),

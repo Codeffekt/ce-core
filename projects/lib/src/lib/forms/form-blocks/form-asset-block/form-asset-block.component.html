@@ -1,5 +1,7 @@
 <div class="form-asset-block-header">
-    <span class="title" *ngIf="formBlock.label">{{formBlock.label}}</span>
+    @if(formBlock.label) {
+    <span class="title">{{formBlock.label}}</span>
+    }
     <div>
         <button mat-button color="accent" [disabled]="!assetsForm" matTooltip="Importer un asset"
             (click)="openAssetImporter()">
@@ -16,16 +18,12 @@
     </div>
 </div>
 <div class="image-wrapper">
-    <ng-container *ngIf="formBlock.value?.id; then imageTpl else noImageTpl"></ng-container>
-</div>
-
-<ng-template #noImageTpl>
+    @if(formBlock.value?.id) {
+    <ce-media-factory class="m-2" [elt]="formBlock.value!" (delete)="delete(formBlock.value!)">
+    </ce-media-factory>
+    } @else {
     <div class="no-image" style="min-height:256px">
         <h4 class="text-muted">Aucune Donnée</h4>
     </div>
-</ng-template>
-
-<ng-template #imageTpl>
-    <ce-media-factory class="m-2" [elt]="formBlock.value" (delete)="delete(formBlock.value)">
-    </ce-media-factory>
-</ng-template>
+    }
+</div>

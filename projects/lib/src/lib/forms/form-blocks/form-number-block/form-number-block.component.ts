@@ -43,6 +43,6 @@ export class FormNumberBlockComponent extends FormBlockComponent<FormBlockNumber
   }
 
   getLastValueAsStr() {
-    return this.value?.toString();
+    return this.value?.toString() ?? "";
   }
 }

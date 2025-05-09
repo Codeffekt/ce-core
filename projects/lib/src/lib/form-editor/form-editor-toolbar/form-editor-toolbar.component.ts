@@ -3,6 +3,8 @@ import { FormActionService } from '../../forms/form/actions/form-action.service'
 import { FormInstance } from '@codeffekt/ce-core-data';
 import { FormActionRenderService } from '../../forms/form/actions/form-action-render.service';
 import { CeFormEditorService } from '../../services/ce-form-editor.service';
+import { Observable } from 'rxjs';
+import { FormInfo } from '../../models/form-info';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionToolbarService {
@@ -29,5 +31,5 @@ export class FormActionToolbarService {
     standalone: false
 })
 export class CeFormEditorToolbarComponent {
-  currentForm$ = inject(CeFormEditorService).onFormInfo();  
+  currentForm$: Observable<FormInfo|undefined> = inject(CeFormEditorService).onFormInfo();  
 }

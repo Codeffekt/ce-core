@@ -11,14 +11,17 @@ import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-
 import { FormQueryArrayBuilder } from '../../forms-query/formquery-array.builder';
 import { FormQueryIndexBuilder } from '../../forms-query/formquery-index.builder';
 import { FormBlockComponent } from '../form-block/form-block.component';
+import { FormQueryBuilder } from '../../forms-query/formquery.builder';
+import { RootChooserDialogComponent } from '../../../roots/root-chooser-dialog';
+import { FormsRootDataSource } from '../../form-datasource/forms-root-datasource';
 @Component({
-    selector: 'ce-form-array-block',
-    templateUrl: './form-array-block.component.html',
-    styleUrls: ['./form-array-block.component.scss'],
-    providers: [
-        CeFormQueryService
-    ],
-    standalone: false
+  selector: 'ce-form-array-block',
+  templateUrl: './form-array-block.component.html',
+  styleUrls: ['./form-array-block.component.scss'],
+  providers: [
+    CeFormQueryService
+  ],
+  standalone: false
 })
 export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> implements OnInit {
 
@@ -32,7 +35,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
   constructor(
     public dialog: MatDialog,
     private api: CeFormDataService,
-    private formService: CeFormsService,
+    private formsService: CeFormsService,
     private formRouteResolver: CeFormRouteResolver,
     private readonly queryService: CeFormQueryService<FormInstanceExt>,
   ) {
@@ -44,8 +47,16 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
     this.init();
   }
 
-  onAdd() {
+  async onAdd() {
+
+    const block = await this.selectBlockFromCat(this.formBlock) ?? this.formBlock;
+
+    if (!block) {
+      return;
+    }
+
     this.dataSource.createElt(this.formBlock, this.formInstance);
+
   }
 
   onLink() {
@@ -104,7 +115,33 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
     this.queryBuilder = FormQueryArrayBuilder.fromBlock(this.formBlock, this.formInstance);
     this.queryService.setDatasource(this.dataSource);
     this.queryService.setQueryBuilder(this.queryBuilder);
-    this.formRoot = await firstValueFrom(this.formService.getFormRoot(this.formBlock.root!));
+    this.formRoot = await firstValueFrom(this.formsService.getFormRoot(this.formBlock.root!));
     this.queryService.setModel(this.formRoot);
+  }
+
+  private async selectBlockFromCat(block: FormBlockArray): Promise<FormBlockArray | undefined> {
+
+    if (!block.params?.useCategory || !block.root) {
+      return undefined;
+    }
+
+    const query = new FormQueryBuilder();
+    query.setCat(block.root);
+
+    const dialogRef = RootChooserDialogComponent.open(this.dialog,
+      {
+        dataSource: new FormsRootDataSource(
+          this.formsService
+        ),
+        query,
+      }
+    );
+
+    const root: IndexType | undefined = await firstValueFrom(dialogRef.afterClosed());
+
+    return root !== undefined ? {
+      ...block,
+      root,
+    } : undefined;
   }
 }
