@@ -40,11 +40,15 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
             query.setExtra(formBlock.params.query);
         }
 
-        query.setRoot(formBlock.root!);
+        if (formBlock.params?.useCategory) {
+            query.setCat(formBlock.root!);
+        } else {
+            query.setRoot(formBlock.root!);
+        }
 
 
         query.ref = formBlock.params?.ref ||
-            FormUtils.createFormAssocRef(context.id, formBlock.field);        
+            FormUtils.createFormAssocRef(context.id, formBlock.field);
 
         return query;
     }

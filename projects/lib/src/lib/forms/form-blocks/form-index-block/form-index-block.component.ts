@@ -45,7 +45,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
 
   async onCreate() {
 
-    if(!this.formBlock.root) {
+    if (!this.formBlock.root) {
       return;
     }
 
@@ -53,7 +53,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
 
     if (!root) {
       return;
-    }    
+    }
 
     try {
       const newForm = await this.formsService.createForm(root);
@@ -69,7 +69,11 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
 
     const query = new FormQueryIndexBuilder();
 
-    query.setFormRoot(this.formBlock.root!);
+    if (this.formBlock.params?.useCategory) {
+      query.setCat(this.formBlock.root!);
+    } else {
+      query.setFormRoot(this.formBlock.root!);
+    }
 
     if (this.formBlock.value) {
       query.setExcludedIndices([this.formBlock.value]);
@@ -115,7 +119,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
     }
 
     const query = new FormQueryBuilder();
-    query.setCat(block.root);    
+    query.setCat(block.root);
 
     const dialogRef = RootChooserDialogComponent.open(this.dialog,
       {
@@ -126,7 +130,7 @@ export class FormIndexBlockComponent extends FormBlockComponent<FormBlockIndex> 
       }
     );
 
-    const root = await firstValueFrom(dialogRef.afterClosed());    
+    const root = await firstValueFrom(dialogRef.afterClosed());
 
     return root.id;
   }

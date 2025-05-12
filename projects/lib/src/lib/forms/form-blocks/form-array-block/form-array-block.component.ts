@@ -61,10 +61,20 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
 
   onLink() {
 
+    if(!this.formBlock.root) {
+      return;
+    }
+
     const ref = this.formBlock.params?.ref || FormUtils.createFormAssocRef(this.formInstance.id, this.formBlock.field);
 
     const query = new FormQueryIndexBuilder();
-    query.setFormRoot(this.formBlock.root!);
+
+    if(this.formBlock.params?.useCategory) {
+      query.setCat(this.formBlock.root);
+    } else {
+      query.setFormRoot(this.formBlock.root);
+    }
+    
     query.setExcludedRef(ref);
 
     const dialogRef = FormChooserDialogComponent.open(this.dialog,
