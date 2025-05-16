@@ -1,24 +1,24 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBlock, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
-import { FormChooserDialogComponent } from '../../form/form-chooser-dialog/form-chooser-dialog.component';
+import { FormBlock, FormBlockRoot, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { CeFormRouteResolver } from '../../form-route.resolver';
 import { FormBlockComponent } from '../form-block/form-block.component';
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { CeFormsService } from '../../../services';
 import { firstValueFrom } from 'rxjs';
-import { FormsRootInstanceDataSource } from '../../form-datasource';
+import { FormsRootDataSource } from '../../form-datasource';
 import { FormQueryRootBuilder } from '../../forms-query';
+import { RootChooserDialogComponent } from '../../../roots/root-chooser-dialog';
 
 @UntilDestroy()
 @Component({
-    selector: 'ce-form-root-block',
-    templateUrl: './form-root-block.component.html',
-    styleUrls: ['./form-root-block.component.scss'],
-    standalone: false
+  selector: 'ce-form-root-block',
+  templateUrl: './form-root-block.component.html',
+  styleUrls: ['./form-root-block.component.scss'],
+  standalone: false
 })
-export class FormRootBlockComponent extends FormBlockComponent<FormBlock> implements OnInit {
+export class FormRootBlockComponent extends FormBlockComponent<FormBlockRoot> implements OnInit {
 
   displayedFields: FormBlock[] = [];
 
@@ -37,46 +37,40 @@ export class FormRootBlockComponent extends FormBlockComponent<FormBlock> implem
   }
 
   openForm(formId: IndexType) {
-    this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);    
+    // this.formRouteResolver.resolve(this.formBlock.field, formId, this.formInstance);
   }
 
   edit() {
 
-    const query = new FormQueryRootBuilder();    
+    const query = new FormQueryRootBuilder();
 
     if (this.formBlock.value) {
       query.setExcludedIndices([this.formBlock.value]);
     }
 
-    const dialogRef = FormChooserDialogComponent.open(this.dialog,
+    if(this.formBlock.cat) {
+      query.setCat(this.formBlock.cat);
+    }
+
+    const dialogRef = RootChooserDialogComponent.open(this.dialog,
       {
-        formBlock: this.formBlock,
         query,
-        dataSource: new FormsRootInstanceDataSource(
+        dataSource: new FormsRootDataSource(
           this.formsService
-          )
+        ),
       }
     );
 
     dialogRef.afterClosed().subscribe(form => {
       if (form) {
-        this.value = form.id;
-        this.formInstance.fields = {
-          ...this.formInstance.fields,
-          [this.formBlock.field]: form
-        };
+        this.value = form.id;        
         this.buildDisplayedFields();
       }
     });
   }
 
-  delete() {
-    // event.stopPropagation();
-    this.value = undefined as any;
-    this.formInstance.fields = {
-      ...this.formInstance.fields,
-      [this.formBlock.field]: undefined as any
-    };
+  delete() {    
+    this.value = undefined;    
     this.buildDisplayedFields();
   }
 
@@ -86,12 +80,12 @@ export class FormRootBlockComponent extends FormBlockComponent<FormBlock> implem
 
     if (!this.formBlock.value) {
       return;
-    }    
+    }
 
     const formRoot = await firstValueFrom(this.formsService.getFormRoot(this.formBlock.value));
 
-    this.updateDisplayFields(this.formBlock, formRoot);    
-  }  
+    this.updateDisplayFields(this.formBlock, formRoot);
+  }
 
   private updateDisplayFields(block: FormBlock, form: FormRoot) {
     const fields = block.params?.fields?.length ? block.params.fields : form.params?.fields;

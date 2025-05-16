@@ -16,4 +16,4 @@ export * from './form-factory-block';
 export * from './form-action-block';
 export * from './form-blocks.module';
 export * from './form-block-asset-factory';
-export * from './form-object-block';
+

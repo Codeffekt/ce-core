@@ -44,7 +44,6 @@ import { FormRootBlockComponent } from "./form-root-block/form-root-block.compon
 import { FormFactoryBlockComponent } from "./form-factory-block";
 import { FormActionBlockComponent } from "./form-action-block";
 import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
-import { FormObjectBlockComponent } from "./form-object-block/form-object-block.component";
 
 @NgModule({
     declarations: [
@@ -119,8 +118,7 @@ export class CeFormBlocksModule {
             'root': FormRootBlockComponent,   
             'factory': FormFactoryBlockComponent,         
             'action': FormActionBlockComponent,
-            'assetArray': FormAssetArrayBlockComponent,
-            'object': FormObjectBlockComponent,
+            'assetArray': FormAssetArrayBlockComponent,            
         });
     }
 }
