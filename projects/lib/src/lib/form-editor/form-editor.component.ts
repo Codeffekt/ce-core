@@ -4,11 +4,22 @@ import { CeFormUpdaterService } from '../forms/form-updater.service';
 import { FormWrapperChangeNotifier } from '../models/FormWrapperChangeNotifier';
 import { CeFormEditorService, CeFormInfoBreadcrumbsService, CeFormsChangesService } from '../services';
 import { FormInfo } from '../models/form-info';
+import { CeNavigationModule } from '../navigation';
+import { CeGridModule } from '../layout';
+import { CeFormFactoryComponent } from '../forms';
+import { CeFormEditorToolbarComponent } from './form-editor-toolbar/form-editor-toolbar.component';
+import { CommonModule } from '@angular/common';
 @Component({
     selector: 'ce-form-editor',
     templateUrl: './form-editor.component.html',
-    styleUrls: ['./form-editor.component.scss'],
-    standalone: false
+    styleUrls: ['./form-editor.component.scss'],    
+    imports: [
+      CommonModule,
+      CeNavigationModule,
+      CeGridModule,
+      CeFormFactoryComponent,
+      CeFormEditorToolbarComponent,
+    ],
 })
 export class CeFormEditorComponent implements OnInit {
 

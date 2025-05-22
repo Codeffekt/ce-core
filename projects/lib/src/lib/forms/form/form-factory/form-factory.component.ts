@@ -1,6 +1,7 @@
 import {
   AfterViewInit, Component,
   ComponentRef, EventEmitter,
+  inject,
   Input, OnInit,
   Output, Type, ViewChild,
   ViewContainerRef
@@ -8,13 +9,16 @@ import {
 import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { Subscription } from 'rxjs';
 import { IFormContent } from '../form-models';
-import { FormActionRenderService } from '../actions/form-action-render.service';
+import { FormStoreService } from '../form-store.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'ce-form-factory',
     templateUrl: './form-factory.component.html',
     styleUrls: ['./form-factory.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+    ]
 })
 export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewInit {
 
@@ -56,9 +60,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   private formComponentSubscriptions?: Subscription;
   private lastComponentType!: Type<any>;
 
-  constructor(
-    private formActionService: FormActionRenderService,
-  ) { }
+  private formStoreService = inject(FormStoreService);
 
   ngOnInit(): void {
   }
@@ -86,7 +88,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
   }
 
   private isSameComponentType(prev: Type<any>, form: FormInstance) {
-    return prev === this.formActionService.getRenderFromForm(form);
+    return prev === this.formStoreService.getComponentTypeFromForm(form);
   }
 
   private recreateComponent(form: FormInstance) {
@@ -106,7 +108,7 @@ export class CeFormFactoryComponent implements OnInit, IFormContent, AfterViewIn
       return;
     }
 
-    const componentType = this.formActionService.getRenderFromForm(form);
+    const componentType = this.formStoreService.getComponentTypeFromForm(form);
     if (componentType) {
       this.formComponent = this.vcr.createComponent(componentType);
     }

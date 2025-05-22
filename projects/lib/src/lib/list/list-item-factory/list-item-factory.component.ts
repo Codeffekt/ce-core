@@ -6,7 +6,7 @@ import {
     ViewChild, ViewContainerRef
 } from "@angular/core";
 import { FormBlock } from "@codeffekt/ce-core-data";
-import { IListItemContent } from "./list-item-models";
+import { IListItemContent, ListItemFactoryType } from "./list-item-models";
 import { ListItemStoreService } from "./list-item-store.service";
 
 @Component({
@@ -30,8 +30,8 @@ export class ListItemFactoryComponent<T = any> implements OnInit, AfterViewInit 
         return this._block;
     }
 
-    _type!: string;
-    get type(): string {
+    _type!: ListItemFactoryType;
+    get type(): ListItemFactoryType {
         return this._type;
     }
 
@@ -51,7 +51,7 @@ export class ListItemFactoryComponent<T = any> implements OnInit, AfterViewInit 
         }
     }
 
-    @Input() set type(value: string) {
+    @Input() set type(value: ListItemFactoryType) {
         this._type = value;
         this.updateComponent();
     }

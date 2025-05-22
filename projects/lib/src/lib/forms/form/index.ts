@@ -14,4 +14,5 @@ export * from './form-menu/form-menu.component';
 export * from './form-topbar/form-topbar.component';
 export * from './form-toolbar/form-toolbar.component';
 export * from './actions';
+export * from './form-store.service';
 export * from './form.module';

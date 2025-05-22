@@ -13,9 +13,7 @@ import { CeTableModule } from "../../table";
 import { CeFormBlocksModule } from "../form-blocks";
 import { CeFormCardModule } from "../form-card";
 import { FormSubformTitleComponent } from './form-subform-title/form-subform-title.component';
-import { CeFormComponent } from './form.component';
 import { PhotoPickerComponent } from './photo-picker/photo-picker.component';
-import { CeFormFactoryComponent } from './form-factory/form-factory.component';
 import { FormNewComponent } from "./form-new/form-new.component";
 import { FormNewFactoryComponent } from "./form-new-factory/form-new-factory.component";
 import { FormMenuComponent } from './form-menu/form-menu.component';
@@ -26,12 +24,10 @@ import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
 import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
 
 @NgModule({
-    declarations: [
-        CeFormComponent,              
+    declarations: [            
         FormSubformTitleComponent,
         FormNewComponent,
         FormNewFactoryComponent,
-        CeFormFactoryComponent,
         FormMenuComponent,
         FormTopbarComponent,
         FormToolbarComponent
@@ -57,8 +53,6 @@ import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
         PhotoPickerComponent,
     ],
     exports: [
-        CeFormComponent,
-        CeFormFactoryComponent,
         FormNewComponent,
         FormNewFactoryComponent,
         PhotoPickerComponent,

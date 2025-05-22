@@ -1,10 +1,11 @@
 import { Component, Injectable, Type, inject } from '@angular/core';
 import { FormInstance } from '@codeffekt/ce-core-data';
 import { FormActionService } from '../../forms/form/actions/form-action.service';
-import { FormActionRenderService } from '../../forms/form/actions/form-action-render.service';
 import { CeFormEditorService } from '../../services/ce-form-editor.service';
 import { Observable } from 'rxjs';
 import { FormInfo } from '../../models/form-info';
+import { CeFormFactoryComponent, FormStoreService } from '../../forms';
+import { CommonModule } from '@angular/common';
 
 @Injectable({ providedIn: 'root' })
 export class FormActionTopbarService {
@@ -13,7 +14,7 @@ export class FormActionTopbarService {
     private formActionService: FormActionService,
   ) { }
 
-  getRenderFromForm<T = any>(form: FormInstance): Type<T> {
+  getComponentTypeFromForm<T=any>(form: FormInstance): Type<T> {
     return this.formActionService.getTopbarFromForm(form);
   }
 }
@@ -24,11 +25,14 @@ export class FormActionTopbarService {
     styleUrls: ['./form-editor-topbar.component.scss'],
     providers: [
         {
-            provide: FormActionRenderService,
+            provide: FormStoreService,
             useClass: FormActionTopbarService,
         }
     ],
-    standalone: false
+    imports: [
+      CommonModule,
+      CeFormFactoryComponent,
+    ]
 })
 export class CeFormEditorTopbarComponent {  
   currentForm$: Observable<FormInfo|undefined> = inject(CeFormEditorService).onFormInfo();  

@@ -5,7 +5,8 @@ import {
     CeFormModule,
     CeSideMenuModule,
     FormActionBuilder, FormActionService,
-    FormsLocalDatabaseService
+    FormsLocalDatabaseService,
+    FormStoreService
 } from "@codeffekt/ce-core";
 import { CeBarcodeModule } from "@codeffekt/ce-barcode";
 import { HighlightModule } from "ngx-highlightjs";
@@ -28,7 +29,7 @@ import { CeCoreDataModule } from "./ce-core-data/ce-core-data.module";
         RouterModule,
     ],
     declarations: [
-        IntroductionComponent,               
+        IntroductionComponent,
         CeAdminComponent,
         ApplicationComponent,
         HomeMenuComponent,
@@ -38,18 +39,22 @@ export class QuickstartModule {
 
     constructor(
         formActions: FormActionService,
+        formStoreService: FormStoreService,
         localDatabase: FormsLocalDatabaseService,
     ) {
+        formStoreService.setComponents({
+            'form-quickstart-introduction': IntroductionComponent,
+            'form-quickstart-admin': CeAdminComponent,
+            'form-quickstart-application': ApplicationComponent,
+        });
+
         formActions.setActions({
             'form-quickstart-introduction': FormActionBuilder
-                .withRender(IntroductionComponent)
-                .setMenu(HomeMenuComponent),                        
+                .withMenu(HomeMenuComponent),
             'form-quickstart-admin': FormActionBuilder
-                .withRender(CeAdminComponent)
-                .setMenu(HomeMenuComponent),
+                .withMenu(HomeMenuComponent),
             'form-quickstart-application': FormActionBuilder
-                .withRender(ApplicationComponent)
-                .setMenu(HomeMenuComponent),
+                .withMenu(HomeMenuComponent),
         });
         localDatabase.setForms({
             'quickstart-introduction': {
@@ -59,7 +64,7 @@ export class QuickstartModule {
                 valid: true,
                 root: 'form-quickstart-introduction',
                 content: {}
-            },                   
+            },
             'quickstart-admin': {
                 id: 'quickstart-admin',
                 title: 'Le module ce-admin',

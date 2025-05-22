@@ -4,6 +4,7 @@ import { FormBlock, FormInstance } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { FormBlockFactoryService } from '../form-block-factory/form-block-factory.service';
 import { FormBlockComponentAccessor } from '../form-block/form-block.component';
+import { CommonModule } from '@angular/common';
 @UntilDestroy()
 @Component({
     selector: 'ce-form-block-factory',
@@ -14,7 +15,9 @@ import { FormBlockComponentAccessor } from '../form-block/form-block.component';
             multi: true
         }],
     styleUrls: ['./form-block-factory.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+    ]    
 })
 export class FormBlockFactoryComponent implements OnInit, AfterViewInit, ControlValueAccessor {
 

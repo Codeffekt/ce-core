@@ -1,5 +1,5 @@
 import { EventEmitter, Type } from "@angular/core";
-import { FormBlock } from "@codeffekt/ce-core-data";
+import { FormBlock, FormBlockIndex, FormInstance } from "@codeffekt/ce-core-data";
 
 export interface IListItemContent<T = any> {
     itemChangedEvent?: EventEmitter<boolean>;
@@ -23,3 +23,5 @@ export interface ListItemFactoryComponents {
 export interface ListItemFactoryOptions {
     components: ListItemFactoryComponents;
 }
+
+export type ListItemFactoryType = string;

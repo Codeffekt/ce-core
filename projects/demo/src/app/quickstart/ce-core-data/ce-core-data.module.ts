@@ -1,5 +1,5 @@
 import { NgModule } from "@angular/core";
-import { CeFormModule, CeListModule, CeSideMenuModule, FormActionBuilder, FormActionService, FormsLocalDatabaseService } from "@codeffekt/ce-core";
+import { CeFormModule, CeListModule, CeSideMenuModule, FormActionBuilder, FormActionService, FormsLocalDatabaseService, FormStoreService } from "@codeffekt/ce-core";
 import { CeCoreDataComponent } from "./ce-core-data.component";
 import { CommonModule } from "@angular/common";
 import { RouterModule } from "@angular/router";
@@ -30,15 +30,18 @@ export class CeCoreDataModule {
 
     constructor(
         formActions: FormActionService,
+        formStoreService: FormStoreService,
         localDatabase: FormsLocalDatabaseService,
     ) {
+        formStoreService.setComponents({
+            'ce-core-data-introduction': CeCoreDataComponent,
+            'ce-core-data-block-types-root': BlockTypeRootComponent,
+        });
         formActions.setActions({
             'ce-core-data-introduction': FormActionBuilder
-                .withRender(CeCoreDataComponent)
-                .setMenu(MenuComponent),
+                .withMenu(MenuComponent),
             'ce-core-data-block-types-root': FormActionBuilder
-                .withRender(BlockTypeRootComponent)
-                .setMenu(MenuComponent)
+                .withMenu(MenuComponent),
         });
         localDatabase.setForms({
             'ce-core-data-introduction': {

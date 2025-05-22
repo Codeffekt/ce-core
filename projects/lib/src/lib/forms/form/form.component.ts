@@ -4,7 +4,7 @@ import {
   OnDestroy,
   Output
 } from '@angular/core';
-import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
+import { ReactiveFormsModule, UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 import {
   FormInstance, FormInstanceMaskWrapper,
   FormWrapper
@@ -15,6 +15,11 @@ import { FormControlsBuilder } from './form-controls.builder';
 import { FormMaskBuilder } from './form-mask.builder';
 import { IFormContent } from './form-models';
 import { FormCard, FormStyleBuilder } from './form-style.builder';
+import { CommonModule } from '@angular/common';
+import { CeGridModule } from '../../layout';
+import { CeFormCardModule } from '../form-card';
+import { FormBlockFactoryComponent } from '../form-blocks/form-block-factory/form-block-factory.component';
+import { CeFormsPipesModule } from '../../forms-pipes/forms-pipes.module';
 
 const DEBOUNCE_TIME_MS = 1000;
 const CE_FORM_CSS_CLASS_NAME = "ce-form";
@@ -22,8 +27,15 @@ const CE_FORM_CSS_CLASS_NAME = "ce-form";
     selector: 'ce-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss'],
-    providers: [FormControlsBuilder],
-    standalone: false
+    providers: [FormControlsBuilder], 
+    imports: [
+      CommonModule,
+      ReactiveFormsModule,
+      CeGridModule,
+      CeFormCardModule,
+      FormBlockFactoryComponent,
+      CeFormsPipesModule,
+    ]   
 })
 export class CeFormComponent<T = any> implements OnDestroy, IFormContent {
 

@@ -1,12 +1,14 @@
 import { Injectable, Type } from "@angular/core";
 import {
     ListItemFactoryComponentClass, ListItemFactoryComponentFunction,
-    ListItemFactoryComponents, ListItemFactoryOptions
+    ListItemFactoryComponents, ListItemFactoryOptions,
+    ListItemFactoryType
 } from "./list-item-models";
 
 function isFactoryFunction(elt: ListItemFactoryComponentClass | ListItemFactoryComponentFunction): elt is ListItemFactoryComponentFunction {
     return (<ListItemFactoryComponentFunction>elt)?.useFunction !== undefined;
 }
+
 @Injectable({ providedIn: 'root' })
 export class ListItemStoreService {
 
@@ -16,7 +18,8 @@ export class ListItemStoreService {
         components: {}
     };
 
-    getComponentType<T>(type: string, elseUseDefault = true): Type<any>|undefined {
+    getComponentType<T>(type: ListItemFactoryType, elseUseDefault = true): Type<any> | undefined {        
+
         const existingComponent = this.store.components[type];
 
         if (!existingComponent) {
@@ -24,7 +27,7 @@ export class ListItemStoreService {
         }
 
         return isFactoryFunction(existingComponent) ? existingComponent.useFunction(type) : existingComponent.useClass;
-    }
+    }    
 
     setComponents(components: ListItemFactoryComponents) {
         Object.keys(components).forEach(type => this.store.components[type] = components[type]);
@@ -32,5 +35,5 @@ export class ListItemStoreService {
 
     setDefaultComponent(component: Type<any>) {
         this.defaultComponent = component;
-    }
+    }    
 }

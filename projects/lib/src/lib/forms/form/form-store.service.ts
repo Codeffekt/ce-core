@@ -1,64 +1,31 @@
-/* import { Injectable, Type } from "@angular/core";
-import {
-    FormFactoryComponents, FormFactoryDeleteFunction,
-    FormFactoryDeleteFunctions, FormFactoryOptions
-} from "./form-models";
-import { FormInstance, FormInstanceBase } from "@codeffekt/ce-core-data";
+import { Injectable, Type } from "@angular/core";
+import { FormInstance } from "@codeffekt/ce-core-data";
+import { FormFactoryComponents, FormFactoryOptions } from "./form-models";
 
-@Injectable({ providedIn: 'root' })
-export class CeFormStoreService {
+@Injectable({ providedIn: 'root'})
+export class FormStoreService {
+    private defaultComponent!: Type<any>;
 
-    private defaultRenderer: Type<any>;
-    private defaultBuilder: Type<any>;
-    private defaultDeleter: FormFactoryDeleteFunction;
+    private store: FormFactoryOptions = {
+        components: {}
+    };    
 
-    private components: FormFactoryOptions = {
-        renderers: {},
-        deleters: {},
-        builders: {},
-    };
-
-    getRenderer(type: string): Type<any> {
-        const existingComponent = this.components.renderers[type];
-        return existingComponent ?? this.defaultRenderer;
+    getComponentType(type: string): Type<any> {
+        const existingComponent = this.store.components[type];
+        return existingComponent ?? this.defaultComponent;        
     }
 
-    getRendererFromForm(form: FormInstance): Type<any> {
-        const existingComponent = this.components.renderers[form.root] ?? this.components.renderers[form.type];
-        return existingComponent ?? this.defaultRenderer;
+    getComponentTypeFromForm<T=any>(form: FormInstance): Type<T> {
+        const root = form.cat ?? form.root;
+        const existingComponent = this.store.components[form.root];
+        return existingComponent ?? this.defaultComponent;
     }
 
-    getBuilderFromForm(form: FormInstanceBase): Type<any> {
-        const existingComponent = this.components.builders[form.id] ?? this.components.builders[form.type];
-        return existingComponent ?? this.defaultBuilder;
+    setComponents(components: FormFactoryComponents) {
+        Object.keys(components).forEach(type => this.store.components[type] = components[type]);
     }
 
-    getDeleterFromForm(form: FormInstance): FormFactoryDeleteFunction {
-        const existingFunction = this.components.deleters[form.id] ?? this.components.deleters[form.type];
-        return existingFunction ?? this.defaultDeleter;
+    setDefaultComponent(component: Type<any>) {
+        this.defaultComponent = component;
     }
-
-    setRenderers(components: FormFactoryComponents) {
-        Object.keys(components).forEach(type => this.components.renderers[type] = components[type]);
-    }
-
-    setBuilders(components: FormFactoryComponents) {
-        Object.keys(components).forEach(type => this.components.builders[type] = components[type]);
-    }
-
-    setDeleters(functions: FormFactoryDeleteFunctions) {
-        Object.keys(functions).forEach(type => this.components.deleters[type] = functions[type]);
-    }
-
-    setDefaultRenderer(component: Type<any>) {
-        this.defaultRenderer = component;
-    }
-
-    setDefaultBuilder(component: Type<any>) {
-        this.defaultBuilder = component;
-    }
-
-    setDefaultDeleter(func: FormFactoryDeleteFunction) {
-        this.defaultDeleter = func;
-    }
-} */
+}

@@ -3,7 +3,8 @@ import { CeCoreComponent } from "./ce-core.component";
 import { CommonModule } from "@angular/common";
 import {
     CeFormModule, CeFormQueryWrapperModule, CeListModule, CeSideMenuModule, FormActionBuilder,
-    FormActionService, FormsLocalDatabaseService
+    FormActionService, FormsLocalDatabaseService,
+    FormStoreService
 } from "@codeffekt/ce-core";
 import { HighlightModule } from "ngx-highlightjs";
 import { CeBarcodeModule } from "@codeffekt/ce-barcode";
@@ -40,15 +41,19 @@ export class CeCoreModule {
 
     constructor(
         formActions: FormActionService,
+        formStoreService: FormStoreService,
         localDatabase: FormsLocalDatabaseService,
     ) {
+        formStoreService.setComponents({
+            'ce-core-installation': InstallationComponent,            
+            'ce-core-list': ListComponent,            
+        });
+
         formActions.setActions({
-            'ce-core-installation': FormActionBuilder
-                .withRender(InstallationComponent)
-                .setMenu(MenuComponent),
-            'ce-core-list': FormActionBuilder
-                .withRender(ListComponent)
-                .setMenu(MenuComponent),
+            'ce-core-installation': FormActionBuilder                
+                .withMenu(MenuComponent),
+            'ce-core-list': FormActionBuilder                
+                .withMenu(MenuComponent),
         });
         localDatabase.setForms({
             'ce-core-installation': {

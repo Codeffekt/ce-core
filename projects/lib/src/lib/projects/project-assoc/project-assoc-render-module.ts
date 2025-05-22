@@ -1,7 +1,5 @@
 import { NgModule } from "@angular/core";
-import { FormActionService } from "../../forms/form/actions/form-action.service";
 import { FormAssoc } from "../../models/FormAssoc";
-import { FormActionBuilder } from "../../forms/form/actions/form-action-builder";
 import { CeProjectAssocComponent } from "./project-assoc/project-assoc.component";
 import { ProjectAssocFactoryComponent } from "./project-assoc-factory/project-assoc-factory.component";
 import { ProjectAssocDefaultComponent } from "./project-assoc-default/project-assoc-default.component";
@@ -15,9 +13,8 @@ import { MatIconModule } from "@angular/material/icon";
 import { MatButtonModule } from "@angular/material/button";
 import { MatTooltipModule } from "@angular/material/tooltip";
 import { ProjectAssocStoreService } from "./project-assoc-store.service";
-import { NavigationItemStoreService } from "../../navigation/navigation-item-factory/navigation-item-store.service";
-import { FormBlock, FormWrapper } from "@codeffekt/ce-core-data";
 import { CommonModule } from "@angular/common";
+import { FormStoreService } from "../../forms/form/form-store.service";
 
 @NgModule({
     declarations: [
@@ -45,13 +42,12 @@ export class CeProjectAssocRenderModule {
 
     constructor(
         storeService: ProjectAssocStoreService,
-        formActionService: FormActionService,
-        navItemStore: NavigationItemStoreService,
+        formStoreService: FormStoreService,
       ) {
         storeService.setDefaultComponent(ProjectAssocDefaultComponent);    
-        formActionService.setActions({
-          [FormAssoc.ROOT]: FormActionBuilder.withRender(CeProjectAssocComponent)
-        });
+        formStoreService.setComponents({
+          [FormAssoc.ROOT]: CeProjectAssocComponent
+        });        
     
         console.log("ProjectAssocRenderModule");
 

@@ -4,7 +4,6 @@ import { NgModule } from "@angular/core";
 import { FormArrayBlockComponent } from './form-array-block/form-array-block.component';
 import { FormAssetBlockComponent } from './form-asset-block/form-asset-block.component';
 import { FormAssocBlockComponent } from './form-assoc-block/form-assoc-block.component';
-import { FormBlockFactoryComponent } from './form-block-factory/form-block-factory.component';
 import { FormBlockStoreService } from './form-block-factory/form-block-store.service';
 import { FormBlockFieldComponent } from './form-block-field/form-block-field.component';
 import { FormBooleanBlockComponent } from './form-boolean-block/form-boolean-block.component';
@@ -49,7 +48,6 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
     declarations: [
         FormTextBlockComponent,
         FormNumberBlockComponent,
-        FormBlockFactoryComponent,
         FormTimestampBlockComponent,
         FormBooleanBlockComponent,
         FormSelectBlockComponent,
@@ -94,7 +92,6 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormAssetBlockComponent,
     ],
     exports: [
-        FormBlockFactoryComponent,
         FormBlockFieldComponent,
         FormBlockFieldActionsComponent,
         FormBlockFieldContentComponent,
