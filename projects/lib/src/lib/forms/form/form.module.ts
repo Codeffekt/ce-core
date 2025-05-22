@@ -22,6 +22,8 @@ import { CeNavigationModule } from "../../navigation/navigation.module";
 import { FormToolbarComponent } from './form-toolbar/form-toolbar.component';
 import { CeEditTimeModule } from "../../widgets/edit-time/edit-time.module";
 import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
+import { FormStoreService } from "./form-store.service";
+import { CeFormComponent } from "./form.component";
 
 @NgModule({
     declarations: [            
@@ -59,5 +61,10 @@ import { MediaPhotoComponent } from "../../media-photo/media-photo.component";
         FormToolbarComponent,
     ]
 })
-export class CeFormModule {    
+export class CeFormModule { 
+    
+    constructor(formStoreService: FormStoreService) {
+        formStoreService.setDefaultComponent(CeFormComponent);
+    }
+
 }
