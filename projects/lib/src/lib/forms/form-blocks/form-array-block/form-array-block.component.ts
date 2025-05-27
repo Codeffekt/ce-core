@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { FormBlockArray, FormInstanceBase, FormInstanceExt, FormUtils, IndexType } from '@codeffekt/ce-core-data';
+import { FormBlockArray, FormInstanceBase, FormInstanceExt, FormRoot, FormUtils, IndexType } from '@codeffekt/ce-core-data';
 import { firstValueFrom } from 'rxjs';
 import { CeFormsService } from '../../../services/ce-forms.service';
 import { CeFormQueryService } from '../../../services/ce-form-query.service';
@@ -55,7 +55,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
       return;
     }
 
-    this.dataSource.createElt(this.formBlock, this.formInstance);
+    this.dataSource.createElt(block, this.formInstance);
 
   }
 
@@ -147,11 +147,11 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
       }
     );
 
-    const root: IndexType | undefined = await firstValueFrom(dialogRef.afterClosed());
+    const root: FormRoot | undefined = await firstValueFrom(dialogRef.afterClosed());
 
     return root !== undefined ? {
       ...block,
-      root,
+      root: root.id,
     } : undefined;
   }
 }
