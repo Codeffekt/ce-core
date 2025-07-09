@@ -1,14 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { firstValueFrom, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
 import { AssetElt, IndexType } from '@codeffekt/ce-core-data';
-import { AssetImportComponent, AssetImportConfig } from '../asset-import/asset-import.component';
 import { CeFormQueryService } from '../../services/ce-form-query.service';
 import { AssetsDatasource } from '../../forms/form-datasource/assets-datasource';
 import { LayoutService } from '../../services/layout.service';
 import { CeAssetsService } from '../../services/ce-assets.service';
 import { AssetsFormQueryBuilder } from '../../forms/forms-query/assets-query.builder';
-import { Exception } from '@zxing/library';
 
 const ASSETS_DEFAULT_REF = "default";
 
@@ -53,12 +51,12 @@ export class MediaListComponent implements OnInit {
     } catch (err) {
       this.layout.showErrorMessage(`Erreur <${(<any>err).message}> lors de la suppression du media`);
     } */
-   throw new Exception("Deprecated component");
+   throw new Error("Deprecated component");
   }
 
   openPhotoImport() {
 
-    throw new Exception("Deprecated component");
+    throw new Error("Deprecated component");
 
     /* const config: AssetImportConfig = {
       pid: this.ref,
