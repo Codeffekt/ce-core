@@ -10,11 +10,11 @@
   },
   "allowedNonPeerDependencies": [
     "@ngneat/until-destroy",
-    "dayjs",
-    "@codeffekt/ce-core-data",
-    "ngx-filesize",
-    "angular-svg-icon",
     "@angular/material-moment-adapter",
+    "dayjs",
+    "ngx-uploader",
+    "ngx-file-drop",
+    "angular-svg-icon",
     "moment"
   ]
 }

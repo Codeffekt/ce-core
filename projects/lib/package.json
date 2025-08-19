@@ -17,17 +17,16 @@
     "@angular/cdk": "^19.2.3",
     "@angular/core": "^19.2.3",
     "@angular/material": "^19.2.3",
-    "@angular/material-moment-adapter": "^19.2.3",
     "bootstrap": "^5.3.3",
     "@codeffekt/ce-core-data": "^1.2.6",
-    "@ngneat/until-destroy": "^8.0.3",            
-    "ngx-uploader": "^17.0.1",
-    "ngx-file-drop": "^16.0.0",
+    "@ngneat/until-destroy": "^8.0.3",                
     "rxjs": "^7.8.2"
   },
   "dependencies": {
     "@angular/material-moment-adapter": "^19.2.3",
     "angular-svg-icon": "^16.1.0",
+    "ngx-uploader": "^17.0.1",
+    "ngx-file-drop": "^16.0.0",
     "dayjs": "^1.11.0",
     "moment": "^2.29.4"
   },
