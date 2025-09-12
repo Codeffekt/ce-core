@@ -1,15 +1,22 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
+import { CeFormComponent } from '@codeffekt/ce-core';
+import { HighlightModule } from 'ngx-highlightjs';
+import { RouterModule } from '@angular/router';
 
 @Component({
     selector: 'app-installation',
     templateUrl: './installation.component.html',
-    styleUrls: ['./installation.component.scss'],
-    standalone: false
+    styleUrls: ['./installation.component.scss'], 
+    imports: [
+      CeFormComponent,
+      HighlightModule,
+      RouterModule,
+    ]   
 })
 export class InstallationComponent {
 
-  @Input() formWrapper: FormWrapper;
+  @Input() formWrapper!: FormWrapper;
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
 

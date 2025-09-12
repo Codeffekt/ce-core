@@ -23,6 +23,9 @@
     "paths": {
       "@codeffekt/ce-core": [
         "projects/lib/src/index.ts"
+      ],
+      "@codeffekt/ce-barcode": [
+        "../../packages/ce-barcode/projects/ce-barcode/src/lib/index.ts"
       ]
     },
   },

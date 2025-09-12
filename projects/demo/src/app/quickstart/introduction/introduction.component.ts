@@ -1,15 +1,22 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { RouterModule } from '@angular/router';
 import { FormInstance, FormWrapper } from '@codeffekt/ce-core-data';
-
+import { HighlightModule } from 'ngx-highlightjs';
+import { CeFormComponent } from '@codeffekt/ce-core';
 @Component({
     selector: 'app-introduction',
     templateUrl: './introduction.component.html',
     styleUrls: ['./introduction.component.scss'],
-    standalone: false
+    imports: [
+      RouterModule,
+      HighlightModule,
+      CeFormComponent,
+    ]
+    
 })
 export class IntroductionComponent implements OnInit {
 
-  @Input() formWrapper: FormWrapper;
+  @Input() formWrapper!: FormWrapper;
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
   exampleFormInstance: FormInstance = {

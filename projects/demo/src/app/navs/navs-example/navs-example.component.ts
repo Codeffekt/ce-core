@@ -46,7 +46,7 @@ export class NavsExampleComponent implements OnInit {
     });
   }
   private initBreadcrumb() {
-    const items = this.navItems.map(item => ({ label: item.label, url: null, data: null, id: null }))
+    const items = this.navItems.map<BreadcrumbItem>(item => ({ label: item.label, url: "null", data: null, id: "null" }))
     this.breadcrumbService.setItems(items);
   }
 }

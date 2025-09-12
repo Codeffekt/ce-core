@@ -16,7 +16,6 @@ import { ListComponent } from './list/list.component';
 @NgModule({
     declarations: [
         CeCoreComponent,
-        InstallationComponent,
         MenuComponent,
         ListComponent
     ],
@@ -34,7 +33,6 @@ import { ListComponent } from './list/list.component';
         CeCoreComponent,
         MenuComponent,
         ListComponent,
-        InstallationComponent,
     ]
 })
 export class CeCoreModule {

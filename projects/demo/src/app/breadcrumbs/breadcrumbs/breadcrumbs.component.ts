@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { BreadcrumbItem, CeBreadcrumbsService } from '@codeffekt/ce-core';
 
 const SOME_BREADCRUMBS_ITEMS: BreadcrumbItem[] = [
@@ -43,9 +43,11 @@ const SOME_BREADCRUMBS_ITEMS: BreadcrumbItem[] = [
 })
 export class BreadcrumbsComponent implements OnInit {
 
+  private bcService = inject(CeBreadcrumbsService);
+
   activeItem$ = this.bcService.activeItem$;
 
-  constructor(private bcService: CeBreadcrumbsService) { }
+  constructor() { }
 
   ngOnInit(): void {
     const defaultItems = SOME_BREADCRUMBS_ITEMS.map(item => ({

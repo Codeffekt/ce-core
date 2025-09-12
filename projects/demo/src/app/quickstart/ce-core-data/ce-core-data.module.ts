@@ -11,7 +11,6 @@ import { BlockTypeRootComponent } from './block-types/block-type-root/block-type
     declarations: [
         CeCoreDataComponent,
         MenuComponent,
-        BlockTypeRootComponent,
     ],
     imports: [
         CommonModule,

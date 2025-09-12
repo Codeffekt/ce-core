@@ -19,7 +19,7 @@ export class ListWrapperExampleComponent implements OnInit {
 
   formQueryBuilder = new DataFormQueryBuilder();
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  items$: Observable<readonly PeriodicElementWrapper[]>;
+  items$!: Observable<readonly PeriodicElementWrapper[]>;
   selectedElement: PeriodicElementWrapper | undefined;
 
   constructor(private readonly queryService: CeFormQueryService<PeriodicElementWrapper>) {

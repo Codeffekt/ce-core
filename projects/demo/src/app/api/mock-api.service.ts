@@ -20,8 +20,12 @@ export class MockApiService implements ICeFormDataService {
         return this.database.getFormQuery(root, formQuery);
     }
 
-    getFormById(id: IndexType): Promise<FormInstanceExt> {
-        return this.database.getForm(id);
+    async getFormById(id: IndexType): Promise<FormInstanceExt> {
+        const form = await this.database.getForm(id);
+        if (!form) {
+            throw new Error(`Invalid id ${id}`);
+        }
+        return form;
     }
 
     updateForm(formInstance: FormInstance): Promise<FormWrapper<any>> {
@@ -36,14 +40,21 @@ export class MockApiService implements ICeFormDataService {
         return this.database.deleteForm(formId);
     }
 
-    getFormMaskById(id: IndexType): Promise<FormInstance> {
-
+    async getFormMaskById(id: IndexType): Promise<FormInstance> {
+        const formMask = await this.database.getFormMask(id);
+        if (!formMask) {
+            throw new Error(`Invalid id ${id}`);
+        }
         console.log(id);
-        return this.database.getFormMask(id);
+        return formMask;
     }
 
-    getFormStyleById(id: IndexType): Promise<FormInstance> {
-        return this.database.getFormStyle(id);
+    async getFormStyleById(id: IndexType): Promise<FormInstance> {
+        const form = await this.database.getFormStyle(id);
+        if (!form) {
+            throw new Error(`Invalid id ${id}`);
+        }
+        return form;
     }
 
     addFormAssocElts(formId: string, elts: string[], field?: string): Promise<boolean> {

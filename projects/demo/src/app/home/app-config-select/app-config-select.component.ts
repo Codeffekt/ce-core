@@ -62,7 +62,7 @@ export class AppConfigSelectComponent implements OnInit {
     }));
     this.appConfigs = res.elts.map(elt => FormWrapper.fromForm(elt));
 
-    this.configId = this.appConfigs.length ? this.appConfigs[0].core.id : undefined;
+    this.configId = this.appConfigs.length ? this.appConfigs[0].core.id : "";
 
     if(this.configId) {
       this.changeConfigType();

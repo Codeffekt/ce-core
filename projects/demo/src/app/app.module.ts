@@ -2,22 +2,19 @@ import { NgModule } from '@angular/core';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CeAuthModule, CeCoreModule, CE_APP_CONFIG, CeFormsService, FormsLocalService } from '@codeffekt/ce-core';
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
+import { CeCoreModule, CE_APP_CONFIG, CeFormsService, FormsLocalService } from '@codeffekt/ce-core';
 import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
-@NgModule({
-  declarations: [
-    AppComponent,
-  ],
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+@NgModule({  
   imports: [
+    CommonModule,
+    RouterModule,    
     BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    CeAuthModule,
-    MatSnackBarModule,
-    CeCoreModule
-  ],
+    BrowserAnimationsModule,    
+    MatSnackBarModule,    
+    CeCoreModule,
+  ],  
   providers: [
     {
       provide: CE_APP_CONFIG,
@@ -43,7 +40,6 @@ import { HIGHLIGHT_OPTIONS } from 'ngx-highlightjs';
       provide: CeFormsService,
       useClass: FormsLocalService,
     },   
-  ],
-  bootstrap: [AppComponent]
+  ],  
 })
 export class AppModule { }

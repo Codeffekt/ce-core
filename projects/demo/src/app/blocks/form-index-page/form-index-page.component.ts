@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInstance, FormInstanceExt, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
+import { CeFormComponent } from '@codeffekt/ce-core';
 
 const subForm: FormInstance = {
   id: "12345",
@@ -62,7 +63,9 @@ const mask = FormWrapper.fromForm({
     selector: 'app-form-index-page',
     templateUrl: './form-index-page.component.html',
     styleUrls: ['./form-index-page.component.scss'],
-    standalone: false
+    imports: [
+      CeFormComponent,
+    ]
 })
 export class FormIndexPageComponent implements OnInit {
 

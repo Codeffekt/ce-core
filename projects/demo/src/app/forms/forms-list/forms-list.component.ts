@@ -14,7 +14,7 @@ import { MockApiService } from '../../api/mock-api.service';
 })
 export class FormsListComponent implements OnInit {
 
-  forms: FormInstance[];
+  forms!: FormInstance[];
 
   constructor(private readonly apiService: MockApiService) { }
 

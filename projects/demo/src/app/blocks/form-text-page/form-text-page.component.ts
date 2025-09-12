@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormInstanceExt, FormWrapper } from '@codeffekt/ce-core-data';
+import { CeFormComponent } from '@codeffekt/ce-core';
 
 @Component({
     selector: 'app-form-text-page',
     templateUrl: './form-text-page.component.html',
     styleUrls: ['./form-text-page.component.scss'],
-    standalone: false
+    imports: [
+      CeFormComponent,
+    ]
 })
 export class FormTextPageComponent implements OnInit {
 

@@ -9,8 +9,8 @@ export class TableWrapperExampleFormQueryDataSource extends FormQueryDatasource<
     protected queryDb(query: FormQuery): Observable<DbArrayRes<FormInstanceExt>> { 
 
         const sort = query.sortFields ? query.sortFields[0] : undefined;        
-        const offset = query.offset;
-        const limit = query.limit;
+        const offset = query.offset ?? 0;
+        const limit = query.limit ?? 0;
 
         const sortedData = Data.sortData(Data.VALUES, sort);
         const filteredData = this.applyFilters(sortedData, query.queryFields);

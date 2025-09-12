@@ -1,15 +1,18 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormWrapper } from '@codeffekt/ce-core-data';
+import { CeFormComponent } from '@codeffekt/ce-core';
 
 @Component({
     selector: 'app-block-type-root',
     templateUrl: './block-type-root.component.html',
     styleUrls: ['./block-type-root.component.scss'],
-    standalone: false
+    imports: [
+      CeFormComponent,
+    ]
 })
 export class BlockTypeRootComponent {
 
-  @Input() formWrapper: FormWrapper;
+  @Input() formWrapper!: FormWrapper;
   @Output() formChanges = new EventEmitter<FormWrapper>();
 
   testFormBlockRoot = FormWrapper.fromForm({

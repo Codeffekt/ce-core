@@ -6,16 +6,16 @@ export class PeriodicElement {
     static readonly ROOT = 'forms-periodic-element';
 
     @FormBlockEntity({ type: 'text' })
-    name: string;
+    name!: string;
 
     @FormBlockEntity({ type: 'number' })
-    position: number;
+    position!: number;
 
     @FormBlockEntity({ type: 'number' })
-    weight: number;
+    weight!: number;
 
     @FormBlockEntity({ type: 'text' })
-    symbol: string;
+    symbol!: string;
 }
 
 export class PeriodicElementWrapper extends FormWrapper<PeriodicElement> {
@@ -104,7 +104,7 @@ export class Data {
         return data.filter(elt => !fields.filter(field => !resolveQueryField(field, elt.content[field.field].value)).length);
     }
 
-    static sliceData(data: FormInstance[], offset: number | undefined, limit: number | undefined): FormInstance[] {
+    static sliceData(data: FormInstance[], offset: number = 0, limit: number = 0): FormInstance[] {
         if (offset == undefined && limit == undefined) {
             return data;
         }

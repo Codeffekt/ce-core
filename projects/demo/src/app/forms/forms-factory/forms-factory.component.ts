@@ -1,16 +1,23 @@
+import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/ce-core-data';
 import { ReplaySubject } from 'rxjs';
+import { CeFormComponent } from '@codeffekt/ce-core';
 @Component({
     selector: 'app-forms-factory',
     templateUrl: './forms-factory.component.html',
     styleUrls: ['./forms-factory.component.scss'],
     providers: [],
-    standalone: false
+    imports: [
+      CommonModule,
+      FormsModule,
+      CeFormComponent,
+    ]
 })
 export class FormsFactoryComponent implements OnInit {
 
-  formWrapper: FormWrapper<any>;
+  formWrapper!: FormWrapper<any>;
 
   formInstance: FormInstance = {
     id: "a85771d431ab",
@@ -105,7 +112,7 @@ export class FormsFactoryComponent implements OnInit {
     //this.inputChange(null);
   }
 
-  inputChange($event) {
+  inputChange($event: any) {
     const now = Date.now();
     setTimeout(() => {
       console.log("INPUT CHANGE", now);

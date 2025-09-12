@@ -2,7 +2,7 @@ import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { IntroductionComponent } from './introduction/introduction.component';
 import {
-    CeFormModule,
+    CeFormComponent,
     CeSideMenuModule,
     FormActionBuilder, FormActionService,
     FormsLocalDatabaseService,
@@ -21,15 +21,14 @@ import { CeCoreDataModule } from "./ce-core-data/ce-core-data.module";
     imports: [
         CommonModule,
         HighlightModule,
-        CeFormModule,
+        CeFormComponent,
         CeBarcodeModule,
         CeSideMenuModule,
         CeCoreModule,
         CeCoreDataModule,
         RouterModule,
     ],
-    declarations: [
-        IntroductionComponent,
+    declarations: [        
         CeAdminComponent,
         ApplicationComponent,
         HomeMenuComponent,

@@ -1,14 +1,23 @@
 import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
-import { MatDrawer } from '@angular/material/sidenav';
-import { Router } from '@angular/router';
+import { MatDrawer, MatSidenavModule } from '@angular/material/sidenav';
+import { Router, RouterModule } from '@angular/router';
 import {    
+    CeFormEditorMenuComponent,
+    CeFormEditorTopbarComponent,
+    CeGridModule,
     LayoutService, NavigationBarConfigService
 } from '@codeffekt/ce-core';
 
 @Component({
     selector: 'app-home',
     templateUrl: 'home.component.html',
-    standalone: false
+    imports: [
+        MatSidenavModule,
+        RouterModule,
+        CeGridModule,
+        CeFormEditorTopbarComponent,
+        CeFormEditorMenuComponent,
+    ]
 })
 export class HomeComponent implements OnInit, AfterViewInit {
 

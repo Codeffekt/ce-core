@@ -14,14 +14,12 @@ import {
 import { MockApiService } from '../api/mock-api.service';
 import { AppConfigSelectComponent } from './app-config-select/app-config-select.component';
 import { HomeRoutingModule } from './home-routing.module';
-import { HomeComponent } from './home.component';
 import { CeFormsPresentationComponent } from './ce-forms-presentation/ce-forms-presentation.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { QuickstartModule } from '../quickstart/quickstart.module';
 
 @NgModule({
   declarations: [
-    HomeComponent,
     AppConfigSelectComponent,
     CeFormsPresentationComponent,
   ],

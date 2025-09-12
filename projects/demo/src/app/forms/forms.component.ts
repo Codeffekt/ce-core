@@ -3,18 +3,23 @@ import { FormInstance, FormInstanceMaskWrapper, FormWrapper } from '@codeffekt/c
 import { UntilDestroy } from '@ngneat/until-destroy';
 import { MockApiService } from '../api/mock-api.service';
 import { MockFormEditorService } from './mock-form-editor.service';
+import { CommonModule } from '@angular/common';
+import { CeFormComponent } from '@codeffekt/ce-core';
 
 @UntilDestroy()
 @Component({
     selector: 'app-forms',
     templateUrl: './forms.component.html',
     styleUrls: ['./forms.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+      CeFormComponent,
+    ]
 })
 export class FormsComponent implements OnInit {
 
-  formWrapper: FormWrapper<any>;  
-  formMask: FormInstanceMaskWrapper;
+  formWrapper!: FormWrapper<any>;  
+  formMask!: FormInstanceMaskWrapper;
 
   constructor(
     private apiService: MockApiService,

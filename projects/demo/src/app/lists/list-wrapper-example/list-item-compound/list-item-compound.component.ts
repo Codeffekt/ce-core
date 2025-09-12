@@ -10,8 +10,8 @@ import { PeriodicElement } from '../../../tables/table-wrapper-example/datasourc
 })
 export class ListItemCompoundComponent implements OnInit, IListItemContent {
 
-  @Input() item: PeriodicElement;
-  itemChangedEvent: EventEmitter<boolean>;
+  @Input() item!: PeriodicElement;
+  itemChangedEvent!: EventEmitter<boolean>;
 
   constructor() { }
 

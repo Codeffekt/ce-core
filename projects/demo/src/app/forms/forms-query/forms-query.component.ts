@@ -14,7 +14,7 @@ import { Observable } from 'rxjs';
 })
 export class FormsQueryComponent implements OnInit {
 
-  items$: Observable<readonly FormInstance[]>;
+  items$!: Observable<readonly FormInstance[]>;
 
   constructor(
     private readonly queryService: CeFormQueryService<FormInstance>,

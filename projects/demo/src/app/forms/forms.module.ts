@@ -3,10 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule as AngularFormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { CeCodeEditorModule } from '@codeffekt/ce-code-editor';
-import { FormsMaskComponent } from './forms-mask/forms-mask.component';
 import { FormsRoutingModule } from './forms-routing.module';
-import { FormsComponent } from './forms.component';
-import { FormsFactoryComponent } from './forms-factory/forms-factory.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { CeFormCoordinatesModule } from '@codeffekt/ce-form-coordinates';
 import { CeBarcodeModule } from '@codeffekt/ce-barcode';
@@ -20,9 +17,6 @@ import {
 
 @NgModule({
   declarations: [
-    FormsComponent,
-    FormsMaskComponent,
-    FormsFactoryComponent,
     FormsQueryComponent,
     FormsListComponent
   ],

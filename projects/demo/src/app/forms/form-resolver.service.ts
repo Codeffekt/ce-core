@@ -12,6 +12,11 @@ export class FormResolverService  {
 
     async resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<FormWrapper<any>> {
         const id = route.paramMap.get('id');
+
+        if(!id) {
+            throw new Error(`Invalid id ${id}`);
+        }
+
         const formInfo = await this.mockFormService.getForm(id);
         return formInfo.form;
     }

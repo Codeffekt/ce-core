@@ -32,11 +32,11 @@ interface CyElement {
 })
 export class GraphsExampleComponent implements OnInit, AfterViewInit {
 
-  @ViewChild('container', { static: true }) container: ElementRef;
+  @ViewChild('container', { static: true }) container!: ElementRef;
 
   pid: string = "9e3944ac-d5ef-430a-b790-fc53e959f29e";
 
-  errorMsg: string;
+  errorMsg!: string;
 
   isGraphInProgress = false;
 
@@ -96,7 +96,7 @@ export class GraphsExampleComponent implements OnInit, AfterViewInit {
 
   async createGraph() {
     try {
-      this.errorMsg = undefined;
+      this.errorMsg = "";
       this.isGraphInProgress = true;
       const project = await this.projectsService.getProject(this.pid);
       if (!project?.core.id) {
@@ -113,8 +113,8 @@ export class GraphsExampleComponent implements OnInit, AfterViewInit {
 
       this.updateGraph();
 
-    } catch (err) {
-      this.errorMsg = err.message;
+    } catch (err: any) {
+      this.errorMsg = err?.message;
     } finally {
       this.isGraphInProgress = false;
     }

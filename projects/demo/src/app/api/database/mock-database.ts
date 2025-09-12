@@ -49,8 +49,9 @@ export class MockDatabase {
         return of(res);
     }
 
-    getAllFormInstances() {
-        return [].concat(...Object.values(this.database));
+    getAllFormInstances(): FormInstance[] {
+        const forms = Object.values(this.database).flat();
+        return forms;
     }
 
     async getForm(id: IndexType) {
@@ -71,15 +72,31 @@ export class MockDatabase {
         const form = await this.getForm(id);
         const maskForm = this.masksDatabase.find((formMask) =>
             !formMask.content.disabled?.value && formMask.content.root?.value === form?.root);
-        
-        console.log({form,maskDatabase: this.masksDatabase, maskForm});
-            return maskForm;
+
+        console.log({ form, maskDatabase: this.masksDatabase, maskForm });
+
+        if(!maskForm) {
+            throw new Error(`Mask ${id} not found`);
+        }
+
+        return maskForm;
     }
 
     async getFormStyle(id: IndexType): Promise<FormInstance | null> {
         const form = await this.getForm(id);
-        return this.stylesDatabase.find((formStyle) =>
+
+        if(!form) {
+            throw new Error(`Form ${id} not found`);
+        }
+
+        const formStyle = this.stylesDatabase.find((formStyle) =>
             !formStyle.content.disabled && formStyle.content.root?.value === form?.root);
+
+        if(!formStyle) {
+            throw new Error(`Form style ${id} not found`);
+        }
+
+        return formStyle;
     }
 
     async update(formInstance: FormInstance) {
@@ -96,8 +113,13 @@ export class MockDatabase {
 
         // looking for formblock with field formarrayfield in order to find formroot
         const form = await this.getForm(formIndex);
+
+        if(!form) {
+            throw new Error(`Form ${formIndex} not found`);
+        }
+
         const formBlock = FormUtils.getBlocks(form).find(formBlock => formBlock.field === formArrayField);
-        if (!formBlock) {
+        if (!formBlock || !formBlock.root || !formBlock.index) {
             throw new Error(`Cannot find form block with index: ${formArrayField}`)
         }
 

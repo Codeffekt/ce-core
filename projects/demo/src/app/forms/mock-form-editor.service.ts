@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { FormEditorServiceBase, FormInfo } from "@codeffekt/ce-core";
+import { CeAppService, FormEditorServiceBase, FormInfo } from "@codeffekt/ce-core";
 import { FormInstanceMaskWrapper, FormWrapper, IndexType } from "@codeffekt/ce-core-data";
 import { MockApiService } from "../api/mock-api.service";
 
@@ -8,8 +8,11 @@ import { MockApiService } from "../api/mock-api.service";
 })
 export class MockFormEditorService extends FormEditorServiceBase {
 
-    constructor(private readonly mockApiService: MockApiService) {
-        super(null);
+    constructor(
+        private readonly mockApiService: MockApiService,
+        appService: CeAppService,
+    ) {
+        super(appService);
     }
 
     async getForm(id: IndexType): Promise<FormInfo> {
