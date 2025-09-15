@@ -33,7 +33,7 @@
     "@angular/router": "^19.2.3",
     "@codeffekt/ce-barcode": "^19.1.0",
     "@codeffekt/ce-code-editor": "^19.1.0",
-    "@codeffekt/ce-core-data": "^1.2.6",
+    "@codeffekt/ce-core-data": "^1.2.7",
     "@codeffekt/ce-form-coordinates": "^19.1.0",
     "@codeffekt/ce-form-plotly": "^19.1.0",
     "@ngneat/until-destroy": "^8.1.4",

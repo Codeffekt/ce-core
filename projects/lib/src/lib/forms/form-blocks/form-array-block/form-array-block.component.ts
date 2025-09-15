@@ -75,6 +75,10 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
       query.setFormRoot(this.formBlock.root);
     }
     
+    if(this.formBlock.params?.query?.queryFields) {
+      query.setQueryFieldLogic(this.formBlock.params.query.queryFields);
+    }
+
     query.setExcludedRef(ref);
 
     const dialogRef = FormChooserDialogComponent.open(this.dialog,

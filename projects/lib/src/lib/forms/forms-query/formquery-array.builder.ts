@@ -1,9 +1,11 @@
 import {
-    FormBlock, FormInstance,
+    FormBlock, FormBlockArray, FormInstance,
     FormProject, FormQuery,
+    FormQueryFieldExpr,
+    FormQueryFieldLogic,
     FormUtils, IndexType
 } from "@codeffekt/ce-core-data";
-import { FormQueryBuilder } from "./formquery.builder";
+import { FormQueryBuilder, isQueryFieldLogic } from "./formquery.builder";
 
 export function isContextProject(context: FormInstance) {
     return context.root === FormProject.ROOT;
@@ -22,17 +24,18 @@ export function isBlockAssoc(block: FormBlock) {
 export class FormQueryArrayBuilder extends FormQueryBuilder {
 
     private extra: Partial<FormQuery> = {};
+    private extraQueryFields?: FormQueryFieldLogic | FormQueryFieldExpr[];
     private ref!: IndexType;
 
     constructor() {
         super();
     }
 
-    static fromBlock(formBlock: FormBlock, context: FormInstance) {
+    static fromBlock(formBlock: FormBlockArray, context: FormInstance) {
 
         const query = new FormQueryArrayBuilder();
 
-        if (formBlock.params?.extMode) {
+        if (formBlock.params?.query?.extMode) {
             query.setExtMode(true);
         }
 
@@ -54,10 +57,15 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
     }
 
     setExtra(extra: Partial<FormQuery>) {
-        this.extra = extra;
+        this.extra = { ...extra, queryFields: undefined };
+        this.extraQueryFields = extra.queryFields;
     }
 
     create(): FormQuery {
+        if (this.extraQueryFields) {
+            this.addQueryFieldLogic(this.extraQueryFields);
+        }
+
         return {
             ...super.create(),
             ...this.extra,
@@ -68,4 +76,29 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
     setFilter(value: string): void { }
 
     clearFilter(): void { }
+
+    private addQueryFieldLogic(queryFields: FormQueryFieldLogic | FormQueryFieldExpr[]) {
+        if (!this.queryFieldLogic) {
+            this.setQueryFieldLogic(queryFields);
+        } else if (isQueryFieldLogic(this.queryFieldLogic)) {
+            if (isQueryFieldLogic(queryFields)) {
+                this.setQueryFieldLogic([this.queryFieldLogic, queryFields]);
+            } else if (Array.isArray(queryFields)) {
+                this.setQueryFieldLogic({
+                    and: [this.queryFieldLogic, ...queryFields]
+                });
+            }
+        } else if (Array.isArray(this.queryFieldLogic)) {
+            if (isQueryFieldLogic(queryFields)) {
+                this.setQueryFieldLogic({
+                    and: [...this.queryFieldLogic, queryFields]
+                });
+            } else if (Array.isArray(queryFields)) {
+                this.setQueryFieldLogic([
+                    ...this.queryFieldLogic,
+                    ...queryFields
+                ]);
+            }
+        }
+    }
 }

@@ -81,6 +81,7 @@ export class SearchboxComponent<T = any> implements OnDestroy {
 
   private updateQueryFilter(query?: string) {
     this.queryService.setFilter(query as any);
+    this.valueChange.emit(query);
     this.reload();
   }
 

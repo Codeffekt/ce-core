@@ -1,22 +1,26 @@
 import {
     FormQueryField, FormQuerySortField,
-    FormQuery, IndexType, 
-    FormQueryFieldLogic, FormQueryFieldExpr, 
+    FormQuery, IndexType,
+    FormQueryFieldLogic, FormQueryFieldExpr,
     FormAggField, FormFilter,
     FormNode
 } from "@codeffekt/ce-core-data";
+
+export function isQueryFieldLogic(qfe: FormQueryFieldLogic | FormQueryFieldExpr[]): qfe is FormQueryFieldLogic {
+    return (qfe as FormQueryFieldLogic).and !== undefined || (qfe as FormQueryFieldLogic).or !== undefined;
+}
 
 const DEFAULT_LIMIT = 10;
 
 export class FormQueryBuilder {
 
     protected queryFields: FormQueryField[] = [];
-    protected queryFieldLogic!: FormQueryFieldLogic;
+    protected queryFieldLogic!: FormQueryFieldLogic | FormQueryFieldExpr[];
     protected sortFields: FormQuerySortField[] = [];
     protected extSubFields: string[] = [];
     protected pagination: Partial<FormQuery> = FormQueryBuilder.fromPagination(0, DEFAULT_LIMIT);
     protected extMode!: Partial<FormQuery>;
-    protected root!: IndexType;   
+    protected root!: IndexType;
     protected queryRootFields: FormQueryField[] = [];
     protected sortRootFields: FormQuerySortField[] = [];
     protected filterFields: FormFilter[] = [];
@@ -97,7 +101,7 @@ export class FormQueryBuilder {
 
     clearSortRootField(fieldName: string) {
         this.clearGenericField(fieldName, this.sortRootFields);
-    }    
+    }
 
     clearFilter() {
         throw new Error("Must be implemented");
@@ -105,9 +109,9 @@ export class FormQueryBuilder {
 
     setFilter(value: string) {
         throw new Error("Must be implemented");
-    }    
+    }
 
-    setNodes(nodes: FormNode[])  {
+    setNodes(nodes: FormNode[]) {
         this.nodes = nodes;
     }
 
@@ -119,13 +123,13 @@ export class FormQueryBuilder {
         return {
             queryFields: this.createQueryFields(),
             sortFields: this.createSortFields(),
-            extSubFields: this.extSubFields.length ? this.extSubFields : undefined,            
+            extSubFields: this.extSubFields.length ? this.extSubFields : undefined,
             aggFields: this.aggFields.length ? this.aggFields : undefined,
             filters: this.filterFields.length ? this.filterFields : undefined,
             ...this.pagination,
             ...this.extMode,
             root: this.root,
-            nodes: this.nodes.length ? this.nodes : undefined,         
+            nodes: this.nodes.length ? this.nodes : undefined,
         };
     }
 
@@ -133,10 +137,10 @@ export class FormQueryBuilder {
         this.queryFieldLogic = undefined as any;
     }
 
-    setQueryFieldLogic(logic: FormQueryFieldLogic) {
+    setQueryFieldLogic(logic: FormQueryFieldLogic | FormQueryFieldExpr[]) {
         this.queryFieldLogic = logic;
     }
-
+    
     protected createQueryFields(): FormQueryFieldLogic | FormQueryFieldExpr[] {
 
         const queryFieldsAndMeta = [
@@ -145,7 +149,11 @@ export class FormQueryBuilder {
         ];
 
         if (this.queryFieldLogic && queryFieldsAndMeta.length) {
-            return [...queryFieldsAndMeta, this.queryFieldLogic];
+            if (isQueryFieldLogic(this.queryFieldLogic)) {
+                return [...queryFieldsAndMeta, this.queryFieldLogic];
+            } else if(Array.isArray(this.queryFieldLogic)) {
+                return [...queryFieldsAndMeta, ...this.queryFieldLogic];
+            }
         }
 
         return this.queryFieldLogic ? this.queryFieldLogic : queryFieldsAndMeta.length ? queryFieldsAndMeta : undefined as any;

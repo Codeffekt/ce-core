@@ -1,8 +1,12 @@
 import {
-    FormQueryField, FormQueryFieldLogic,
+    FormQueryField, FormQueryFieldExpr, FormQueryFieldLogic,
     FormQueryFieldOp, FormRoot, FormUtils,
 } from "@codeffekt/ce-core-data";
 import { Utils } from "../../utils/Utils";
+
+function isQueryField(qfe: FormQueryFieldLogic | FormQueryField): qfe is FormQueryField {
+    return (qfe as FormQueryField).field !== undefined;
+}
 
 const FORMROOT_META: FormRoot = {
     id: undefined as any,
@@ -88,6 +92,26 @@ export class FormQueryLogicBuilder {
         return {
             and: queryFields.filter(qf => qf !== undefined) as any
         };
+    }
+
+    toFilter(queryFields: FormQueryFieldLogic | FormQueryFieldExpr[]): string {
+        if (Array.isArray(queryFields)) {
+            return this.createFilterFromArray(queryFields);
+        } else if (queryFields.and?.length) {
+            return this.createFilterFromArray(queryFields.and);
+        }
+        return '';
+    }
+
+    private createFilterFromArray(queries: FormQueryFieldExpr[]) {
+        return queries.filter(qf => isQueryField(qf)).map(qf => this.createFilterFromQuery(qf)).join(' ');
+    }
+
+    private createFilterFromQuery(query: FormQueryField): string {
+        const field = (query.onMeta ? '$' : '') + query.field;
+        const op = query.op ?? '=';
+        const value = query.value ?? '';
+        return `${field}:${op}${value}`;
     }
 
     private createQueryField(groups: any): FormQueryField | undefined {

@@ -16,6 +16,7 @@ import { RouterModule } from "@angular/router";
 import { HomeMenuComponent } from "./home-menu/home-menu.component";
 import { CeCoreModule } from "./ce-core/ce-core.module";
 import { CeCoreDataModule } from "./ce-core-data/ce-core-data.module";
+import { ApiComponent } from "./api/api.component";
 
 @NgModule({
     imports: [
@@ -45,6 +46,7 @@ export class QuickstartModule {
             'form-quickstart-introduction': IntroductionComponent,
             'form-quickstart-admin': CeAdminComponent,
             'form-quickstart-application': ApplicationComponent,
+            'form-quickstart-api': ApiComponent,
         });
 
         formActions.setActions({
@@ -53,6 +55,8 @@ export class QuickstartModule {
             'form-quickstart-admin': FormActionBuilder
                 .withMenu(HomeMenuComponent),
             'form-quickstart-application': FormActionBuilder
+                .withMenu(HomeMenuComponent),
+            'form-quickstart-api': FormActionBuilder
                 .withMenu(HomeMenuComponent),
         });
         localDatabase.setForms({
@@ -78,6 +82,14 @@ export class QuickstartModule {
                 ctime: Date.now(),
                 valid: true,
                 root: 'form-quickstart-application',
+                content: {}
+            },
+            'quickstart-api': {
+                id: 'quickstart-api',
+                title: 'API',
+                ctime: Date.now(),
+                valid: true,
+                root: 'form-quickstart-api',
                 content: {}
             },
         });
