@@ -1,5 +1,9 @@
 <ce-form-block-field [label]="formBlock.label ?? 'NO LABEL'" headerAppearance="bordered">
 
+    <ce-form-block-field-infos *ngIf="filter">
+        <ce-filters-label [filterExpr]="filter" [root]="formRoot"></ce-filters-label>
+    </ce-form-block-field-infos>
+
     <ce-form-block-field-actions *ngIf="!formBlock.readonly" class="mb-1">
         <button mat-stroked-button color="primary" (click)="onLink()"><mat-icon>link</mat-icon>Associer</button>
         <button mat-stroked-button color="primary" (click)="onAdd()"><mat-icon>add</mat-icon>Nouveau</button>

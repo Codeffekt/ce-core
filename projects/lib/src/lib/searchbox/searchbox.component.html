@@ -2,6 +2,6 @@
   <ce-search-input (search)="search()" ceMarginStart="12px"></ce-search-input>
 </ce-grid>
 
-<button mat-flat-button [disabled]="searchDisabled$ | async" (click)="search()">
+<button *ngIf="useSearchButton" mat-flat-button [disabled]="searchDisabled$ | async" (click)="search()">
   <mat-icon color="primary">search</mat-icon>
 </button>

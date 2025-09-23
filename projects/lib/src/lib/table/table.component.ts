@@ -4,13 +4,16 @@ import { FormQuerySortField } from '@codeffekt/ce-core-data';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CeFormQueryService } from '../services/ce-form-query.service';
 import { MatTable } from '@angular/material/table';
+import { CommonModule } from '@angular/common';
 
 @UntilDestroy()
 @Component({
     selector: 'ce-table-wrapper',
     templateUrl: './table.component.html',
     styleUrls: ['./table.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+    ]    
 })
 export class TableComponent<T = any> implements AfterViewInit {  
 

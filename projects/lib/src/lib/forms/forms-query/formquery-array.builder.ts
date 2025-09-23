@@ -22,8 +22,7 @@ export function isBlockAssoc(block: FormBlock) {
 }
 
 export class FormQueryArrayBuilder extends FormQueryBuilder {
-
-    private extra: Partial<FormQuery> = {};
+    
     private extraQueryFields?: FormQueryFieldLogic | FormQueryFieldExpr[];
     private ref!: IndexType;
 
@@ -56,8 +55,7 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
         return query;
     }
 
-    setExtra(extra: Partial<FormQuery>) {
-        this.extra = { ...extra, queryFields: undefined };
+    setExtra(extra: Partial<FormQuery>) {        
         this.extraQueryFields = extra.queryFields;
     }
 
@@ -67,8 +65,7 @@ export class FormQueryArrayBuilder extends FormQueryBuilder {
         }
 
         return {
-            ...super.create(),
-            ...this.extra,
+            ...super.create(),            
             ref: this.ref,
         };
     }

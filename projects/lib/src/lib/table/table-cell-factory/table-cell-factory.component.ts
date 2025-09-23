@@ -1,12 +1,15 @@
 import { AfterViewInit, Component, ComponentRef, HostBinding, Input, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { FormBlock } from '@codeffekt/ce-core-data';
 import { TableCellStoreService } from './table-cell-store.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
     selector: 'ce-table-cell-factory',
     templateUrl: './table-cell-factory.component.html',
     styleUrls: ['./table-cell-factory.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+    ]
 })
 export class TableCellFactoryComponent implements OnInit, AfterViewInit {
 

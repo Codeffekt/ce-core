@@ -3,8 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ConfirmationDialogComponent } from './confirmation-dialog.component';
 
 @Directive({
-    selector: '[ngReallyClick]',
-    standalone: false
+    selector: '[ngReallyClick]',    
 })
 export class NgReallyClickDirective {
 

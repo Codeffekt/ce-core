@@ -14,14 +14,47 @@ import { FormBlockComponent } from '../form-block/form-block.component';
 import { FormQueryBuilder } from '../../forms-query/formquery.builder';
 import { RootChooserDialogComponent } from '../../../roots/root-chooser-dialog';
 import { FormsRootDataSource } from '../../form-datasource/forms-root-datasource';
+import { CommonModule } from '@angular/common';
+import {
+  FormBlockFieldActionsComponent, FormBlockFieldComponent,
+  FormBlockFieldContentComponent, FormBlockFieldInfosComponent
+} from '../form-block-field';
+import { FormQueryWrapperComponent } from '../../../formquery-wrapper';
+import { TableCellFactoryComponent, TableComponent } from '../../../table';
+import { MatTableModule } from '@angular/material/table';
+import { ListItemActionsComponent } from '../../../list';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
+import { CeFormsPipesModule } from '../../../forms-pipes';
+import { CeNgReallyModule } from '../../../widgets/ng-really';
+import { FormQueryLogicBuilder } from '../../forms-query';
+import { FiltersLabelComponent } from '../../../filters';
 @Component({
   selector: 'ce-form-array-block',
   templateUrl: './form-array-block.component.html',
   styleUrls: ['./form-array-block.component.scss'],
   providers: [
-    CeFormQueryService
+    CeFormQueryService,
   ],
-  standalone: false
+  imports: [
+    CommonModule,
+    MatTableModule,
+    MatIconModule,
+    MatMenuModule,
+    MatButtonModule,
+    FormBlockFieldComponent,
+    FormBlockFieldInfosComponent,
+    FormBlockFieldActionsComponent,
+    FormBlockFieldContentComponent,
+    FormQueryWrapperComponent,
+    ListItemActionsComponent,
+    TableComponent,
+    TableCellFactoryComponent,
+    CeFormsPipesModule,
+    CeNgReallyModule,
+    FiltersLabelComponent,
+  ]
 })
 export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> implements OnInit {
 
@@ -30,7 +63,8 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
   displayedColumns: string[] = [];
   colomnFields: string[] = [];
   isFormAssoc = false;
-  private formRoot!: FormInstanceBase;
+  formRoot!: FormInstanceBase;
+  filter?: string;
 
   constructor(
     public dialog: MatDialog,
@@ -61,7 +95,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
 
   onLink() {
 
-    if(!this.formBlock.root) {
+    if (!this.formBlock.root) {
       return;
     }
 
@@ -69,13 +103,13 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
 
     const query = new FormQueryIndexBuilder();
 
-    if(this.formBlock.params?.useCategory) {
+    if (this.formBlock.params?.useCategory) {
       query.setCat(this.formBlock.root);
     } else {
       query.setFormRoot(this.formBlock.root);
     }
-    
-    if(this.formBlock.params?.query?.queryFields) {
+
+    if (this.formBlock.params?.query?.queryFields) {
       query.setQueryFieldLogic(this.formBlock.params.query.queryFields);
     }
 
@@ -117,6 +151,7 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
   private async init() {
     await this.prepareQueryService();
     this.buildDisplayedColumns();
+    this.buildFilter();
   }
 
   private buildDisplayedColumns() {
@@ -131,6 +166,14 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
     this.queryService.setQueryBuilder(this.queryBuilder);
     this.formRoot = await firstValueFrom(this.formsService.getFormRoot(this.formBlock.root!));
     this.queryService.setModel(this.formRoot);
+  }
+
+  private buildFilter() {
+    if (this.formRoot && this.formBlock.params?.query?.queryFields) {
+      const logicBuilder = new FormQueryLogicBuilder();
+      logicBuilder.setModel(this.formRoot);
+      this.filter = logicBuilder.toFilter(this.formBlock.params.query.queryFields);
+    }
   }
 
   private async selectBlockFromCat(block: FormBlockArray): Promise<FormBlockArray | undefined> {

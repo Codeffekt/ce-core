@@ -1,5 +1,5 @@
-import { Component, EventEmitter, Input, OnDestroy, Output } from '@angular/core';
-import { UntilDestroy } from '@ngneat/until-destroy';
+import { Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { CeFormQueryService } from '../services';
 import { SearchAuthorHintBuilder } from './search-hint-builder/builders/search-author-hint.builder';
 import { SearchHintBooleanBuilder } from './search-hint-builder/builders/search-boolean-hint.builder';
@@ -16,48 +16,55 @@ import { SearchTokensLabelService } from './services/search-tokens-label.service
 import { SearchTokensQueryService } from './services/search-tokens-query.service';
 import { SearchTokensService } from './services/search-tokens-service';
 import { SearchTokenUtils } from './search-token';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, filter, map, startWith } from 'rxjs';
 
 @UntilDestroy()
 @Component({
-    selector: 'ce-searchbox',
-    templateUrl: './searchbox.component.html',
-    styleUrls: ['./searchbox.component.scss'],
-    providers: [
-        SearchHintService,
-        SearchTokensService,
-        SearchTokenUpdater,
-        SearchTokenMatcher,
-        SearchTokensLabelService,
-        SearchValueHintBuilder,
-        SearchOpHintBuilder,
-        SearchFieldHintBuilder,
-        SearchHintBuilder,
-        SearchAuthorHintBuilder,
-        SearchSelectHintBuilder,
-        SearchHintTimestampBuilder,
-        SearchHintBooleanBuilder,
-        SearchTokensQueryService
-    ],
-    standalone: false
+  selector: 'ce-searchbox',
+  templateUrl: './searchbox.component.html',
+  styleUrls: ['./searchbox.component.scss'],
+  providers: [
+    SearchHintService,
+    SearchTokensService,
+    SearchTokenUpdater,
+    SearchTokenMatcher,
+    SearchTokensLabelService,
+    SearchValueHintBuilder,
+    SearchOpHintBuilder,
+    SearchFieldHintBuilder,
+    SearchHintBuilder,
+    SearchAuthorHintBuilder,
+    SearchSelectHintBuilder,
+    SearchHintTimestampBuilder,
+    SearchHintBooleanBuilder,
+    SearchTokensQueryService
+  ],
+  standalone: false
 })
-export class SearchboxComponent<T = any> implements OnDestroy {
+export class SearchboxComponent<T = any> implements OnInit, OnDestroy {
 
   @Input() debounceTime = 1000;
   @Input() placeholder!: string;
+  @Input() useSearchButton = true;
+  @Input() initialValue?: string;
   @Output() valueChange: EventEmitter<string> = new EventEmitter();
   searchDisabled$: Observable<boolean>;
 
   constructor(
     private queryService: CeFormQueryService<T>,
     private searchHintService: SearchHintService,
-    private searchTokensQueryService: SearchTokensQueryService,
     private tokensService: SearchTokensService
-  ) { 
+  ) {
     this.searchDisabled$ = this.tokensService.tokensValues().pipe(
       startWith(this.tokensService.getTokens()),
       map(tokens => !tokens.length));
+    this.listenToValidFilter();
+  }
 
+  ngOnInit(): void {
+      if(this.initialValue) {
+        this.tokensService.onInputValueChanged(this.initialValue);
+      }
   }
 
   ngOnDestroy(): void {
@@ -87,11 +94,23 @@ export class SearchboxComponent<T = any> implements OnDestroy {
 
   private clearQueryFilter() {
     this.queryService.clearFilter();
+    this.valueChange.emit("");
     this.reload();
   }
 
   private reload() {
     this.queryService.setPaginationFirstPage();
     this.queryService.load();
+  }
+
+  private listenToValidFilter() {
+    this.tokensService.tokensValues().pipe(
+      untilDestroyed(this)
+      //startWith(this.tokensService.getTokens()),
+      //filter(tokens => tokens.length > 0)
+    )
+      .subscribe(() => {
+        this.search();
+      })
   }
 }

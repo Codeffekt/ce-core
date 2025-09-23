@@ -28,8 +28,7 @@ import { CeListNavLinksModule } from './list-nav-links';
 @NgModule({
     declarations: [
         ListHeaderComponent,
-        ListItemComponent,
-        ListItemActionsComponent,
+        ListItemComponent,        
         ListItemAvatarComponent,
         ListItemChipsComponent,
         ListItemContentComponent,
@@ -51,7 +50,8 @@ import { CeListNavLinksModule } from './list-nav-links';
         CePaginatorModule,        
         CePipesModule,
         CeFormsPipesModule,
-        CeSearchboxModule
+        CeSearchboxModule,
+        ListItemActionsComponent,
     ],
     exports: [
         ListHeaderComponent,

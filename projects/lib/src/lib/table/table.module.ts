@@ -8,9 +8,7 @@ import { CommonModule } from "@angular/common";
 import { CePipesModule } from "../pipes";
 
 @NgModule({
-    declarations: [
-        TableComponent,
-        TableCellFactoryComponent,
+    declarations: [                
         TableCellDefaultComponent,
         TableCellAssetComponent,
     ],
@@ -22,7 +20,9 @@ import { CePipesModule } from "../pipes";
     ],
     imports: [
         CommonModule,
-        CePipesModule
+        CePipesModule,
+        TableComponent,
+        TableCellFactoryComponent,
     ]
 })
 export class CeTableModule {

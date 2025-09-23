@@ -1,8 +1,8 @@
 import { Component, Input } from '@angular/core';
 import { FormBlockFieldHeaderAppearance, FormBlockFieldHeaderComponent } from './form-block-field-header/form-block-field-header.component';
 import { CommonModule } from '@angular/common';
-import { CeGridModule } from '../../../layout/grid/grid.module';
 import { FormBlockFieldTitleComponent } from './form-block-field-title/form-block-field-title.component';
+import { CeLayoutModule } from '../../../layout';
 
 @Component({
     selector: 'ce-form-block-field',
@@ -10,7 +10,7 @@ import { FormBlockFieldTitleComponent } from './form-block-field-title/form-bloc
         CommonModule,
         FormBlockFieldHeaderComponent,
         FormBlockFieldTitleComponent,
-        CeGridModule,
+        CeLayoutModule,
     ],
     templateUrl: './form-block-field.component.html',
     styleUrls: ['./form-block-field.component.scss']

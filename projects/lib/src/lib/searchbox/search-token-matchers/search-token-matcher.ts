@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { SearchToken, SearchTokenUtils } from "../search-token";
 import { SearchTokenUpdater } from "../services/search-token-updater.service";
-import { SearchTokensLabelService } from "../services/search-tokens-label.service";
 
 const WORD_EXP = "a-zA-ZÀ-ÖÙ-öù-ÿĀ-žḀ-ỿ0-9";
 const FILTER_REGEXP = `([\\$]?\\w+):([><=]*)([${WORD_EXP}]*)`;

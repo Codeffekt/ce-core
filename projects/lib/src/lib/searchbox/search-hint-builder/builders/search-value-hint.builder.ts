@@ -22,6 +22,10 @@ export class SearchValueHintBuilder extends SearchHintBaseBuilder {
     }
 
     protected getBuilder(): SearchHintBaseBuilder | null {
+        if(!this.block) {
+            return null;
+        }
+
         const builderType: Type<any> = this.store.getBuilder(this.block!) as any;
         if (builderType) {
             const builder: SearchHintBaseBuilder = this.injector.get(builderType);

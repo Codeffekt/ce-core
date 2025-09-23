@@ -1,0 +1,13 @@
+<ce-row gap="4px">
+@for(token of tokens(); track token) {
+@if(token.field) {
+<span class="token">{{token.field.label}}</span>
+}
+@if(token.op) {
+<span class="token">{{token.op.label}}</span>
+}
+@if(token.value) {
+<span class="token">{{token.value.value}}</span>
+}
+}
+</ce-row>

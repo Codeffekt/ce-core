@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBlock, FormWrapper } from '@codeffekt/ce-core-data';
+import { FormBlock, FormBlockArray, FormWrapper } from '@codeffekt/ce-core-data';
 import { firstValueFrom, Observable } from 'rxjs';
 import {
   CeAccountService, CeAppService,
@@ -24,7 +24,7 @@ import { FormQueryArrayBuilder } from '../../../forms/forms-query';
 export class ProjectAssocDefaultComponent implements OnInit, IProjectAssocContent {
 
   forms$!: Observable<readonly FormWrapper[]>;
-  block!: FormBlock;
+  block!: FormBlockArray;
 
   private datasource: CeProjectAssocDatasource;
   private formQueryBuilder!: FormQueryArrayBuilder;

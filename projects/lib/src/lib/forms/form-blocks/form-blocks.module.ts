@@ -43,6 +43,7 @@ import { FormRootBlockComponent } from "./form-root-block/form-root-block.compon
 import { FormFactoryBlockComponent } from "./form-factory-block";
 import { FormActionBlockComponent } from "./form-action-block";
 import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
+import { FormBlockFieldInfosComponent } from "./form-block-field/form-block-field-infos";
 
 @NgModule({
     declarations: [
@@ -50,12 +51,10 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormNumberBlockComponent,
         FormTimestampBlockComponent,
         FormBooleanBlockComponent,
-        FormSelectBlockComponent,
-        FormArrayBlockComponent,
+        FormSelectBlockComponent,        
         FormIndexBlockComponent,
         FormAssocBlockComponent,
-        FormRootBlockComponent,                       
-        FormBlockFieldFloatingActionComponent,        
+        FormRootBlockComponent,                                  
         CeFormHintComponent,
         CeFormDescriptionComponent,
         FormAlertComponent
@@ -84,12 +83,15 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormBlockFieldTitleComponent,
         FormBlockFieldHeaderComponent,
         FormBlockFieldActionsComponent,
-        FormBlockFieldContentComponent,        
+        FormBlockFieldContentComponent, 
+        FormBlockFieldInfosComponent,       
         FormBlockFieldComponent,
+        FormBlockFieldFloatingActionComponent,     
         FormFactoryBlockComponent,
         FormActionBlockComponent,
         FormAssetArrayBlockComponent,
         FormAssetBlockComponent,
+        FormArrayBlockComponent,
     ],
     exports: [
         FormBlockFieldComponent,
@@ -97,7 +99,7 @@ import { FormAssetArrayBlockComponent } from "./form-asset-array-block";
         FormBlockFieldContentComponent,
         FormBlockFieldHeaderComponent,
         FormBlockFieldFloatingActionComponent,
-        FormBlockFieldTitleComponent,
+        FormBlockFieldTitleComponent,        
     ]
 })
 export class CeFormBlocksModule {

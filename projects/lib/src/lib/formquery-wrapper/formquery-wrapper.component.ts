@@ -3,13 +3,26 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UntilDestroy, untilDestroyed } from '@ngneat/until-destroy';
 import { distinct, filter, map } from 'rxjs';
 import { CeFormQueryService } from '../services/ce-form-query.service';
+import { CommonModule } from '@angular/common';
+import { CeGridModule } from '../layout';
+import { CeBookmarksModule } from '../bookmarks';
+import { CePaginatorModule } from '../paginator';
+import { CeSearchboxModule } from '../searchbox';
+import { CeSortFilterModule } from '../sort-filter/sort-filter.module';
 
 @UntilDestroy()
 @Component({
     selector: 'ce-formquery-wrapper',
     templateUrl: './formquery-wrapper.component.html',
     styleUrls: ['./formquery-wrapper.component.scss'],
-    standalone: false
+    imports: [
+      CommonModule,
+      CeGridModule,
+      CeBookmarksModule,
+      CePaginatorModule,
+      CeSearchboxModule,
+      CeSortFilterModule,
+    ]
 })
 export class FormQueryWrapperComponent<T> implements OnInit {
 
