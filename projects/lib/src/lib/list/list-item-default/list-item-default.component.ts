@@ -25,6 +25,9 @@ export class ListItemDefaultComponent implements OnInit, IListItemContent<FormWr
 
   private retrieveDisplayFields() {
     const fields = this.item.core.params?.fields;
-    this.displayedFields = fields ? fields.map((f: string) => FormUtils.retrieveBlockFromField(this.item.core, f)) : [];
+    this.displayedFields = fields ? 
+      fields
+      .map((f: string) => FormUtils.retrieveBlockFromField(this.item.core, f))
+      .filter(f => f !== undefined) : [];
   }
 }

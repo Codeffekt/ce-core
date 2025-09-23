@@ -17,8 +17,8 @@ export class TableCellStoreService {
         components: {}
     };
 
-    getComponentType<T>(block: FormBlock): any {
-        const existingComponent = this.store.components[block.type!];
+    getComponentType<T>(block?: FormBlock): any {        
+        const existingComponent = block?.type ? this.store.components[block.type] : undefined;
         return existingComponent ?? TableCellDefaultComponent;
     }
 
