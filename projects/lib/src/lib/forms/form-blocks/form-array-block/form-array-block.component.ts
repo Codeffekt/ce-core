@@ -89,7 +89,12 @@ export class FormArrayBlockComponent extends FormBlockComponent<FormBlockArray> 
       return;
     }
 
-    this.dataSource.createElt(block, this.formInstance);
+    try {
+      const newForm = await this.dataSource.createElt(block, this.formInstance);
+      this.formRouteResolver.navigate(newForm.id, this.formInstance);
+    } catch {
+
+    }
 
   }
 

@@ -48,9 +48,10 @@ export class FormArrayDatasource extends FormQueryDatasource<FormInstanceExt> {
         this.reload();
     }
 
-    private async createEltFromArray(block: FormBlock, context: FormInstance) {
-        await this.apiService.createFormArrayElt(block.field, context.id, block.root);
+    private async createEltFromArray(block: FormBlock, context: FormInstance): Promise<FormInstance> {
+        const formInstance = await this.apiService.createFormArrayElt(block.field, context.id, block.root);
         this.reload();
+        return formInstance;
     }
 
     private async deleteEltFromArray(formId: IndexType) {
